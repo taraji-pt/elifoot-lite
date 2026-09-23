@@ -5,7 +5,7 @@ export function randInt(min: number, max: number) {
 }
 
 export function pick<T>(arr: readonly T[]): T {
-  return arr[randInt(0, arr.length - 1)];
+  return arr[randInt(0, arr.length - 1)] as T;
 }
 
 export function weightedPick(weights: Record<string, number>): string {
@@ -15,14 +15,16 @@ export function weightedPick(weights: Record<string, number>): string {
     r -= w;
     if (r <= 0) return key;
   }
-  return Object.keys(weights)[0];
+  return Object.keys(weights)[0] as string;
 }
 
 export function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
     const j = randInt(0, i);
-    [a[i], a[j]] = [a[j], a[i]];
+    const ai = a[i] as T;
+    a[i] = a[j] as T;
+    a[j] = ai;
   }
   return a;
 }
