@@ -1,5 +1,5 @@
 import { GAME_CONFIG } from "@/data/gameConfig";
-import { playCupRound } from "./cup";
+import { createCup, playCupRound } from "./cup";
 import { buildLeagues, seasonLabel } from "./newGame";
 import { bestLineup } from "./ratings";
 import { simulateMatch } from "./simulation";
@@ -121,8 +121,6 @@ function endSeason(state: GameState) {
   state.seasonYear += 1;
   state.round = 1;
   state.leagues = buildLeagues(state.teams);
-  state.cup = { rounds: [], currentRound: 0, winnerId: null };
-  const { createCup } = require("./cup") as { createCup: typeof import("./cup").createCup };
   state.cup = createCup(Object.keys(state.teams).map(Number));
 }
 
