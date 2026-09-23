@@ -1,0 +1,70 @@
+import { GAME_CONFIG } from "@/data/gameConfig";
+import { pick, poisson, randInt } from "./rng";
+import { getPlayers, teamRating } from "./ratings";
+import type { Player, Team } from "./types";
+
+const { baseGoalsPerHalf, ratingImpact, homeAdvantage } = GAME_CONFIG.simulation;
+
+function lambdaFor(attack: number, defence: number, home: boolean) {
+  const diff = attack - defence;
+  const value = baseGoalsPerHalf * Math.exp(diff * ratingImpact) + (home ? homeAdvantage : 0);
+  return Math.max(0.05, Math.min(4, value));
+}
+
+export interface HalfResult {
+  homeGoals: number;
+  awayGoals: number;
+  scorers: { teamId: number; playerName: string }[];
+}
+
+function scorerFrom(team: Team, lineup: number[], players: Record<number, Player>): string {
+  const squad = getPlayers(lineup.length ? lineup : team.playerIds, players).filter(
+    (p) => p.position !== "GR",
+  );
+  if (!squad.length) return "próprio";
+  // avançados marcam mais
+  const weighted: Player[] = [];
+  for (const p of squad) {
+    const times = p.position === "AV" ? 5 : p.position === "MED" ? 3 : 1;
+    for (let i = 0; i < times; i++) weighted.push(p);
+  }
+  return pick(weighted).name;
+}
+
+export function simulateHalf(
+  home: Team,
+  away: Team,
+  players: Record<number, Player>,
+  homeLineup: number[],
+  awayLineup: number[],
+): HalfResult {
+  const ratingHome = teamRating({ ...home, lineup: homeLineup }, players);
+  const ratingAway = teamRating({ ...away, lineup: awayLineup }, players);
+
+  const homeGoals = poisson(lambdaFor(ratingHome, ratingAway, true));
+  const awayGoals = poisson(lambdaFor(ratingAway, ratingHome, false));
+
+  const scorers: { teamId: number; playerName: string }[] = [];
+  for (let i = 0; i < homeGoals; i++)
+    scorers.push({ teamId: home.id, playerName: scorerFrom(home, homeLineup, players) });
+  for (let i = 0; i < awayGoals; i++)
+    scorers.push({ teamId: away.id, playerName: scorerFrom(away, awayLineup, players) });
+
+  return { homeGoals, awayGoals, scorers };
+}
+
+/** Simula um jogo completo (usado para jogos da IA e da Taça). */
+export function simulateMatch(
+  home: Team,
+  away: Team,
+  players: Record<number, Player>,
+): { homeGoals: number; awayGoals: number } {
+  const h1 = simulateHalf(home, away, players, home.lineup, away.lineup);
+  const h2 = simulateHalf(home, away, players, home.lineup, away.lineup);
+  return { homeGoals: h1.homeGoals + h2.homeGoals, awayGoals: h1.awayGoals + h2.awayGoals };
+}
+
+/** Penáltis simples para a Taça. */
+export function penaltyShootout(homeId: number, awayId: number): number {
+  return randInt(0, 1) === 0 ? homeId : awayId;
+}
