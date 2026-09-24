@@ -137,6 +137,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             ),
             finished: false,
           };
+          return undefined;
         }),
       substitute: (outId: number, inId: number) =>
         mutate((draft) => {
