@@ -56,7 +56,7 @@ function App() {
 
 function Start() {
   const { newGame, saveExists, load } = useGame();
-  const [division, setDivision] = useState(GAME_CONFIG.numberOfDivisions);
+  const [division, setDivision] = useState<number>(GAME_CONFIG.numberOfDivisions);
   const teams = TEAMS.filter((t) => t.division === division);
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
