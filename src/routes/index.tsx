@@ -1,3 +1,5 @@
+import { transferValueFor } from "@/game/players";
+import { Flag } from "@/components/Flag";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { GAME_CONFIG } from "@/data/gameConfig";
@@ -87,8 +89,11 @@ function Start() {
             onClick={() => newGame(t.id)}
             className={`${card} flex items-center justify-between text-left hover:border-primary`}
           >
-            <TeamIdentity team={{ ...t, playerIds: [], lineup: [] }} />
-            <span className="font-mono-num text-xs text-muted-foreground">{formatMoney(t.budget)}</span>
+            <TeamIdentity team={{ ...t, budget: 0, playerIds: [], lineup: [] }} />
+            <span className="text-right font-mono-num text-xs text-muted-foreground">
+              Força {t.rating}
+              <br />~{formatMoney(Math.round(transferValueFor(t.rating) * 1.3 / 10000) * 10000)}
+            </span>
           </button>
         ))}
       </div>
@@ -227,7 +232,7 @@ function PlayerTable({
           >
             <td className="py-1.5 font-mono-num text-xs">{p.position}</td>
             <td>{p.name}</td>
-            <td className="text-muted-foreground">{p.nationality}</td>
+            <td><Flag code={p.nationality} /></td>
             <td className="text-right font-mono-num">{p.rating}</td>
             <td className="text-right font-mono-num text-muted-foreground">{formatMoney(p.transferValue)}</td>
             <td className="pl-2 text-right text-xs text-primary">{action?.(p)}</td>

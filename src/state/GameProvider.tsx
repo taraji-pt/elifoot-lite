@@ -133,7 +133,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             userLineup: [...(draft.teams[draft.userTeamId]?.lineup ?? [])],
             subsUsed: 0,
             events: half.scorers.map(
-              (s) => `1.ª parte — ${draft.teams[s.teamId]?.abbreviation}: ${s.playerName}`,
+              (s) => `1.ª parte — ${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
             finished: false,
           };
@@ -170,7 +170,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           match.finished = true;
           match.events.push(
             ...half.scorers.map(
-              (s) => `2.ª parte — ${draft.teams[s.teamId]?.abbreviation}: ${s.playerName}`,
+              (s) => `2.ª parte — ${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
           );
         }),

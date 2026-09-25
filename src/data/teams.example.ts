@@ -1,83 +1,36 @@
 /**
- * EXEMPLO DE FICHEIRO DE CLUBES — modelo para a tua base de dados personalizada.
- *
- * Este ficheiro NÃO é usado pelo jogo. Serve apenas como referência.
- * O jogo lê os clubes de `src/data/teams.ts`.
- *
- * Para personalizares os clubes:
- *   1. Abre `src/data/teams.ts`.
- *   2. Substitui ou edita os blocos conforme o modelo abaixo.
- *   3. Mantém sempre 10 equipas por divisão (ou ajusta `teamsPerDivision`
- *      em `src/data/gameConfig.ts`).
- *
- * Regras importantes:
- *   - `id` tem de ser único em todo o ficheiro (1, 2, 3, ...).
- *   - `division` vai de 1 (melhor) a 4.
- *   - `abbreviation` deve ter 2-4 letras (aparece nas tabelas e resultados).
- *   - `badge` pode ficar vazio ("") — nesse caso o jogo gera um emblema
- *     automático com as cores do clube. Se quiseres um emblema real,
- *     coloca a imagem em `public/assets/badges/` e usa o caminho,
- *     por exemplo: "/assets/badges/benfica.png".
- *   - As cores são códigos hexadecimais (#RRGGBB).
- *   - `budget` é o dinheiro inicial do clube para transferências.
- *   - `playerIds` e `lineup` NÃO se escrevem aqui — o jogo preenche-os
- *     automaticamente quando começas uma nova partida.
+ * MODELO DE CLUBE (não usado pelo jogo — copiar blocos para teams.ts).
+ * - rating: força do clube 0-100. Gera o rating de cada jogador e o orçamento.
+ * - players: só nome, posição (GR/DEF/MED/AV) e nacionalidade (código 3 letras,
+ *   ver data/countries.ts). Ordem dentro de cada posição = importância
+ *   (os primeiros são titulares). Posições em falta são completadas automaticamente.
+ * - badge: "" gera emblema com as cores; ou "/assets/badges/benfica.png"
+ *   (imagem em public/assets/badges/).
  */
-
-import type { TeamSeed } from "./teams";
+import type { TeamSeed } from "./schema";
 
 export const EXAMPLE_TEAMS: TeamSeed[] = [
-  // ---------------- DIVISÃO 1 (exemplo) ----------------
   {
     id: 1,
     name: "Benfica",
-    abbreviation: "SLB",
     country: "Portugal",
     division: 1,
+    rating: 84,
     badge: "",
     primaryColor: "#E30613",
     secondaryColor: "#FFFFFF",
-    accentColor: "#1A1A1A",
-    budget: 5000000,
+    players: [
+      { name: "Trubin", position: "GR", nationality: "UKR" },
+      { name: "Samuel Soares", position: "GR", nationality: "POR" },
+      { name: "António Silva", position: "DEF", nationality: "POR" },
+      { name: "Otamendi", position: "DEF", nationality: "ARG" },
+      { name: "Dahl", position: "DEF", nationality: "SWE" },
+      { name: "Bah", position: "DEF", nationality: "DEN" },
+      { name: "Aursnes", position: "MED", nationality: "NOR" },
+      { name: "Kökçü", position: "MED", nationality: "TUR" },
+      { name: "Florentino", position: "MED", nationality: "POR" },
+      { name: "Di María", position: "AV", nationality: "ARG" },
+      { name: "Pavlidis", position: "AV", nationality: "GRE" },
+    ],
   },
-  {
-    id: 2,
-    name: "FC Porto",
-    abbreviation: "FCP",
-    country: "Portugal",
-    division: 1,
-    badge: "",
-    primaryColor: "#0A3D91",
-    secondaryColor: "#FFFFFF",
-    accentColor: "#8FB8FF",
-    budget: 4800000,
-  },
-  {
-    id: 3,
-    name: "Sporting CP",
-    abbreviation: "SCP",
-    country: "Portugal",
-    division: 1,
-    badge: "",
-    primaryColor: "#0B7A3B",
-    secondaryColor: "#FFFFFF",
-    accentColor: "#F2C500",
-    budget: 4500000,
-  },
-  // ... continuar até teres 10 equipas nesta divisão ...
-
-  // ---------------- DIVISÃO 2 (exemplo) ----------------
-  {
-    id: 11,
-    name: "CD Nacional",
-    abbreviation: "CDN",
-    country: "Portugal",
-    division: 2,
-    badge: "",
-    primaryColor: "#1C4E80",
-    secondaryColor: "#FFFFFF",
-    accentColor: "#7FB2E5",
-    budget: 1400000,
-  },
-  // ... etc ...
 ];

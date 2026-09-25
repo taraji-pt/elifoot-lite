@@ -34,14 +34,14 @@ export function TeamBadge({ team, size = 32, className = "" }: Props) {
         height: size,
         fontSize: size * 0.34,
         borderRadius: size * 0.22,
-        background: `linear-gradient(140deg, ${team.primaryColor} 0%, ${team.primaryColor} 55%, ${team.accentColor} 55%, ${team.accentColor} 100%)`,
+        background: `linear-gradient(140deg, ${team.primaryColor} 0%, ${team.primaryColor} 55%, ${team.secondaryColor} 55%, ${team.secondaryColor} 100%)`,
         color: team.secondaryColor,
-        border: `1px solid ${team.accentColor}`,
+        border: `1px solid ${team.secondaryColor}`,
         letterSpacing: "0.02em",
       }}
       aria-label={team.name}
     >
-      {team.abbreviation}
+      {team.name.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 3).toUpperCase()}
     </span>
   );
 }
