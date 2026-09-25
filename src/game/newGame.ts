@@ -1,7 +1,7 @@
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { TEAMS } from "@/data/teams";
 import { createCup } from "./cup";
-import { createSquad } from "./players";
+import { budgetForRating, createSquad } from "./players";
 import { bestLineup } from "./ratings";
 import { generateFixtures } from "./schedule";
 import type { GameState, Player, Team } from "./types";
@@ -13,12 +13,14 @@ export function buildWorld() {
   let nextPlayerId = 1000;
 
   for (const seed of TEAMS) {
-    const squad = createSquad(nextPlayerId, seed.division);
+    const squad = createSquad(nextPlayerId, seed.rating, seed.players);
     nextPlayerId += squad.length;
     for (const p of squad) players[p.id] = p;
     const playerIds = squad.map((p) => p.id);
+    const { players: _seedPlayers, ...rest } = seed;
     teams[seed.id] = {
-      ...seed,
+      ...rest,
+      budget: budgetForRating(seed.rating),
       playerIds,
       lineup: bestLineup(playerIds, players),
     };
