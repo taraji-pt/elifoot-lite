@@ -88,8 +88,11 @@ function Start() {
             onClick={() => newGame(t.id)}
             className={`${card} flex items-center justify-between text-left hover:border-primary`}
           >
-            <TeamIdentity team={{ ...t, playerIds: [], lineup: [] }} />
-            <span className="font-mono-num text-xs text-muted-foreground">{formatMoney(t.budget)}</span>
+            <TeamIdentity team={{ ...t, budget: 0, playerIds: [], lineup: [] }} />
+            <span className="text-right font-mono-num text-xs text-muted-foreground">
+              Força {t.rating}
+              <br />~{formatMoney(Math.round(transferValueFor(t.rating) * 1.3 / 10000) * 10000)}
+            </span>
           </button>
         ))}
       </div>
