@@ -1,3 +1,4 @@
+import { transferValueFor } from "@/game/players";
 import { Flag } from "@/components/Flag";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
