@@ -7,6 +7,7 @@ export interface Player {
   name: string;
   position: Position;
   rating: number;
+  /** código de 3 letras (ver data/countries.ts) */
   nationality: string;
   transferValue: number;
 }
@@ -14,14 +15,14 @@ export interface Player {
 export interface Team {
   id: number;
   name: string;
-  abbreviation: string;
   country: string;
   division: number;
+  /** força do clube (0-100) — gera ratings e orçamento */
+  rating: number;
   /** caminho para imagem, ex: "/assets/badges/benfica.png". Vazio = badge gerado. */
   badge: string;
   primaryColor: string;
   secondaryColor: string;
-  accentColor: string;
   budget: number;
   playerIds: number[];
   /** 11 titulares (ids). */

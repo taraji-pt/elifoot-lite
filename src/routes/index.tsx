@@ -1,3 +1,4 @@
+import { Flag } from "@/components/Flag";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { GAME_CONFIG } from "@/data/gameConfig";
@@ -227,7 +228,7 @@ function PlayerTable({
           >
             <td className="py-1.5 font-mono-num text-xs">{p.position}</td>
             <td>{p.name}</td>
-            <td className="text-muted-foreground">{p.nationality}</td>
+            <td><Flag code={p.nationality} /></td>
             <td className="text-right font-mono-num">{p.rating}</td>
             <td className="text-right font-mono-num text-muted-foreground">{formatMoney(p.transferValue)}</td>
             <td className="pl-2 text-right text-xs text-primary">{action?.(p)}</td>
