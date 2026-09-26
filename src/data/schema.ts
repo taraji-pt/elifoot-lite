@@ -7,12 +7,16 @@ export interface PlayerSeed {
   nationality: string;
 }
 
-/** Clube no ficheiro de dados. Rating dos jogadores e orçamento são calculados. */
+/**
+ * Clube na base de dados. O rating dos jogadores, o orçamento e a DIVISÃO
+ * são calculados automaticamente (a divisão sai do ranking de força dos
+ * clubes dos países escolhidos no início do jogo).
+ */
 export interface TeamSeed {
   id: number;
   name: string;
+  /** código de 3 letras do país (ver data/countries.ts) */
   country: string;
-  division: number;
   /** força do clube 0-100 */
   rating: number;
   /** "" = emblema gerado; ou "/assets/badges/x.png" */
@@ -21,4 +25,6 @@ export interface TeamSeed {
   secondaryColor: string;
   /** opcional; posições em falta são geradas automaticamente */
   players?: PlayerSeed[];
+  /** legado/ignorado: a divisão é calculada pelo ranking de força */
+  division?: number;
 }
