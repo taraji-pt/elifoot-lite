@@ -25,10 +25,36 @@ function tiesFrom(ids: number[]): CupTie[] {
   return ties;
 }
 
-export function createCup(allTeamIds: number[]): Cup {
-  const drawn = shuffle(allTeamIds).slice(0, GAME_CONFIG.cupTeams);
+/**
+ * Sorteio da Taça: entram equipas das divisões e também clubes de fora
+ * (Reserva), como na Taça de Portugal. `mustInclude` garante a presença do
+ * clube do utilizador.
+ */
+export function createCup(
+  activeIds: number[],
+  reserveIds: number[] = [],
+  mustInclude: number | null = null,
+): Cup {
+  const available = activeIds.length + reserveIds.length;
+  const size = Math.min(GAME_CONFIG.cupTeams, available);
+  const slots = 2 ** Math.floor(Math.log2(Math.max(2, size)));
+
+  const drawn: number[] = shuffle(reserveIds).slice(0, Math.floor(slots / 4));
+  for (const id of shuffle(activeIds)) {
+    if (drawn.length >= slots) break;
+    drawn.push(id);
+  }
+  for (const id of shuffle(reserveIds)) {
+    if (drawn.length >= slots) break;
+    if (!drawn.includes(id)) drawn.push(id);
+  }
+  if (mustInclude !== null && !drawn.includes(mustInclude) && drawn.length) {
+    drawn[drawn.length - 1] = mustInclude;
+  }
+
+  const ordered = shuffle(drawn);
   return {
-    rounds: [{ name: roundName(drawn.length), ties: tiesFrom(drawn) }],
+    rounds: [{ name: roundName(ordered.length), ties: tiesFrom(ordered) }],
     currentRound: 0,
     winnerId: null,
   };
