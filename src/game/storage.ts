@@ -1,6 +1,6 @@
 import type { GameState } from "./types";
 
-const KEY = "elifoot-mini-save-v2";
+const KEY = "elifoot-mini-save-v3";
 
 export function saveGame(state: GameState) {
   if (typeof window === "undefined") return;

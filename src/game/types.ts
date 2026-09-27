@@ -16,6 +16,7 @@ export interface Team {
   id: number;
   name: string;
   country: string;
+  /** 1..N = divisões a competir; 0 = Reserva (fora das divisões) */
   division: number;
   /** força do clube (0-100) — gera ratings e orçamento */
   rating: number;
@@ -82,6 +83,12 @@ export interface GameState {
   seasonYear: number;
   round: number;
   userTeamId: number;
+  /** propostas de outros clubes para treinar (fim de época) */
+  offers: number[];
+  /** true quando o clube do utilizador caiu fora das divisões: tem de aceitar */
+  offersMandatory: boolean;
+  /** sem clube e sem propostas = fim de carreira */
+  careerOver: boolean;
   teams: Record<number, Team>;
   players: Record<number, Player>;
   /** jogadores sem equipa (mercado livre) */
