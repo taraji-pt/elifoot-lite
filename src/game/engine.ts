@@ -69,59 +69,140 @@ export function advanceRound(state: GameState) {
   state.match = null;
 }
 
+type Outcome = "promoted" | "stayed" | "relegated" | "out";
+
+/** Clubes fora das divisões (Reserva). */
+export function reserveTeams(state: GameState): Team[] {
+  return Object.values(state.teams).filter((t) => t.division === RESERVE_DIVISION);
+}
+
+function strength(state: GameState, team: Team): number {
+  return teamRating(team, state.players);
+}
+
+/** Propostas de outros clubes para treinar na época seguinte. */
+function generateOffers(state: GameState, userDivision: number, outcome: Outcome): number[] {
+  const N = GAME_CONFIG.numberOfDivisions;
+  const targets: number[] = [];
+  if (outcome === "out") targets.push(N, Math.max(1, N - 1));
+  else if (outcome === "promoted") targets.push(Math.max(1, userDivision - 1), userDivision);
+  else if (outcome === "relegated") targets.push(userDivision, Math.min(N, userDivision + 1));
+  else targets.push(userDivision);
+
+  const candidates = Object.values(state.teams)
+    .filter((t) => t.id !== state.userTeamId && targets.includes(t.division))
+    .map((t) => t.id);
+  const count = outcome === "stayed" ? 2 : 3;
+  return shuffle(candidates).slice(0, count);
+}
+
 function endSeason(state: GameState) {
-  const { numberOfDivisions, promotionSpots, relegationSpots } = GAME_CONFIG;
+  const { numberOfDivisions: N, promotionSpots, relegationSpots } = GAME_CONFIG;
 
   // Taça: concluir eliminatórias que faltem
   let guard = 0;
-  while (state.cup.winnerId === null && guard++ < 10) {
+  while (state.cup.winnerId === null && guard++ < 12) {
     state.cup = playCupRound(state.cup, state.teams, state.players);
   }
 
   const promoted: number[] = [];
-  const relegated: number[] = [];
-  const summary: SeasonSummary[] = [];
+  const relegatedDown: number[] = [];
+  const bottomOfLast: number[] = [];
+  let userInfo: { division: number; position: number; points: number; up: boolean; down: boolean } | null = null;
 
-  for (let d = 1; d <= numberOfDivisions; d++) {
+  for (let d = 1; d <= N; d++) {
     const ids = divisionTeamIds(state, d);
     const rows = computeStandings(state.leagues[d] ?? [], ids);
     rows.forEach((row, index) => {
       const position = index + 1;
-      if (d > 1 && position <= promotionSpots) promoted.push(row.teamId);
-      if (d < numberOfDivisions && position > rows.length - relegationSpots) relegated.push(row.teamId);
+      const up = d > 1 && position <= promotionSpots;
+      const down = position > rows.length - relegationSpots;
+      if (up) promoted.push(row.teamId);
+      if (down) (d < N ? relegatedDown : bottomOfLast).push(row.teamId);
       if (row.teamId === state.userTeamId) {
-        const note =
-          d > 1 && position <= promotionSpots
-            ? "Subiu de divisão!"
-            : d < numberOfDivisions && position > rows.length - relegationSpots
-              ? "Desceu de divisão."
-              : "Manteve a divisão.";
-        summary.push({
-          season: seasonLabel(state.seasonYear),
-          division: d,
-          position,
-          points: row.points,
-          note:
-            state.cup.winnerId === state.userTeamId ? `${note} Venceu a Taça!` : note,
-        });
+        userInfo = { division: d, position, points: row.points, up, down };
       }
     });
   }
+
+  // Acesso: os melhores clubes de fora sobem à última divisão e empurram
+  // para a Reserva os últimos classificados (só tantos quantos os que sobem).
+  const climbers = reserveTeams(state)
+    .sort((a, b) => strength(state, b) - strength(state, a))
+    .slice(0, relegationSpots);
+  const droppedOut = bottomOfLast.slice(Math.max(0, bottomOfLast.length - climbers.length));
 
   for (const id of promoted) {
     const team = state.teams[id];
     if (team) team.division = Math.max(1, team.division - 1);
   }
-  for (const id of relegated) {
+  for (const id of relegatedDown) {
     const team = state.teams[id];
-    if (team) team.division = Math.min(numberOfDivisions, team.division + 1);
+    if (team) team.division = Math.min(N, team.division + 1);
+  }
+  for (const id of droppedOut) {
+    const team = state.teams[id];
+    if (team) team.division = RESERVE_DIVISION;
+  }
+  for (const team of climbers.slice(0, droppedOut.length)) {
+    team.division = N;
   }
 
-  state.history = [...state.history, ...summary];
+  const info = userInfo as { division: number; position: number; points: number; up: boolean; down: boolean } | null;
+  let outcome: Outcome = "stayed";
+  if (info) {
+    if (info.up) outcome = "promoted";
+    else if (info.down && info.division < N) outcome = "relegated";
+    else if (info.down && droppedOut.includes(state.userTeamId)) outcome = "out";
+  }
+
+  if (info) {
+    const note =
+      outcome === "promoted"
+        ? "Subiu de divisão!"
+        : outcome === "relegated"
+          ? "Desceu de divisão."
+          : outcome === "out"
+            ? "Caiu fora das divisões!"
+            : "Manteve a divisão.";
+    state.history = [
+      ...state.history,
+      {
+        season: seasonLabel(state.seasonYear),
+        division: info.division,
+        position: info.position,
+        points: info.points,
+        note: state.cup.winnerId === state.userTeamId ? `${note} Venceu a Taça!` : note,
+      },
+    ];
+  }
+
   state.seasonYear += 1;
   state.round = 1;
   state.leagues = buildLeagues(state.teams);
-  state.cup = createCup(Object.keys(state.teams).map(Number));
+  const { active, reserve } = splitByActivity(state.teams);
+  state.cup = createCup(active, reserve, state.userTeamId);
+
+  const userDivision = state.teams[state.userTeamId]?.division ?? N;
+  state.offers = generateOffers(state, userDivision || N, outcome);
+  state.offersMandatory = outcome === "out";
+  state.careerOver = outcome === "out" && state.offers.length === 0;
+}
+
+/** Aceita uma proposta: passas a treinar outro clube. */
+export function acceptOffer(state: GameState, teamId: number): string {
+  const team = state.teams[teamId];
+  if (!team) return "Clube não encontrado.";
+  state.userTeamId = teamId;
+  state.offers = [];
+  state.offersMandatory = false;
+  return `És o novo treinador do ${team.name}.`;
+}
+
+export function declineOffers(state: GameState): string {
+  if (state.offersMandatory) return "Sem clube nas divisões: tens de aceitar uma proposta.";
+  state.offers = [];
+  return `Continuas no ${state.teams[state.userTeamId]?.name ?? "teu clube"}.`;
 }
 
 /* ------------------------- TRANSFERÊNCIAS ------------------------- */
