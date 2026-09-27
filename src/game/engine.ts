@@ -1,10 +1,11 @@
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { createCup, playCupRound } from "./cup";
-import { buildLeagues, seasonLabel } from "./newGame";
-import { bestLineup } from "./ratings";
+import { RESERVE_DIVISION, buildLeagues, seasonLabel, splitByActivity } from "./newGame";
+import { bestLineup, teamRating } from "./ratings";
+import { shuffle } from "./rng";
 import { simulateMatch } from "./simulation";
 import { computeStandings } from "./standings";
-import type { Fixture, GameState, Player, SeasonSummary, Team } from "./types";
+import type { Fixture, GameState, Player, Team } from "./types";
 
 export function divisionTeamIds(state: GameState, division: number): number[] {
   return Object.values(state.teams)
