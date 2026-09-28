@@ -337,36 +337,121 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
   const { continueSeason } = useGame();
   const review = state.seasonReview;
   if (!review) return null;
+
   const cupWinner = review.cupWinnerId === state.userTeamId;
   const champion = review.userDivision === 1 && review.userPosition === 1;
+  const rows = computeStandings(
+    state.leagues[review.userDivision] ?? [],
+    divisionTeamIds(state, review.userDivision),
+  );
 
   return (
-    <div className={`${card} mt-4 border-primary bg-primary/5`}>
-      <div className="text-lg font-bold">📋 Época {review.season} terminada</div>
-      <p className="mt-1 text-sm text-muted-foreground">
-        A época terminou. Podes agora consultar a classificação final, o calendário e a Taça antes de começares a nova época.
-      </p>
-      <div className="mt-3 grid gap-2 sm:grid-cols-3 text-sm">
-        <div><span className="text-muted-foreground">Divisão:</span> <b>{review.userDivision}</b></div>
-        <div><span className="text-muted-foreground">Classificação:</span> <b>{review.userPosition}.º</b></div>
-        <div><span className="text-muted-foreground">Pontos:</span> <b>{review.userPoints}</b></div>
-      </div>
-      <div className="mt-2 text-sm">
-        {champion && <div>🏆 Campeão da Liga</div>}
-        {cupWinner && <div>🏆 Vencedor da Taça</div>}
-        {!champion && !cupWinner && (
-          <div className="text-muted-foreground">
-            Podes rever os resultados antes de avançar para a nova época.
+    <div className="fixed inset-0 z-40 overflow-y-auto bg-background/95 px-4 py-6">
+      <div className="mx-auto max-w-4xl">
+        <div className={{card}}>
+          <div className="text-center">
+            <div className="text-4xl">📋</div>
+            <div className="mt-2 text-2xl font-black">Época {review.season} terminada</div>
+            <p className="mt-1 text-sm text-muted-foreground">
+              A época terminou. Revê agora a classificação final, a Taça e os resultados antes de começares a nova época.
+            </p>
           </div>
-        )}
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-md border border-border bg-card p-3 text-center">
+              <div className="text-xs text-muted-foreground">Divisão</div>
+              <div className="text-xl font-bold">{review.userDivision}</div>
+            </div>
+            <div className="rounded-md border border-border bg-card p-3 text-center">
+              <div className="text-xs text-muted-foreground">Classificação</div>
+              <div className="text-xl font-bold">{review.userPosition}.º</div>
+            </div>
+            <div className="rounded-md border border-border bg-card p-3 text-center">
+              <div className="text-xs text-muted-foreground">Pontos</div>
+              <div className="text-xl font-bold">{review.userPoints}</div>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap justify-center gap-3 text-sm">
+            {champion && <span>🏆 Campeão da Liga</span>}
+            {cupWinner && <span>🏆 Vencedor da Taça</span>}
+            {!champion && !cupWinner && (
+              <span className="text-muted-foreground">
+                {review.outcome === "promoted"
+                  ? "⬆️ Promoção"
+                  : review.outcome === "relegated"
+                    ? "⬇️ Despromoção"
+                    : review.outcome === "out"
+                      ? "❌ Fora das divisões"
+                      : "↔️ Mantém a divisão"}
+              </span>
+            )}
+          </div>
+
+          <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_280px]">
+            <div className="rounded-md border border-border bg-card p-3">
+              <div className="mb-2 font-semibold">
+                Classificação final — Divisão {review.userDivision}
+              </div>
+              <table className="w-full text-sm">
+                <thead className="text-left text-xs text-muted-foreground">
+                  <tr>
+                    <th>#</th>
+                    <th>Equipa</th>
+                    <th className="text-right">J</th>
+                    <th className="text-right">GM-GS</th>
+                    <th className="text-right">Pts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((r, i) => {
+                    const t = state.teams[r.teamId] as Team;
+                    return (
+                      <tr
+                        key={r.teamId}
+                        className={{`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""}`}}
+                      >
+                        <td className="py-1.5 font-mono-num">{i + 1}</td>
+                        <td><TeamIdentityWithFlag team={t} size={20} /></td>
+                        <td className="text-right font-mono-num">{r.played}</td>
+                        <td className="text-right font-mono-num">{r.goalsFor}-{r.goalsAgainst}</td>
+                        <td className="text-right font-mono-num">{r.points}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="space-y-4">
+              <div className="rounded-md border border-border bg-card p-3">
+                <div className="mb-2 font-semibold">Taça</div>
+                <div className="text-sm">
+                  Vencedor:{" "}
+                  <b>{review.cupWinnerId !== null ? state.teams[review.cupWinnerId]?.name : "—"}</b>
+                </div>
+              </div>
+
+              <div className="rounded-md border border-border bg-card p-3">
+                <div className="mb-2 font-semibold">Revisão</div>
+                <div className="text-sm text-muted-foreground">
+                  A época anterior mantém-se intacta enquanto este resumo estiver aberto.
+                  Podes consultar também o calendário e a Taça antes de avançar.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <button className={{btn}} onClick={continueSeason}>
+              Continuar para a nova época
+            </button>
+          </div>
+        </div>
       </div>
-      <button className={`${btn} mt-4`} onClick={continueSeason}>
-        Continuar para a nova época
-      </button>
     </div>
   );
 }
-
 function CelebrationPopup({ state }: { state: GameState }) {
   const { dismissCelebration } = useGame();
   const celebration = state.celebration;
