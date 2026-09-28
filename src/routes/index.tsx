@@ -8,7 +8,7 @@ import type { TeamSeed } from "@/data/schema";
 import { TeamIdentity } from "@/components/TeamIdentity";
 import { TeamBadge } from "@/components/TeamBadge";
 import { GameProvider, useGame } from "@/state/GameProvider";
-import { divisionTeamIds, marketPlayers, totalRounds, userFixture, userTeam } from "@/game/engine";
+import { divisionTeamIds, marketPlayers, totalRounds, userCupTie, userFixture, userTeam } from "@/game/engine";
 import { activeSlots, previewDivisions, seasonLabel, seedsForCountries } from "@/game/newGame";
 import { formatMoney, getPlayers, sortSquad, teamRating } from "@/game/ratings";
 import { validateSquad } from "@/game/players";
@@ -313,6 +313,8 @@ function Game({ state }: { state: GameState }) {
         </div>
       )}
 
+      {state.celebration && <CelebrationPopup state={state} />}
+
       <CoachOffers state={state} />
       <PlayerBids state={state} />
 
@@ -325,6 +327,35 @@ function Game({ state }: { state: GameState }) {
         {activeTab === "taca" && <CupView state={state} />}
         {activeTab === "historico" && <History state={state} />}
       </main>
+    </div>
+  );
+}
+
+function CelebrationPopup({ state }: { state: GameState }) {
+  const { dismissCelebration } = useGame();
+  const celebration = state.celebration;
+  if (!celebration) return null;
+  const team = state.teams[celebration.teamId] as Team;
+  const title =
+    celebration.type === "double"
+      ? "DOBRADINHA!"
+      : celebration.type === "league"
+        ? "CAMPEÕES!"
+        : "VENCEDORES DA TAÇA!";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+      <div className="w-full max-w-md rounded-xl border border-primary bg-card p-6 text-center shadow-2xl">
+        <div className="text-5xl">{celebration.type === "double" ? "🏆🏆" : "🏆"}</div>
+        <div className="mt-3 text-2xl font-black tracking-wide text-primary">{title}</div>
+        <div className="mt-2 text-lg font-semibold">{team?.name}</div>
+        <div className="mt-1 text-sm text-muted-foreground">{celebration.season}</div>
+        <div className="mt-4 space-y-1 text-sm">
+          {(celebration.type === "league" || celebration.type === "double") && <div>🏆 Campeão da Liga</div>}
+          {(celebration.type === "cup" || celebration.type === "double") && <div>🏆 Vencedor da Taça</div>}
+        </div>
+        <button className={btn + " mt-6"} onClick={dismissCelebration}>Continuar</button>
+      </div>
     </div>
   );
 }
@@ -413,15 +444,32 @@ function Match({ state }: { state: GameState }) {
   const team = userTeam(state);
   const match = state.match;
   const fixture = userFixture(state);
+  const cupTie = userCupTie(state);
+  const cupPending = Boolean(
+    cupTie &&
+    fixture &&
+    fixture.homeGoals !== null &&
+    fixture.awayGoals !== null,
+  );
 
   if (!match) {
     if (!fixture) return <div className={card}>Sem jogo nesta jornada.</div>;
-    const home = state.teams[fixture.homeId] as Team;
-    const away = state.teams[fixture.awayId] as Team;
+    const isCup = cupPending;
+    const home = state.teams[isCup ? cupTie!.homeId : fixture.homeId] as Team;
+    const away = state.teams[isCup ? cupTie!.awayId : fixture.awayId] as Team;
     const ok = team.lineup.length === 11;
     return (
       <div className={`${card} text-center`}>
-        <div className="text-sm text-muted-foreground">Jornada {state.round}</div>
+        <div className="text-sm text-muted-foreground">
+          {isCup
+            ? `🏆 Taça — ${state.cup.rounds[state.cup.currentRound]?.name ?? "Eliminatória"}`
+            : `Jornada ${state.round}`}
+        </div>
+        {isCup && (
+          <div className="mt-2 text-xs text-muted-foreground">
+            O teu jogo da Liga já terminou. Agora é a tua vez na Taça.
+          </div>
+        )}
         <div className="my-6 flex items-center justify-center gap-6 text-lg">
           <TeamIdentity team={home} size={40} bold />
           <span className="text-muted-foreground">vs</span>
