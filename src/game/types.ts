@@ -58,7 +58,10 @@ export interface Cup {
   winnerId: number | null;
 }
 
+export type MatchCompetition = "league" | "cup";
+
 export interface MatchState {
+  competition: MatchCompetition;
   homeId: number;
   awayId: number;
   homeGoals: number;
@@ -69,6 +72,12 @@ export interface MatchState {
   subsUsed: number;
   events: string[];
   finished: boolean;
+}
+
+export interface Celebration {
+  type: "league" | "cup" | "double";
+  season: string;
+  teamId: number;
 }
 
 export interface SeasonSummary {
@@ -105,6 +114,7 @@ export interface GameState {
   leagues: Record<number, Fixture[][]>;
   cup: Cup;
   match: MatchState | null;
+  celebration?: Celebration | null;
   history: SeasonSummary[];
   nextPlayerId: number;
 }
