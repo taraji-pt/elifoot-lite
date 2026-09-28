@@ -348,7 +348,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-background/95 px-4 py-6">
       <div className="mx-auto max-w-4xl">
-        <div className={{card}}>
+        <div className={card}>
           <div className="text-center">
             <div className="text-4xl">📋</div>
             <div className="mt-2 text-2xl font-black">Época {review.season} terminada</div>
@@ -409,7 +409,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                     return (
                       <tr
                         key={r.teamId}
-                        className={{`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""}`}}
+                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""}`}
                       >
                         <td className="py-1.5 font-mono-num">{i + 1}</td>
                         <td><TeamIdentityWithFlag team={t} size={20} /></td>
@@ -443,7 +443,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
           </div>
 
           <div className="mt-6 flex justify-center">
-            <button className={{btn}} onClick={continueSeason}>
+            <button className={btn} onClick={continueSeason}>
               Continuar para a nova época
             </button>
           </div>
