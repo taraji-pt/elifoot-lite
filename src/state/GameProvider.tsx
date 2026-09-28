@@ -1,3 +1,4 @@
+import type React from "react";
 import {
   createContext,
   useCallback,
@@ -48,7 +49,8 @@ interface GameContextValue {
   finishMatch: () => void;
 }
 
-const GameContext = createContext<GameContextValue | null>(null);
+const g = globalThis as { __gameCtx?: React.Context<GameContextValue | null> };
+const GameContext = (g.__gameCtx ??= createContext<GameContextValue | null>(null));
 
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
 
