@@ -80,7 +80,7 @@ export const TEAMS: TeamSeed[] = [
 
   // ---------------- ITÁLIA ----------------
   { id: 201, name: "Milano Nerazzurri", country: "ITA", rating: 84, badge: "", primaryColor: "#0B1C8C", secondaryColor: "#0B0B0B" },
-  { id: 202, name: "Juventus", country: "ITA", rating: 83, badge: ""/assets/badges/juventus.png"", primaryColor: "#111111", secondaryColor: "#FFFFFF" },
+  { id: 202, name: "Juventus", country: "ITA", rating: 83, badge: "/assets/badges/juventus.png", primaryColor: "#111111", secondaryColor: "#FFFFFF" },
   { id: 203, name: "Napoli Vesuvio", country: "ITA", rating: 81, badge: "", primaryColor: "#009EE0", secondaryColor: "#FFFFFF" },
   { id: 204, name: "Roma Lupi", country: "ITA", rating: 78, badge: "", primaryColor: "#8E1F2F", secondaryColor: "#F6A800" },
   { id: 205, name: "Milano Rossoneri", country: "ITA", rating: 77, badge: "", primaryColor: "#C8102E", secondaryColor: "#111111" },
