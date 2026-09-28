@@ -618,7 +618,7 @@ function Transfers({ state }: { state: GameState }) {
                     <Flag code={player.nationality} size={16} />
                     {player.name}
                   </span>
-                  <div className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                  <div className="inline-flex items-center gap-2 text-xs text-muted-foreground">
                     {teamId ? (
                       <>
                         <TeamBadge team={state.teams[teamId] as Team} size={16} />
