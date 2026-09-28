@@ -614,18 +614,18 @@ function Transfers({ state }: { state: GameState }) {
               <tr key={player.id} className="border-t border-border">
                 <td className="py-1.5 font-mono-num text-xs">{player.position}</td>
                 <td>
-                  <span className="inline-flex items-center gap-1">
+                  <span className="inline-flex items-center gap-2">
                     <Flag code={player.nationality} size={16} />
-                    {player.name}
+                    <span>{player.name}</span>
+                    <span className="ml-1 inline-flex items-center gap-2 text-xs text-muted-foreground">
+                      {teamId ? (
+                        <>
+                          <TeamBadge team={state.teams[teamId] as Team} size={16} />
+                          {state.teams[teamId]?.name}
+                        </>
+                      ) : "Livre"}
+                    </span>
                   </span>
-                  <div className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-                    {teamId ? (
-                      <>
-                        <TeamBadge team={state.teams[teamId] as Team} size={16} />
-                        {state.teams[teamId]?.name}
-                      </>
-                    ) : "Livre"}
-                  </div>
                 </td>
                 <td className="text-right font-mono-num">{player.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(player.transferValue)}</td>
