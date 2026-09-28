@@ -252,7 +252,7 @@ function Editor() {
                   <div className="font-semibold">
                     Plantel ({selected.players?.length ?? 0})
                     <span className="ml-2 text-xs font-normal text-muted-foreground">
-                      Ordem = importância. Posições em falta são geradas pelo jogo.
+                      Os jogadores do plantel são definidos aqui. O jogo não gera jogadores automaticamente.
                     </span>
                   </div>
                   <button
@@ -315,7 +315,7 @@ function Editor() {
                   ))}
                   {!(selected.players ?? []).length && (
                     <p className="text-sm text-muted-foreground">
-                      Sem jogadores definidos — o jogo gera um plantel completo pela força do clube.
+                      Sem jogadores definidos — o jogo não gera jogadores automaticamente e este clube não poderá iniciar uma época.
                     </p>
                   )}
                 </div>
