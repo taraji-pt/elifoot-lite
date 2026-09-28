@@ -155,6 +155,15 @@ function divisionLabel(d: number) {
   return d === 0 ? "Fora das divisões" : `Divisão ${d}`;
 }
 
+function TeamIdentityWithFlag({ team, size = 26, bold = false }: { team: Team; size?: number; bold?: boolean }) {
+  return (
+    <span className="inline-flex items-center gap-2 min-w-0">
+      <Flag code={team.country} size={16} />
+      <TeamIdentity team={team} size={size} bold={bold} />
+    </span>
+  );
+}
+
 function CoachOffers({ state }: { state: GameState }) {
   const { takeOffer, rejectOffers, deleteSave } = useGame();
   if (state.careerOver) {
@@ -179,7 +188,7 @@ function CoachOffers({ state }: { state: GameState }) {
           if (!t) return null;
           return (
             <div key={id} className="rounded-md border border-border p-3">
-              <TeamIdentity team={t} />
+              <TeamIdentityWithFlag team={t} />
               <div className="mt-2 text-xs text-muted-foreground">
                 {divisionLabel(t.division)} · Rating {teamRating(t, state.players)} · {formatMoney(t.budget)}
               </div>
@@ -210,10 +219,14 @@ function PlayerBids({ state }: { state: GameState }) {
         return (
           <div key={b.playerId} className={`${card} mt-4 flex flex-wrap items-center justify-between gap-3`}>
             <div className="flex items-center gap-3 text-sm">
-              <TeamBadge team={t} size={32} />
+              <TeamIdentityWithFlag team={t} size={32} />
               <span>
                 O <b>{t.name}</b> oferece <b className="text-primary">{formatMoney(b.amount)}</b> por{" "}
-                <b>{p.name}</b> ({p.position}, {p.rating}) — valor {formatMoney(p.transferValue)}
+                <span className="inline-flex items-center gap-1 align-middle">
+                  <Flag code={p.nationality} size={16} />
+                  <b>{p.name}</b>
+                </span>{" "}
+                ({p.position}, {p.rating}) — valor {formatMoney(p.transferValue)}
               </span>
             </div>
             <div className="flex gap-2">
@@ -488,7 +501,7 @@ function Standings({ state }: { state: GameState }) {
             return (
               <tr key={r.teamId} className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10" : ""}`}>
                 <td className={`py-1.5 font-mono-num ${up ? "text-primary" : down ? "text-destructive" : ""}`}>{i + 1}</td>
-                <td><TeamIdentity team={t} size={20} /></td>
+                <td><TeamIdentityWithFlag team={t} size={20} /></td>
                 <td className="text-right font-mono-num">{r.played}</td>
                 <td className="text-right font-mono-num">{r.won}</td>
                 <td className="text-right font-mono-num">{r.drawn}</td>
@@ -529,11 +542,11 @@ function Calendar({ state }: { state: GameState }) {
             return (
               <tr key={i} className={`border-t border-border ${i + 1 === state.round ? "bg-primary/10" : ""}`}>
                 <td className="py-1.5 font-mono-num text-xs text-muted-foreground">J{i + 1}</td>
-                <td className="text-right"><TeamIdentity team={state.teams[f.homeId] as Team} size={20} /></td>
+                <td className="text-right"><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} /></td>
                 <td className="px-3 text-center font-mono-num">
                   {f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}
                 </td>
-                <td><TeamIdentity team={state.teams[f.awayId] as Team} size={20} /></td>
+                <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} /></td>
               </tr>
             );
           })}
@@ -579,9 +592,17 @@ function Transfers({ state }: { state: GameState }) {
               <tr key={player.id} className="border-t border-border">
                 <td className="py-1.5 font-mono-num text-xs">{player.position}</td>
                 <td>
-                  {player.name}
-                  <div className="text-xs text-muted-foreground">
-                    {teamId ? state.teams[teamId]?.name : "Livre"}
+                  <span className="inline-flex items-center gap-1">
+                    <Flag code={player.nationality} size={16} />
+                    {player.name}
+                  </span>
+                  <div className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                    {teamId ? (
+                      <>
+                        <Flag code={state.teams[teamId]?.country ?? ""} size={14} />
+                        {state.teams[teamId]?.name}
+                      </>
+                    ) : "Livre"}
                   </div>
                 </td>
                 <td className="text-right font-mono-num">{player.rating}</td>
@@ -601,7 +622,12 @@ function Transfers({ state }: { state: GameState }) {
             {mine.map((p) => (
               <tr key={p.id} className="border-t border-border">
                 <td className="py-1.5 font-mono-num text-xs">{p.position}</td>
-                <td>{p.name}</td>
+                <td>
+                  <span className="inline-flex items-center gap-1">
+                    <Flag code={p.nationality} size={16} />
+                    {p.name}
+                  </span>
+                </td>
                 <td className="text-right font-mono-num">{p.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(p.transferValue)}</td>
                 <td className="pl-2 text-right">
@@ -642,13 +668,13 @@ function CupView({ state }: { state: GameState }) {
                   className={`grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2 rounded px-2 py-1 text-sm ${mine ? "bg-primary/10" : ""}`}
                 >
                   <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
-                    <TeamIdentity team={h} size={18} />
+                    <TeamIdentityWithFlag team={h} size={18} />
                   </div>
                   <span className="w-14 text-center font-mono-num">
                     {tie.homeGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}${tie.penalties ? " (p)" : ""}`}
                   </span>
                   <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
-                    <TeamIdentity team={a} size={18} />
+                    <TeamIdentityWithFlag team={a} size={18} />
                   </div>
                 </div>
               );
