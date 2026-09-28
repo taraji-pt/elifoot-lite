@@ -452,7 +452,7 @@ function Match({ state }: { state: GameState }) {
 }
 
 function Standings({ state }: { state: GameState }) {
-  const [division, setDivision] = useState(userTeam(state).division);
+  const [division, setDivision] = useState(userTeam(state).division || GAME_CONFIG.numberOfDivisions);
   const rows = computeStandings(state.leagues[division] ?? [], divisionTeamIds(state, division));
   const { promotionSpots, relegationSpots, numberOfDivisions } = GAME_CONFIG;
   return (

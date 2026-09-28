@@ -101,12 +101,12 @@ export function acceptBid(state: GameState, playerId: number): string {
   buyer.budget -= bid.amount;
   buyer.playerIds = [...buyer.playerIds, playerId];
   buyer.lineup = bestLineup(buyer.playerIds, state.players);
-  state.bids = state.bids?.filter((b) => b.playerId !== playerId);
+  state.bids = (state.bids ?? []).filter((b) => b.playerId !== playerId);
   return `${player.name} vendido ao ${buyer.name} por €${bid.amount.toLocaleString("pt-PT")}.`;
 }
 
 export function rejectBid(state: GameState, playerId: number): string {
-  state.bids = state.bids?.filter((b) => b.playerId !== playerId);
+  state.bids = (state.bids ?? []).filter((b) => b.playerId !== playerId);
   return "Proposta recusada.";
 }
 
