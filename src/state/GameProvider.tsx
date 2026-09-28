@@ -17,6 +17,7 @@ import {
   advanceRound,
   buyPlayer,
   declineOffers,
+  continueAfterSeasonReview,
   recordUserResult,
   recordUserCupResult,
   dismissCelebration,
@@ -51,6 +52,7 @@ interface GameContextValue {
   playSecondHalf: () => void;
   finishMatch: () => void;
   dismissCelebration: () => void;
+  continueSeason: () => void;
 }
 
 const g = globalThis as { __gameCtx?: React.Context<GameContextValue | null> };
@@ -226,6 +228,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           advanceRound(draft);
         }),
       dismissCelebration: () => mutate((draft) => dismissCelebration(draft)),
+      continueSeason: () => mutate((draft) => continueAfterSeasonReview(draft)),
     }),
     [ready, state, saveExists, message, mutate, persist],
   );
