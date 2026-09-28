@@ -264,7 +264,12 @@ function endSeason(state: GameState) {
   state.careerOver = outcome === "out" && state.offers.length === 0;
 }
 
-export function recordUserCupResult(state: GameState, homeGoals: number, awayGoals: number) {
+export function recordUserCupResult(
+  state: GameState,
+  homeGoals: number,
+  awayGoals: number,
+  penaltyWinnerId?: number,
+) {
   const tie = state.cup.rounds[state.cup.currentRound]?.ties.find(
     (t) => (t.homeId === state.userTeamId || t.awayId === state.userTeamId) && t.winnerId === null,
   );
@@ -279,7 +284,7 @@ export function recordUserCupResult(state: GameState, homeGoals: number, awayGoa
   if (homeGoals > awayGoals) winnerId = home.id;
   else if (awayGoals > homeGoals) winnerId = away.id;
   else {
-    winnerId = penaltyShootout(home.id, away.id);
+    winnerId = penaltyWinnerId ?? penaltyShootout(home.id, away.id);
     penalties = true;
   }
 
