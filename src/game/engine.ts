@@ -157,7 +157,7 @@ function generateOffers(state: GameState, userDivision: number, outcome: Outcome
 function endSeason(state: GameState) {
   const { numberOfDivisions: N, promotionSpots, relegationSpots } = GAME_CONFIG;
 
-  // Taça: concluir eliminatórias que faltem
+  // Garante que a Taça está concluída antes de apresentar o balanço final.
   let guard = 0;
   while (state.cup.winnerId === null && guard++ < 12) {
     state.cup = playCupRound(state.cup, state.teams, state.players);
@@ -183,73 +183,91 @@ function endSeason(state: GameState) {
     });
   }
 
-  // Acesso: os melhores clubes de fora sobem à última divisão e empurram
-  // para a Reserva os últimos classificados (só tantos quantos os que sobem).
   const climbers = reserveTeams(state)
     .sort((a, b) => strength(state, b) - strength(state, a))
     .slice(0, relegationSpots);
   const droppedOut = bottomOfLast.slice(Math.max(0, bottomOfLast.length - climbers.length));
 
-  for (const id of promoted) {
+  const info = userInfo as { division: number; position: number; points: number; up: boolean; down: boolean } | null;
+  if (!info) return;
+
+  let outcome: Outcome = "stayed";
+  if (info.up) outcome = "promoted";
+  else if (info.down && info.division < N) outcome = "relegated";
+  else if (info.down && droppedOut.includes(state.userTeamId)) outcome = "out";
+
+  state.seasonReview = {
+    season: seasonLabel(state.seasonYear),
+    userDivision: info.division,
+    userPosition: info.position,
+    userPoints: info.points,
+    cupWinnerId: state.cup.winnerId,
+    promoted,
+    relegatedDown,
+    droppedOut,
+    climbers: climbers.slice(0, droppedOut.length).map((t) => t.id),
+    outcome,
+  };
+}
+
+/** Fecha a época terminada depois de o utilizador consultar a classificação, calendário e Taça. */
+export function continueAfterSeasonReview(state: GameState) {
+  const review = state.seasonReview;
+  if (!review) return;
+
+  const { numberOfDivisions: N } = GAME_CONFIG;
+
+  for (const id of review.promoted) {
     const team = state.teams[id];
     if (team) team.division = Math.max(1, team.division - 1);
   }
-  for (const id of relegatedDown) {
+  for (const id of review.relegatedDown) {
     const team = state.teams[id];
     if (team) team.division = Math.min(N, team.division + 1);
   }
-  for (const id of droppedOut) {
+  for (const id of review.droppedOut) {
     const team = state.teams[id];
     if (team) team.division = RESERVE_DIVISION;
   }
-  for (const team of climbers.slice(0, droppedOut.length)) {
-    team.division = N;
+  for (const id of review.climbers) {
+    const team = state.teams[id];
+    if (team) team.division = N;
   }
 
-  const info = userInfo as { division: number; position: number; points: number; up: boolean; down: boolean } | null;
-  let outcome: Outcome = "stayed";
-  if (info) {
-    if (info.up) outcome = "promoted";
-    else if (info.down && info.division < N) outcome = "relegated";
-    else if (info.down && droppedOut.includes(state.userTeamId)) outcome = "out";
-  }
+  const leagueChampion = review.userDivision === 1 && review.userPosition === 1;
+  const cupWinner = review.cupWinnerId === state.userTeamId;
+  const note =
+    leagueChampion
+      ? cupWinner
+        ? "Campeão! Venceu a Taça!"
+        : "Campeão!"
+      : review.outcome === "promoted"
+        ? "Subiu de divisão!"
+        : review.outcome === "relegated"
+          ? "Desceu de divisão."
+          : review.outcome === "out"
+            ? "Caiu fora das divisões!"
+            : cupWinner
+              ? "Manteve a divisão. Venceu a Taça!"
+              : "Manteve a divisão.";
 
-  if (info) {
-    const leagueChampion = info.division === 1 && info.position === 1;
-    const cupWinner = state.cup.winnerId === state.userTeamId;
-    const note =
-      leagueChampion
-        ? cupWinner
-          ? "Campeão! Venceu a Taça!"
-          : "Campeão!"
-        : outcome === "promoted"
-          ? "Subiu de divisão!"
-          : outcome === "relegated"
-            ? "Desceu de divisão."
-            : outcome === "out"
-              ? "Caiu fora das divisões!"
-              : cupWinner
-                ? "Manteve a divisão. Venceu a Taça!"
-                : "Manteve a divisão.";
+  state.history = [
+    ...state.history,
+    {
+      season: review.season,
+      division: review.userDivision,
+      position: review.userPosition,
+      points: review.userPoints,
+      note,
+    },
+  ];
 
-    if (leagueChampion || cupWinner) {
-      state.celebration = {
-        type: leagueChampion && cupWinner ? "double" : leagueChampion ? "league" : "cup",
-        season: seasonLabel(state.seasonYear),
-        teamId: state.userTeamId,
-      };
-    }
-
-    state.history = [
-      ...state.history,
-      {
-        season: seasonLabel(state.seasonYear),
-        division: info.division,
-        position: info.position,
-        points: info.points,
-        note,
-      },
-    ];
+  if (leagueChampion || cupWinner) {
+    state.celebration = {
+      type: leagueChampion && cupWinner ? "double" : leagueChampion ? "league" : "cup",
+      season: review.season,
+      teamId: state.userTeamId,
+    };
   }
 
   state.seasonYear += 1;
@@ -257,56 +275,14 @@ function endSeason(state: GameState) {
   state.leagues = buildLeagues(state.teams);
   const { active, reserve } = splitByActivity(state.teams);
   state.cup = createCup(active, reserve, state.userTeamId);
-
   const userDivision = state.teams[state.userTeamId]?.division ?? N;
-  state.offers = generateOffers(state, userDivision || N, outcome);
-  state.offersMandatory = outcome === "out";
-  state.careerOver = outcome === "out" && state.offers.length === 0;
+  state.offers = generateOffers(state, userDivision || N, review.outcome);
+  state.offersMandatory = review.outcome === "out";
+  state.careerOver = review.outcome === "out" && state.offers.length === 0;
+  state.seasonReview = null;
 }
 
-export function recordUserCupResult(
-  state: GameState,
-  homeGoals: number,
-  awayGoals: number,
-  penaltyWinnerId?: number,
-) {
-  const tie = state.cup.rounds[state.cup.currentRound]?.ties.find(
-    (t) => (t.homeId === state.userTeamId || t.awayId === state.userTeamId) && t.winnerId === null,
-  );
-  if (!tie) return;
-
-  const home = state.teams[tie.homeId];
-  const away = state.teams[tie.awayId];
-  if (!home || !away) return;
-
-  let winnerId: number;
-  let penalties = false;
-  if (homeGoals > awayGoals) winnerId = home.id;
-  else if (awayGoals > homeGoals) winnerId = away.id;
-  else {
-    winnerId = penaltyWinnerId ?? penaltyShootout(home.id, away.id);
-    penalties = true;
-  }
-
-  tie.homeGoals = homeGoals;
-  tie.awayGoals = awayGoals;
-  tie.winnerId = winnerId;
-  tie.penalties = penalties;
-
-  if (winnerId === state.userTeamId && state.cup.rounds[state.cup.currentRound]?.ties.length === 1) {
-    state.celebration = {
-      type: "cup",
-      season: seasonLabel(state.seasonYear),
-      teamId: state.userTeamId,
-    };
-  }
-}
-
-/** Fecha o popup de celebração atual. */
-export function dismissCelebration(state: GameState) {
-  state.celebration = null;
-}
-
+/** Aceita uma proposta: passas a treinar outro clube. */
 /** Aceita uma proposta: passas a treinar outro clube. */
 export function acceptOffer(state: GameState, teamId: number): string {
   const team = state.teams[teamId];
