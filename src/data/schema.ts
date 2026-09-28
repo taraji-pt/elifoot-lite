@@ -23,7 +23,7 @@ export interface TeamSeed {
   badge: string;
   primaryColor: string;
   secondaryColor: string;
-  /** opcional; posições em falta são geradas automaticamente */
+  /** opcional; quando definido, contém os jogadores reais do plantel inicial */
   players?: PlayerSeed[];
   /** legado/ignorado: a divisão é calculada pelo ranking de força */
   division?: number;
