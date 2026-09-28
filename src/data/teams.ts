@@ -420,7 +420,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Lazio",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/lazio.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -521,7 +521,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Parma",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/parma.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -622,7 +622,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Sampdoria",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/samp.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -723,7 +723,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Napoli",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/napoli.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -824,7 +824,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Fiorentina",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/fiorentina.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7793,7 +7793,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Bologna",
     "country": "ITA",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/bologna.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7894,7 +7894,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "Genoa",
     "country": "ITA",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/genoa.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
