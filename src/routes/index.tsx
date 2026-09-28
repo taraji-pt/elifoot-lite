@@ -1,14 +1,15 @@
-import { transferValueFor } from "@/game/players";
 import { Flag } from "@/components/Flag";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { GAME_CONFIG } from "@/data/gameConfig";
-import { TEAMS } from "@/data/teams";
+import { countryList, loadDatabase } from "@/data/db";
+import { COUNTRIES } from "@/data/countries";
+import type { TeamSeed } from "@/data/schema";
 import { TeamIdentity } from "@/components/TeamIdentity";
 import { TeamBadge } from "@/components/TeamBadge";
 import { GameProvider, useGame } from "@/state/GameProvider";
 import { divisionTeamIds, marketPlayers, totalRounds, userFixture, userTeam } from "@/game/engine";
-import { seasonLabel } from "@/game/newGame";
+import { activeSlots, previewDivisions, seasonLabel, seedsForCountries } from "@/game/newGame";
 import { formatMoney, getPlayers, sortSquad, teamRating } from "@/game/ratings";
 import { computeStandings } from "@/game/standings";
 import type { GameState, Player, Position, Team } from "@/game/types";
@@ -58,46 +59,157 @@ function App() {
 
 function Start() {
   const { newGame, saveExists, load } = useGame();
+  const [db] = useState<TeamSeed[]>(() => loadDatabase());
+  const countries = useMemo(() => countryList(db), [db]);
+  const [selected, setSelected] = useState<string[]>(() => [countries[0]?.code ?? "POR"]);
   const [division, setDivision] = useState<number>(GAME_CONFIG.numberOfDivisions);
-  const teams = TEAMS.filter((t) => t.division === division);
+  const seeds = useMemo(() => seedsForCountries(db, selected), [db, selected]);
+  const preview = useMemo(() => previewDivisions(seeds), [seeds]);
+  const active = preview.filter((p) => p.division > 0).length;
+  const reserve = preview.length - active;
+  const toggle = (code: string) =>
+    setSelected((cur) => (cur.includes(code) ? cur.filter((c) => c !== code) : [...cur, code]));
+  const list = preview.filter((p) => p.division === division);
+  const enough = active >= GAME_CONFIG.teamsPerDivision * GAME_CONFIG.numberOfDivisions;
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-4xl font-bold tracking-tight">
-        Mini <span className="text-primary">Elifoot</span>
-      </h1>
-      <p className="mt-2 text-muted-foreground">Escolhe uma equipa e tenta chegar à 1.ª divisão.</p>
+      <div className="flex items-start justify-between gap-4">
+        <h1 className="text-4xl font-bold tracking-tight">
+          Mini <span className="text-primary">Elifoot</span>
+        </h1>
+        <Link to="/editor" className={btn2}>Editor de clubes</Link>
+      </div>
+      <p className="mt-2 text-muted-foreground">
+        Escolhe os países: os {activeSlots()} clubes mais fortes formam as divisões, os restantes ficam de fora.
+      </p>
       {saveExists && (
         <button className={`${btn} mt-6`} onClick={load}>
           Continuar jogo guardado
         </button>
       )}
-      <div className="mt-8 flex gap-2">
-        {Array.from({ length: GAME_CONFIG.numberOfDivisions }, (_, i) => i + 1).map((d) => (
+      <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">1. Países</h2>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {countries.map((c) => (
           <button
-            key={d}
-            className={d === division ? btn : btn2}
-            onClick={() => setDivision(d)}
+            key={c.code}
+            onClick={() => toggle(c.code)}
+            className={`${selected.includes(c.code) ? btn : btn2} flex items-center gap-2`}
           >
-            Divisão {d}
+            <Flag code={c.code} /> {COUNTRIES[c.code]?.name ?? c.code} ({c.count})
           </button>
         ))}
       </div>
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        {teams.map((t) => (
-          <button
-            key={t.id}
-            onClick={() => newGame(t.id)}
-            className={`${card} flex items-center justify-between text-left hover:border-primary`}
-          >
-            <TeamIdentity team={{ ...t, budget: 0, playerIds: [], lineup: [] }} />
-            <span className="text-right font-mono-num text-xs text-muted-foreground">
-              Força {t.rating}
-              <br />~{formatMoney(Math.round(transferValueFor(t.rating) * 1.3 / 10000) * 10000)}
-            </span>
-          </button>
-        ))}
-      </div>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {active} nas divisões · {reserve} de fora (mercado, Taça e acesso à {GAME_CONFIG.numberOfDivisions}.ª divisão)
+      </p>
+      {!enough && (
+        <p className="mt-2 text-sm text-destructive">
+          São precisos {activeSlots()} clubes. Seleciona mais países ou cria clubes no editor.
+        </p>
+      )}
+      {enough && (
+        <>
+          <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">2. O teu clube</h2>
+          <div className="mt-2 flex gap-2">
+            {Array.from({ length: GAME_CONFIG.numberOfDivisions }, (_, i) => i + 1).map((d) => (
+              <button key={d} className={d === division ? btn : btn2} onClick={() => setDivision(d)}>
+                Divisão {d}
+              </button>
+            ))}
+          </div>
+          <div className="mt-4 grid gap-2 sm:grid-cols-2">
+            {list.map(({ seed: t }) => (
+              <button
+                key={t.id}
+                onClick={() => newGame(t.id, seeds)}
+                className={`${card} flex items-center justify-between text-left hover:border-primary`}
+              >
+                <TeamIdentity team={{ ...t, division, budget: 0, playerIds: [], lineup: [] }} />
+                <span className="text-right font-mono-num text-xs text-muted-foreground">
+                  Força {t.rating}
+                </span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
+  );
+}
+
+function divisionLabel(d: number) {
+  return d === 0 ? "Fora das divisões" : `Divisão ${d}`;
+}
+
+function CoachOffers({ state }: { state: GameState }) {
+  const { takeOffer, rejectOffers, deleteSave } = useGame();
+  if (state.careerOver) {
+    return (
+      <div className={`${card} mt-4 border-destructive`}>
+        <div className="text-lg font-bold">Fim de carreira</div>
+        <p className="text-sm text-muted-foreground">O teu clube caiu fora das divisões e ninguém te quis contratar.</p>
+        <button className={`${btn} mt-3`} onClick={deleteSave}>Novo jogo</button>
+      </div>
+    );
+  }
+  if (!state.offers.length) return null;
+  return (
+    <div className={`${card} mt-4 border-primary`}>
+      <div className="text-lg font-bold">Propostas de treinador para {seasonLabel(state.seasonYear)}</div>
+      {state.offersMandatory && (
+        <p className="text-sm text-destructive">O teu clube caiu fora das divisões: tens de aceitar uma proposta.</p>
+      )}
+      <div className="mt-3 grid gap-2 sm:grid-cols-3">
+        {state.offers.map((id) => {
+          const t = state.teams[id];
+          if (!t) return null;
+          return (
+            <div key={id} className="rounded-md border border-border p-3">
+              <TeamIdentity team={t} />
+              <div className="mt-2 text-xs text-muted-foreground">
+                {divisionLabel(t.division)} · Rating {teamRating(t, state.players)} · {formatMoney(t.budget)}
+              </div>
+              <button className={`${btn} mt-2 w-full`} onClick={() => takeOffer(id)}>Aceitar convite</button>
+            </div>
+          );
+        })}
+      </div>
+      {!state.offersMandatory && (
+        <button className={`${btn2} mt-3`} onClick={rejectOffers}>
+          Recusar e continuar no {userTeam(state).name}
+        </button>
+      )}
+    </div>
+  );
+}
+
+function PlayerBids({ state }: { state: GameState }) {
+  const { takeBid, refuseBid } = useGame();
+  const bids = state.bids ?? [];
+  if (!bids.length || state.match) return null;
+  return (
+    <>
+      {bids.map((b) => {
+        const p = state.players[b.playerId];
+        const t = state.teams[b.teamId];
+        if (!p || !t) return null;
+        return (
+          <div key={b.playerId} className={`${card} mt-4 flex flex-wrap items-center justify-between gap-3`}>
+            <div className="flex items-center gap-3 text-sm">
+              <TeamBadge team={t} size={32} />
+              <span>
+                O <b>{t.name}</b> oferece <b className="text-primary">{formatMoney(b.amount)}</b> por{" "}
+                <b>{p.name}</b> ({p.position}, {p.rating}) — valor {formatMoney(p.transferValue)}
+              </span>
+            </div>
+            <div className="flex gap-2">
+              <button className={btn} onClick={() => takeBid(b.playerId)}>Aceitar</button>
+              <button className={btn2} onClick={() => refuseBid(b.playerId)}>Recusar</button>
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 }
 
@@ -115,7 +227,7 @@ function Game({ state }: { state: GameState }) {
           <div>
             <div className="text-xl font-bold">{team.name}</div>
             <div className="text-sm text-muted-foreground">
-              Época {seasonLabel(state.seasonYear)} · Divisão {team.division} · Jornada {state.round}/
+              Época {seasonLabel(state.seasonYear)} · {divisionLabel(team.division)} · Jornada {state.round}/
               {totalRounds(state)} · Rating {teamRating(team, state.players)}
             </div>
           </div>
@@ -151,6 +263,9 @@ function Game({ state }: { state: GameState }) {
           <button onClick={() => setMessage(null)}>✕</button>
         </div>
       )}
+
+      <CoachOffers state={state} />
+      <PlayerBids state={state} />
 
       <main className="mt-4">
         {activeTab === "equipa" && <Squad state={state} team={team} />}
@@ -337,7 +452,7 @@ function Match({ state }: { state: GameState }) {
 }
 
 function Standings({ state }: { state: GameState }) {
-  const [division, setDivision] = useState(userTeam(state).division);
+  const [division, setDivision] = useState(userTeam(state).division || GAME_CONFIG.numberOfDivisions);
   const rows = computeStandings(state.leagues[division] ?? [], divisionTeamIds(state, division));
   const { promotionSpots, relegationSpots, numberOfDivisions } = GAME_CONFIG;
   return (

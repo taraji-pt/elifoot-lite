@@ -9,6 +9,7 @@ import type { PlayerSeed, TeamSeed } from "./schema";
 import { TEAMS } from "./teams";
 
 const KEY = "elifoot-db-v1";
+type RawRec = { [K in "id" | "name" | "country" | "rating" | "badge" | "primaryColor" | "secondaryColor" | "players" | "position" | "nationality"]?: unknown };
 
 const deepClone = <T,>(v: T): T => JSON.parse(JSON.stringify(v)) as T;
 
@@ -71,7 +72,7 @@ export function parseDatabase(json: string): TeamSeed[] {
   const used = new Set<number>();
   const teams: TeamSeed[] = [];
   list.forEach((item, index) => {
-    const t = item as Record<string, unknown>;
+    const t = item as RawRec;
     const name = String(t.name ?? "").trim();
     if (!name) return;
     let id = Number(t.id);
@@ -81,7 +82,7 @@ export function parseDatabase(json: string): TeamSeed[] {
     const players = Array.isArray(t.players)
       ? (t.players as unknown[])
           .map((p) => {
-            const ps = p as Record<string, unknown>;
+            const ps = p as RawRec;
             const pname = String(ps.name ?? "").trim();
             if (!pname) return null;
             return {

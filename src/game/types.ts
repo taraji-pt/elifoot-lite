@@ -79,7 +79,15 @@ export interface SeasonSummary {
   note: string;
 }
 
+export interface Bid {
+  playerId: number;
+  teamId: number;
+  amount: number;
+}
+
 export interface GameState {
+  /** propostas de outros clubes pelos jogadores do utilizador */
+  bids?: Bid[];
   seasonYear: number;
   round: number;
   userTeamId: number;
