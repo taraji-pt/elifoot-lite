@@ -28,28 +28,17 @@ function makePlayer(id: number, seed: PlayerSeed, rating: number): Player {
 }
 
 /**
- * Cria o plantel de um clube a partir do rating do clube.
- * Usa os jogadores do ficheiro (por ordem = importância) e gera os que faltam
- * até cumprir GAME_CONFIG.squadStructure. Titulares ≈ rating +0..+4, suplentes -3..-10.
+ * Cria o plantel exclusivamente a partir dos jogadores definidos na base de dados.
+ * Nunca gera jogadores para completar o plantel.
  */
 export function createSquad(startId: number, teamRating: number, seeds: PlayerSeed[] = []): Player[] {
-  const players: Player[] = [];
-  let id = startId;
-  for (const [pos, count] of Object.entries(GAME_CONFIG.squadStructure) as [Position, number][]) {
-    const starters = GAME_CONFIG.startingLineup[pos];
-    const given = seeds.filter((s) => s.position === pos);
-    const total = Math.max(count, given.length);
-    for (let i = 0; i < total; i++) {
-      const seed: PlayerSeed = given[i] ?? {
-        name: `${pick(FIRST_NAMES)} ${pick(LAST_NAMES)}`,
-        position: pos,
-        nationality: weightedPick(NATIONALITY_WEIGHTS),
-      };
-      const rating = i < starters ? teamRating + randInt(0, 4) : teamRating - randInt(3, 10);
-      players.push(makePlayer(id++, seed, rating));
-    }
-  }
-  return players;
+  return seeds.map((seed, index) => makePlayer(startId + index, seed, teamRating));
+}
+
+/** Valida o mínimo necessário para uma equipa poder disputar jogos. */
+export function validateSquad(seeds: PlayerSeed[] | undefined): string | null {
+  const total = seeds?.length ?? 0;
+  return total >= 11 ? null : `Plantel incompleto: ${total}/11 jogadores definidos na base de dados.`;
 }
 
 /** Jogador aleatório (mercado livre). */
