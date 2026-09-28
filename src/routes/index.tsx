@@ -160,20 +160,32 @@ function TeamIdentityWithFlag({
   size = 26,
   bold = false,
   className = "",
+  reverse = false,
 }: {
   team: Team;
   size?: number;
   bold?: boolean;
   className?: string;
+  reverse?: boolean;
 }) {
   return (
     <span className={`inline-flex items-center gap-2 min-w-0 ${className}`}>
-      <Flag code={team.country} size={16} />
-      <TeamIdentity team={team} size={size} bold={bold} />
+      {reverse ? (
+        <>
+          <span className={bold ? "font-semibold" : ""}>{team.name}</span>
+          <TeamBadge team={team} size={size} />
+          <Flag code={team.country} size={16} />
+        </>
+      ) : (
+        <>
+          <Flag code={team.country} size={16} />
+          <TeamBadge team={team} size={size} />
+          <span className={bold ? "font-semibold" : ""}>{team.name}</span>
+        </>
+      )}
     </span>
   );
 }
-
 function CoachOffers({ state }: { state: GameState }) {
   const { takeOffer, rejectOffers, deleteSave } = useGame();
   if (state.careerOver) {
@@ -556,7 +568,7 @@ function Calendar({ state }: { state: GameState }) {
                 <td className="px-3 text-center font-mono-num">
                   {f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}
                 </td>
-                <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" /></td>
+                <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
               </tr>
             );
           })}
@@ -684,7 +696,7 @@ function CupView({ state }: { state: GameState }) {
                     {tie.homeGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}${tie.penalties ? " (p)" : ""}`}
                   </span>
                   <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
-                    <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" />
+                    <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
                   </div>
                 </div>
               );
