@@ -75,6 +75,19 @@ export interface MatchState {
   cupPenaltyWinnerId?: number;
 }
 
+export interface SeasonReview {
+  season: string;
+  userDivision: number;
+  userPosition: number;
+  userPoints: number;
+  cupWinnerId: number | null;
+  promoted: number[];
+  relegatedDown: number[];
+  droppedOut: number[];
+  climbers: number[];
+  outcome: "promoted" | "stayed" | "relegated" | "out";
+}
+
 export interface Celebration {
   type: "league" | "cup" | "double";
   season: string;
@@ -116,6 +129,7 @@ export interface GameState {
   cup: Cup;
   match: MatchState | null;
   celebration?: Celebration | null;
+  seasonReview?: SeasonReview | null;
   history: SeasonSummary[];
   nextPlayerId: number;
 }
