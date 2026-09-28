@@ -229,7 +229,15 @@ export function GameProvider({ children }: { children: ReactNode }) {
           advanceRound(draft);
         }),
       dismissCelebration: () => mutate((draft) => dismissCelebration(draft)),
-      continueSeason: () => mutate((draft) => continueAfterSeasonReview(draft)),
+      continueSeason: () =>
+        mutate((draft) => {
+          try {
+            continueAfterSeasonReview(draft);
+          } catch (error) {
+            console.error("Erro ao iniciar nova época:", error);
+            return "Não foi possível iniciar a nova época. A época anterior foi mantida.";
+          }
+        }),
     }),
     [ready, state, saveExists, message, mutate, persist],
   );
