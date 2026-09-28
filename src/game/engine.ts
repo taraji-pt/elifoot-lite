@@ -30,6 +30,16 @@ export function userFixture(state: GameState): Fixture | null {
   return round.find((f) => f.homeId === team.id || f.awayId === team.id) ?? null;
 }
 
+/** Eliminatória da Taça atual que envolve o clube do utilizador, se existir. */
+export function userCupTie(state: GameState) {
+  const round = state.cup.rounds[state.cup.currentRound];
+  if (!round) return null;
+  return round.ties.find((tie) =>
+    (tie.homeId === state.userTeamId || tie.awayId === state.userTeamId) &&
+    tie.winnerId === null
+  ) ?? null;
+}
+
 /** Simula todos os jogos da jornada atual, exceto o do utilizador se já registado. */
 function simulateRound(state: GameState) {
   for (const divKey of Object.keys(state.leagues)) {
@@ -56,12 +66,19 @@ export function recordUserResult(state: GameState, homeGoals: number, awayGoals:
   }
 }
 
-/** Avança a jornada: simula o resto dos jogos, Taça e, se for o caso, fim de época. */
+/** Avança a jornada: simula a Liga e, nas jornadas de Taça, abre primeiro o jogo do utilizador. */
 export function advanceRound(state: GameState) {
   simulateRound(state);
+
   if ((GAME_CONFIG.cupRounds as readonly number[]).includes(state.round)) {
+    const pendingCupTie = userCupTie(state);
+    if (pendingCupTie) {
+      state.match = null;
+      return;
+    }
     state.cup = playCupRound(state.cup, state.teams, state.players);
   }
+
   if (state.round >= totalRounds(state)) {
     endSeason(state);
   } else {
@@ -198,14 +215,31 @@ function endSeason(state: GameState) {
   }
 
   if (info) {
+    const leagueChampion = info.division === 1 && info.position === 1;
+    const cupWinner = state.cup.winnerId === state.userTeamId;
     const note =
-      outcome === "promoted"
-        ? "Subiu de divisão!"
-        : outcome === "relegated"
-          ? "Desceu de divisão."
-          : outcome === "out"
-            ? "Caiu fora das divisões!"
-            : "Manteve a divisão.";
+      leagueChampion
+        ? cupWinner
+          ? "Campeão! Venceu a Taça!"
+          : "Campeão!"
+        : outcome === "promoted"
+          ? "Subiu de divisão!"
+          : outcome === "relegated"
+            ? "Desceu de divisão."
+            : outcome === "out"
+              ? "Caiu fora das divisões!"
+              : cupWinner
+                ? "Manteve a divisão. Venceu a Taça!"
+                : "Manteve a divisão.";
+
+    if (leagueChampion || cupWinner) {
+      state.celebration = {
+        type: leagueChampion && cupWinner ? "double" : leagueChampion ? "league" : "cup",
+        season: seasonLabel(state.seasonYear),
+        teamId: state.userTeamId,
+      };
+    }
+
     state.history = [
       ...state.history,
       {
@@ -213,7 +247,7 @@ function endSeason(state: GameState) {
         division: info.division,
         position: info.position,
         points: info.points,
-        note: state.cup.winnerId === state.userTeamId ? `${note} Venceu a Taça!` : note,
+        note,
       },
     ];
   }
@@ -228,6 +262,36 @@ function endSeason(state: GameState) {
   state.offers = generateOffers(state, userDivision || N, outcome);
   state.offersMandatory = outcome === "out";
   state.careerOver = outcome === "out" && state.offers.length === 0;
+}
+
+export function recordUserCupResult(state: GameState, homeGoals: number, awayGoals: number) {
+  const tie = state.cup.rounds[state.cup.currentRound]?.ties.find(
+    (t) => (t.homeId === state.userTeamId || t.awayId === state.userTeamId) && t.winnerId === null,
+  );
+  if (!tie) return;
+
+  const home = state.teams[tie.homeId];
+  const away = state.teams[tie.awayId];
+  if (!home || !away) return;
+
+  let winnerId: number;
+  let penalties = false;
+  if (homeGoals > awayGoals) winnerId = home.id;
+  else if (awayGoals > homeGoals) winnerId = away.id;
+  else {
+    winnerId = Math.random() < 0.5 ? home.id : away.id;
+    penalties = true;
+  }
+
+  tie.homeGoals = homeGoals;
+  tie.awayGoals = awayGoals;
+  tie.winnerId = winnerId;
+  tie.penalties = penalties;
+}
+
+/** Fecha o popup de celebração atual. */
+export function dismissCelebration(state: GameState) {
+  state.celebration = null;
 }
 
 /** Aceita uma proposta: passas a treinar outro clube. */
