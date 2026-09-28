@@ -3,7 +3,7 @@ import { createCup, playCupRound } from "./cup";
 import { RESERVE_DIVISION, buildLeagues, seasonLabel, splitByActivity } from "./newGame";
 import { bestLineup, teamRating } from "./ratings";
 import { shuffle } from "./rng";
-import { simulateMatch } from "./simulation";
+import { penaltyShootout, simulateMatch } from "./simulation";
 import { computeStandings } from "./standings";
 import type { Fixture, GameState, Player, Team } from "./types";
 
@@ -279,7 +279,7 @@ export function recordUserCupResult(state: GameState, homeGoals: number, awayGoa
   if (homeGoals > awayGoals) winnerId = home.id;
   else if (awayGoals > homeGoals) winnerId = away.id;
   else {
-    winnerId = Math.random() < 0.5 ? home.id : away.id;
+    winnerId = penaltyShootout(home.id, away.id);
     penalties = true;
   }
 
