@@ -32,7 +32,13 @@ function makePlayer(id: number, seed: PlayerSeed, rating: number): Player {
  * Nunca gera jogadores para completar o plantel.
  */
 export function createSquad(startId: number, teamRating: number, seeds: PlayerSeed[] = []): Player[] {
-  return seeds.map((seed, index) => makePlayer(startId + index, seed, teamRating));
+  const counts: Record<Position, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
+  return seeds.map((seed, index) => {
+    const positionIndex = counts[seed.position]++;
+    const starters = GAME_CONFIG.startingLineup[seed.position];
+    const rating = positionIndex < starters ? teamRating + randInt(0, 4) : teamRating - randInt(3, 10);
+    return makePlayer(startId + index, seed, rating);
+  });
 }
 
 /** Valida o mínimo necessário para uma equipa poder disputar jogos. */
