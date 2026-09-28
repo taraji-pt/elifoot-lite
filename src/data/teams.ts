@@ -1,4 +1,16 @@
-[
+import type { TeamSeed } from "./schema";
+
+/**
+ * CLUBES — base de dados livre. Ver modelo em `teams.example.ts`.
+ * `country` = código de 3 letras (ver countries.ts).
+ * `rating` (0-100) define a força dos jogadores E o orçamento inicial.
+ * `players` é opcional: posições em falta são geradas automaticamente.
+ *
+ * A DIVISÃO não se escreve aqui: no início do jogo escolhes os países e os
+ * clubes mais fortes ocupam as 4 divisões; os restantes ficam na Reserva
+ * (mercado de transferências, Taça e acesso à última divisão).
+ */
+export const TEAMS: TeamSeed[] =[
   {
     "id": 1,
     "name": "AC Milan",
