@@ -319,7 +319,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "AS Roma",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/roma.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
