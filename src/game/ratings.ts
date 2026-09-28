@@ -27,7 +27,7 @@ export function bestLineup(playerIds: number[], players: Record<number, Player>)
       .slice(0, needed);
     lineup.push(...candidates.map((p) => p.id));
   }
-  // se faltarem jogadores (plantel incompleto), preencher com os melhores restantes
+  // Se não houver jogadores suficientes por posição, completar o onze com os melhores restantes.
   if (lineup.length < 11) {
     const rest = squad
       .filter((p) => !lineup.includes(p.id))
