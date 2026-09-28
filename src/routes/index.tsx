@@ -315,6 +315,8 @@ function Game({ state }: { state: GameState }) {
 
       {state.celebration && <CelebrationPopup state={state} />}
 
+      {state.seasonReview && <SeasonReviewBanner state={state} />}
+
       <CoachOffers state={state} />
       <PlayerBids state={state} />
 
@@ -327,6 +329,40 @@ function Game({ state }: { state: GameState }) {
         {activeTab === "taca" && <CupView state={state} />}
         {activeTab === "historico" && <History state={state} />}
       </main>
+    </div>
+  );
+}
+
+function SeasonReviewBanner({ state }: { state: GameState }) {
+  const { continueSeason } = useGame();
+  const review = state.seasonReview;
+  if (!review) return null;
+  const cupWinner = review.cupWinnerId === state.userTeamId;
+  const champion = review.userDivision === 1 && review.userPosition === 1;
+
+  return (
+    <div className={`${card} mt-4 border-primary bg-primary/5`}>
+      <div className="text-lg font-bold">📋 Época {review.season} terminada</div>
+      <p className="mt-1 text-sm text-muted-foreground">
+        A época terminou. Podes agora consultar a classificação final, o calendário e a Taça antes de começares a nova época.
+      </p>
+      <div className="mt-3 grid gap-2 sm:grid-cols-3 text-sm">
+        <div><span className="text-muted-foreground">Divisão:</span> <b>{review.userDivision}</b></div>
+        <div><span className="text-muted-foreground">Classificação:</span> <b>{review.userPosition}.º</b></div>
+        <div><span className="text-muted-foreground">Pontos:</span> <b>{review.userPoints}</b></div>
+      </div>
+      <div className="mt-2 text-sm">
+        {champion && <div>🏆 Campeão da Liga</div>}
+        {cupWinner && <div>🏆 Vencedor da Taça</div>}
+        {!champion && !cupWinner && (
+          <div className="text-muted-foreground">
+            Podes rever os resultados antes de avançar para a nova época.
+          </div>
+        )}
+      </div>
+      <button className={`${btn} mt-4`} onClick={continueSeason}>
+        Continuar para a nova época
+      </button>
     </div>
   );
 }
