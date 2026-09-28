@@ -140,6 +140,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
       sell: (playerId: number) => mutate((draft) => sellPlayer(draft, playerId)),
       startMatch: () =>
         mutate((draft) => {
+          if (draft.seasonReview) return "Consulta primeiro o balanço da época antes de começar a nova época.";
           const fixture = userFixture(draft);
           const cupTie = userCupTie(draft);
           const playCup = Boolean(
