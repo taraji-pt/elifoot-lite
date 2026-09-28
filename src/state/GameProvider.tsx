@@ -10,7 +10,9 @@ import {
 import { GAME_CONFIG } from "@/data/gameConfig";
 import type { TeamSeed } from "@/data/schema";
 import {
+  acceptBid,
   acceptOffer,
+  rejectBid,
   advanceRound,
   buyPlayer,
   declineOffers,
@@ -32,6 +34,8 @@ interface GameContextValue {
   newGame: (teamId: number, seeds: TeamSeed[]) => void;
   takeOffer: (teamId: number) => void;
   rejectOffers: () => void;
+  takeBid: (playerId: number) => void;
+  refuseBid: (playerId: number) => void;
   save: () => void;
   load: () => void;
   deleteSave: () => void;
@@ -95,6 +99,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
       },
       takeOffer: (teamId: number) => mutate((draft) => acceptOffer(draft, teamId)),
       rejectOffers: () => mutate((draft) => declineOffers(draft)),
+      takeBid: (id: number) => mutate((draft) => acceptBid(draft, id)),
+      refuseBid: (id: number) => mutate((draft) => rejectBid(draft, id)),
       save: () => {
         if (state) {
           saveGame(state);

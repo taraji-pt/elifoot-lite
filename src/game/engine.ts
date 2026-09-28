@@ -68,6 +68,46 @@ export function advanceRound(state: GameState) {
     state.round += 1;
   }
   state.match = null;
+  state.bids = generateBids(state);
+}
+
+/* ------------------ PROPOSTAS PELOS TEUS JOGADORES ------------------ */
+
+function generateBids(state: GameState) {
+  const team = userTeam(state);
+  if (team.playerIds.length <= 12 || Math.random() > 0.4) return [];
+  const pid = shuffle(team.playerIds)[0] as number;
+  const player = state.players[pid];
+  if (!player) return [];
+  const amount = Math.round((player.transferValue * (0.9 + Math.random() * 0.5)) / 10000) * 10000;
+  const buyers = Object.values(state.teams).filter(
+    (t) => t.id !== team.id && t.budget >= amount,
+  );
+  const buyer = shuffle(buyers)[0];
+  return buyer ? [{ playerId: pid, teamId: buyer.id, amount }] : [];
+}
+
+export function acceptBid(state: GameState, playerId: number): string {
+  const bid = state.bids?.find((b) => b.playerId === playerId);
+  const team = userTeam(state);
+  const buyer = bid ? state.teams[bid.teamId] : undefined;
+  const player = state.players[playerId];
+  if (!bid || !buyer || !player) return "Proposta já não está disponível.";
+  if (team.playerIds.length <= 12) return "Plantel demasiado pequeno para vender.";
+  team.playerIds = team.playerIds.filter((id) => id !== playerId);
+  team.lineup = team.lineup.filter((id) => id !== playerId);
+  if (team.lineup.length < 11) team.lineup = bestLineup(team.playerIds, state.players);
+  team.budget += bid.amount;
+  buyer.budget -= bid.amount;
+  buyer.playerIds = [...buyer.playerIds, playerId];
+  buyer.lineup = bestLineup(buyer.playerIds, state.players);
+  state.bids = state.bids?.filter((b) => b.playerId !== playerId);
+  return `${player.name} vendido ao ${buyer.name} por €${bid.amount.toLocaleString("pt-PT")}.`;
+}
+
+export function rejectBid(state: GameState, playerId: number): string {
+  state.bids = state.bids?.filter((b) => b.playerId !== playerId);
+  return "Proposta recusada.";
 }
 
 type Outcome = "promoted" | "stayed" | "relegated" | "out";
