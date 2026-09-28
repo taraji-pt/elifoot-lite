@@ -25,7 +25,7 @@ import {
   userCupTie,
 } from "@/game/engine";
 import { createNewGame } from "@/game/newGame";
-import { simulateHalf } from "@/game/simulation";
+import { penaltyShootout, simulateHalf } from "@/game/simulation";
 import { clearSave, hasSave, loadGame, saveGame } from "@/game/storage";
 import type { GameState, Team } from "@/game/types";
 
@@ -204,6 +204,14 @@ export function GameProvider({ children }: { children: ReactNode }) {
               (s) => `2.ª parte — ${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
           );
+
+          if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
+            match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
+            const winnerName = draft.teams[match.cupPenaltyWinnerId]?.name ?? "equipa vencedora";
+            match.events.push(
+              `Penáltis — passou o ${winnerName}.`,
+            );
+          }
         }),
       finishMatch: () =>
         mutate((draft) => {
@@ -211,7 +219,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (!match || !match.finished) return;
 
           if (match.competition === "cup") {
-            recordUserCupResult(draft, match.homeGoals, match.awayGoals);
+            recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId);
           } else {
             recordUserResult(draft, match.homeGoals, match.awayGoals);
           }
