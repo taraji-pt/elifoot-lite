@@ -72,6 +72,7 @@ export interface MatchState {
   subsUsed: number;
   events: string[];
   finished: boolean;
+  cupPenaltyWinnerId?: number;
 }
 
 export interface Celebration {
