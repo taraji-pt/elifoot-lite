@@ -637,12 +637,19 @@ function CupView({ state }: { state: GameState }) {
               const a = state.teams[tie.awayId] as Team;
               const mine = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
               return (
-                <div key={j} className={`flex items-center justify-between rounded px-2 py-1 text-sm ${mine ? "bg-primary/10" : ""}`}>
-                  <span className={tie.winnerId === h.id ? "font-bold" : ""}><TeamIdentity team={h} size={18} /></span>
-                  <span className="font-mono-num">
+                <div
+                  key={j}
+                  className={`grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2 rounded px-2 py-1 text-sm ${mine ? "bg-primary/10" : ""}`}
+                >
+                  <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
+                    <TeamIdentity team={h} size={18} />
+                  </div>
+                  <span className="w-14 text-center font-mono-num">
                     {tie.homeGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}${tie.penalties ? " (p)" : ""}`}
                   </span>
-                  <span className={tie.winnerId === a.id ? "font-bold" : ""}><TeamIdentity team={a} size={18} /></span>
+                  <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
+                    <TeamIdentity team={a} size={18} />
+                  </div>
                 </div>
               );
             })}
