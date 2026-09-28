@@ -16,7 +16,7 @@ export const TEAMS: TeamSeed[] =[
     "name": "AC Milan",
     "country": "ITA",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/milan.png",
     "primaryColor": "#AC1E2D",
     "secondaryColor": "#000000",
     "players": [
