@@ -287,6 +287,14 @@ export function recordUserCupResult(state: GameState, homeGoals: number, awayGoa
   tie.awayGoals = awayGoals;
   tie.winnerId = winnerId;
   tie.penalties = penalties;
+
+  if (winnerId === state.userTeamId && state.cup.rounds[state.cup.currentRound]?.ties.length === 1) {
+    state.celebration = {
+      type: "cup",
+      season: seasonLabel(state.seasonYear),
+      teamId: state.userTeamId,
+    };
+  }
 }
 
 /** Fecha o popup de celebração atual. */
