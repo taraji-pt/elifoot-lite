@@ -155,9 +155,19 @@ function divisionLabel(d: number) {
   return d === 0 ? "Fora das divisões" : `Divisão ${d}`;
 }
 
-function TeamIdentityWithFlag({ team, size = 26, bold = false }: { team: Team; size?: number; bold?: boolean }) {
+function TeamIdentityWithFlag({
+  team,
+  size = 26,
+  bold = false,
+  className = "",
+}: {
+  team: Team;
+  size?: number;
+  bold?: boolean;
+  className?: string;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 min-w-0">
+    <span className={`inline-flex items-center gap-2 min-w-0 ${className}`}>
       <Flag code={team.country} size={16} />
       <TeamIdentity team={team} size={size} bold={bold} />
     </span>
@@ -542,11 +552,11 @@ function Calendar({ state }: { state: GameState }) {
             return (
               <tr key={i} className={`border-t border-border ${i + 1 === state.round ? "bg-primary/10" : ""}`}>
                 <td className="py-1.5 font-mono-num text-xs text-muted-foreground">J{i + 1}</td>
-                <td className="text-right"><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} /></td>
+                <td><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} className="w-full justify-start" /></td>
                 <td className="px-3 text-center font-mono-num">
                   {f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}
                 </td>
-                <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} /></td>
+                <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" /></td>
               </tr>
             );
           })}
@@ -599,7 +609,7 @@ function Transfers({ state }: { state: GameState }) {
                   <div className="inline-flex items-center gap-1 text-xs text-muted-foreground">
                     {teamId ? (
                       <>
-                        <Flag code={state.teams[teamId]?.country ?? ""} size={14} />
+                        <TeamBadge team={state.teams[teamId] as Team} size={16} />
                         {state.teams[teamId]?.name}
                       </>
                     ) : "Livre"}
@@ -668,13 +678,13 @@ function CupView({ state }: { state: GameState }) {
                   className={`grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2 rounded px-2 py-1 text-sm ${mine ? "bg-primary/10" : ""}`}
                 >
                   <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
-                    <TeamIdentityWithFlag team={h} size={18} />
+                    <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
                   </div>
                   <span className="w-14 text-center font-mono-num">
                     {tie.homeGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}${tie.penalties ? " (p)" : ""}`}
                   </span>
                   <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
-                    <TeamIdentityWithFlag team={a} size={18} />
+                    <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" />
                   </div>
                 </div>
               );
