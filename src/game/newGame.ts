@@ -1,7 +1,7 @@
 import { GAME_CONFIG } from "@/data/gameConfig";
 import type { TeamSeed } from "@/data/schema";
 import { createCup } from "./cup";
-import { budgetForRating, createSquad } from "./players";
+import { budgetForRating, createSquad, validateSquad } from "./players";
 import { bestLineup } from "./ratings";
 import { generateFixtures } from "./schedule";
 import type { GameState, Player, Team } from "./types";
@@ -37,6 +37,11 @@ export function buildWorld(seeds: TeamSeed[]) {
   const teams: Record<number, Team> = {};
   const players: Record<number, Player> = {};
   let nextPlayerId = 1000;
+
+  const invalid = seeds.filter((seed) => validateSquad(seed.players));
+  if (invalid.length) {
+    throw new Error(`Há ${invalid.length} clube(s) com plantel incompleto. Cada clube precisa de pelo menos 11 jogadores definidos na base de dados.`);
+  }
 
   previewDivisions(seeds).forEach(({ seed, division }) => {
     const squad = createSquad(nextPlayerId, seed.rating, seed.players);
