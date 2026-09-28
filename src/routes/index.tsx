@@ -493,7 +493,11 @@ function Match({ state }: { state: GameState }) {
   return (
     <div className="space-y-4">
       <div className={`${card} text-center`}>
-        <div className="text-sm text-muted-foreground">{match.finished ? "Final" : "Intervalo"}</div>
+        <div className="text-sm text-muted-foreground">
+          {match.competition === "cup"
+            ? `🏆 Taça — ${state.cup.rounds[state.cup.currentRound]?.name ?? "Eliminatória"} · ${match.finished ? "Final" : "Intervalo"}`
+            : `Jornada ${state.round} · ${match.finished ? "Final" : "Intervalo"}`}
+        </div>
         <div className="my-4 flex items-center justify-center gap-6">
           <TeamIdentity team={home} size={40} bold />
           <span className="font-mono-num text-4xl font-bold">
