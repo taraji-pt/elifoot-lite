@@ -10,209 +10,209 @@ import type { TeamSeed } from "./schema";
  * clubes mais fortes ocupam as 4 divisões; os restantes ficam na Reserva
  * (mercado de transferências, Taça e acesso à última divisão).
  */
-export const TEAMS: TeamSeed[] =[
+export const TEAMS: TeamSeed[] = [
   {
-    "id": 1,
-    "name": "AC Milan",
-    "country": "ITA",
-    "rating": 90,
-    "badge": "/assets/badges/milan.png",
-    "primaryColor": "#AC1E2D",
-    "secondaryColor": "#000000",
-    "players": [
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Sebastiano Rossi",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paolo Maldini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Costacurta",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ciro Ferrara",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Cannavaro",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lilian Thuram",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Donadoni",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Zvonimir Boban",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Baggio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Del Piero",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "George Weah",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Juventus",
-    "country": "ITA",
-    "rating": 90,
-    "badge": "/assets/badges/juventus.png",
-    "primaryColor": "#111111",
-    "secondaryColor": "#FFFFFF",
-    "players": [
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Sebastiano Rossi",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paolo Maldini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Costacurta",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ciro Ferrara",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Cannavaro",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lilian Thuram",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Donadoni",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Zvonimir Boban",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Baggio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Del Piero",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "George Weah",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+  "id": 1,
+  "name": "AC Milan",
+  "country": "ITA",
+  "rating": 90,
+  "badge": "/assets/badges/milan.png",
+  "primaryColor": "#AC1E2D",
+  "secondaryColor": "#000000",
+  "players": [
+    {
+      "name": "Sebastiano Rossi",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Angelo Pagotto",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alessandro Costacurta",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marcel Desailly",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Paolo Maldini",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Franco Baresi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Christian Panucci",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Pietro Vierchowod",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Demetrio Albertini",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Zvonimir Boban",
+      "position": "MED",
+      "nationality": "CRO"
+    },
+    {
+      "name": "Stefano Eranio",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Edgar Davids",
+      "position": "MED",
+      "nationality": "NED"
+    },
+    {
+      "name": "Dejan Savicevic",
+      "position": "MED",
+      "nationality": "MNE"
+    },
+    {
+      "name": "Massimo Ambrosini",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "George Weah",
+      "position": "AV",
+      "nationality": "LBR"
+    },
+    {
+      "name": "Roberto Baggio",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marco Simone",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Christophe Dugarry",
+      "position": "AV",
+      "nationality": "FRA"
+    }
+  ]
+},
+ {
+  "id": 2,
+  "name": "Juventus",
+  "country": "ITA",
+  "rating": 90,
+  "badge": "/assets/badges/juventus.png",
+  "primaryColor": "#111111",
+  "secondaryColor": "#FFFFFF",
+  "players": [
+    {
+      "name": "Angelo Peruzzi",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Michelangelo Rampulla",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Ciro Ferrara",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Paolo Montero",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Sergio Porrini",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Moreno Torricelli",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Gianluca Pessotto",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Mark Iuliano",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Didier Deschamps",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Angelo Di Livio",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Zinédine Zidane",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Vladimir Jugovic",
+      "position": "MED",
+      "nationality": "SRB"
+    },
+    {
+      "name": "Alessio Tacchinardi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Attilio Lombardo",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alessandro Del Piero",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alen Boksic",
+      "position": "AV",
+      "nationality": "CRO"
+    },
+    {
+      "name": "Christian Vieri",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Nicola Amoruso",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 3,
     "name": "Inter Milan",
@@ -228,87 +228,127 @@ export const TEAMS: TeamSeed[] =[
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Andrea Mazzantini",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Pantanelli",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giuseppe Bergomi",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Alessandro Pistone",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Javier Zanetti",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Fabio Galante",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Fabio Cannavaro",
+        "name": "Salvatore Fresi",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Lilian Thuram",
+        "name": "Gianluca Festa",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Massimo Paganin",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Jocelyn Angloma",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Massimo Tarantino",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Matteo Ferrari",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Sergio D’Autilia",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Andrea Seno",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Paul Ince",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Rui Costa",
+        "name": "Aron Winter",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Nicola Berti",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Ciriaco Sforza",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Gabriel Batistuta",
+        "name": "Youri Djorkaeff",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Iván Zamorano",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Benito Carbone",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Nwankwo Kanu",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Maurizio Ganz",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marco Branca",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Arturo Di Napoli",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -324,92 +364,162 @@ export const TEAMS: TeamSeed[] =[
     "secondaryColor": "#FFFFFF",
     "players": [
       {
-        "name": "Gianluca Pagliuca",
+        "name": "Giovanni Cervone",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Giorgio Sterchele",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Giampaolo Di Magno",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gianluca Berti",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Roberto Trotta",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Marco Lanna",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Enrico Annoni",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Aldair",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Fabio Cannavaro",
+        "name": "Francesco Statuto",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Lilian Thuram",
+        "name": "Amedeo Carboni",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Fabio Petruzzi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gabriele Grossi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Lorenzo Stovini",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Matteo Pivotto",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Omari Tetradze",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Vincent Candela",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Romondini",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Jonas Thern",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Francesco Moriero",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Rui Costa",
+        "name": "Daniele Berretta",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Luigi Di Biagio",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Damiano Tommasi",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Gabriel Batistuta",
+        "name": "Massimiliano Cappioli",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Antonio Bernardini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Daniele Conti",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Abel Balbo",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Daniel Fonseca",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Martin Dahlin",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Francesco Totti",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Lampros Choutos",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marco Delvecchio",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Andrea Conti",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -425,92 +535,147 @@ export const TEAMS: TeamSeed[] =[
     "secondaryColor": "#FFFFFF",
     "players": [
       {
-        "name": "Gianluca Pagliuca",
+        "name": "Stefano Sorrentino",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Andrea Cano",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Luca Marchegiani",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Fernando Orsi",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Carlo Cudicini",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mauro Di Lello",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Paolo Negro",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Mark Fish",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Giuseppe Favalli",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Fabio Cannavaro",
+        "name": "José Chamot",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Lilian Thuram",
+        "name": "Alessandro Nesta",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Alessandro Grandoni",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Stefano Bellè",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Mirko Laurentini",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Dario Marcolin",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Rui Costa",
+        "name": "Roberto Rambaudi",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Renato Buso",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Diego Fuser",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Gabriel Batistuta",
+        "name": "Roberto Baronio",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Paul Okon",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Guerino Gottardi",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pavel Nedved",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Daniele Franceschini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giorgio Venturin",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Daniele Federici",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Marco Piovanelli",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Pierluigi Casiraghi",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Igor Protti",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giuseppe Signori",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -526,32 +691,47 @@ export const TEAMS: TeamSeed[] =[
     "secondaryColor": "#FFFFFF",
     "players": [
       {
-        "name": "Gianluca Pagliuca",
+        "name": "Luca Bucci",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Gianluigi Buffon",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Alessandro Nista",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Enrico Morello",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Luca Pinton",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Luigi Apolloni",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Antonio Benarrivo",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Néstor Sensini",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Roberto Mussi",
         "position": "DEF",
         "nationality": "ITA"
       },
@@ -566,52 +746,87 @@ export const TEAMS: TeamSeed[] =[
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Zé Maria",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Simone Barone",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Mario Caruso",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Daniel Bravo",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Rui Costa",
+        "name": "Dino Baggio",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Massimo Crippa",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Amaral",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Gabriel Batistuta",
+        "name": "Massimo Brambilla",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pietro Strada",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Reynald Pedros",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mario Stanic",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gianfranco Zola",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Hernan Crespo",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Gianluca Triuzzi",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Alessandro Melli",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Enrico Chiesa",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Tomas Brolin",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -627,92 +842,132 @@ export const TEAMS: TeamSeed[] =[
     "secondaryColor": "#FFFFFF",
     "players": [
       {
-        "name": "Gianluca Pagliuca",
+        "name": "Kurnia Sandy",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Fabrizio Ferron",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Matteo Sereni",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Alessandro Giovinazzo",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "David Balleri",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Moreno Mannini",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Stefano Sacchetti",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Emanuele Pesaresi",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Fabio Cannavaro",
+        "name": "Sinisa Mihajlovic",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Lilian Thuram",
+        "name": "Emiliano Milone",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Oumar Dieng",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giovanni Invernizzi",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Alberico Evani",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Marco Franceschetti",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Rui Costa",
+        "name": "Pierre Laigle",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Christian Karembeu",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Fausto Salsano",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Gabriel Batistuta",
+        "name": "Nicola Zanini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mattia Biso",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Simone Vergassola",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Juan Sebastián Verón",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Simone Aloe",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Vincenzo Montella",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Roberto Mancini",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Vincenzo Iacopino",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marco Carparelli",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -728,92 +983,162 @@ export const TEAMS: TeamSeed[] =[
     "secondaryColor": "#FFFFFF",
     "players": [
       {
-        "name": "Gianluca Pagliuca",
+        "name": "Giuseppe Taglialatela",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Raffaele di Fusco",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Ferdinando Coppola",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Luigi Morgante",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Roberto Ayala",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Mauro Milanese",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Roberto Bordin",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Fabio Cannavaro",
+        "name": "André Cruz",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Lilian Thuram",
+        "name": "Luigi Panarelli",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Francesco Baldini",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Francesco Colonnese",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gennaro Scarlato",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Bertrand Crasson",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mirko Taccola",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Antonio Amita",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Alain Boghossian",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Francesco Turrini",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Rui Costa",
+        "name": "Max Esposito",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Beto",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Fabio Pecchia",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Gabriel Batistuta",
+        "name": "Angelo Cimadomo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Carmelo Imbriani",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Roberto Policano",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Raffaele Longo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Luca Altomare",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giuseppe Giannini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Dino Fava",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Caio",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Alfredo Aglietti",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Nicola Caccia",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Arturo Di Napoli",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Salvatore Bruno",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -829,57 +1154,82 @@ export const TEAMS: TeamSeed[] =[
     "secondaryColor": "#FFFFFF",
     "players": [
       {
-        "name": "Gianluca Pagliuca",
+        "name": "Giacomo Dondoli",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Sebastiano Rossi",
+        "name": "Francesco Toldo",
         "position": "GR",
         "nationality": "ITA"
       },
       {
-        "name": "Franco Baresi",
+        "name": "Zandonà",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gianmatteo Mareggini",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Daniele Chiarini",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Paolo Maldini",
+        "name": "Daniele Carnasciali",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Costacurta",
+        "name": "Michele Serena",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Ciro Ferrara",
+        "name": "Lorenzo Amoruso",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Fabio Cannavaro",
+        "name": "Aldo Firicano",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Lilian Thuram",
+        "name": "Roberto Mirri",
         "position": "DEF",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Giulio Falcone",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Vittorio Pusceddu",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pasquale Padalino",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Danilo Stefani",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Donadoni",
+        "name": "Giovanni Piacentini",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Zvonimir Boban",
+        "name": "Stefan Schwarz",
         "position": "MED",
         "nationality": "ITA"
       },
@@ -889,13 +1239,28 @@ export const TEAMS: TeamSeed[] =[
         "nationality": "ITA"
       },
       {
-        "name": "Roberto Baggio",
+        "name": "Sandro Cois",
         "position": "MED",
         "nationality": "ITA"
       },
       {
-        "name": "Alessandro Del Piero",
+        "name": "Emiliano Bigica",
         "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mirko Benin",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Andrea Mussi",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Francesco Baiano",
+        "position": "AV",
         "nationality": "ITA"
       },
       {
@@ -904,17 +1269,32 @@ export const TEAMS: TeamSeed[] =[
         "nationality": "ITA"
       },
       {
-        "name": "George Weah",
+        "name": "Luís Oliveira",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Ronaldo",
+        "name": "Massimo Orlando",
         "position": "AV",
         "nationality": "ITA"
       },
       {
-        "name": "Demetrio Albertini",
+        "name": "Marco Vendrame",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Anselmo Robbiati",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Daniele Beltrammi",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Andrei Kanchelskis",
         "position": "AV",
         "nationality": "ITA"
       }
@@ -7788,107 +8168,108 @@ export const TEAMS: TeamSeed[] =[
       }
     ]
   },
-  {
-    "id": 78,
-    "name": "Bologna",
-    "country": "ITA",
-    "rating": 84,
-    "badge": "/assets/badges/bologna.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "players": [
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Sebastiano Rossi",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paolo Maldini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Costacurta",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ciro Ferrara",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Cannavaro",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lilian Thuram",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Donadoni",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Zvonimir Boban",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Baggio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Del Piero",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "George Weah",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+ {
+  "id": 78,
+  "name": "Bologna",
+  "country": "ITA",
+  "rating": 90,
+  "badge": "/assets/badges/bologna.png",
+  "primaryColor": "#1A2F5A",
+  "secondaryColor": "#C8102E",
+  "players": [
+    {
+      "name": "Francesco Antonioli",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alex Brunner",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Michele Paramatti",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Stefano Torrisi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Andrea Tarozzi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giuseppe Cardone",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Amedeo Mangone",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Cristiano Pavone",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+
+    {
+      "name": "Giancarlo Marocchi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Cristiano Scapolo",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Oscar Magoni",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marco de Marchi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Carlo Nervo",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Davide Fontolan",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Kennet Andersson",
+      "position": "AV",
+      "nationality": "SWE"
+    },
+    {
+      "name": "Igor Kolyvanov",
+      "position": "AV",
+      "nationality": "RUS"
+    },
+    {
+      "name": "Igor Shalimov",
+      "position": "AV",
+      "nationality": "RUS"
+    },
+    {
+      "name": "Pierpaolo Bresciani",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 79,
     "name": "Genoa",
@@ -7911,81 +8292,6 @@ export const TEAMS: TeamSeed[] =[
       {
         "name": "Franco Baresi",
         "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paolo Maldini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Costacurta",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ciro Ferrara",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Cannavaro",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lilian Thuram",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Donadoni",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Zvonimir Boban",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Baggio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Del Piero",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "George Weah",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Demetrio Albertini",
-        "position": "AV",
         "nationality": "ITA"
       }
     ]
