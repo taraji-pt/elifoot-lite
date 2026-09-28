@@ -1,8 +1,6 @@
 import { GAME_CONFIG } from "@/data/gameConfig";
-import { NATIONALITY_WEIGHTS } from "@/data/countries";
-import { FIRST_NAMES, LAST_NAMES } from "@/data/names";
 import type { PlayerSeed } from "@/data/schema";
-import { pick, randInt, weightedPick } from "./rng";
+import { randInt } from "./rng";
 import type { Player, Position } from "./types";
 
 export function transferValueFor(rating: number) {
@@ -47,11 +45,3 @@ export function validateSquad(seeds: PlayerSeed[] | undefined): string | null {
   return total >= 11 ? null : `Plantel incompleto: ${total}/11 jogadores definidos na base de dados.`;
 }
 
-/** Cria um jogador de mercado livre a partir de dados aleatórios. */
-export function createPlayer(id: number, position: Position, rating: number): Player {
-  return makePlayer(
-    id,
-    { name: `${pick(FIRST_NAMES)} ${pick(LAST_NAMES)}`, position, nationality: weightedPick(NATIONALITY_WEIGHTS) },
-    rating + randInt(-6, 6),
-  );
-}
