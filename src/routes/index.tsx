@@ -11,6 +11,7 @@ import { GameProvider, useGame } from "@/state/GameProvider";
 import { divisionTeamIds, marketPlayers, totalRounds, userFixture, userTeam } from "@/game/engine";
 import { activeSlots, previewDivisions, seasonLabel, seedsForCountries } from "@/game/newGame";
 import { formatMoney, getPlayers, sortSquad, teamRating } from "@/game/ratings";
+import { validateSquad } from "@/game/players";
 import { computeStandings } from "@/game/standings";
 import type { GameState, Player, Position, Team } from "@/game/types";
 
@@ -64,6 +65,7 @@ function Start() {
   const [selected, setSelected] = useState<string[]>(() => [countries[0]?.code ?? "POR"]);
   const [division, setDivision] = useState<number>(GAME_CONFIG.numberOfDivisions);
   const seeds = useMemo(() => seedsForCountries(db, selected), [db, selected]);
+  const invalidTeams = useMemo(() => seeds.filter((t) => validateSquad(t.players)), [seeds]);
   const preview = useMemo(() => previewDivisions(seeds), [seeds]);
   const active = preview.filter((p) => p.division > 0).length;
   const reserve = preview.length - active;
@@ -107,6 +109,17 @@ function Start() {
           São precisos {activeSlots()} clubes. Seleciona mais países ou cria clubes no editor.
         </p>
       )}
+      {invalidTeams.length > 0 && (
+        <div className="mt-3 rounded-md border border-destructive/50 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+          <b>Há {invalidTeams.length} clube(s) com plantel incompleto.</b>{" "}
+          Cada clube precisa de pelo menos 11 jogadores definidos na base de dados.
+          Nenhum jogador aleatório será criado.
+          <div className="mt-1 text-xs">
+            {invalidTeams.slice(0, 8).map((t) => t.name + " (" + (t.players?.length ?? 0) + "/11)").join(" · ")}
+            {invalidTeams.length > 8 ? " · +" + (invalidTeams.length - 8) + " outros" : ""}
+          </div>
+        </div>
+      )}
       {enough && (
         <>
           <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">2. O teu clube</h2>
@@ -122,7 +135,8 @@ function Start() {
               <button
                 key={t.id}
                 onClick={() => newGame(t.id, seeds)}
-                className={`${card} flex items-center justify-between text-left hover:border-primary`}
+                disabled={!enough || invalidTeams.length > 0}
+                className={`${card} flex items-center justify-between text-left hover:border-primary disabled:cursor-not-allowed disabled:opacity-50`}
               >
                 <TeamIdentity team={{ ...t, division, budget: 0, playerIds: [], lineup: [] }} />
                 <span className="text-right font-mono-num text-xs text-muted-foreground">
