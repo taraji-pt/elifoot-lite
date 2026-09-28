@@ -18,8 +18,11 @@ import {
   buyPlayer,
   declineOffers,
   recordUserResult,
+  recordUserCupResult,
+  dismissCelebration,
   sellPlayer,
   userFixture,
+  userCupTie,
 } from "@/game/engine";
 import { createNewGame } from "@/game/newGame";
 import { simulateHalf } from "@/game/simulation";
@@ -47,6 +50,7 @@ interface GameContextValue {
   substitute: (outId: number, inId: number) => void;
   playSecondHalf: () => void;
   finishMatch: () => void;
+  dismissCelebration: () => void;
 }
 
 const g = globalThis as { __gameCtx?: React.Context<GameContextValue | null> };
@@ -135,11 +139,23 @@ export function GameProvider({ children }: { children: ReactNode }) {
       startMatch: () =>
         mutate((draft) => {
           const fixture = userFixture(draft);
-          if (!fixture) return "Não há jogo nesta jornada.";
-          const home = draft.teams[fixture.homeId] as Team;
-          const away = draft.teams[fixture.awayId] as Team;
+          const cupTie = userCupTie(draft);
+          const playCup = Boolean(
+            cupTie &&
+            fixture &&
+            fixture.homeGoals !== null &&
+            fixture.awayGoals !== null,
+          );
+
+          const homeId = playCup ? cupTie!.homeId : fixture?.homeId;
+          const awayId = playCup ? cupTie!.awayId : fixture?.awayId;
+          if (homeId === undefined || awayId === undefined) return "Não há jogo nesta jornada.";
+
+          const home = draft.teams[homeId] as Team;
+          const away = draft.teams[awayId] as Team;
           const half = simulateHalf(home, away, draft.players, home.lineup, away.lineup);
           draft.match = {
+            competition: playCup ? "cup" : "league",
             homeId: home.id,
             awayId: away.id,
             homeGoals: half.homeGoals,
@@ -193,9 +209,15 @@ export function GameProvider({ children }: { children: ReactNode }) {
         mutate((draft) => {
           const match = draft.match;
           if (!match || !match.finished) return;
-          recordUserResult(draft, match.homeGoals, match.awayGoals);
+
+          if (match.competition === "cup") {
+            recordUserCupResult(draft, match.homeGoals, match.awayGoals);
+          } else {
+            recordUserResult(draft, match.homeGoals, match.awayGoals);
+          }
           advanceRound(draft);
         }),
+      dismissCelebration: () => mutate((draft) => dismissCelebration(draft)),
     }),
     [ready, state, saveExists, message, mutate, persist],
   );
