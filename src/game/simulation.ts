@@ -50,7 +50,7 @@ export function simulateHalf(
   for (let i = 0; i < homeGoals; i++)
     scorers.push({ teamId: home.id, playerName: scorerFrom(home, homeLineup, players), minute: randInt(minuteStart, minuteEnd) });
   for (let i = 0; i < awayGoals; i++)
-    scorers.push({ teamId: away.id, playerName: scorerFrom(away, awayLineup, players), minute: randInt(2, 45) });
+    scorers.push({ teamId: away.id, playerName: scorerFrom(away, awayLineup, players), minute: randInt(minuteStart, minuteEnd) });
 
   scorers.sort((a, b) => a.minute - b.minute);
   return { homeGoals, awayGoals, scorers };
