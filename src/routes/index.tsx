@@ -658,7 +658,13 @@ function Match({ state }: { state: GameState }) {
         </ul>
         {match.competition === "cup" && match.finished && (
           <div className={`mt-2 text-sm font-black ${cupOutcomeClass}`}>
-            {cupUserWon ? "✓ Passou" : "✕ Não passou"}
+            {cupUserWon
+              ? match.cupPenaltyWinnerId !== undefined
+                ? "✓ Ganhou nos penáltis"
+                : "✓ Ganhou aos 90'"
+              : match.cupPenaltyWinnerId !== undefined
+                ? "✕ Perdeu nos penáltis"
+                : "✕ Perdeu aos 90'"}
           </div>
         )}
         <div className="mt-4">
