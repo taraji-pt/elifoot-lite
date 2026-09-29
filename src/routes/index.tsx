@@ -552,8 +552,22 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
       <PlayerTable
         players={squad}
         highlight={team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0)}
+        disabledIds={disabledIds}
         onClick={toggle}
-        action={(p) => (state.suspensions?.[p.id] ? "🟥 Suspenso" : team.lineup.includes(p.id) ? "Titular" : "")}
+        action={(p) => {
+          const yellows = state.yellowCards?.[p.id] ?? 0;
+          const status = state.suspensions?.[p.id]
+            ? "🟥 Suspenso"
+            : team.lineup.includes(p.id)
+              ? "Titular"
+              : "";
+          return (
+            <span className="inline-flex items-center gap-2">
+              {yellows > 0 && <span className="font-mono-num text-yellow-600 dark:text-yellow-400">🟨 {yellows}/5</span>}
+              {status}
+            </span>
+          );
+        }}
       />
     </div>
   );
