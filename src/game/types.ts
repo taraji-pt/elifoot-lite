@@ -96,6 +96,7 @@ export interface Celebration {
 
 export interface SeasonSummary {
   season: string;
+  clubId?: number;
   club: string;
   division: number;
   position: number;
