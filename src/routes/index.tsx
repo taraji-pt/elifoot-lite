@@ -589,6 +589,23 @@ function Match({ state }: { state: GameState }) {
   const [revealed, setRevealed] = useState(0);
   const team = userTeam(state);
   const match = state.match;
+
+  useEffect(() => {
+    if (!match) {
+      setRevealed(0);
+      return;
+    }
+    const phaseEvents = match.finished
+      ? match.events.filter((e) => e.startsWith("2|"))
+      : match.events.filter((e) => e.startsWith("1|"));
+    setRevealed(0);
+    if (!phaseEvents.length) return;
+    const timers = phaseEvents.map((_, i) =>
+      window.setTimeout(() => setRevealed(i + 1), 420 * (i + 1)),
+    );
+    return () => timers.forEach(window.clearTimeout);
+  }, [match?.events.length, match?.half, match?.finished]);
+
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
   const cupPending = Boolean(
@@ -649,15 +666,6 @@ function Match({ state }: { state: GameState }) {
   const firstEvents = match.events.filter((e) => e.startsWith("1|"));
   const secondEvents = match.events.filter((e) => e.startsWith("2|"));
   const phaseEvents = match.finished ? secondEvents : firstEvents;
-
-  useEffect(() => {
-    setRevealed(0);
-    if (!phaseEvents.length) return;
-    const timers = phaseEvents.map((_, i) =>
-      window.setTimeout(() => setRevealed(i + 1), 420 * (i + 1)),
-    );
-    return () => timers.forEach(window.clearTimeout);
-  }, [match.events.length, match.half, match.finished]);
 
   const visibleFirst = match.finished ? firstEvents : firstEvents.slice(0, revealed);
   const visibleSecond = match.finished ? secondEvents.slice(0, revealed) : [];
