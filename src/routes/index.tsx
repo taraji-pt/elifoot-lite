@@ -1299,10 +1299,17 @@ function CupView({ state }: { state: GameState }) {
       {[...cup.rounds].reverse().map((round, i) => (
         <div key={i} className={card}>
           <div className="mb-2 font-semibold">{round.name}</div>
-          <div className="grid gap-1 sm:grid-cols-2">
-            {round.ties.map((tie, j) => {
-              const h = state.teams[tie.homeId] as Team;
-              const a = state.teams[tie.awayId] as Team;
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-5">
+            {[0, 1].map((half) => {
+              const start = Math.floor(round.ties.length / 2) * half;
+              const end = half === 0 ? Math.ceil(round.ties.length / 2) : round.ties.length;
+              const ties = round.ties.slice(start, end);
+              return (
+                <div key={half} className="rounded-lg border border-border/70 bg-background/20 p-2.5 sm:p-3">
+                  <div className="space-y-1.5">
+                    {ties.map((tie, j) => {
+                      const h = state.teams[tie.homeId] as Team;
+                      const a = state.teams[tie.awayId] as Team;
               const mine = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
               let penaltyClass = "";
               if (tie.penalties) {
@@ -1337,11 +1344,15 @@ function CupView({ state }: { state: GameState }) {
                       <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
                     </div>
                   </div>
-                  {userOutcome && (
-                    <div className={`mt-1 text-center text-xs font-bold ${userAdvanced ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
-                      {userOutcome}
+                      {userOutcome && (
+                        <div className={`mt-1 text-center text-xs font-bold ${userAdvanced ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                          {userOutcome}
+                        </div>
+                      )}
                     </div>
-                  )}
+                    );
+                  })}
+                  </div>
                 </div>
               );
             })}
