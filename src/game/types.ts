@@ -153,7 +153,9 @@ export interface GameState {
   history: SeasonSummary[];
   /** golos acumulados na época em curso */
   scorerStats: Record<number, GoalStats>;
-  /** número de jogos que cada jogador ainda tem de cumprir por expulsão */
+  /** número de jogos que cada jogador ainda tem de cumprir por suspensão */
   suspensions?: Record<number, number>;
+  /** amarelos acumulados na época por jogador (reset a zero ao atingir 5) */
+  yellowCards?: Record<number, number>;
   nextPlayerId: number;
 }
