@@ -388,6 +388,7 @@ export function continueAfterSeasonReview(state: GameState) {
   state.seasonYear += 1;
   state.round = 1;
   state.scorerStats = {};
+  state.yellowCards = {};
   state.leagues = buildLeagues(state.teams);
   const { active, reserve } = splitByActivity(state.teams);
   state.cup = createCup(active, reserve, state.userTeamId);
