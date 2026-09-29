@@ -159,10 +159,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
 
           const home = draft.teams[homeId] as Team;
           const away = draft.teams[awayId] as Team;
+          const previewUserLineup = availableLineup(draft, draft.teams[draft.userTeamId] as Team);
+          if (previewUserLineup.length < 11) return "Tens jogadores suspensos. Não tens 11 jogadores disponíveis para este jogo.";
           const homeLineup = prepareTeamForMatch(draft, home);
           const awayLineup = prepareTeamForMatch(draft, away);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
-          if (userLineup.length < 11) return "Tens jogadores suspensos. Não tens 11 jogadores disponíveis para este jogo.";
           const half = simulateHalf(draft.teams[homeId] as Team, draft.teams[awayId] as Team, draft.players, homeLineup, awayLineup, 1, 45);
           playWhistle(1);
           draft.match = {
