@@ -857,6 +857,16 @@ function CupView({ state }: { state: GameState }) {
               const h = state.teams[tie.homeId] as Team;
               const a = state.teams[tie.awayId] as Team;
               const mine = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
+              let penaltyClass = "";
+              if (tie.penalties) {
+                const userWon = tie.winnerId === state.userTeamId;
+                const userInvolved = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
+                if (userWon) penaltyClass = "text-green-600 dark:text-green-400 font-bold";
+                else if (userInvolved) penaltyClass = "text-red-600 dark:text-red-400 font-bold";
+              }
+              const score = tie.homeGoals === null
+                ? "–"
+                : String(tie.homeGoals) + "-" + String(tie.awayGoals) + (tie.penalties ? " (p)" : "");
               return (
                 <div
                   key={j}
@@ -865,8 +875,8 @@ function CupView({ state }: { state: GameState }) {
                   <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
                     <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
                   </div>
-                  <span className={`w-14 text-center font-mono-num ${tie.penalties ? (tie.winnerId === state.userTeamId ? "text-green-600 dark:text-green-400 font-bold" : (tie.homeId === state.userTeamId || tie.awayId === state.userTeamId) ? "text-red-600 dark:text-red-400 font-bold" : "") : ""`}>
-                    {tie.homeGoals === null ? "–" : String(tie.homeGoals) + "-" + String(tie.awayGoals) + (tie.penalties ? " (p)" : "")}
+                  <span className={`w-14 text-center font-mono-num ${penaltyClass}`}>
+                    {score}
                   </span>
                   <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
                     <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
