@@ -1,7 +1,7 @@
 import { Flag } from "@/components/Flag";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { isSoundEnabled, playCard, playGoal, playWhistle, setSoundEnabled } from "@/game/sound";
+import { isSoundEnabled, playGoal, playRedCard, setSoundEnabled } from "@/game/sound";
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { countryList, loadDatabase } from "@/data/db";
 import { COUNTRIES } from "@/data/countries";
@@ -634,7 +634,6 @@ function Match({ state }: { state: GameState }) {
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
   const playedEventSounds = useRef<Set<string>>(new Set());
-  const playedPhaseSounds = useRef<Set<string>>(new Set());
   const eventsScrollRef = useRef<HTMLDivElement | null>(null);
   const team = userTeam(state);
   const match = state.match;
@@ -655,24 +654,10 @@ function Match({ state }: { state: GameState }) {
   useEffect(() => {
     if (!match) {
       playedEventSounds.current.clear();
-      playedPhaseSounds.current.clear();
       return;
     }
     playedEventSounds.current.clear();
-    playedPhaseSounds.current.clear();
   }, [match?.homeId, match?.awayId]);
-
-  useEffect(() => {
-    if (!match) return;
-    if (!match.finished && elapsedMs >= 10000 && !playedPhaseSounds.current.has("ht")) {
-      playedPhaseSounds.current.add("ht");
-
-    }
-    if (match.finished && elapsedMs >= 10000 && !playedPhaseSounds.current.has("ft")) {
-      playedPhaseSounds.current.add("ft");
-
-    }
-  }, [elapsedMs, match]);
 
   useEffect(() => {
     if (!match) return;
@@ -694,6 +679,12 @@ function Match({ state }: { state: GameState }) {
       if (kind === "R") playRedCard();
     }
   }, [elapsedMs, match]);
+
+  useEffect(() => {
+    const el = eventsScrollRef.current;
+    if (!el) return;
+    if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
+  }, [match?.events.length, elapsedMs]);
 
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
@@ -768,12 +759,6 @@ function Match({ state }: { state: GameState }) {
     ? secondEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute)
     : [];
   const visibleEvents = [...visibleFirst, ...visibleSecond];
-
-  useEffect(() => {
-    const el = eventsScrollRef.current;
-    if (!el) return;
-    if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
-  }, [visibleEvents.length]);
 
   const shownScore = visibleEvents.reduce(
     (score, event) => {
