@@ -170,7 +170,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             userLineup: [...(draft.teams[draft.userTeamId]?.lineup ?? [])],
             subsUsed: 0,
             events: half.scorers.map(
-              (s) => `1|${s.minute}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
+              (s) => `1|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
             finished: false,
           };
@@ -209,7 +209,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           match.events.push(
             ...half.scorers.map(
-              (s) => `2|${s.minute}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
+              (s) => `2|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
           );
 
@@ -217,7 +217,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
             const winnerName = draft.teams[match.cupPenaltyWinnerId]?.name ?? "equipa vencedora";
             match.events.push(
-              `P|90|Penáltis — passou o ${winnerName}.`,
+              `P|90|-1|Penáltis — passou o ${winnerName}.`,
             );
           }
         }),
