@@ -109,7 +109,7 @@ function simulateRound(state: GameState) {
       fixture.scorerIds = result.scorers.map((s) => s.playerId);
       fixture.redCardIds = result.cards.filter((c) => c.type === "red").map((c) => c.playerId);
       addScorerGoals(state, fixture.scorerIds, "league");
-      addRedCardSuspensions(state, fixture.redCardIds);
+      addMatchDiscipline(state, result.cards.map((c) => ({ playerId: c.playerId, type: c.type })));
     }
   }
 }
