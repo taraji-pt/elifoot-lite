@@ -103,6 +103,10 @@ export interface SeasonSummary {
   position: number;
   points: number;
   note: string;
+  /** conquistas registadas no fim desta época */
+  leagueChampion?: boolean;
+  cupWinner?: boolean;
+  promoted?: boolean;
 }
 
 export interface Bid {
