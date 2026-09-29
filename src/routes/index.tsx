@@ -578,6 +578,7 @@ function PlayerTable({
   highlight = [],
   onClick,
   action,
+  disabledIds = [],
 }: {
   players: Player[];
   highlight?: number[];
