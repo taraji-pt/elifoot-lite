@@ -459,8 +459,14 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
               <div className="rounded-md border border-border bg-card p-3">
                 <div className="mb-2 font-semibold">Taça</div>
                 <div className="text-sm">
-                  Vencedor:{" "}
-                  <b>{review.cupWinnerId !== null ? state.teams[review.cupWinnerId]?.name : "—"}</b>
+                  <div className="text-xs text-muted-foreground">Vencedor</div>
+                  <div className="mt-1">
+                    {review.cupWinnerId !== null && state.teams[review.cupWinnerId] ? (
+                      <TeamIdentityWithFlag team={state.teams[review.cupWinnerId] as Team} size={20} />
+                    ) : (
+                      <span>—</span>
+                    )}
+                  </div>
                 </div>
               </div>
 
