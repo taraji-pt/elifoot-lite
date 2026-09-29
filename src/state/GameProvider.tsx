@@ -242,17 +242,21 @@ export function GameProvider({ children }: { children: ReactNode }) {
             ...(match.yellowCardIds ?? []).map((playerId) => ({ playerId, type: "yellow" as const })),
           ];
 
-          recordMatchDiscipline(draft, disciplineCards);
-
           const userTeam = draft.teams[draft.userTeamId];
           const suspensionMessages = disciplineCards
-            .filter((card) => userTeam?.playerIds.includes(card.playerId))
+            .filter((card) => {
+              if (!userTeam?.playerIds.includes(card.playerId)) return false;
+              if (card.type === "red") return true;
+              return (draft.yellowCards?.[card.playerId] ?? 0) >= 4;
+            })
             .map((card) => {
               const player = draft.players[card.playerId];
               const games = card.type === "red" ? 2 : 1;
               return player ? `${player.name} fica de fora por ${games} jogo${games === 1 ? "" : "s"}.` : null;
             })
             .filter((message): message is string => Boolean(message));
+
+          recordMatchDiscipline(draft, disciplineCards);
 
           if (suspensionMessages.length > 0) {
             setMessage(`Suspensões: ${suspensionMessages.join(" ")}`);
