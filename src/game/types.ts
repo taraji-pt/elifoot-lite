@@ -48,6 +48,7 @@ export interface CupTie {
   penalties?: boolean;
   scorerIds?: number[];
   redCardIds?: number[];
+  yellowCardIds?: number[];
   winnerId: number | null;
 }
 
