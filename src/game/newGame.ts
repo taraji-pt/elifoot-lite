@@ -99,6 +99,7 @@ export function createNewGame(userTeamId: number, seeds: TeamSeed[]): GameState 
     cup: createCup(active, reserve, userTeamId),
     match: null,
     history: [],
+    scorerStats: {},
     nextPlayerId,
   };
 }
