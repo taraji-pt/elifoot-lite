@@ -106,7 +106,7 @@ function simulateRound(state: GameState) {
       fixture.scorerIds = result.scorers.map((s) => s.playerId);
       fixture.redCardIds = result.cards.filter((c) => c.type === "red").map((c) => c.playerId);
       addScorerGoals(state, fixture.scorerIds, "league");
-      addMatchDiscipline(state, result.cards.map((c) => ({ playerId: c.playerId, type: c.type })));
+      recordMatchDiscipline(state, result.cards.map((c) => ({ playerId: c.playerId, type: c.type })));
     }
   }
 }
@@ -168,10 +168,10 @@ export function advanceRound(state: GameState) {
       const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
       if (!userTie && tie.scorerIds?.length) addScorerGoals(state, tie.scorerIds, "cup");
       if (tie.yellowCardIds?.length) {
-        addMatchDiscipline(state, tie.yellowCardIds.map((playerId) => ({ playerId, type: "yellow" as const })));
+        recordMatchDiscipline(state, tie.yellowCardIds.map((playerId) => ({ playerId, type: "yellow" as const })));
       }
       if (tie.redCardIds?.length) {
-        addMatchDiscipline(state, tie.redCardIds.map((playerId) => ({ playerId, type: "red" as const })));
+        recordMatchDiscipline(state, tie.redCardIds.map((playerId) => ({ playerId, type: "red" as const })));
       }
     }
     if (state.cup.winnerId === state.userTeamId) {
