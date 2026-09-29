@@ -627,21 +627,61 @@ function Match({ state }: { state: GameState }) {
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
+  const playedEventSounds = useRef<Set<string>>(new Set());
+  const playedPhaseSounds = useRef<Set<string>>(new Set());
   const team = userTeam(state);
   const match = state.match;
 
   useEffect(() => {
     if (!match) {
       setElapsedMs(0);
+      playedEventSounds.current.clear();
+      playedPhaseSounds.current.clear();
       return;
     }
     setElapsedMs(0);
+    playedEventSounds.current.clear();
+    playedPhaseSounds.current.clear();
     const started = performance.now();
     const timer = window.setInterval(() => {
       setElapsedMs(Math.min(10000, performance.now() - started));
     }, 100);
     return () => window.clearInterval(timer);
-  }, [match?.half, match?.finished]);
+  }, [match?.homeId, match?.awayId]);
+
+  useEffect(() => {
+    if (!match) return;
+    if (!match.finished && elapsedMs >= 10000 && !playedPhaseSounds.current.has("ht")) {
+      playedPhaseSounds.current.add("ht");
+      playWhistle(2);
+    }
+    if (match.finished && elapsedMs >= 10000 && !playedPhaseSounds.current.has("ft")) {
+      playedPhaseSounds.current.add("ft");
+      playWhistle(3);
+    }
+  }, [elapsedMs, match]);
+
+  useEffect(() => {
+    if (!match) return;
+    const simulatedMinute = match.finished
+      ? 46 + Math.floor((elapsedMs / 10000) * 44)
+      : 1 + Math.floor((elapsedMs / 10000) * 44);
+    const visible = match.events.filter((event) => {
+      const half = event.split("|")[0];
+      const minute = Number(event.split("|")[1]) || 0;
+      if (half === "1") return match.finished || minute <= simulatedMinute;
+      if (half === "2") return match.finished && minute <= simulatedMinute;
+      return false;
+    });
+    for (const event of visible) {
+      if (playedEventSounds.current.has(event)) continue;
+      playedEventSounds.current.add(event);
+      const kind = event.split("|")[3];
+      if (kind === "G") playGoal();
+      if (kind === "Y") playCard("yellow");
+      if (kind === "R") playCard("red");
+    }
+  }, [elapsedMs, match]);
 
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
