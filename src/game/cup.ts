@@ -84,7 +84,14 @@ export function playCupRound(
       winnerId = penaltyShootout(home.id, away.id);
       penalties = true;
     }
-    return { ...tie, homeGoals: result.homeGoals, awayGoals: result.awayGoals, winnerId, penalties };
+    return {
+      ...tie,
+      homeGoals: result.homeGoals,
+      awayGoals: result.awayGoals,
+      scorerIds: result.scorers.map((s) => s.playerId),
+      winnerId,
+      penalties,
+    };
   });
 
   const rounds = [...cup.rounds];
