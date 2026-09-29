@@ -529,6 +529,7 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
   const counts = lineupCounts(team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0), state.players);
   const suspended = squad.filter((p) => (state.suspensions?.[p.id] ?? 0) > 0);
+  const disabledIds = suspended.map((p) => p.id);
   const toggle = (id: number) => {
     if ((state.suspensions?.[id] ?? 0) > 0) return;
     if (team.lineup.includes(id)) setLineup(team.lineup.filter((x) => x !== id));
