@@ -602,8 +602,10 @@ function PlayerTable({
         {players.map((p) => (
           <tr
             key={p.id}
-            onClick={() => onClick?.(p.id)}
-            className={`border-t border-border ${onClick ? "cursor-pointer hover:bg-accent" : ""} ${
+            onClick={() => {
+              if (!disabled.has(p.id)) onClick?.(p.id);
+            }}
+            className={`border-t border-border ${disabled.has(p.id) ? "cursor-not-allowed bg-muted/60 text-muted-foreground opacity-60" : onClick ? "cursor-pointer hover:bg-accent" : ""} ${
               highlight.includes(p.id) ? "bg-primary/10" : ""
             }`}
           >
