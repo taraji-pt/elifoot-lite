@@ -193,6 +193,24 @@ function TeamIdentityWithFlag({
     </span>
   );
 }
+function MatchTeam({ team, side, size = 40 }: { team: Team; side: "home" | "away"; size?: number }) {
+  return (
+    <div className={`flex min-w-0 flex-1 items-center gap-2 ${side === "home" ? "justify-start" : "justify-end"}`}>
+      {side === "home" ? (
+        <>
+          <TeamBadge team={team} size={size} />
+          <span className="min-w-0 text-left font-semibold leading-tight">{team.name}</span>
+        </>
+      ) : (
+        <>
+          <span className="min-w-0 text-right font-semibold leading-tight">{team.name}</span>
+          <TeamBadge team={team} size={size} />
+        </>
+      )}
+    </div>
+  );
+}
+
 function CoachOffers({ state }: { state: GameState }) {
   const { takeOffer, rejectOffers, deleteSave } = useGame();
   if (state.careerOver) {
@@ -683,10 +701,10 @@ function Match({ state }: { state: GameState }) {
             O teu jogo da Liga já terminou. Agora é a tua vez na Taça.
           </div>
         )}
-        <div className="my-6 flex items-center justify-center gap-6 text-lg">
-          <TeamIdentity team={home} size={40} bold />
-          <span className="text-muted-foreground">vs</span>
-          <TeamIdentity team={away} size={40} bold />
+        <div className="my-6 flex items-center gap-3 text-lg">
+          <MatchTeam team={home} side="home" />
+          <span className="shrink-0 text-muted-foreground">vs</span>
+          <MatchTeam team={away} side="away" />
         </div>
         {!ok && <p className="mb-3 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
         <button className={btn} disabled={!ok} onClick={startMatch}>
@@ -798,12 +816,12 @@ function Match({ state }: { state: GameState }) {
           </div>
         </div>
 
-        <div className="my-4 flex items-center justify-center gap-5 sm:gap-6">
-          <TeamIdentity team={home} size={40} bold />
-          <span className={`font-mono-num text-4xl font-bold ${cupOutcomeClass} ${flashEvent && lastVisibleEvent === flashEvent && parseEvent(flashEvent).kind === "G" ? "animate-pulse" : ""}`}>
+        <div className="my-4 flex items-center gap-3">
+          <MatchTeam team={home} side="home" />
+          <span className={`shrink-0 font-mono-num text-4xl font-bold ${cupOutcomeClass} ${flashEvent && lastVisibleEvent === flashEvent && parseEvent(flashEvent).kind === "G" ? "animate-pulse" : ""}`}>
             {shownScore.home} - {shownScore.away}
           </span>
-          <TeamIdentity team={away} size={40} bold reverse />
+          <MatchTeam team={away} side="away" />
         </div>
 
         <div ref={eventsScrollRef} className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
