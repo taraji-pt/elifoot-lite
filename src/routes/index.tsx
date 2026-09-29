@@ -1,6 +1,6 @@
 import { Flag } from "@/components/Flag";
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { isSoundEnabled, setSoundEnabled } from "@/game/sound";
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { countryList, loadDatabase } from "@/data/db";
