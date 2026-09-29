@@ -527,8 +527,10 @@ function lineupCounts(ids: number[], players: Record<number, Player>) {
 function Squad({ state, team }: { state: GameState; team: Team }) {
   const { setLineup } = useGame();
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
-  const counts = lineupCounts(team.lineup, state.players);
+  const counts = lineupCounts(team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0), state.players);
+  const suspended = squad.filter((p) => (state.suspensions?.[p.id] ?? 0) > 0);
   const toggle = (id: number) => {
+    if ((state.suspensions?.[id] ?? 0) > 0) return;
     if (team.lineup.includes(id)) setLineup(team.lineup.filter((x) => x !== id));
     else if (team.lineup.length < 11) setLineup([...team.lineup, id]);
   };
@@ -536,16 +538,21 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
     <div className={card}>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="text-sm">
-          Titulares: <b>{team.lineup.length}/11</b> · GR {counts.GR} · DEF {counts.DEF} · MED{" "}
+          Titulares disponíveis: <b>{counts.GR + counts.DEF + counts.MED + counts.AV}/11</b> · GR {counts.GR} · DEF {counts.DEF} · MED{" "}
           {counts.MED} · AV {counts.AV}
         </div>
         <span className="text-xs text-muted-foreground">Clica num jogador para o pôr/tirar do onze.</span>
       </div>
+      {suspended.length > 0 && (
+        <div className="mb-3 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-700 dark:text-red-300">
+          🟥 Suspensos para o próximo jogo: <b>{suspended.map((p) => p.name).join(", ")}</b>
+        </div>
+      )}
       <PlayerTable
         players={squad}
-        highlight={team.lineup}
+        highlight={team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0)}
         onClick={toggle}
-        action={(p) => (team.lineup.includes(p.id) ? "Titular" : "")}
+        action={(p) => (state.suspensions?.[p.id] ? "🟥 Suspenso" : team.lineup.includes(p.id) ? "Titular" : "")}
       />
     </div>
   );
@@ -630,7 +637,8 @@ function Match({ state }: { state: GameState }) {
     const isCup = cupPending;
     const home = state.teams[isCup ? cupTie!.homeId : fixture.homeId] as Team;
     const away = state.teams[isCup ? cupTie!.awayId : fixture.awayId] as Team;
-    const ok = team.lineup.length === 11;
+    const availableCount = team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0).length;
+    const ok = availableCount === 11;
     return (
       <div className={`${card} text-center`}>
         <div className="text-sm text-muted-foreground">
@@ -648,7 +656,7 @@ function Match({ state }: { state: GameState }) {
           <span className="text-muted-foreground">vs</span>
           <TeamIdentity team={away} size={40} bold />
         </div>
-        {!ok && <p className="mb-3 text-sm text-destructive">Precisas de 11 titulares no Plantel.</p>}
+        {!ok && <p className="mb-3 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
         <button className={btn} disabled={!ok} onClick={startMatch}>
           Jogar jogo
         </button>
@@ -676,7 +684,6 @@ function Match({ state }: { state: GameState }) {
 
   const firstEvents = match.events.filter((e) => e.startsWith("1|"));
   const secondEvents = match.events.filter((e) => e.startsWith("2|"));
-  const phaseEvents = match.finished ? secondEvents : firstEvents;
   const phaseElapsed = Math.min(10000, elapsedMs);
   const phaseComplete = phaseElapsed >= 10000;
   const simulatedMinute = match.finished
