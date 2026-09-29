@@ -90,7 +90,7 @@ export interface SeasonReview {
 }
 
 export interface Celebration {
-  type: "league" | "cup" | "double";
+  type: "league" | "cup" | "double" | "promotion";
   season: string;
   teamId: number;
 }
