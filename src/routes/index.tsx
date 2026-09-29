@@ -831,7 +831,7 @@ function Match({ state }: { state: GameState }) {
           <TeamIdentity team={away} size={40} bold />
         </div>
 
-        <div className="mx-auto min-h-[96px] max-w-xl rounded-md border border-border bg-background/50 p-3 text-left">
+        <div className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
           {visibleEvents.length ? (
             <ul className="space-y-1.5 text-sm">
               {visibleEvents.map((event, i) => {
