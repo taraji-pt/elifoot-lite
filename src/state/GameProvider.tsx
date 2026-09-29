@@ -213,7 +213,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
               (s) => `2|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
           );
-          match.scorerIds.push(...half.scorers.map((s) => s.playerId));
+          (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
