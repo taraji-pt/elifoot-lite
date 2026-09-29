@@ -1215,13 +1215,12 @@ function Transfers({ state }: { state: GameState }) {
             </button>
           </div>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[650px] text-sm">
+        <div>
+          <table className="w-full table-fixed text-sm">
           <thead className="text-left text-xs text-muted-foreground">
             <tr>
               <th className="pr-3">Pos.</th>
-              <th className="min-w-[190px] pr-5">Jogador</th>
-              <th className="min-w-[180px] pr-5">Clube</th>
+              <th className="w-[38%] pr-2">Jogador / Clube</th>
               <th className="text-right">Rating</th>
               <th className="text-right">Valor</th>
               <th></th>
@@ -1231,21 +1230,21 @@ function Transfers({ state }: { state: GameState }) {
             {market.map(({ player, teamId }) => (
               <tr key={player.id} className="border-t border-border">
                 <td className="py-1.5 pr-3 font-mono-num text-xs">{player.position}</td>
-                <td className="pr-5">
-                  <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                    <Flag code={player.nationality} size={16} />
-                    <span>{player.name}</span>
-                  </span>
-                </td>
-                <td className="max-w-[180px] pr-5">
-                  {teamId ? (
-                    <span className="inline-flex w-full items-center gap-2 whitespace-nowrap text-xs text-muted-foreground">
-                      <TeamBadge team={state.teams[teamId] as Team} size={16} />
-                      <span className="truncate">{state.teams[teamId]?.name}</span>
-                    </span>
-                  ) : (
-                    <span className="text-xs text-muted-foreground">Livre</span>
-                  )}
+                                <td className="pr-2">
+                  <div className="min-w-0">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <Flag code={player.nationality} size={16} />
+                      <span className="truncate font-medium">{player.name}</span>
+                    </div>
+                    <div className="mt-0.5 flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
+                      {teamId ? (
+                        <>
+                          <TeamBadge team={state.teams[teamId] as Team} size={16} />
+                          <span className="truncate">{state.teams[teamId]?.name}</span>
+                        </>
+                      ) : "Livre"}
+                    </div>
+                  </div>
                 </td>
                 <td className="text-right font-mono-num">{player.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(player.transferValue)}</td>
