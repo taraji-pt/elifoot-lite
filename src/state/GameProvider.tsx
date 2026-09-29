@@ -20,6 +20,7 @@ import {
   continueAfterSeasonReview,
   recordUserResult,
   recordUserCupResult,
+  recordMatchDiscipline,
   dismissCelebration,
   sellPlayer,
   userFixture,
