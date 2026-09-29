@@ -219,7 +219,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           match.events.push(
             ...[
               ...half.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
-              ...half.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${c.playerName}`),
+              ...half.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
             ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
           );
           (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
