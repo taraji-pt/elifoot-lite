@@ -609,6 +609,7 @@ function Match({ state }: { state: GameState }) {
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
+  const [flashEvent, setFlashEvent] = useState<string | null>(null);
   const eventsScrollRef = useRef<HTMLDivElement | null>(null);
   const team = userTeam(state);
   const match = state.match;
@@ -708,6 +709,17 @@ function Match({ state }: { state: GameState }) {
     : [];
   const visibleEvents = [...visibleFirst, ...visibleSecond];
 
+  const lastVisibleEvent = visibleEvents[visibleEvents.length - 1] ?? null;
+
+  useEffect(() => {
+    if (!lastVisibleEvent) return;
+    const kind = parseEvent(lastVisibleEvent).kind;
+    if (kind !== "G" && kind !== "R") return;
+    setFlashEvent(lastVisibleEvent);
+    const timer = window.setTimeout(() => setFlashEvent(null), 1200);
+    return () => window.clearTimeout(timer);
+  }, [lastVisibleEvent]);
+
   const shownScore = visibleEvents.reduce(
     (score, event) => {
       const parsed = parseEvent(event);
@@ -777,7 +789,7 @@ function Match({ state }: { state: GameState }) {
 
         <div className="my-4 flex items-center justify-center gap-5 sm:gap-6">
           <TeamIdentity team={home} size={40} bold />
-          <span className={`font-mono-num text-4xl font-bold ${cupOutcomeClass}`}>
+          <span className={`font-mono-num text-4xl font-bold ${cupOutcomeClass} ${flashEvent && lastVisibleEvent === flashEvent && parseEvent(flashEvent).kind === "G" ? "animate-pulse" : ""}`}>
             {shownScore.home} - {shownScore.away}
           </span>
           <TeamIdentity team={away} size={40} bold />
@@ -793,7 +805,7 @@ function Match({ state }: { state: GameState }) {
                 return (
                   <li
                     key={`${event}-${i}`}
-                    className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? "font-bold text-red-600 dark:text-red-400" : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
+                    className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? `font-bold text-red-600 dark:text-red-400 ${flashEvent === event ? "animate-pulse" : ""}` : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
                   >
                     <span className="w-9 shrink-0 text-xs">
                       {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "Y" ? "🟨" : "⚽"}
@@ -819,7 +831,7 @@ function Match({ state }: { state: GameState }) {
 
         {phaseComplete && !match.finished && (
           <div className="mt-3 rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-bold">
-            🔔 Intervalo — {shownScore.home}-{shownScore.away}
+            ⏱️ Intervalo — {shownScore.home}-{shownScore.away}
           </div>
         )}
 
@@ -840,7 +852,7 @@ function Match({ state }: { state: GameState }) {
             <div className="text-xs text-muted-foreground">A simular… {Math.round((phaseElapsed / 10000) * 100)}%</div>
           ) : match.finished ? (
             <div>
-              <div className="mb-2 text-sm font-black">🔔 Final — {shownScore.home}-{shownScore.away}</div>
+              <div className="mb-2 text-sm font-black">⏱️ Final — {shownScore.home}-{shownScore.away}</div>
               <button className={btn} onClick={finishMatch}>
                 Avançar jornada
               </button>
