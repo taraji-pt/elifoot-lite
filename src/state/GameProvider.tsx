@@ -181,6 +181,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
             scorerIds: half.scorers.map((s) => s.playerId),
             redCardIds: half.cards.filter((c) => c.type === "red").map((c) => c.playerId),
+            yellowCardIds: half.cards.filter((c) => c.type === "yellow").map((c) => c.playerId),
             finished: false,
           };
           return undefined;
