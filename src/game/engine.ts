@@ -310,9 +310,7 @@ function endSeason(state: GameState) {
     });
   }
 
-  const climbers = reserveTeams(state)
-    .sort((a, b) => strength(state, b) - strength(state, a))
-    .slice(0, relegationSpots);
+  const climbers = shuffle(reserveTeams(state)).slice(0, relegationSpots);
   const droppedOut = bottomOfLast.slice(Math.max(0, bottomOfLast.length - climbers.length));
 
   const info = userInfo as { division: number; position: number; points: number; up: boolean; down: boolean } | null;
