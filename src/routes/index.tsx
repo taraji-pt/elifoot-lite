@@ -699,11 +699,13 @@ function Match({ state }: { state: GameState }) {
       ? "text-red-600 dark:text-red-400"
       : "";
 
-  const currentMinute = phaseEvents.length && revealed > 0
-    ? parseEvent(phaseEvents[Math.min(revealed, phaseEvents.length) - 1]).minute
-    : match.finished
-      ? 45
-      : 0;
+  const currentMinute = phaseComplete
+    ? (match.finished ? 90 : 45)
+    : phaseEvents.length && revealed > 0
+      ? parseEvent(phaseEvents[Math.min(revealed, phaseEvents.length) - 1]).minute
+      : match.finished
+        ? 46
+        : 0;
 
   return (
     <div className="space-y-4">
