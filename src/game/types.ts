@@ -36,6 +36,7 @@ export interface Fixture {
   homeGoals: number | null;
   awayGoals: number | null;
   scorerIds?: number[];
+  redCardIds?: number[];
 }
 
 export interface CupTie {
@@ -46,6 +47,7 @@ export interface CupTie {
   /** true se decidido nos penáltis */
   penalties?: boolean;
   scorerIds?: number[];
+  redCardIds?: number[];
   winnerId: number | null;
 }
 
@@ -74,6 +76,8 @@ export interface MatchState {
   subsUsed: number;
   events: string[];
   scorerIds: number[];
+  /** jogadores expulsos neste jogo */
+  redCardIds?: number[];
   /** acontecimentos do jogo, com minuto e marcador */
   finished: boolean;
   cupPenaltyWinnerId?: number;
@@ -149,5 +153,7 @@ export interface GameState {
   history: SeasonSummary[];
   /** golos acumulados na época em curso */
   scorerStats: Record<number, GoalStats>;
+  /** número de jogos que cada jogador ainda tem de cumprir por expulsão */
+  suspensions?: Record<number, number>;
   nextPlayerId: number;
 }
