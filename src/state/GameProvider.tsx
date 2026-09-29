@@ -210,7 +210,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userIsHome = draft.userTeamId === match.homeId;
           const homeLineup = userIsHome ? match.userLineup : home.lineup;
           const awayLineup = userIsHome ? away.lineup : match.userLineup;
-          playWhistle(2);
+          playWhistle(1);
           const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, match.redCardIds ?? []);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
