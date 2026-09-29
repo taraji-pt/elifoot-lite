@@ -619,9 +619,9 @@ function Match({ state }: { state: GameState }) {
   const [elapsedMs, setElapsedMs] = useState(0);
   const [flashEvent, setFlashEvent] = useState<string | null>(null);
   const eventsScrollRef = useRef<HTMLDivElement | null>(null);
-  const lastMatchEvent = match?.events?.[match.events.length - 1] ?? null;
   const team = userTeam(state);
   const match = state.match;
+  const lastMatchEvent = match?.events?.[match.events.length - 1] ?? null;
 
   useEffect(() => {
     if (!match) {
