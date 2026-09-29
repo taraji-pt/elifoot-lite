@@ -778,6 +778,7 @@ function Match({ state }: { state: GameState }) {
   const cupUserWon =
     match.competition === "cup" &&
     match.finished &&
+    phaseComplete &&
     (match.cupPenaltyWinnerId === state.userTeamId
       ? true
       : match.cupPenaltyWinnerId !== undefined
@@ -785,7 +786,7 @@ function Match({ state }: { state: GameState }) {
         : match.homeGoals > match.awayGoals
           ? match.homeId === state.userTeamId
           : match.awayId === state.userTeamId);
-  const cupUserLost = match.competition === "cup" && match.finished && !cupUserWon;
+  const cupUserLost = match.competition === "cup" && match.finished && phaseComplete && !cupUserWon;
   const cupOutcomeClass = cupUserWon
     ? "text-green-600 dark:text-green-400"
     : cupUserLost
@@ -847,7 +848,7 @@ function Match({ state }: { state: GameState }) {
                 return (
                   <li
                     key={`${event}-${i}`}
-                    className={`flex items-center gap-2 ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? "font-bold text-red-600 dark:text-red-400" : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
+                    className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? "font-bold text-red-600 dark:text-red-400" : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
                   >
                     <span className="w-9 shrink-0 font-mono-num text-xs text-muted-foreground">
                       {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "Y" ? "🟨" : `${parsed.minute}'`}
