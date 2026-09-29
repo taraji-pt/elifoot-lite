@@ -635,18 +635,24 @@ function Match({ state }: { state: GameState }) {
   useEffect(() => {
     if (!match) {
       setElapsedMs(0);
-      playedEventSounds.current.clear();
-      playedPhaseSounds.current.clear();
       return;
     }
     setElapsedMs(0);
-    playedEventSounds.current.clear();
-    playedPhaseSounds.current.clear();
     const started = performance.now();
     const timer = window.setInterval(() => {
       setElapsedMs(Math.min(10000, performance.now() - started));
     }, 100);
     return () => window.clearInterval(timer);
+  }, [match?.half, match?.finished]);
+
+  useEffect(() => {
+    if (!match) {
+      playedEventSounds.current.clear();
+      playedPhaseSounds.current.clear();
+      return;
+    }
+    playedEventSounds.current.clear();
+    playedPhaseSounds.current.clear();
   }, [match?.homeId, match?.awayId]);
 
   useEffect(() => {
