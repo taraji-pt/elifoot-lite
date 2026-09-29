@@ -1,6 +1,6 @@
 import { Flag } from "@/components/Flag";
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { isSoundEnabled, setSoundEnabled } from "@/game/sound";
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { countryList, loadDatabase } from "@/data/db";
@@ -586,6 +586,7 @@ function PlayerTable({
 function Match({ state }: { state: GameState }) {
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
+  const [revealed, setRevealed] = useState(0);
   const team = userTeam(state);
   const match = state.match;
   const fixture = userFixture(state);
@@ -622,7 +623,7 @@ function Match({ state }: { state: GameState }) {
         </div>
         {!ok && <p className="mb-3 text-sm text-destructive">Precisas de 11 titulares no Plantel.</p>}
         <button className={btn} disabled={!ok} onClick={startMatch}>
-          Jogar 1.ª parte
+          Jogar jogo
         </button>
       </div>
     );
@@ -635,6 +636,44 @@ function Match({ state }: { state: GameState }) {
     getPlayers(team.playerIds.filter((id) => !match.userLineup.includes(id)), state.players),
   );
 
+  const parseEvent = (event: string) => {
+    const [half, minute, teamId, ...rest] = event.split("|");
+    return {
+      half,
+      minute: Number(minute) || 0,
+      teamId: Number(teamId),
+      text: rest.join("|"),
+    };
+  };
+
+  const firstEvents = match.events.filter((e) => e.startsWith("1|"));
+  const secondEvents = match.events.filter((e) => e.startsWith("2|"));
+  const phaseEvents = match.finished ? secondEvents : firstEvents;
+
+  useEffect(() => {
+    setRevealed(0);
+    if (!phaseEvents.length) return;
+    const timers = phaseEvents.map((_, i) =>
+      window.setTimeout(() => setRevealed(i + 1), 420 * (i + 1)),
+    );
+    return () => timers.forEach(window.clearTimeout);
+  }, [match.events.length, match.half, match.finished]);
+
+  const visibleFirst = match.finished ? firstEvents : firstEvents.slice(0, revealed);
+  const visibleSecond = match.finished ? secondEvents.slice(0, revealed) : [];
+  const visibleEvents = [...visibleFirst, ...visibleSecond];
+
+  const shownScore = visibleEvents.reduce(
+    (score, event) => {
+      const parsed = parseEvent(event);
+      if (parsed.teamId === home.id) score.home += 1;
+      if (parsed.teamId === away.id) score.away += 1;
+      return score;
+    },
+    { home: 0, away: 0 },
+  );
+
+  const phaseComplete = revealed >= phaseEvents.length;
   const cupUserWon =
     match.competition === "cup" &&
     match.finished &&
@@ -645,43 +684,91 @@ function Match({ state }: { state: GameState }) {
         : match.homeGoals > match.awayGoals
           ? match.homeId === state.userTeamId
           : match.awayId === state.userTeamId);
-  const cupUserLost =
-    match.competition === "cup" &&
-    match.finished &&
-    !cupUserWon;
+  const cupUserLost = match.competition === "cup" && match.finished && !cupUserWon;
   const cupOutcomeClass = cupUserWon
     ? "text-green-600 dark:text-green-400"
     : cupUserLost
       ? "text-red-600 dark:text-red-400"
       : "";
 
+  const currentMinute = phaseEvents.length && revealed > 0
+    ? parseEvent(phaseEvents[Math.min(revealed, phaseEvents.length) - 1]).minute
+    : match.finished
+      ? 45
+      : 0;
+
   return (
     <div className="space-y-4">
       <div className={`${card} text-center`}>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm font-semibold text-muted-foreground">
           {match.competition === "cup"
-            ? `🏆 Taça — ${state.cup.rounds[state.cup.currentRound]?.name ?? "Eliminatória"} · ${match.finished ? "Final" : "Intervalo"}`
-            : `Jornada ${state.round} · ${match.finished ? "Final" : "Intervalo"}`}
+            ? `🏆 Taça — ${state.cup.rounds[state.cup.currentRound]?.name ?? "Eliminatória"}`
+            : `Jornada ${state.round}`}
         </div>
-        <div className="my-4 flex items-center justify-center gap-6">
+
+        <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-primary">
+          {match.finished
+            ? phaseComplete ? "Fim do jogo" : "2.ª parte"
+            : phaseComplete ? "Intervalo" : "1.ª parte"}
+        </div>
+
+        <div className="mx-auto mt-3 max-w-md">
+          <div className="mb-1 flex justify-between text-[10px] text-muted-foreground">
+            <span>0'</span>
+            <span className="font-bold">{match.finished ? (phaseComplete ? "90'" : `${currentMinute}'`) : (phaseComplete ? "45'" : `${currentMinute}'`)}</span>
+            <span>90'</span>
+          </div>
+          <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
+            <div
+              className="h-full rounded-full bg-primary transition-all duration-300"
+              style={{ width: `${Math.max(0, Math.min(100, ((match.finished ? (phaseComplete ? 90 : currentMinute) : (phaseComplete ? 45 : currentMinute)) / 90) * 100))}%` }}
+            />
+          </div>
+        </div>
+
+        <div className="my-4 flex items-center justify-center gap-5 sm:gap-6">
           <TeamIdentity team={home} size={40} bold />
           <span className={`font-mono-num text-4xl font-bold ${cupOutcomeClass}`}>
-            {match.homeGoals} - {match.awayGoals}
+            {shownScore.home} - {shownScore.away}
           </span>
           <TeamIdentity team={away} size={40} bold />
         </div>
-        <ul className="text-sm text-muted-foreground">
-          {match.events.length ? match.events.map((e, i) => {
-            const isPenaltyEvent = match.competition === "cup" && e.startsWith("Penáltis —");
-            return (
-              <li key={i} className={isPenaltyEvent ? `${cupOutcomeClass} font-bold` : ""}>
-                ⚽ {e}
-              </li>
-            );
-          }) : <li>Sem golos.</li>}
-        </ul>
-        {match.competition === "cup" && match.finished && (
-          <div className={`mt-2 text-sm font-black ${cupOutcomeClass}`}>
+
+        <div className="mx-auto min-h-[96px] max-w-xl rounded-md border border-border bg-background/50 p-3 text-left">
+          {visibleEvents.length ? (
+            <ul className="space-y-1.5 text-sm">
+              {visibleEvents.map((event, i) => {
+                const parsed = parseEvent(event);
+                const isPenalty = parsed.half === "P";
+                const isUserGoal = parsed.teamId === state.userTeamId;
+                return (
+                  <li
+                    key={`${event}-${i}`}
+                    className={`flex items-center gap-2 ${isPenalty ? cupOutcomeClass + " font-bold" : isUserGoal ? "font-semibold text-primary" : ""}`}
+                  >
+                    <span className="w-9 shrink-0 font-mono-num text-xs text-muted-foreground">
+                      {isPenalty ? "🥅" : `${parsed.minute}'`}
+                    </span>
+                    <span>{parsed.text}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <div className="flex h-full min-h-[70px] items-center justify-center text-sm text-muted-foreground">
+              {phaseComplete ? "Sem golos nesta parte." : "O jogo começou…"}
+            </div>
+          )}
+        </div>
+
+        {phaseComplete && !match.finished && (
+          <div className="mt-3 rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-bold">
+            🔔 Intervalo — {shownScore.home}-{shownScore.away}
+          </div>
+        )}
+
+        {match.competition === "cup" && match.finished && phaseComplete && (
+          <div className={`mt-3 text-sm font-black ${cupOutcomeClass}`}>
             {cupUserWon
               ? match.cupPenaltyWinnerId !== undefined
                 ? "✓ Ganhou nos penáltis"
@@ -691,11 +778,17 @@ function Match({ state }: { state: GameState }) {
                 : "✕ Perdeu aos 90'"}
           </div>
         )}
+
         <div className="mt-4">
-          {match.finished ? (
-            <button className={btn} onClick={finishMatch}>
-              Avançar jornada
-            </button>
+          {!phaseComplete ? (
+            <div className="text-xs text-muted-foreground">A simular…</div>
+          ) : match.finished ? (
+            <div>
+              <div className="mb-2 text-sm font-black">🔔 Final — {shownScore.home}-{shownScore.away}</div>
+              <button className={btn} onClick={finishMatch}>
+                Avançar jornada
+              </button>
+            </div>
           ) : (
             <button className={btn} onClick={playSecondHalf}>
               Jogar 2.ª parte
@@ -704,7 +797,7 @@ function Match({ state }: { state: GameState }) {
         </div>
       </div>
 
-      {!match.finished && (
+      {!match.finished && phaseComplete && (
         <div className="grid gap-4 md:grid-cols-2">
           <div className={card}>
             <div className="mb-2 text-sm font-semibold">
