@@ -901,6 +901,11 @@ function CupView({ state }: { state: GameState }) {
                 : String(tie.homeGoals) + "-" + String(tie.awayGoals) + (tie.penalties ? " (p)" : "");
               const userAdvanced = mine && tie.winnerId === state.userTeamId;
               const userEliminated = mine && tie.winnerId !== null && tie.winnerId !== state.userTeamId;
+              const userOutcome = mine && tie.winnerId !== null
+                ? tie.winnerId === state.userTeamId
+                  ? tie.penalties ? "✓ Ganhou nos penáltis" : "✓ Ganhou aos 90'"
+                  : tie.penalties ? "✕ Perdeu nos penáltis" : "✕ Perdeu aos 90'"
+                : null;
               return (
                 <div
                   key={j}
@@ -917,14 +922,9 @@ function CupView({ state }: { state: GameState }) {
                       <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
                     </div>
                   </div>
-                  {userAdvanced && (
-                    <div className="mt-1 text-center text-xs font-bold text-green-600 dark:text-green-400">
-                      ✓ Passou
-                    </div>
-                  )}
-                  {userEliminated && (
-                    <div className="mt-1 text-center text-xs font-bold text-red-600 dark:text-red-400">
-                      ✕ Não passou
+                  {userOutcome && (
+                    <div className={`mt-1 text-center text-xs font-bold ${userAdvanced ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                      {userOutcome}
                     </div>
                   )}
                 </div>
