@@ -803,7 +803,7 @@ function Match({ state }: { state: GameState }) {
           <span className={`font-mono-num text-4xl font-bold ${cupOutcomeClass} ${flashEvent && lastVisibleEvent === flashEvent && parseEvent(flashEvent).kind === "G" ? "animate-pulse" : ""}`}>
             {shownScore.home} - {shownScore.away}
           </span>
-          <TeamIdentity team={away} size={40} bold />
+          <TeamIdentity team={away} size={40} bold reverse />
         </div>
 
         <div ref={eventsScrollRef} className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
@@ -1171,6 +1171,16 @@ function Transfers({ state }: { state: GameState }) {
           </div>
         </div>
         <table className="w-full text-sm">
+          <thead className="text-left text-xs text-muted-foreground">
+            <tr>
+              <th>Pos.</th>
+              <th>Jogador</th>
+              <th>Clube</th>
+              <th className="text-right">Rating</th>
+              <th className="text-right">Valor</th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
             {market.map(({ player, teamId }) => (
               <tr key={player.id} className="border-t border-border">
@@ -1179,15 +1189,17 @@ function Transfers({ state }: { state: GameState }) {
                   <span className="inline-flex items-center gap-2">
                     <Flag code={player.nationality} size={16} />
                     <span>{player.name}</span>
-                    <span className="ml-1 inline-flex items-center gap-2 text-xs text-muted-foreground">
-                      {teamId ? (
-                        <>
-                          <TeamBadge team={state.teams[teamId] as Team} size={16} />
-                          {state.teams[teamId]?.name}
-                        </>
-                      ) : "Livre"}
-                    </span>
                   </span>
+                </td>
+                <td className="max-w-[180px]">
+                  {teamId ? (
+                    <span className="inline-flex w-full items-center gap-2 text-xs text-muted-foreground">
+                      <TeamBadge team={state.teams[teamId] as Team} size={16} />
+                      <span className="truncate">{state.teams[teamId]?.name}</span>
+                    </span>
+                  ) : (
+                    <span className="text-xs text-muted-foreground">Livre</span>
+                  )}
                 </td>
                 <td className="text-right font-mono-num">{player.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(player.transferValue)}</td>
