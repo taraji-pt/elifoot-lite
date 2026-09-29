@@ -1075,32 +1075,161 @@ function CupView({ state }: { state: GameState }) {
 }
 
 function History({ state }: { state: GameState }) {
-  if (!state.history.length)
+  const history = state.history;
+  if (!history.length)
     return <div className={card}>Ainda não terminaste nenhuma época.</div>;
+
+  const trophies = history.flatMap((h) => {
+    const items: { key: string; icon: string; title: string; season: string; club: string; clubId?: number; kind: string }[] = [];
+    const leagueChampion = h.leagueChampion ?? (h.division === 1 && h.position === 1);
+    const cupWinner = h.cupWinner ?? h.note.includes("Taça");
+    const promoted = h.promoted ?? h.note.includes("Subiu");
+
+    if (leagueChampion) {
+      items.push({
+        key: `${h.season}-league-${h.clubId ?? h.club}`,
+        icon: "🏆",
+        title: "Campeão da 1.ª Divisão",
+        season: h.season,
+        club: h.club,
+        clubId: h.clubId,
+        kind: "league",
+      });
+    }
+    if (cupWinner) {
+      items.push({
+        key: `${h.season}-cup-${h.clubId ?? h.club}`,
+        icon: "🏆",
+        title: "Vencedor da Taça",
+        season: h.season,
+        club: h.club,
+        clubId: h.clubId,
+        kind: "cup",
+      });
+    }
+    if (promoted) {
+      items.push({
+        key: `${h.season}-promotion-${h.clubId ?? h.club}`,
+        icon: "🥇",
+        title: `Subida da Divisão ${h.division}`,
+        season: h.season,
+        club: h.club,
+        clubId: h.clubId,
+        kind: "promotion",
+      });
+    }
+    return items;
+  });
+
+  const clubStats = new Map<string, { club: string; clubId?: number; trophies: number; seasons: number }>();
+  for (const h of history) {
+    const key = String(h.clubId ?? h.club);
+    const current = clubStats.get(key) ?? { club: h.club, clubId: h.clubId, trophies: 0, seasons: 0 };
+    current.seasons += 1;
+    current.trophies += Number(h.leagueChampion ?? (h.division === 1 && h.position === 1));
+    current.trophies += Number(h.cupWinner ?? h.note.includes("Taça"));
+    current.trophies += Number(h.promoted ?? h.note.includes("Subiu"));
+    clubStats.set(key, current);
+  }
+  const mostSuccessfulClub = [...clubStats.values()]
+    .sort((a, b) => b.trophies - a.trophies || b.seasons - a.seasons)[0];
+
   return (
-    <div className={card}>
-      <table className="w-full text-sm">
-        <thead className="text-left text-xs text-muted-foreground">
-          <tr><th>Época</th><th>Clube</th><th>Divisão</th><th>Posição</th><th>Pts</th><th>Nota</th></tr>
-        </thead>
-        <tbody>
-          {state.history.map((h, i) => (
-            <tr key={i} className="border-t border-border">
-              <td className="py-1.5">{h.season}</td>
-              <td>
-                <span className="inline-flex items-center gap-2 font-semibold">
-                  {h.clubId && state.teams[h.clubId] ? <TeamBadge team={state.teams[h.clubId] as Team} size={22} /> : null}
-                  {h.club ?? "—"}
-                </span>
-              </td>
-              <td>{h.division}</td>
-              <td>{h.position}.º</td>
-              <td>{h.points}</td>
-              <td>{h.note}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="space-y-4">
+      <div className={card}>
+        <div className="flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Sala de Troféus</div>
+            <div className="mt-1 text-2xl font-black">A tua carreira</div>
+          </div>
+          <div className="text-sm text-muted-foreground">
+            {trophies.length} {trophies.length === 1 ? "troféu" : "troféus"} · {history.length} {history.length === 1 ? "época" : "épocas"}
+          </div>
+        </div>
+
+        {trophies.length ? (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {trophies.map((t) => {
+              const trophyTeam = t.clubId ? state.teams[t.clubId] as Team | undefined : undefined;
+              return (
+                <div
+                  key={t.key}
+                  className={`relative overflow-hidden rounded-xl border p-4 text-center ${
+                    t.kind === "league"
+                      ? "border-yellow-500/40 bg-yellow-500/10"
+                      : t.kind === "cup"
+                        ? "border-slate-400/50 bg-slate-400/10"
+                        : "border-primary/30 bg-primary/10"
+                  }`}
+                >
+                  <div className="text-5xl leading-none">{t.icon}</div>
+                  <div className="mt-2 font-black">{t.title}</div>
+                  <div className="mt-1 text-xs font-semibold text-muted-foreground">{t.season}</div>
+                  <div className="mt-2 flex items-center justify-center gap-2 text-sm font-semibold">
+                    {trophyTeam ? <TeamBadge team={trophyTeam} size={24} /> : null}
+                    <span>{t.club}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="mt-4 rounded-md border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
+            Ainda não conquistaste troféus. A tua vitrina está à espera do primeiro título. 🏆
+          </div>
+        )}
+      </div>
+
+      <div className={`${card} grid gap-3 sm:grid-cols-3`}>
+        <div className="rounded-md border border-border bg-card p-3 text-center">
+          <div className="text-xs uppercase text-muted-foreground">Total de troféus</div>
+          <div className="mt-1 text-2xl font-black text-primary">{trophies.length}</div>
+        </div>
+        <div className="rounded-md border border-border bg-card p-3 text-center">
+          <div className="text-xs uppercase text-muted-foreground">Épocas disputadas</div>
+          <div className="mt-1 text-2xl font-black">{history.length}</div>
+        </div>
+        <div className="rounded-md border border-border bg-card p-3 text-center">
+          <div className="text-xs uppercase text-muted-foreground">Maior sucesso</div>
+          <div className="mt-1 flex items-center justify-center gap-2 text-sm font-bold">
+            {mostSuccessfulClub?.clubId && state.teams[mostSuccessfulClub.clubId] ? (
+              <TeamBadge team={state.teams[mostSuccessfulClub.clubId] as Team} size={24} />
+            ) : null}
+            <span>{mostSuccessfulClub?.club ?? "—"}</span>
+          </div>
+          {mostSuccessfulClub && (
+            <div className="mt-1 text-xs text-muted-foreground">
+              {mostSuccessfulClub.trophies} {mostSuccessfulClub.trophies === 1 ? "troféu" : "troféus"}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className={card}>
+        <div className="mb-3 font-semibold">Histórico de épocas</div>
+        <table className="w-full text-sm">
+          <thead className="text-left text-xs text-muted-foreground">
+            <tr><th>Época</th><th>Clube</th><th>Divisão</th><th>Posição</th><th>Pts</th><th>Nota</th></tr>
+          </thead>
+          <tbody>
+            {history.map((h, i) => (
+              <tr key={i} className="border-t border-border">
+                <td className="py-1.5">{h.season}</td>
+                <td>
+                  <span className="inline-flex items-center gap-2 font-semibold">
+                    {h.clubId && state.teams[h.clubId] ? <TeamBadge team={state.teams[h.clubId] as Team} size={22} /> : null}
+                    {h.club ?? "—"}
+                  </span>
+                </td>
+                <td>{h.division}</td>
+                <td>{h.position}.º</td>
+                <td>{h.points}</td>
+                <td>{h.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
