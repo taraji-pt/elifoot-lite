@@ -31,17 +31,30 @@ function addScorerGoals(state: GameState, scorerIds: number[], competition: "lea
   }
 }
 
-function addRedCardSuspensions(state: GameState, playerIds: number[]) {
+function addMatchDiscipline(state: GameState, cards: { playerId: number; type: "yellow" | "red" }[]) {
   if (!state.suspensions) state.suspensions = {};
-  for (const playerId of playerIds) state.suspensions[playerId] = 1;
+  if (!state.yellowCards) state.yellowCards = {};
+
+  for (const card of cards) {
+    if (card.type === "red") {
+      // O valor 2 faz com que a preparação do próximo jogo consuma 1,
+      // deixando o jogador efetivamente de fora desse jogo.
+      state.suspensions[card.playerId] = 2;
+      continue;
+    }
+
+    const next = (state.yellowCards[card.playerId] ?? 0) + 1;
+    if (next >= 5) {
+      state.yellowCards[card.playerId] = 0;
+      state.suspensions[card.playerId] = Math.max(state.suspensions[card.playerId] ?? 0, 2);
+    } else {
+      state.yellowCards[card.playerId] = next;
+    }
+  }
 }
 
-function consumeMatchSuspensions(state: GameState) {
-  if (!state.suspensions) return;
-  for (const [id, remaining] of Object.entries(state.suspensions)) {
-    if (remaining <= 1) delete state.suspensions[Number(id)];
-    else state.suspensions[Number(id)] = remaining - 1;
-  }
+function addRedCardSuspensions(state: GameState, playerIds: number[]) {
+  addMatchDiscipline(state, playerIds.map((playerId) => ({ playerId, type: "red" as const })));
 }
 
 export function prepareTeamForMatch(state: GameState, team: Team): number[] {
