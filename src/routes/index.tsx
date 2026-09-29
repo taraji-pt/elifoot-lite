@@ -611,6 +611,7 @@ function Match({ state }: { state: GameState }) {
   const [elapsedMs, setElapsedMs] = useState(0);
   const [flashEvent, setFlashEvent] = useState<string | null>(null);
   const eventsScrollRef = useRef<HTMLDivElement | null>(null);
+  const lastMatchEvent = match?.events?.[match.events.length - 1] ?? null;
   const team = userTeam(state);
   const match = state.match;
 
@@ -634,6 +635,17 @@ function Match({ state }: { state: GameState }) {
     if (!el) return;
     if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
   }, [match?.events.length, elapsedMs]);
+
+  // Este hook tem de correr sempre, mesmo no ecrã pré-jogo. Se ficasse
+  // depois do return de !match, a ordem dos hooks mudava ao iniciar o jogo.
+  useEffect(() => {
+    if (!lastMatchEvent) return;
+    const kind = lastMatchEvent.split("|")[3];
+    if (kind !== "G" && kind !== "R") return;
+    setFlashEvent(lastMatchEvent);
+    const timer = window.setTimeout(() => setFlashEvent(null), 1200);
+    return () => window.clearTimeout(timer);
+  }, [lastMatchEvent]);
 
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
@@ -710,15 +722,6 @@ function Match({ state }: { state: GameState }) {
   const visibleEvents = [...visibleFirst, ...visibleSecond];
 
   const lastVisibleEvent = visibleEvents[visibleEvents.length - 1] ?? null;
-
-  useEffect(() => {
-    if (!lastVisibleEvent) return;
-    const kind = parseEvent(lastVisibleEvent).kind;
-    if (kind !== "G" && kind !== "R") return;
-    setFlashEvent(lastVisibleEvent);
-    const timer = window.setTimeout(() => setFlashEvent(null), 1200);
-    return () => window.clearTimeout(timer);
-  }, [lastVisibleEvent]);
 
   const shownScore = visibleEvents.reduce(
     (score, event) => {
@@ -1058,32 +1061,101 @@ function Calendar({ state }: { state: GameState }) {
 function Transfers({ state }: { state: GameState }) {
   const { buy, sell } = useGame();
   const [pos, setPos] = useState<Position | "ALL">("ALL");
+  const [search, setSearch] = useState("");
+  const [minRating, setMinRating] = useState("");
+  const [maxValue, setMaxValue] = useState("");
   const [maxPrice, setMaxPrice] = useState(true);
+  const [marketSeed] = useState(() => Math.random());
   const team = userTeam(state);
-  const market = useMemo(
-    () =>
-      marketPlayers(state)
-        .filter(({ player }) => pos === "ALL" || player.position === pos)
-        .filter(({ player }) => !maxPrice || player.transferValue <= team.budget)
-        .sort((a, b) => b.player.rating - a.player.rating)
-        .slice(0, 40),
-    [state, pos, maxPrice, team.budget],
-  );
+
+  const market = useMemo(() => {
+    const query = search.trim().toLocaleLowerCase("pt");
+    const ratingMin = minRating === "" ? null : Number(minRating);
+    const valueMax = maxValue === "" ? null : Number(maxValue);
+
+    const filtered = marketPlayers(state)
+      .filter(({ player }) => !query || player.name.toLocaleLowerCase("pt").includes(query))
+      .filter(({ player }) => pos === "ALL" || player.position === pos)
+      .filter(({ player }) => ratingMin === null || player.rating >= ratingMin)
+      .filter(({ player }) => valueMax === null || player.transferValue <= valueMax)
+      .filter(({ player }) => !maxPrice || player.transferValue <= team.budget);
+
+    // Sem pesquisa nominal, o mercado apresenta uma montra aleatória e estável
+    // de 40 jogadores. Com pesquisa, procuramos no universo inteiro.
+    if (query) {
+      return filtered.sort((a, b) =>
+        b.player.rating - a.player.rating ||
+        a.player.name.localeCompare(b.player.name, "pt"),
+      );
+    }
+
+    return filtered
+      .sort((a, b) => {
+        const scoreA = ((a.player.id * 9301 + Math.floor(marketSeed * 100000) * 49297) % 233280);
+        const scoreB = ((b.player.id * 9301 + Math.floor(marketSeed * 100000) * 49297) % 233280);
+        return scoreA - scoreB;
+      })
+      .slice(0, 40);
+  }, [state, pos, search, minRating, maxValue, maxPrice, team.budget, marketSeed]);
+
   const mine = sortSquad(getPlayers(team.playerIds, state.players));
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <div className={card}>
         <div className="mb-2 font-semibold">Mercado</div>
-        <div className="mb-3 flex flex-wrap items-center gap-1">
-          {(["ALL", "GR", "DEF", "MED", "AV"] as const).map((p) => (
-            <button key={p} className={pos === p ? btn : btn2} onClick={() => setPos(p)}>
-              {p === "ALL" ? "Todos" : p}
+        <div className="mb-3 space-y-2">
+          <input
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+            placeholder="🔎 Procurar jogador..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="flex flex-wrap items-center gap-1">
+            {(["ALL", "GR", "DEF", "MED", "AV"] as const).map((p) => (
+              <button key={p} className={pos === p ? btn : btn2} onClick={() => setPos(p)}>
+                {p === "ALL" ? "Todos" : p}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <label className="flex items-center gap-1 text-xs text-muted-foreground">
+              Rating ≥
+              <input
+                type="number"
+                min="0"
+                max="100"
+                className="w-16 rounded-md border border-border bg-background px-2 py-1 text-sm text-foreground"
+                value={minRating}
+                onChange={(e) => setMinRating(e.target.value)}
+              />
+            </label>
+            <label className="flex items-center gap-1 text-xs text-muted-foreground">
+              Valor ≤
+              <input
+                type="number"
+                min="0"
+                className="w-28 rounded-md border border-border bg-background px-2 py-1 text-sm text-foreground"
+                placeholder="€"
+                value={maxValue}
+                onChange={(e) => setMaxValue(e.target.value)}
+              />
+            </label>
+            <label className="flex items-center gap-1 text-xs">
+              <input type="checkbox" checked={maxPrice} onChange={(e) => setMaxPrice(e.target.checked)} />
+              Só os que posso pagar
+            </label>
+            <button
+              className={btn2}
+              onClick={() => {
+                setSearch("");
+                setMinRating("");
+                setMaxValue("");
+                setPos("ALL");
+              }}
+            >
+              Limpar filtros
             </button>
-          ))}
-          <label className="ml-2 flex items-center gap-1 text-xs">
-            <input type="checkbox" checked={maxPrice} onChange={(e) => setMaxPrice(e.target.checked)} />
-            Só os que posso pagar
-          </label>
+          </div>
         </div>
         <table className="w-full text-sm">
           <tbody>
