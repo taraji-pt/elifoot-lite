@@ -240,8 +240,10 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const match = draft.match;
           if (!match || !match.finished) return;
 
-          if (draft.suspensions === undefined) draft.suspensions = {};
-          for (const playerId of match.redCardIds ?? []) draft.suspensions[playerId] = 2;
+          recordMatchDiscipline(draft, [
+            ...(match.redCardIds ?? []).map((playerId) => ({ playerId, type: "red" as const })),
+            ...(match.yellowCardIds ?? []).map((playerId) => ({ playerId, type: "yellow" as const })),
+          ]);
           if (match.competition === "cup") {
             recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId, match.scorerIds);
           } else {
