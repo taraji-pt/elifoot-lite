@@ -662,16 +662,35 @@ function Match({ state }: { state: GameState }) {
     if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
   }, [match?.events.length, elapsedMs]);
 
-  // Este hook tem de correr sempre, mesmo no ecrã pré-jogo. Se ficasse
-  // depois do return de !match, a ordem dos hooks mudava ao iniciar o jogo.
+  // O jogo já tem todos os eventos simulados no início; o flash deve
+  // disparar quando cada evento fica visível no relógio.
   useEffect(() => {
-    if (!lastMatchEvent) return;
-    const kind = lastMatchEvent.split("|")[3];
+    if (!match || !lastMatchEvent) return;
+
+    const firstEvents = match.events.filter((e) => e.startsWith("1|"));
+    const secondEvents = match.events.filter((e) => e.startsWith("2|"));
+    const phaseElapsed = Math.min(10000, elapsedMs);
+    const simulatedMinute = match.finished
+      ? 46 + Math.floor((phaseElapsed / 10000) * 44)
+      : 1 + Math.floor((phaseElapsed / 10000) * 44);
+
+    const visibleFirst = match.finished
+      ? firstEvents
+      : firstEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute);
+    const visibleSecond = match.finished
+      ? secondEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute)
+      : [];
+    const visibleEvents = [...visibleFirst, ...visibleSecond];
+    const event = visibleEvents[visibleEvents.length - 1] ?? null;
+
+    if (!event) return;
+    const kind = event.split("|")[3];
     if (kind !== "G" && kind !== "R") return;
-    setFlashEvent(lastMatchEvent);
+
+    setFlashEvent(event);
     const timer = window.setTimeout(() => setFlashEvent(null), 1200);
     return () => window.clearTimeout(timer);
-  }, [lastMatchEvent]);
+  }, [match, elapsedMs, lastMatchEvent]);
 
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
@@ -816,12 +835,16 @@ function Match({ state }: { state: GameState }) {
           </div>
         </div>
 
-        <div className="my-4 flex items-center gap-3">
-          <MatchTeam team={home} side="home" />
+        <div className="mx-auto my-4 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4">
+          <div className="flex justify-end">
+            <MatchTeam team={home} side="home" />
+          </div>
           <span className={`shrink-0 font-mono-num text-4xl font-bold ${cupOutcomeClass} ${flashEvent && lastVisibleEvent === flashEvent && parseEvent(flashEvent).kind === "G" ? "animate-pulse" : ""}`}>
             {shownScore.home} - {shownScore.away}
           </span>
-          <MatchTeam team={away} side="away" />
+          <div className="flex justify-start">
+            <MatchTeam team={away} side="away" />
+          </div>
         </div>
 
         <div ref={eventsScrollRef} className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
