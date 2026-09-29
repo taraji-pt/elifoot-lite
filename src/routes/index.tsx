@@ -610,13 +610,21 @@ function PlayerTable({
 }) {
   const disabled = new Set(disabledIds ?? []);
   return (
-    <table className="w-full text-sm">
+    <table className="w-full table-fixed text-sm">
+      <colgroup>
+        <col className="w-[6%]" />
+        <col className="w-[38%]" />
+        <col className="w-[14%]" />
+        <col className="w-[12%]" />
+        <col className="w-[17%]" />
+        <col className="w-[13%]" />
+      </colgroup>
       <thead className="text-left text-xs text-muted-foreground">
         <tr>
           <th className="py-1">Pos</th>
           <th>Nome</th>
           <th>Nac.</th>
-          <th className="text-right">Rating</th>
+          <th className="text-left">Rating</th>
           <th className="text-right">Valor</th>
           <th />
         </tr>
@@ -633,9 +641,9 @@ function PlayerTable({
             }`}
           >
             <td className="py-1.5 font-mono-num text-xs">{p.position}</td>
-            <td>{p.name}</td>
+            <td className="truncate">{p.name}</td>
             <td><Flag code={p.nationality} /></td>
-            <td className="text-right font-mono-num">{p.rating}</td>
+            <td className="text-left font-mono-num">{p.rating}</td>
             <td className="text-right font-mono-num text-muted-foreground">{formatMoney(p.transferValue)}</td>
             <td className="pl-2 text-right text-xs text-primary">{action?.(p)}</td>
           </tr>
