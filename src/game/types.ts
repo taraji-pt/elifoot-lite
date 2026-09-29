@@ -35,6 +35,7 @@ export interface Fixture {
   awayId: number;
   homeGoals: number | null;
   awayGoals: number | null;
+  scorerIds?: number[];
 }
 
 export interface CupTie {
@@ -44,6 +45,7 @@ export interface CupTie {
   awayGoals: number | null;
   /** true se decidido nos penáltis */
   penalties?: boolean;
+  scorerIds?: number[];
   winnerId: number | null;
 }
 
@@ -71,9 +73,15 @@ export interface MatchState {
   userLineup: number[];
   subsUsed: number;
   events: string[];
+  scorerIds: number[];
   /** acontecimentos do jogo, com minuto e marcador */
   finished: boolean;
   cupPenaltyWinnerId?: number;
+}
+
+export interface GoalStats {
+  league: number;
+  cup: number;
 }
 
 export interface SeasonReview {
@@ -87,6 +95,7 @@ export interface SeasonReview {
   droppedOut: number[];
   climbers: number[];
   outcome: "promoted" | "stayed" | "relegated" | "out";
+  scorers: Record<number, GoalStats>;
 }
 
 export interface Celebration {
@@ -138,5 +147,7 @@ export interface GameState {
   celebration?: Celebration | null;
   seasonReview?: SeasonReview | null;
   history: SeasonSummary[];
+  /** golos acumulados na época em curso */
+  scorerStats: Record<number, GoalStats>;
   nextPlayerId: number;
 }
