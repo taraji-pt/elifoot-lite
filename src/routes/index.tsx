@@ -557,7 +557,7 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
           🟥 Suspensos para o próximo jogo: <b>{suspended.map((p) => p.name).join(", ")}</b>
         </div>
       )}
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="space-y-3">
         {(["GR", "DEF", "MED", "AV"] as const).map((position) => {
           const players = squad.filter((p) => p.position === position);
           const label = position === "GR" ? "Guarda-redes" : position === "DEF" ? "Defesas" : position === "MED" ? "Médios" : "Avançados";
@@ -1107,7 +1107,7 @@ function Calendar({ state }: { state: GameState }) {
   const team = userTeam(state);
   const rounds = state.leagues[team.division] ?? [];
   return (
-    <div className={`${card} mx-auto max-w-2xl`}>
+    <div className={`${card} max-w-2xl`}>
       <table className="w-full text-sm">
         <tbody>
           {rounds.map((round, i) => {
@@ -1262,7 +1262,9 @@ function Transfers({ state }: { state: GameState }) {
                 </td>
                 <td className="text-left font-mono-num">{player.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(player.transferValue)}</td>
-                <td className="w-20 pl-1 text-right">\n                  <button className={`${btn2} whitespace-nowrap px-2 text-xs`} onClick={() => buy(player.id)}>Comprar</button>\n                </td>
+                <td className="pl-2 text-right">
+                  <button className={btn2} onClick={() => buy(player.id)}>Comprar</button>
+                </td>
               </tr>
             ))}
           </tbody>
