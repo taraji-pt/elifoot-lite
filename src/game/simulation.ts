@@ -14,7 +14,7 @@ function lambdaFor(attack: number, defence: number, home: boolean) {
 export interface HalfResult {
   homeGoals: number;
   awayGoals: number;
-  scorers: { teamId: number; playerName: string }[];
+  scorers: { teamId: number; playerName: string; minute: number }[];
 }
 
 function scorerFrom(team: Team, lineup: number[], players: Record<number, Player>): string {
@@ -37,6 +37,8 @@ export function simulateHalf(
   players: Record<number, Player>,
   homeLineup: number[],
   awayLineup: number[],
+  minuteStart = 1,
+  minuteEnd = 45,
 ): HalfResult {
   const ratingHome = teamRating({ ...home, lineup: homeLineup }, players);
   const ratingAway = teamRating({ ...away, lineup: awayLineup }, players);
@@ -44,12 +46,13 @@ export function simulateHalf(
   const homeGoals = poisson(lambdaFor(ratingHome, ratingAway, true));
   const awayGoals = poisson(lambdaFor(ratingAway, ratingHome, false));
 
-  const scorers: { teamId: number; playerName: string }[] = [];
+  const scorers: { teamId: number; playerName: string; minute: number }[] = [];
   for (let i = 0; i < homeGoals; i++)
-    scorers.push({ teamId: home.id, playerName: scorerFrom(home, homeLineup, players) });
+    scorers.push({ teamId: home.id, playerName: scorerFrom(home, homeLineup, players), minute: randInt(minuteStart, minuteEnd) });
   for (let i = 0; i < awayGoals; i++)
-    scorers.push({ teamId: away.id, playerName: scorerFrom(away, awayLineup, players) });
+    scorers.push({ teamId: away.id, playerName: scorerFrom(away, awayLineup, players), minute: randInt(2, 45) });
 
+  scorers.sort((a, b) => a.minute - b.minute);
   return { homeGoals, awayGoals, scorers };
 }
 
@@ -59,8 +62,8 @@ export function simulateMatch(
   away: Team,
   players: Record<number, Player>,
 ): { homeGoals: number; awayGoals: number } {
-  const h1 = simulateHalf(home, away, players, home.lineup, away.lineup);
-  const h2 = simulateHalf(home, away, players, home.lineup, away.lineup);
+  const h1 = simulateHalf(home, away, players, home.lineup, away.lineup, 1, 45);
+  const h2 = simulateHalf(home, away, players, home.lineup, away.lineup, 46, 90);
   return { homeGoals: h1.homeGoals + h2.homeGoals, awayGoals: h1.awayGoals + h2.awayGoals };
 }
 
