@@ -157,8 +157,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
 
           const home = draft.teams[homeId] as Team;
           const away = draft.teams[awayId] as Team;
-          const half = simulateHalf(home, away, draft.players, home.lineup, away.lineup);
+          const half = simulateHalf(home, away, draft.players, home.lineup, away.lineup, 1, 45);
           playWhistle(1);
+          if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           draft.match = {
             competition: playCup ? "cup" : "league",
             homeId: home.id,
@@ -169,7 +170,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             userLineup: [...(draft.teams[draft.userTeamId]?.lineup ?? [])],
             subsUsed: 0,
             events: half.scorers.map(
-              (s) => `1.ª parte — ${draft.teams[s.teamId]?.name}: ${s.playerName}`,
+              (s) => `1|${s.minute}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
             finished: false,
           };
@@ -200,14 +201,15 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const homeLineup = userIsHome ? match.userLineup : home.lineup;
           const awayLineup = userIsHome ? away.lineup : match.userLineup;
           playWhistle(2);
-          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup);
+          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
           match.half = 2;
           match.finished = true;
+          if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           match.events.push(
             ...half.scorers.map(
-              (s) => `2.ª parte — ${draft.teams[s.teamId]?.name}: ${s.playerName}`,
+              (s) => `2|${s.minute}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
           );
 
@@ -215,7 +217,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
             const winnerName = draft.teams[match.cupPenaltyWinnerId]?.name ?? "equipa vencedora";
             match.events.push(
-              `Penáltis — passou o ${winnerName}.`,
+              `P|90|Penáltis — passou o ${winnerName}.`,
             );
           }
         }),
