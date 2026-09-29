@@ -31,7 +31,7 @@ function addScorerGoals(state: GameState, scorerIds: number[], competition: "lea
   }
 }
 
-function addMatchDiscipline(state: GameState, cards: { playerId: number; type: "yellow" | "red" }[]) {
+export function recordMatchDiscipline(state: GameState, cards: { playerId: number; type: "yellow" | "red" }[]) {
   if (!state.suspensions) state.suspensions = {};
   if (!state.yellowCards) state.yellowCards = {};
 
@@ -53,9 +53,6 @@ function addMatchDiscipline(state: GameState, cards: { playerId: number; type: "
   }
 }
 
-function addRedCardSuspensions(state: GameState, playerIds: number[]) {
-  recordMatchDiscipline(state, playerIds.map((playerId) => ({ playerId, type: "red" as const })));
-}
 
 export function prepareTeamForMatch(state: GameState, team: Team): number[] {
   if (!state.suspensions) state.suspensions = {};
