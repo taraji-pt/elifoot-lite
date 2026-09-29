@@ -54,7 +54,7 @@ function addMatchDiscipline(state: GameState, cards: { playerId: number; type: "
 }
 
 function addRedCardSuspensions(state: GameState, playerIds: number[]) {
-  addMatchDiscipline(state, playerIds.map((playerId) => ({ playerId, type: "red" as const })));
+  recordMatchDiscipline(state, playerIds.map((playerId) => ({ playerId, type: "red" as const })));
 }
 
 export function prepareTeamForMatch(state: GameState, team: Team): number[] {
