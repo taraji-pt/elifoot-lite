@@ -635,6 +635,7 @@ function Match({ state }: { state: GameState }) {
   const [elapsedMs, setElapsedMs] = useState(0);
   const playedEventSounds = useRef<Set<string>>(new Set());
   const playedPhaseSounds = useRef<Set<string>>(new Set());
+  const eventsScrollRef = useRef<HTMLDivElement | null>(null);
   const team = userTeam(state);
   const match = state.match;
 
@@ -769,6 +770,12 @@ function Match({ state }: { state: GameState }) {
     : [];
   const visibleEvents = [...visibleFirst, ...visibleSecond];
 
+  useEffect(() => {
+    const el = eventsScrollRef.current;
+    if (!el) return;
+    if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
+  }, [visibleEvents.length]);
+
   const shownScore = visibleEvents.reduce(
     (score, event) => {
       const parsed = parseEvent(event);
@@ -844,7 +851,7 @@ function Match({ state }: { state: GameState }) {
           <TeamIdentity team={away} size={40} bold />
         </div>
 
-        <div className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
+        <div ref={eventsScrollRef} className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
           {visibleEvents.length ? (
             <ul className="space-y-1.5 text-sm">
               {visibleEvents.map((event, i) => {
@@ -856,10 +863,17 @@ function Match({ state }: { state: GameState }) {
                     key={`${event}-${i}`}
                     className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? "font-bold text-red-600 dark:text-red-400" : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
                   >
-                    <span className="w-9 shrink-0 font-mono-num text-xs text-muted-foreground">
-                      {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "Y" ? "🟨" : `${parsed.minute}'`}
+                    <span className="w-9 shrink-0 text-xs">
+                      {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "Y" ? "🟨" : "⚽"}
                     </span>
-                    <span>{parsed.text}</span>
+                    {!isPenalty && (
+                      <span className="w-8 shrink-0 font-mono-num text-xs text-muted-foreground">
+                        {parsed.minute}'
+                      </span>
+                    )}
+                    <span>
+                      {isPenalty ? parsed.text : parsed.text.replace(/^[^:]+:\s*/, "")}
+                    </span>
                   </li>
                 );
               })}
