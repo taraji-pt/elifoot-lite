@@ -1221,7 +1221,7 @@ function Transfers({ state }: { state: GameState }) {
             <tr>
               <th className="pr-3">Pos.</th>
               <th className="w-[38%] pr-2">Jogador / Clube</th>
-              <th className="text-right">Rating</th>
+              <th className="text-left">Rating</th>
               <th className="text-right">Valor</th>
               <th></th>
             </tr>
@@ -1246,7 +1246,7 @@ function Transfers({ state }: { state: GameState }) {
                     </div>
                   </div>
                 </td>
-                <td className="text-right font-mono-num">{player.rating}</td>
+                <td className="text-left font-mono-num">{player.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(player.transferValue)}</td>
                 <td className="pl-2 text-right">
                   <button className={btn2} onClick={() => buy(player.id)}>Comprar</button>
