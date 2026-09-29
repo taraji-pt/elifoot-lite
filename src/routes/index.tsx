@@ -557,26 +557,40 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
           🟥 Suspensos para o próximo jogo: <b>{suspended.map((p) => p.name).join(", ")}</b>
         </div>
       )}
-      <PlayerTable
-        players={squad}
-        highlight={team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0)}
-        disabledIds={disabledIds}
-        onClick={toggle}
-        action={(p) => {
-          const yellows = state.yellowCards?.[p.id] ?? 0;
-          const status = state.suspensions?.[p.id]
-            ? "🟥 Suspenso"
-            : team.lineup.includes(p.id)
-              ? "Titular"
-              : "";
+      <div className="grid gap-3 sm:grid-cols-2">
+        {(["GR", "DEF", "MED", "AV"] as const).map((position) => {
+          const players = squad.filter((p) => p.position === position);
+          const label = position === "GR" ? "Guarda-redes" : position === "DEF" ? "Defesas" : position === "MED" ? "Médios" : "Avançados";
           return (
-            <span className="inline-flex items-center gap-2">
-              {yellows > 0 && <span className="font-mono-num text-yellow-600 dark:text-yellow-400">🟨 {yellows}/5</span>}
-              {status}
-            </span>
+            <div key={position} className="rounded-lg border border-border/70 bg-background/20 p-2.5">
+              <div className="mb-1.5 flex items-center justify-between px-1 text-sm font-semibold">
+                <span>{label}</span>
+                <span className="text-xs font-normal text-muted-foreground">{players.length}</span>
+              </div>
+              <PlayerTable
+                players={players}
+                highlight={team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0)}
+                disabledIds={disabledIds}
+                onClick={toggle}
+                action={(p) => {
+                  const yellows = state.yellowCards?.[p.id] ?? 0;
+                  const status = state.suspensions?.[p.id]
+                    ? "🟥 Suspenso"
+                    : team.lineup.includes(p.id)
+                      ? "Titular"
+                      : "";
+                  return (
+                    <span className="inline-flex items-center gap-2">
+                      {yellows > 0 && <span className="font-mono-num text-yellow-600 dark:text-yellow-400">🟨 {yellows}/5</span>}
+                      {status}
+                    </span>
+                  );
+                }}
+              />
+            </div>
           );
-        }}
-      />
+        })}
+      </div>
     </div>
   );
 }
@@ -1093,7 +1107,7 @@ function Calendar({ state }: { state: GameState }) {
   const team = userTeam(state);
   const rounds = state.leagues[team.division] ?? [];
   return (
-    <div className={card}>
+    <div className={`${card} mx-auto max-w-2xl`}>
       <table className="w-full text-sm">
         <tbody>
           {rounds.map((round, i) => {
