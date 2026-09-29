@@ -1248,9 +1248,7 @@ function Transfers({ state }: { state: GameState }) {
                 </td>
                 <td className="text-left font-mono-num">{player.rating}</td>
                 <td className="text-right font-mono-num text-xs">{formatMoney(player.transferValue)}</td>
-                <td className="pl-2 text-right">
-                  <button className={btn2} onClick={() => buy(player.id)}>Comprar</button>
-                </td>
+                <td className="w-20 pl-1 text-right">\n                  <button className={`${btn2} whitespace-nowrap px-2 text-xs`} onClick={() => buy(player.id)}>Comprar</button>\n                </td>
               </tr>
             ))}
           </tbody>
