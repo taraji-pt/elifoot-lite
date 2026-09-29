@@ -36,19 +36,29 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
   if (!state.yellowCards) state.yellowCards = {};
 
   for (const card of cards) {
+    let suspended = false;
+
     if (card.type === "red") {
       // O valor 2 faz com que a preparação do próximo jogo consuma 1,
       // deixando o jogador efetivamente de fora desse jogo.
       state.suspensions[card.playerId] = 2;
-      continue;
+      suspended = true;
+    } else {
+      const next = (state.yellowCards[card.playerId] ?? 0) + 1;
+      if (next >= 5) {
+        state.yellowCards[card.playerId] = 0;
+        state.suspensions[card.playerId] = Math.max(state.suspensions[card.playerId] ?? 0, 2);
+        suspended = true;
+      } else {
+        state.yellowCards[card.playerId] = next;
+      }
     }
 
-    const next = (state.yellowCards[card.playerId] ?? 0) + 1;
-    if (next >= 5) {
-      state.yellowCards[card.playerId] = 0;
-      state.suspensions[card.playerId] = Math.max(state.suspensions[card.playerId] ?? 0, 2);
-    } else {
-      state.yellowCards[card.playerId] = next;
+    // Se for o nosso jogador, retira-o do onze guardado para podermos
+    // escolher imediatamente um substituto para o próximo jogo.
+    if (suspended && state.userTeamId) {
+      const team = state.teams[state.userTeamId];
+      if (team) team.lineup = team.lineup.filter((id) => id !== card.playerId);
     }
   }
 }
