@@ -720,10 +720,14 @@ function Match({ state }: { state: GameState }) {
             O teu jogo da Liga já terminou. Agora é a tua vez na Taça.
           </div>
         )}
-        <div className="my-6 flex items-center gap-3 text-lg">
-          <MatchTeam team={home} side="home" />
+        <div className="mx-auto my-6 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 text-lg">
+          <div className="flex justify-end">
+            <MatchTeam team={home} side="home" />
+          </div>
           <span className="shrink-0 text-muted-foreground">vs</span>
-          <MatchTeam team={away} side="away" />
+          <div className="flex justify-start">
+            <MatchTeam team={away} side="away" />
+          </div>
         </div>
         {!ok && <p className="mb-3 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
         <button className={btn} disabled={!ok} onClick={startMatch}>
@@ -1211,12 +1215,13 @@ function Transfers({ state }: { state: GameState }) {
             </button>
           </div>
         </div>
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[650px] text-sm">
           <thead className="text-left text-xs text-muted-foreground">
             <tr>
-              <th>Pos.</th>
-              <th>Jogador</th>
-              <th>Clube</th>
+              <th className="pr-3">Pos.</th>
+              <th className="min-w-[190px] pr-5">Jogador</th>
+              <th className="min-w-[180px] pr-5">Clube</th>
               <th className="text-right">Rating</th>
               <th className="text-right">Valor</th>
               <th></th>
@@ -1225,16 +1230,16 @@ function Transfers({ state }: { state: GameState }) {
           <tbody>
             {market.map(({ player, teamId }) => (
               <tr key={player.id} className="border-t border-border">
-                <td className="py-1.5 font-mono-num text-xs">{player.position}</td>
-                <td>
-                  <span className="inline-flex items-center gap-2">
+                <td className="py-1.5 pr-3 font-mono-num text-xs">{player.position}</td>
+                <td className="pr-5">
+                  <span className="inline-flex items-center gap-2 whitespace-nowrap">
                     <Flag code={player.nationality} size={16} />
                     <span>{player.name}</span>
                   </span>
                 </td>
-                <td className="max-w-[180px]">
+                <td className="max-w-[180px] pr-5">
                   {teamId ? (
-                    <span className="inline-flex w-full items-center gap-2 text-xs text-muted-foreground">
+                    <span className="inline-flex w-full items-center gap-2 whitespace-nowrap text-xs text-muted-foreground">
                       <TeamBadge team={state.teams[teamId] as Team} size={16} />
                       <span className="truncate">{state.teams[teamId]?.name}</span>
                     </span>
@@ -1250,7 +1255,8 @@ function Transfers({ state }: { state: GameState }) {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
       <div className={card}>
         <div className="mb-2 font-semibold">O meu plantel ({mine.length})</div>
