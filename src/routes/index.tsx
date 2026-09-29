@@ -96,7 +96,7 @@ function Start() {
         </button>
       )}
       <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">1. Países</h2>
-      <div className="mt-2 flex flex-col gap-1.5">
+      <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
         {countries.map((c) => (
           <button
             key={c.code}
@@ -738,7 +738,11 @@ function Match({ state }: { state: GameState }) {
         <div className="mx-auto mt-3 max-w-md">
           <div className="mb-1 flex justify-between text-[10px] text-muted-foreground">
             <span>0'</span>
-            <span className="font-bold">{match.finished ? (phaseComplete ? "90'" : `${currentMinute}'`) : (phaseComplete ? "45'" : `${currentMinute}'`)}</span>
+            <span>15'</span>
+            <span>30'</span>
+            <span className="font-bold">HT</span>
+            <span>60'</span>
+            <span>75'</span>
             <span>90'</span>
           </div>
           <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
