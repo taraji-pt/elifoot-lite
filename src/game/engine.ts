@@ -58,7 +58,17 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
     // escolher imediatamente um substituto para o próximo jogo.
     if (suspended && state.userTeamId) {
       const team = state.teams[state.userTeamId];
-      if (team) team.lineup = team.lineup.filter((id) => id !== card.playerId);
+      if (team) {
+        // Retira o suspenso do onze e coloca automaticamente o melhor
+        // substituto disponível, para o plantel continuar com 11 titulares.
+        team.lineup = team.lineup.filter((id) => id !== card.playerId);
+        const available = team.playerIds
+          .filter((id) => (state.suspensions?.[id] ?? 0) <= 0 && !team.lineup.includes(id))
+          .sort((a, b) => (state.players[b]?.rating ?? 0) - (state.players[a]?.rating ?? 0));
+        if (team.lineup.length < 11 && available.length > 0) {
+          team.lineup.push(available[0]);
+        }
+      }
     }
   }
 }
