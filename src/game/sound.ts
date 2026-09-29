@@ -48,23 +48,11 @@ export function playWhistle(count: 1 | 2 | 3) {
   }
 }
 
-export function playCard(type: "yellow" | "red") {
+export function playRedCard() {
   if (!isSoundEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
-  const start = ctx.currentTime + 0.01;
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "square";
-  osc.frequency.setValueAtTime(type === "red" ? 260 : 520, start);
-  osc.frequency.exponentialRampToValueAtTime(type === "red" ? 180 : 760, start + 0.12);
-  gain.gain.setValueAtTime(0.0001, start);
-  gain.gain.exponentialRampToValueAtTime(0.1, start + 0.01);
-  gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.18);
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.start(start);
-  osc.stop(start + 0.19);
+  whistleAt(ctx, ctx.currentTime + 0.01);
 }
 
 export function playGoal() {
