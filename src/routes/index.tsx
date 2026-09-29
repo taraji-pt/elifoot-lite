@@ -583,6 +583,7 @@ function PlayerTable({
   highlight?: number[];
   onClick?: (id: number) => void;
   action?: (p: Player) => React.ReactNode;
+  disabledIds?: number[];
 }) {
   return (
     <table className="w-full text-sm">
