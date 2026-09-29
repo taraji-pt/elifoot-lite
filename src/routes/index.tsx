@@ -585,6 +585,7 @@ function PlayerTable({
   action?: (p: Player) => React.ReactNode;
   disabledIds?: number[];
 }) {
+  const disabled = new Set(disabledIds ?? []);
   return (
     <table className="w-full text-sm">
       <thead className="text-left text-xs text-muted-foreground">
