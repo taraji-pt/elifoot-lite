@@ -867,20 +867,34 @@ function CupView({ state }: { state: GameState }) {
               const score = tie.homeGoals === null
                 ? "–"
                 : String(tie.homeGoals) + "-" + String(tie.awayGoals) + (tie.penalties ? " (p)" : "");
+              const userAdvanced = mine && tie.winnerId === state.userTeamId;
+              const userEliminated = mine && tie.winnerId !== null && tie.winnerId !== state.userTeamId;
               return (
                 <div
                   key={j}
-                  className={`grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2 rounded px-2 py-1 text-sm ${mine ? "bg-primary/10" : ""}`}
+                  className={`rounded px-2 py-1 text-sm ${mine ? "bg-primary/10" : ""}`}
                 >
-                  <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
-                    <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
+                  <div className="grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2">
+                    <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
+                      <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
+                    </div>
+                    <span className={`w-14 text-center font-mono-num ${penaltyClass}`}>
+                      {score}
+                    </span>
+                    <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
+                      <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
+                    </div>
                   </div>
-                  <span className={`w-14 text-center font-mono-num ${penaltyClass}`}>
-                    {score}
-                  </span>
-                  <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
-                    <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
-                  </div>
+                  {userAdvanced && (
+                    <div className="mt-1 text-center text-xs font-bold text-green-600 dark:text-green-400">
+                      ✓ Passou
+                    </div>
+                  )}
+                  {userEliminated && (
+                    <div className="mt-1 text-center text-xs font-bold text-red-600 dark:text-red-400">
+                      ✕ Não passou
+                    </div>
+                  )}
                 </div>
               );
             })}
