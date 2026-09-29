@@ -177,7 +177,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             subsUsed: 0,
             events: [
               ...half.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
-              ...half.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${c.playerName}`),
+              ...half.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
             ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
             scorerIds: half.scorers.map((s) => s.playerId),
             redCardIds: half.cards.filter((c) => c.type === "red").map((c) => c.playerId),
