@@ -26,6 +26,7 @@ import {
   userFixture,
   userCupTie,
   prepareTeamForMatch,
+  availableLineup,
 } from "@/game/engine";
 import { createNewGame } from "@/game/newGame";
 import { penaltyShootout, simulateHalf } from "@/game/simulation";
