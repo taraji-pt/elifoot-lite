@@ -1,6 +1,7 @@
 import { Flag } from "@/components/Flag";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { isSoundEnabled, setSoundEnabled } from "@/game/sound";
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { countryList, loadDatabase } from "@/data/db";
 import { COUNTRIES } from "@/data/countries";
@@ -283,6 +284,7 @@ function Game({ state }: { state: GameState }) {
         </div>
         <div className="flex items-center gap-2">
           <span className="font-mono-num text-sm text-primary">{formatMoney(team.budget)}</span>
+          <SoundToggle />
           <button className={btn2} onClick={save}>Guardar</button>
           <button
             className={btn2}
@@ -330,6 +332,28 @@ function Game({ state }: { state: GameState }) {
         {activeTab === "historico" && <History state={state} />}
       </main>
     </div>
+  );
+}
+
+function SoundToggle() {
+  const [enabled, setEnabled] = useState(() => isSoundEnabled());
+
+  const toggle = () => {
+    const next = !enabled;
+    setEnabled(next);
+    setSoundEnabled(next);
+  };
+
+  return (
+    <button
+      type="button"
+      className={btn2}
+      onClick={toggle}
+      aria-label={enabled ? "Desligar sons" : "Ligar sons"}
+      title={enabled ? "Desligar sons" : "Ligar sons"}
+    >
+      {enabled ? "🔊" : "🔇"}
+    </button>
   );
 }
 
