@@ -31,6 +31,24 @@ function addScorerGoals(state: GameState, scorerIds: number[], competition: "lea
   }
 }
 
+function addRedCardSuspensions(state: GameState, playerIds: number[]) {
+  if (!state.suspensions) state.suspensions = {};
+  for (const playerId of playerIds) state.suspensions[playerId] = 1;
+}
+
+function consumeMatchSuspensions(state: GameState) {
+  if (!state.suspensions) return;
+  for (const [id, remaining] of Object.entries(state.suspensions)) {
+    if (remaining <= 1) delete state.suspensions[Number(id)];
+    else state.suspensions[Number(id)] = remaining - 1;
+  }
+}
+
+function availableLineup(state: GameState, team: Team): number[] {
+  const suspended = new Set(Object.keys(state.suspensions ?? {}).filter((id) => (state.suspensions?.[Number(id)] ?? 0) > 0).map(Number));
+  return team.lineup.filter((id) => !suspended.has(id));
+}
+
 
 export function userFixture(state: GameState): Fixture | null {
   const team = userTeam(state);
@@ -65,7 +83,9 @@ function simulateRound(state: GameState) {
       fixture.homeGoals = result.homeGoals;
       fixture.awayGoals = result.awayGoals;
       fixture.scorerIds = result.scorers.map((s) => s.playerId);
+      fixture.redCardIds = result.cards.filter((c) => c.type === "red").map((c) => c.playerId);
       addScorerGoals(state, fixture.scorerIds, "league");
+      addRedCardSuspensions(state, fixture.redCardIds);
     }
   }
 }
@@ -126,6 +146,7 @@ export function advanceRound(state: GameState) {
     for (const tie of playedCupRound?.ties ?? []) {
       const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
       if (!userTie && tie.scorerIds?.length) addScorerGoals(state, tie.scorerIds, "cup");
+      if (tie.redCardIds?.length) addRedCardSuspensions(state, tie.redCardIds);
     }
     if (state.cup.winnerId === state.userTeamId) {
       const season = seasonLabel(state.seasonYear);
