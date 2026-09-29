@@ -65,6 +65,7 @@ export function playCupRound(
   cup: Cup,
   teams: Record<number, Team>,
   players: Record<number, Player>,
+  suspensions: Record<number, number> = {},
 ): Cup {
   if (cup.winnerId !== null) return cup;
   const round = cup.rounds[cup.currentRound];
@@ -75,7 +76,9 @@ export function playCupRound(
     const home = teams[tie.homeId];
     const away = teams[tie.awayId];
     if (!home || !away) return tie;
-    const result = simulateMatch(home, away, players);
+    const homeLineup = home.lineup.filter((id) => (suspensions[id] ?? 0) <= 0);
+    const awayLineup = away.lineup.filter((id) => (suspensions[id] ?? 0) <= 0);
+    const result = simulateMatch(home, away, players, homeLineup, awayLineup);
     let winnerId: number;
     let penalties = false;
     if (result.homeGoals > result.awayGoals) winnerId = home.id;
@@ -89,6 +92,7 @@ export function playCupRound(
       homeGoals: result.homeGoals,
       awayGoals: result.awayGoals,
       scorerIds: result.scorers.map((s) => s.playerId),
+      redCardIds: result.cards.filter((c) => c.type === "red").map((c) => c.playerId),
       winnerId,
       penalties,
     };
