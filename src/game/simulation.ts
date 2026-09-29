@@ -84,7 +84,7 @@ export function simulateHalf(
       playerId: player.id,
       playerName: player.name,
       minute: randInt(minuteStart, minuteEnd),
-      type: Math.random() < 0.045 ? "red" : "yellow",
+      type: Math.random() < 0.015 ? "red" : "yellow",
     });
   }
 
@@ -98,10 +98,12 @@ export function simulateMatch(
   home: Team,
   away: Team,
   players: Record<number, Player>,
+  homeLineup = home.lineup,
+  awayLineup = away.lineup,
 ): { homeGoals: number; awayGoals: number; scorers: HalfResult["scorers"]; cards: MatchCard[] } {
-  const h1 = simulateHalf(home, away, players, home.lineup, away.lineup, 1, 45);
+  const h1 = simulateHalf(home, away, players, homeLineup, awayLineup, 1, 45);
   const redFirstHalf = h1.cards.filter((c) => c.type === "red").map((c) => c.playerId);
-  const h2 = simulateHalf(home, away, players, home.lineup, away.lineup, 46, 90, redFirstHalf);
+  const h2 = simulateHalf(home, away, players, homeLineup, awayLineup, 46, 90, redFirstHalf);
   return { homeGoals: h1.homeGoals + h2.homeGoals, awayGoals: h1.awayGoals + h2.awayGoals, scorers: [...h1.scorers, ...h2.scorers], cards: [...h1.cards, ...h2.cards] };
 }
 
