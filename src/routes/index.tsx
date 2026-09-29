@@ -368,6 +368,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
     state.leagues[review.userDivision] ?? [],
     divisionTeamIds(state, review.userDivision),
   );
+  const { promotionSpots, relegationSpots, numberOfDivisions } = GAME_CONFIG;
 
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-background/95 px-4 py-6">
@@ -433,7 +434,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                     return (
                       <tr
                         key={r.teamId}
-                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""}`}
+                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${i === 0 && review.userDivision === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions && i >= rows.length - relegationSpots ? "bg-red-500/10 text-red-700 dark:text-red-300" : ""}`}
                       >
                         <td className="py-1.5 font-mono-num">{i + 1}</td>
                         <td><TeamIdentityWithFlag team={t} size={20} /></td>
@@ -859,7 +860,7 @@ function Standings({ state }: { state: GameState }) {
             const up = division > 1 && i < promotionSpots;
             const down = division < numberOfDivisions && i >= rows.length - relegationSpots;
             return (
-              <tr key={r.teamId} className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10" : ""}`}>
+              <tr key={r.teamId} className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10" : ""} ${i === 0 && division === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${up ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${down ? "bg-red-500/10 text-red-700 dark:text-red-300" : ""}`}>
                 <td className={`py-1.5 font-mono-num ${up ? "text-primary" : down ? "text-destructive" : ""}`}>{i + 1}</td>
                 <td><TeamIdentityWithFlag team={t} size={20} /></td>
                 <td className="text-right font-mono-num">{r.played}</td>
