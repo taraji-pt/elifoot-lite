@@ -79,6 +79,8 @@ export interface MatchState {
   scorerIds: number[];
   /** jogadores expulsos neste jogo */
   redCardIds?: number[];
+  /** jogadores que viram amarelo neste jogo */
+  yellowCardIds?: number[];
   /** acontecimentos do jogo, com minuto e marcador */
   finished: boolean;
   cupPenaltyWinnerId?: number;
