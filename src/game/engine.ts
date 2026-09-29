@@ -282,6 +282,7 @@ export function continueAfterSeasonReview(state: GameState) {
     ...state.history,
     {
       season: review.season,
+      clubId: state.userTeamId,
       club: state.teams[state.userTeamId]?.name ?? "—",
       division: review.userDivision,
       position: review.userPosition,
