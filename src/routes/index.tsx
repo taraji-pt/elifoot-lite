@@ -467,6 +467,8 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
             </div>
           </div>
 
+          <TopScorers state={state} division={review.userDivision} stats={review.scorers} />
+
           <div className="mt-6 flex justify-center">
             <button className={btn} onClick={continueSeason}>
               Continuar para a nova época
@@ -877,6 +879,87 @@ function Standings({ state }: { state: GameState }) {
           })}
         </tbody>
       </table>
+      <TopScorers state={state} division={division} />
+    </div>
+  );
+}
+
+function TopScorers({
+  state,
+  division,
+  stats,
+}: {
+  state: GameState;
+  division: number;
+  stats?: Record<number, { league: number; cup: number }>;
+}) {
+  const scorerStats = stats ?? state.scorerStats ?? {};
+  const rows = Object.entries(scorerStats)
+    .map(([id, goals]) => {
+      const player = state.players[Number(id)];
+      if (!player) return null;
+      const team = Object.values(state.teams).find((t) => t.playerIds.includes(player.id));
+      if (!team || team.division !== division) return null;
+      return {
+        player,
+        team,
+        league: goals.league ?? 0,
+        cup: goals.cup ?? 0,
+        total: (goals.league ?? 0) + (goals.cup ?? 0),
+      };
+    })
+    .filter((row): row is NonNullable<typeof row> => Boolean(row) && row.total > 0)
+    .sort((a, b) => b.total - a.total || b.league - a.league || b.cup - a.cup || a.player.name.localeCompare(b.player.name, "pt"))
+    .slice(0, 10);
+
+  return (
+    <div className="mt-4 rounded-md border border-border bg-card p-3">
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <div className="font-semibold">⚽ Melhores Marcadores</div>
+        <div className="text-xs text-muted-foreground">Liga + Taça</div>
+      </div>
+      {rows.length ? (
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[620px] text-sm">
+            <thead className="text-left text-xs text-muted-foreground">
+              <tr>
+                <th className="w-8">#</th>
+                <th>Jogador</th>
+                <th>Pos.</th>
+                <th>Clube</th>
+                <th className="text-right">Liga</th>
+                <th className="text-right">Taça</th>
+                <th className="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr key={row.player.id} className="border-t border-border">
+                  <td className="py-1.5 font-mono-num font-bold">{i + 1}</td>
+                  <td>
+                    <span className="inline-flex items-center gap-2 font-semibold">
+                      <Flag code={row.player.nationality} size={16} />
+                      {row.player.name}
+                    </span>
+                  </td>
+                  <td className="font-mono-num text-xs">{row.player.position}</td>
+                  <td>
+                    <span className="inline-flex items-center gap-2">
+                      <TeamBadge team={row.team} size={20} />
+                      <span>{row.team.name}</span>
+                    </span>
+                  </td>
+                  <td className="text-right font-mono-num">{row.league}</td>
+                  <td className="text-right font-mono-num">{row.cup}</td>
+                  <td className="text-right font-mono-num font-black text-primary">{row.total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="py-3 text-sm text-muted-foreground">Ainda não há golos registados nesta divisão.</div>
+      )}
     </div>
   );
 }
