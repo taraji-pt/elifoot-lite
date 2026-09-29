@@ -487,18 +487,21 @@ function CelebrationPopup({ state }: { state: GameState }) {
       ? "DOBRADINHA!"
       : celebration.type === "league"
         ? "CAMPEÕES!"
-        : "VENCEDORES DA TAÇA!";
+        : celebration.type === "cup"
+          ? "VENCEDORES DA TAÇA!"
+          : "SUBIDA DE DIVISÃO!";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
       <div className="w-full max-w-md rounded-xl border border-primary bg-card p-6 text-center shadow-2xl">
-        <div className="text-5xl">{celebration.type === "double" ? "🏆🏆" : "🏆"}</div>
+        <div className="text-5xl">{celebration.type === "double" ? "🏆🏆" : celebration.type === "promotion" ? "⬆️🏆" : "🏆"}</div>
         <div className="mt-3 text-2xl font-black tracking-wide text-primary">{title}</div>
         <div className="mt-2 text-lg font-semibold">{team?.name}</div>
         <div className="mt-1 text-sm text-muted-foreground">{celebration.season}</div>
         <div className="mt-4 space-y-1 text-sm">
           {(celebration.type === "league" || celebration.type === "double") && <div>🏆 Campeão da Liga</div>}
           {(celebration.type === "cup" || celebration.type === "double") && <div>🏆 Vencedor da Taça</div>}
+          {celebration.type === "promotion" && <div>⬆️ Subida de divisão</div>}
         </div>
         <button className={btn + " mt-6"} onClick={dismissCelebration}>Continuar</button>
       </div>
