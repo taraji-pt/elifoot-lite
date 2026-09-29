@@ -76,6 +76,8 @@ export function playCupRound(
     const home = teams[tie.homeId];
     const away = teams[tie.awayId];
     if (!home || !away) return tie;
+    for (const id of home.playerIds) if ((suspensions[id] ?? 0) > 0) suspensions[id] = Math.max(0, (suspensions[id] ?? 0) - 1);
+    for (const id of away.playerIds) if ((suspensions[id] ?? 0) > 0) suspensions[id] = Math.max(0, (suspensions[id] ?? 0) - 1);
     const homeLineup = home.lineup.filter((id) => (suspensions[id] ?? 0) <= 0);
     const awayLineup = away.lineup.filter((id) => (suspensions[id] ?? 0) <= 0);
     const result = simulateMatch(home, away, players, homeLineup, awayLineup);
