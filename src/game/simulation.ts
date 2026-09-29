@@ -84,7 +84,7 @@ export function simulateHalf(
       playerId: player.id,
       playerName: player.name,
       minute: randInt(minuteStart, minuteEnd),
-      type: Math.random() < 0.015 ? "red" : "yellow",
+      type: Math.random() < 0.10 ? "red" : "yellow",
     });
   }
 
