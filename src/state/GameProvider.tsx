@@ -31,7 +31,7 @@ import { createNewGame } from "@/game/newGame";
 import { penaltyShootout, simulateHalf } from "@/game/simulation";
 import { clearSave, hasSave, loadGame, saveGame } from "@/game/storage";
 import type { GameState, Team } from "@/game/types";
-import { playGoal, playWhistle } from "@/game/sound";
+import { playCard, playGoal, playWhistle } from "@/game/sound";
 
 interface GameContextValue {
   ready: boolean;
