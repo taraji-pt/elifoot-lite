@@ -950,12 +950,13 @@ function History({ state }: { state: GameState }) {
     <div className={card}>
       <table className="w-full text-sm">
         <thead className="text-left text-xs text-muted-foreground">
-          <tr><th>Época</th><th>Divisão</th><th>Posição</th><th>Pts</th><th>Nota</th></tr>
+          <tr><th>Época</th><th>Clube</th><th>Divisão</th><th>Posição</th><th>Pts</th><th>Nota</th></tr>
         </thead>
         <tbody>
           {state.history.map((h, i) => (
             <tr key={i} className="border-t border-border">
               <td className="py-1.5">{h.season}</td>
+              <td className="font-semibold">{h.club ?? "—"}</td>
               <td>{h.division}</td>
               <td>{h.position}.º</td>
               <td>{h.points}</td>
