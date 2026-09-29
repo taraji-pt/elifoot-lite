@@ -91,14 +91,16 @@ function Start() {
         </button>
       )}
       <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">1. Países</h2>
-      <div className="mt-2 flex flex-wrap gap-2">
+      <div className="mt-2 flex flex-col gap-1.5">
         {countries.map((c) => (
           <button
             key={c.code}
             onClick={() => toggle(c.code)}
-            className={`${selected.includes(c.code) ? btn : btn2} flex items-center gap-2`}
+            className={`${selected.includes(c.code) ? btn : btn2} flex w-full items-center justify-start gap-3 rounded-md px-4 py-3 text-left`}
           >
-            <Flag code={c.code} /> {COUNTRIES[c.code]?.name ?? c.code} ({c.count})
+            <Flag code={c.code} size={20} />
+            <span className="flex-1 font-semibold">{COUNTRIES[c.code]?.name ?? c.code}</span>
+            <span className="font-mono-num text-xs opacity-70">{c.count}</span>
           </button>
         ))}
       </div>
