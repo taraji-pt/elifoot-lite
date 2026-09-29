@@ -95,6 +95,7 @@ export function playCupRound(
       awayGoals: result.awayGoals,
       scorerIds: result.scorers.map((s) => s.playerId),
       redCardIds: result.cards.filter((c) => c.type === "red").map((c) => c.playerId),
+      yellowCardIds: result.cards.filter((c) => c.type === "yellow").map((c) => c.playerId),
       winnerId,
       penalties,
     };
