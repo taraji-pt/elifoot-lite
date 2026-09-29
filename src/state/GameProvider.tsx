@@ -32,7 +32,6 @@ import { createNewGame } from "@/game/newGame";
 import { penaltyShootout, simulateHalf } from "@/game/simulation";
 import { clearSave, hasSave, loadGame, saveGame } from "@/game/storage";
 import type { GameState, Team } from "@/game/types";
-import { playCard, playGoal, playWhistle } from "@/game/sound";
 
 interface GameContextValue {
   ready: boolean;
@@ -166,7 +165,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const awayLineup = prepareTeamForMatch(draft, away);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
           const half = simulateHalf(draft.teams[homeId] as Team, draft.teams[awayId] as Team, draft.players, homeLineup, awayLineup, 1, 45);
-          playWhistle(1);
           draft.match = {
             competition: playCup ? "cup" : "league",
             homeId: home.id,
@@ -211,7 +209,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userIsHome = draft.userTeamId === match.homeId;
           const homeLineup = userIsHome ? match.userLineup : home.lineup;
           const awayLineup = userIsHome ? away.lineup : match.userLineup;
-          playWhistle(1);
           const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, match.redCardIds ?? []);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
@@ -240,10 +237,27 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const match = draft.match;
           if (!match || !match.finished) return;
 
-          recordMatchDiscipline(draft, [
+          const disciplineCards = [
             ...(match.redCardIds ?? []).map((playerId) => ({ playerId, type: "red" as const })),
             ...(match.yellowCardIds ?? []).map((playerId) => ({ playerId, type: "yellow" as const })),
-          ]);
+          ];
+
+          recordMatchDiscipline(draft, disciplineCards);
+
+          const userTeam = draft.teams[draft.userTeamId];
+          const suspensionMessages = disciplineCards
+            .filter((card) => userTeam?.playerIds.includes(card.playerId))
+            .map((card) => {
+              const player = draft.players[card.playerId];
+              const games = card.type === "red" ? 2 : 1;
+              return player ? `${player.name} fica de fora por ${games} jogo${games === 1 ? "" : "s"}.` : null;
+            })
+            .filter((message): message is string => Boolean(message));
+
+          if (suspensionMessages.length > 0) {
+            setMessage(`Suspensões: ${suspensionMessages.join(" ")}`);
+          }
+
           if (match.competition === "cup") {
             recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId, match.scorerIds);
           } else {
