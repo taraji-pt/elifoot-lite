@@ -24,6 +24,7 @@ import {
   sellPlayer,
   userFixture,
   userCupTie,
+  prepareTeamForMatch,
 } from "@/game/engine";
 import { createNewGame } from "@/game/newGame";
 import { penaltyShootout, simulateHalf } from "@/game/simulation";
@@ -157,7 +158,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
 
           const home = draft.teams[homeId] as Team;
           const away = draft.teams[awayId] as Team;
-          const half = simulateHalf(home, away, draft.players, home.lineup, away.lineup, 1, 45);
+          const homeLineup = prepareTeamForMatch(draft, home);
+          const awayLineup = prepareTeamForMatch(draft, away);
+          const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
+          if (userLineup.length < 11) return "Tens jogadores suspensos. Não tens 11 jogadores disponíveis para este jogo.";
+          const half = simulateHalf(draft.teams[homeId] as Team, draft.teams[awayId] as Team, draft.players, homeLineup, awayLineup, 1, 45);
           playWhistle(1);
           if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           draft.match = {
@@ -167,12 +172,14 @@ export function GameProvider({ children }: { children: ReactNode }) {
             homeGoals: half.homeGoals,
             awayGoals: half.awayGoals,
             half: 1,
-            userLineup: [...(draft.teams[draft.userTeamId]?.lineup ?? [])],
+            userLineup: [...userLineup],
             subsUsed: 0,
-            events: half.scorers.map(
-              (s) => `1|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
-            ),
+            events: [
+              ...half.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
+              ...half.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${c.playerName}`),
+            ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
             scorerIds: half.scorers.map((s) => s.playerId),
+            redCardIds: half.cards.filter((c) => c.type === "red").map((c) => c.playerId),
             finished: false,
           };
           return undefined;
@@ -202,18 +209,20 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const homeLineup = userIsHome ? match.userLineup : home.lineup;
           const awayLineup = userIsHome ? away.lineup : match.userLineup;
           playWhistle(2);
-          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90);
+          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, match.redCardIds ?? []);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
           match.half = 2;
           match.finished = true;
           if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           match.events.push(
-            ...half.scorers.map(
-              (s) => `2|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
-            ),
+            ...[
+              ...half.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
+              ...half.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${c.playerName}`),
+            ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
           );
           (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
+          match.redCardIds = [...(match.redCardIds ?? []), ...half.cards.filter((c) => c.type === "red").map((c) => c.playerId)];
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
@@ -228,6 +237,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const match = draft.match;
           if (!match || !match.finished) return;
 
+          if (draft.suspensions === undefined) draft.suspensions = {};
+          for (const playerId of match.redCardIds ?? []) draft.suspensions[playerId] = 2;
           if (match.competition === "cup") {
             recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId, match.scorerIds);
           } else {
