@@ -172,6 +172,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             events: half.scorers.map(
               (s) => `1|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
+            scorerIds: half.scorers.map((s) => s.playerId),
             finished: false,
           };
           return undefined;
@@ -212,6 +213,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
               (s) => `2|${s.minute}|${s.teamId}|${draft.teams[s.teamId]?.name}: ${s.playerName}`,
             ),
           );
+          match.scorerIds.push(...half.scorers.map((s) => s.playerId));
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
@@ -227,9 +229,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (!match || !match.finished) return;
 
           if (match.competition === "cup") {
-            recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId);
+            recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId, match.scorerIds);
           } else {
-            recordUserResult(draft, match.homeGoals, match.awayGoals);
+            recordUserResult(draft, match.homeGoals, match.awayGoals, match.scorerIds);
           }
           advanceRound(draft);
         }),
