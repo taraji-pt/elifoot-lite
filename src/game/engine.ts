@@ -41,7 +41,7 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
     if (card.type === "red") {
       // O valor 2 faz com que a preparação do próximo jogo consuma 1,
       // deixando o jogador efetivamente de fora desse jogo.
-      state.suspensions[card.playerId] = 3;
+      state.suspensions[card.playerId] = 2;
       suspended = true;
     } else {
       const next = (state.yellowCards[card.playerId] ?? 0) + 1;
@@ -411,6 +411,8 @@ export function continueAfterSeasonReview(state: GameState) {
   state.round = 1;
   state.scorerStats = {};
   state.yellowCards = {};
+  // As suspensões disciplinares não transitam para a nova época.
+  state.suspensions = {};
   state.leagues = buildLeagues(state.teams);
   const { active, reserve } = splitByActivity(state.teams);
   state.cup = createCup(active, reserve, state.userTeamId);
