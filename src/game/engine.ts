@@ -306,6 +306,9 @@ export function continueAfterSeasonReview(state: GameState) {
       position: review.userPosition,
       points: review.userPoints,
       note,
+      leagueChampion,
+      cupWinner,
+      promoted: review.outcome === "promoted",
     },
   ];
 
