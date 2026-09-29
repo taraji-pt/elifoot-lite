@@ -611,6 +611,26 @@ function Match({ state }: { state: GameState }) {
     getPlayers(team.playerIds.filter((id) => !match.userLineup.includes(id)), state.players),
   );
 
+  const cupUserWon =
+    match.competition === "cup" &&
+    match.finished &&
+    (match.cupPenaltyWinnerId === state.userTeamId
+      ? true
+      : match.cupPenaltyWinnerId !== undefined
+        ? false
+        : match.homeGoals > match.awayGoals
+          ? match.homeId === state.userTeamId
+          : match.awayId === state.userTeamId);
+  const cupUserLost =
+    match.competition === "cup" &&
+    match.finished &&
+    !cupUserWon;
+  const cupOutcomeClass = cupUserWon
+    ? "text-green-600 dark:text-green-400"
+    : cupUserLost
+      ? "text-red-600 dark:text-red-400"
+      : "";
+
   return (
     <div className="space-y-4">
       <div className={`${card} text-center`}>
@@ -621,14 +641,26 @@ function Match({ state }: { state: GameState }) {
         </div>
         <div className="my-4 flex items-center justify-center gap-6">
           <TeamIdentity team={home} size={40} bold />
-          <span className="font-mono-num text-4xl font-bold">
+          <span className={`font-mono-num text-4xl font-bold ${cupOutcomeClass}`}>
             {match.homeGoals} - {match.awayGoals}
           </span>
           <TeamIdentity team={away} size={40} bold />
         </div>
         <ul className="text-sm text-muted-foreground">
-          {match.events.length ? match.events.map((e, i) => <li key={i}>⚽ {e}</li>) : <li>Sem golos.</li>}
+          {match.events.length ? match.events.map((e, i) => {
+            const isPenaltyEvent = match.competition === "cup" && e.startsWith("Penáltis —");
+            return (
+              <li key={i} className={isPenaltyEvent ? `${cupOutcomeClass} font-bold` : ""}>
+                ⚽ {e}
+              </li>
+            );
+          }) : <li>Sem golos.</li>}
         </ul>
+        {match.competition === "cup" && match.finished && (
+          <div className={`mt-2 text-sm font-black ${cupOutcomeClass}`}>
+            {cupUserWon ? "✓ Passou" : "✕ Não passou"}
+          </div>
+        )}
         <div className="mt-4">
           {match.finished ? (
             <button className={btn} onClick={finishMatch}>
