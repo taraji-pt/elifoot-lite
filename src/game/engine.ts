@@ -170,7 +170,9 @@ export function advanceRound(state: GameState) {
     for (const tie of playedCupRound?.ties ?? []) {
       const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
       if (!userTie && tie.scorerIds?.length) addScorerGoals(state, tie.scorerIds, "cup");
-      if (tie.redCardIds?.length) addRedCardSuspensions(state, tie.redCardIds);
+      if (tie.redCardIds?.length) {
+        addMatchDiscipline(state, tie.redCardIds.map((playerId) => ({ playerId, type: "red" as const })));
+      }
     }
     if (state.cup.winnerId === state.userTeamId) {
       const season = seasonLabel(state.seasonYear);
