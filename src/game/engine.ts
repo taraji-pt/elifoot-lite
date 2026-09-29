@@ -152,7 +152,7 @@ export function advanceRound(state: GameState) {
       return;
     }
     const cupRoundIndex = state.cup.currentRound;
-    state.cup = playCupRound(state.cup, state.teams, state.players);
+    state.cup = playCupRound(state.cup, state.teams, state.players, state.suspensions ?? {});
     const playedCupRound = state.cup.rounds[cupRoundIndex];
     for (const tie of playedCupRound?.ties ?? []) {
       const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
