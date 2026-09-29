@@ -165,7 +165,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (userLineup.length < 11) return "Tens jogadores suspensos. Não tens 11 jogadores disponíveis para este jogo.";
           const half = simulateHalf(draft.teams[homeId] as Team, draft.teams[awayId] as Team, draft.players, homeLineup, awayLineup, 1, 45);
           playWhistle(1);
-          if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           draft.match = {
             competition: playCup ? "cup" : "league",
             homeId: home.id,
