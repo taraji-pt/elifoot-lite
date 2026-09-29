@@ -666,11 +666,11 @@ function Match({ state }: { state: GameState }) {
     if (!match) return;
     if (!match.finished && elapsedMs >= 10000 && !playedPhaseSounds.current.has("ht")) {
       playedPhaseSounds.current.add("ht");
-      playWhistle(2);
+
     }
     if (match.finished && elapsedMs >= 10000 && !playedPhaseSounds.current.has("ft")) {
       playedPhaseSounds.current.add("ft");
-      playWhistle(3);
+
     }
   }, [elapsedMs, match]);
 
@@ -691,8 +691,7 @@ function Match({ state }: { state: GameState }) {
       playedEventSounds.current.add(event);
       const kind = event.split("|")[3];
       if (kind === "G") playGoal();
-      if (kind === "Y") playCard("yellow");
-      if (kind === "R") playCard("red");
+      if (kind === "R") playRedCard();
     }
   }, [elapsedMs, match]);
 
