@@ -215,7 +215,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
           match.awayGoals += half.awayGoals;
           match.half = 2;
           match.finished = true;
-          if (half.scorers.some((s) => s.teamId === draft.userTeamId)) playGoal();
           match.events.push(
             ...[
               ...half.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
