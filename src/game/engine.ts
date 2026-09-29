@@ -66,6 +66,33 @@ export function recordUserResult(state: GameState, homeGoals: number, awayGoals:
   }
 }
 
+export function recordUserCupResult(
+  state: GameState,
+  homeGoals: number,
+  awayGoals: number,
+  penaltyWinnerId?: number,
+) {
+  const tie = userCupTie(state);
+  if (!tie) return;
+  tie.homeGoals = homeGoals;
+  tie.awayGoals = awayGoals;
+
+  if (homeGoals > awayGoals) {
+    tie.winnerId = tie.homeId;
+    tie.penalties = false;
+  } else if (awayGoals > homeGoals) {
+    tie.winnerId = tie.awayId;
+    tie.penalties = false;
+  } else if (penaltyWinnerId !== undefined) {
+    tie.winnerId = penaltyWinnerId;
+    tie.penalties = true;
+  }
+}
+
+export function dismissCelebration(state: GameState) {
+  state.celebration = null;
+}
+
 /** Avança a jornada: simula a Liga e, nas jornadas de Taça, abre primeiro o jogo do utilizador. */
 export function advanceRound(state: GameState) {
   simulateRound(state);
