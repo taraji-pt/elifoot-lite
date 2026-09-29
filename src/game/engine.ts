@@ -170,6 +170,9 @@ export function advanceRound(state: GameState) {
     for (const tie of playedCupRound?.ties ?? []) {
       const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
       if (!userTie && tie.scorerIds?.length) addScorerGoals(state, tie.scorerIds, "cup");
+      if (tie.yellowCardIds?.length) {
+        addMatchDiscipline(state, tie.yellowCardIds.map((playerId) => ({ playerId, type: "yellow" as const })));
+      }
       if (tie.redCardIds?.length) {
         addMatchDiscipline(state, tie.redCardIds.map((playerId) => ({ playerId, type: "red" as const })));
       }
