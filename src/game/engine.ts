@@ -5,7 +5,7 @@ import { bestLineup, teamRating } from "./ratings";
 import { shuffle } from "./rng";
 import { penaltyShootout, simulateMatch } from "./simulation";
 import { computeStandings } from "./standings";
-import type { Fixture, GameState, Player, Team } from "./types";
+import type { Fixture, GameState, GoalStats, Player, Team } from "./types";
 
 export function divisionTeamIds(state: GameState, division: number): number[] {
   return Object.values(state.teams)
@@ -21,6 +21,16 @@ export function totalRounds(state: GameState): number {
 export function userTeam(state: GameState): Team {
   return state.teams[state.userTeamId] as Team;
 }
+
+function addScorerGoals(state: GameState, scorerIds: number[], competition: "league" | "cup") {
+  if (!state.scorerStats) state.scorerStats = {};
+  for (const playerId of scorerIds) {
+    const current: GoalStats = state.scorerStats[playerId] ?? { league: 0, cup: 0 };
+    current[competition] += 1;
+    state.scorerStats[playerId] = current;
+  }
+}
+
 
 export function userFixture(state: GameState): Fixture | null {
   const team = userTeam(state);
@@ -54,15 +64,19 @@ function simulateRound(state: GameState) {
       const result = simulateMatch(home, away, state.players);
       fixture.homeGoals = result.homeGoals;
       fixture.awayGoals = result.awayGoals;
+      fixture.scorerIds = result.scorers.map((s) => s.playerId);
+      addScorerGoals(state, fixture.scorerIds, "league");
     }
   }
 }
 
-export function recordUserResult(state: GameState, homeGoals: number, awayGoals: number) {
+export function recordUserResult(state: GameState, homeGoals: number, awayGoals: number, scorerIds: number[] = []) {
   const fixture = userFixture(state);
   if (fixture) {
     fixture.homeGoals = homeGoals;
     fixture.awayGoals = awayGoals;
+    fixture.scorerIds = [...scorerIds];
+    addScorerGoals(state, scorerIds, "league");
   }
 }
 
@@ -71,11 +85,14 @@ export function recordUserCupResult(
   homeGoals: number,
   awayGoals: number,
   penaltyWinnerId?: number,
+  scorerIds: number[] = [],
 ) {
   const tie = userCupTie(state);
   if (!tie) return;
   tie.homeGoals = homeGoals;
   tie.awayGoals = awayGoals;
+  tie.scorerIds = [...scorerIds];
+  addScorerGoals(state, scorerIds, "cup");
 
   if (homeGoals > awayGoals) {
     tie.winnerId = tie.homeId;
@@ -103,7 +120,13 @@ export function advanceRound(state: GameState) {
       state.match = null;
       return;
     }
+    const cupRoundIndex = state.cup.currentRound;
     state.cup = playCupRound(state.cup, state.teams, state.players);
+    const playedCupRound = state.cup.rounds[cupRoundIndex];
+    for (const tie of playedCupRound?.ties ?? []) {
+      const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
+      if (!userTie && tie.scorerIds?.length) addScorerGoals(state, tie.scorerIds, "cup");
+    }
     if (state.cup.winnerId === state.userTeamId) {
       const season = seasonLabel(state.seasonYear);
       state.celebration = {
@@ -252,6 +275,9 @@ function endSeason(state: GameState) {
     droppedOut,
     climbers: climbers.slice(0, droppedOut.length).map((t) => t.id),
     outcome,
+    scorers: Object.fromEntries(
+      Object.entries(state.scorerStats ?? {}).map(([id, stats]) => [id, { ...stats }]),
+    ),
   };
 }
 
@@ -314,6 +340,7 @@ export function continueAfterSeasonReview(state: GameState) {
 
   state.seasonYear += 1;
   state.round = 1;
+  state.scorerStats = {};
   state.leagues = buildLeagues(state.teams);
   const { active, reserve } = splitByActivity(state.teams);
   state.cup = createCup(active, reserve, state.userTeamId);
