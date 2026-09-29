@@ -866,7 +866,7 @@ function CupView({ state }: { state: GameState }) {
                     <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
                   </div>
                   <span className={`w-14 text-center font-mono-num ${tie.penalties ? (tie.winnerId === state.userTeamId ? "text-green-600 dark:text-green-400 font-bold" : (tie.homeId === state.userTeamId || tie.awayId === state.userTeamId) ? "text-red-600 dark:text-red-400 font-bold" : "") : ""`}>
-                    {tie.homeGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}${tie.penalties ? " (p)" : ""`}
+                    {tie.homeGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}${tie.penalties ? " (p)" : ""}`}
                   </span>
                   <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
                     <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
