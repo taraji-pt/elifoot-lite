@@ -956,7 +956,12 @@ function History({ state }: { state: GameState }) {
           {state.history.map((h, i) => (
             <tr key={i} className="border-t border-border">
               <td className="py-1.5">{h.season}</td>
-              <td className="font-semibold">{h.club ?? "—"}</td>
+              <td>
+                <span className="inline-flex items-center gap-2 font-semibold">
+                  {h.clubId && state.teams[h.clubId] ? <TeamBadge team={state.teams[h.clubId] as Team} size={22} /> : null}
+                  {h.club ?? "—"}
+                </span>
+              </td>
               <td>{h.division}</td>
               <td>{h.position}.º</td>
               <td>{h.points}</td>
