@@ -62,7 +62,12 @@ function App() {
 function Start() {
   const { newGame, saveExists, load } = useGame();
   const [db] = useState<TeamSeed[]>(() => loadDatabase());
-  const countries = useMemo(\n    () => [...countryList(db)].sort((a, b) =>\n      (COUNTRIES[a.code]?.name ?? a.code).localeCompare(COUNTRIES[b.code]?.name ?? b.code, "pt"),\n    ),\n    [db],\n  );
+  const countries = useMemo(
+    () => [...countryList(db)].sort((a, b) =>
+      (COUNTRIES[a.code]?.name ?? a.code).localeCompare(COUNTRIES[b.code]?.name ?? b.code, "pt"),
+    ),
+    [db],
+  );
   const [selected, setSelected] = useState<string[]>(() => [countries[0]?.code ?? "POR"]);
   const [division, setDivision] = useState<number>(GAME_CONFIG.numberOfDivisions);
   const seeds = useMemo(() => seedsForCountries(db, selected), [db, selected]);
