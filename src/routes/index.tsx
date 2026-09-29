@@ -599,25 +599,22 @@ function PlayerTable({
 function Match({ state }: { state: GameState }) {
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
-  const [revealed, setRevealed] = useState(0);
+  const [elapsedMs, setElapsedMs] = useState(0);
   const team = userTeam(state);
   const match = state.match;
 
   useEffect(() => {
     if (!match) {
-      setRevealed(0);
+      setElapsedMs(0);
       return;
     }
-    const phaseEvents = match.finished
-      ? match.events.filter((e) => e.startsWith("2|"))
-      : match.events.filter((e) => e.startsWith("1|"));
-    setRevealed(0);
-    if (!phaseEvents.length) return;
-    const timers = phaseEvents.map((_, i) =>
-      window.setTimeout(() => setRevealed(i + 1), 420 * (i + 1)),
-    );
-    return () => timers.forEach(window.clearTimeout);
-  }, [match?.events.length, match?.half, match?.finished]);
+    setElapsedMs(0);
+    const started = performance.now();
+    const timer = window.setInterval(() => {
+      setElapsedMs(Math.min(10000, performance.now() - started));
+    }, 100);
+    return () => window.clearInterval(timer);
+  }, [match?.half, match?.finished]);
 
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
@@ -672,29 +669,39 @@ function Match({ state }: { state: GameState }) {
       half,
       minute: Number(minute) || 0,
       teamId: Number(teamId),
-      text: rest.join("|"),
+      kind: rest[0] === "G" || rest[0] === "Y" || rest[0] === "R" ? rest[0] : "G",
+      text: (rest[0] === "G" || rest[0] === "Y" || rest[0] === "R") ? rest.slice(1).join("|") : rest.join("|"),
     };
   };
 
   const firstEvents = match.events.filter((e) => e.startsWith("1|"));
   const secondEvents = match.events.filter((e) => e.startsWith("2|"));
   const phaseEvents = match.finished ? secondEvents : firstEvents;
-
-  const visibleFirst = match.finished ? firstEvents : firstEvents.slice(0, revealed);
-  const visibleSecond = match.finished ? secondEvents.slice(0, revealed) : [];
+  const phaseElapsed = Math.min(10000, elapsedMs);
+  const phaseComplete = phaseElapsed >= 10000;
+  const simulatedMinute = match.finished
+    ? 46 + Math.floor((phaseElapsed / 10000) * 44)
+    : 1 + Math.floor((phaseElapsed / 10000) * 44);
+  const visibleFirst = match.finished
+    ? firstEvents
+    : firstEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute);
+  const visibleSecond = match.finished
+    ? secondEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute)
+    : [];
   const visibleEvents = [...visibleFirst, ...visibleSecond];
 
   const shownScore = visibleEvents.reduce(
     (score, event) => {
       const parsed = parseEvent(event);
-      if (parsed.teamId === home.id) score.home += 1;
-      if (parsed.teamId === away.id) score.away += 1;
+      if (parsed.kind === "G") {
+        if (parsed.teamId === home.id) score.home += 1;
+        if (parsed.teamId === away.id) score.away += 1;
+      }
       return score;
     },
     { home: 0, away: 0 },
   );
 
-  const phaseComplete = revealed >= phaseEvents.length;
   const cupUserWon =
     match.competition === "cup" &&
     match.finished &&
@@ -714,11 +721,7 @@ function Match({ state }: { state: GameState }) {
 
   const currentMinute = phaseComplete
     ? (match.finished ? 90 : 45)
-    : phaseEvents.length && revealed > 0
-      ? parseEvent(phaseEvents[Math.min(revealed, phaseEvents.length) - 1]).minute
-      : match.finished
-        ? 46
-        : 0;
+    : simulatedMinute;
 
   return (
     <div className="space-y-4">
@@ -748,7 +751,7 @@ function Match({ state }: { state: GameState }) {
           <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
             <div
               className="h-full rounded-full bg-primary transition-all duration-300"
-              style={{ width: `${Math.max(0, Math.min(100, ((match.finished ? (phaseComplete ? 90 : currentMinute) : (phaseComplete ? 45 : currentMinute)) / 90) * 100))}%` }}
+              style={{ width: `${Math.max(0, Math.min(100, ((match.finished ? currentMinute : currentMinute) / 90) * 100))}%` }}
             />
           </div>
         </div>
@@ -771,10 +774,10 @@ function Match({ state }: { state: GameState }) {
                 return (
                   <li
                     key={`${event}-${i}`}
-                    className={`flex items-center gap-2 ${isPenalty ? cupOutcomeClass + " font-bold" : isUserGoal ? "font-semibold text-primary" : ""}`}
+                    className={`flex items-center gap-2 ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? "font-bold text-red-600 dark:text-red-400" : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
                   >
                     <span className="w-9 shrink-0 font-mono-num text-xs text-muted-foreground">
-                      {isPenalty ? "🥅" : `${parsed.minute}'`}
+                      {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "Y" ? "🟨" : `${parsed.minute}'`}
                     </span>
                     <span>{parsed.text}</span>
                   </li>
@@ -783,7 +786,7 @@ function Match({ state }: { state: GameState }) {
             </ul>
           ) : (
             <div className="flex h-full min-h-[70px] items-center justify-center text-sm text-muted-foreground">
-              {phaseComplete ? "Sem golos nesta parte." : "O jogo começou…"}
+              {phaseComplete ? "Sem acontecimentos nesta parte." : "O jogo começou…"}
             </div>
           )}
         </div>
@@ -808,7 +811,7 @@ function Match({ state }: { state: GameState }) {
 
         <div className="mt-4">
           {!phaseComplete ? (
-            <div className="text-xs text-muted-foreground">A simular…</div>
+            <div className="text-xs text-muted-foreground">A simular… {Math.round((phaseElapsed / 10000) * 100)}%</div>
           ) : match.finished ? (
             <div>
               <div className="mb-2 text-sm font-black">🔔 Final — {shownScore.home}-{shownScore.away}</div>
