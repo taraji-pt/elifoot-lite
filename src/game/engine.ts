@@ -47,7 +47,9 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
       const next = (state.yellowCards[card.playerId] ?? 0) + 1;
       if (next >= 5) {
         state.yellowCards[card.playerId] = 0;
-        state.suspensions[card.playerId] = Math.max(state.suspensions[card.playerId] ?? 0, 2);
+        // 5 amarelos = 1 jogo de suspensão.
+        // A suspensão é atribuída no fim do jogo e consumida na preparação do jogo seguinte.
+        state.suspensions[card.playerId] = Math.max(state.suspensions[card.playerId] ?? 0, 1);
         suspended = true;
       } else {
         state.yellowCards[card.playerId] = next;
