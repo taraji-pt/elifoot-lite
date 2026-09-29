@@ -104,6 +104,14 @@ export function advanceRound(state: GameState) {
       return;
     }
     state.cup = playCupRound(state.cup, state.teams, state.players);
+    if (state.cup.winnerId === state.userTeamId) {
+      const season = seasonLabel(state.seasonYear);
+      state.celebration = {
+        type: "cup",
+        season,
+        teamId: state.userTeamId,
+      };
+    }
   }
 
   if (state.round >= totalRounds(state)) {
@@ -223,6 +231,16 @@ function endSeason(state: GameState) {
   else if (info.down && info.division < N) outcome = "relegated";
   else if (info.down && droppedOut.includes(state.userTeamId)) outcome = "out";
 
+  const leagueChampion = info.division === 1 && info.position === 1;
+  const cupWinner = state.cup.winnerId === state.userTeamId;
+  if (leagueChampion || cupWinner || outcome === "promoted") {
+    state.celebration = {
+      type: leagueChampion && cupWinner ? "double" : leagueChampion ? "league" : cupWinner ? "cup" : "promotion",
+      season: seasonLabel(state.seasonYear),
+      teamId: state.userTeamId,
+    };
+  }
+
   state.seasonReview = {
     season: seasonLabel(state.seasonYear),
     userDivision: info.division,
@@ -290,14 +308,6 @@ export function continueAfterSeasonReview(state: GameState) {
       note,
     },
   ];
-
-  if (leagueChampion || cupWinner) {
-    state.celebration = {
-      type: leagueChampion && cupWinner ? "double" : leagueChampion ? "league" : "cup",
-      season: review.season,
-      teamId: state.userTeamId,
-    };
-  }
 
   state.seasonYear += 1;
   state.round = 1;
