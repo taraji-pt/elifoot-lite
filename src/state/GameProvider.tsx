@@ -225,6 +225,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           );
           (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
           match.redCardIds = [...(match.redCardIds ?? []), ...half.cards.filter((c) => c.type === "red").map((c) => c.playerId)];
+          match.yellowCardIds = [...(match.yellowCardIds ?? []), ...half.cards.filter((c) => c.type === "yellow").map((c) => c.playerId)];
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
