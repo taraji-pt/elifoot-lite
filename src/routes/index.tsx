@@ -352,6 +352,8 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
     divisionTeamIds(state, review.userDivision),
   );
   const { promotionSpots, relegationSpots, numberOfDivisions } = GAME_CONFIG;
+  const reserveCount = Object.values(state.teams).filter((t) => t.division === 0).length;
+  const lastDivisionRelegationSpots = Math.min(relegationSpots, reserveCount);
 
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-background/95 px-4 py-6">
@@ -417,7 +419,13 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                     return (
                       <tr
                         key={r.teamId}
-                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${i === 0 && review.userDivision === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions && i >= rows.length - relegationSpots ? "bg-red-500/10 text-red-700 dark:text-red-300" : ""}`}
+                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${i === 0 && review.userDivision === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions
+                          ? i >= rows.length - relegationSpots
+                            ? "bg-red-500/10 text-red-700 dark:text-red-300"
+                            : ""
+                          : lastDivisionRelegationSpots > 0 && i >= rows.length - lastDivisionRelegationSpots
+                            ? "bg-red-500/10 text-red-700 dark:text-red-300"
+                            : ""}`}
                       >
                         <td className="py-1.5 font-mono-num">{i + 1}</td>
                         <td><TeamIdentityWithFlag team={t} size={20} /></td>
@@ -903,6 +911,8 @@ function Standings({ state }: { state: GameState }) {
   const [division, setDivision] = useState(userTeam(state).division || GAME_CONFIG.numberOfDivisions);
   const rows = computeStandings(state.leagues[division] ?? [], divisionTeamIds(state, division));
   const { promotionSpots, relegationSpots, numberOfDivisions } = GAME_CONFIG;
+  const reserveCount = Object.values(state.teams).filter((t) => t.division === 0).length;
+  const lastDivisionRelegationSpots = Math.min(relegationSpots, reserveCount);
   return (
     <div className={card}>
       <DivisionPicker value={division} onChange={setDivision} />
@@ -918,7 +928,10 @@ function Standings({ state }: { state: GameState }) {
           {rows.map((r, i) => {
             const t = state.teams[r.teamId] as Team;
             const up = division > 1 && i < promotionSpots;
-            const down = division < numberOfDivisions && i >= rows.length - relegationSpots;
+            const down =
+              division < numberOfDivisions
+                ? i >= rows.length - relegationSpots
+                : division === numberOfDivisions && lastDivisionRelegationSpots > 0 && i >= rows.length - lastDivisionRelegationSpots;
             return (
               <tr key={r.teamId} className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10" : ""} ${i === 0 && division === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${up ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${down ? "bg-red-500/10 text-red-700 dark:text-red-300" : ""}`}>
                 <td className={`py-1.5 font-mono-num ${up ? "text-primary" : down ? "text-destructive" : ""}`}>{i + 1}</td>
