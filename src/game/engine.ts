@@ -41,7 +41,7 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
     if (card.type === "red") {
       // O valor 2 faz com que a preparação do próximo jogo consuma 1,
       // deixando o jogador efetivamente de fora desse jogo.
-      state.suspensions[card.playerId] = 2;
+      state.suspensions[card.playerId] = 3;
       suspended = true;
     } else {
       const next = (state.yellowCards[card.playerId] ?? 0) + 1;
