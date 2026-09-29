@@ -71,6 +71,7 @@ export interface MatchState {
   userLineup: number[];
   subsUsed: number;
   events: string[];
+  /** acontecimentos do jogo, com minuto e marcador */
   finished: boolean;
   cupPenaltyWinnerId?: number;
 }
