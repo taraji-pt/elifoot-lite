@@ -29,6 +29,7 @@ import { createNewGame } from "@/game/newGame";
 import { penaltyShootout, simulateHalf } from "@/game/simulation";
 import { clearSave, hasSave, loadGame, saveGame } from "@/game/storage";
 import type { GameState, Team } from "@/game/types";
+import { playGoal, playWhistle } from "@/game/sound";
 
 interface GameContextValue {
   ready: boolean;
@@ -157,6 +158,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const home = draft.teams[homeId] as Team;
           const away = draft.teams[awayId] as Team;
           const half = simulateHalf(home, away, draft.players, home.lineup, away.lineup);
+          playWhistle(1);
           draft.match = {
             competition: playCup ? "cup" : "league",
             homeId: home.id,
@@ -197,6 +199,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userIsHome = draft.userTeamId === match.homeId;
           const homeLineup = userIsHome ? match.userLineup : home.lineup;
           const awayLineup = userIsHome ? away.lineup : match.userLineup;
+          playWhistle(2);
           const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
