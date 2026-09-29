@@ -44,7 +44,16 @@ function consumeMatchSuspensions(state: GameState) {
   }
 }
 
-function availableLineup(state: GameState, team: Team): number[] {
+export function prepareTeamForMatch(state: GameState, team: Team): number[] {
+  if (!state.suspensions) state.suspensions = {};
+  for (const id of team.playerIds) {
+    const remaining = state.suspensions[id] ?? 0;
+    if (remaining > 0) state.suspensions[id] = remaining - 1;
+  }
+  return team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0);
+}
+
+export function availableLineup(state: GameState, team: Team): number[] {
   const suspended = new Set(Object.keys(state.suspensions ?? {}).filter((id) => (state.suspensions?.[Number(id)] ?? 0) > 0).map(Number));
   return team.lineup.filter((id) => !suspended.has(id));
 }
@@ -79,7 +88,9 @@ function simulateRound(state: GameState) {
       const home = state.teams[fixture.homeId];
       const away = state.teams[fixture.awayId];
       if (!home || !away) continue;
-      const result = simulateMatch(home, away, state.players);
+      const homeLineup = prepareTeamForMatch(state, home);
+      const awayLineup = prepareTeamForMatch(state, away);
+      const result = simulateMatch(home, away, state.players, homeLineup, awayLineup);
       fixture.homeGoals = result.homeGoals;
       fixture.awayGoals = result.awayGoals;
       fixture.scorerIds = result.scorers.map((s) => s.playerId);
