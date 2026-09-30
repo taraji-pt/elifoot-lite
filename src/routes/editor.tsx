@@ -208,6 +208,14 @@ function Editor() {
                     </select>
                   </label>
                   <label className="text-sm">
+                    Estádio
+                    <input className={input} value={selected.stadium ?? ""} placeholder="Ex.: Stadio Artemio Franchi" onChange={(e) => update({ stadium: e.target.value })} />
+                  </label>
+                  <label className="text-sm">
+                    Cidade
+                    <input className={input} value={selected.city ?? ""} placeholder="Ex.: Florença" onChange={(e) => update({ city: e.target.value })} />
+                  </label>
+                  <label className="text-sm">
                     Força do clube: <b className="font-mono-num">{selected.rating}</b>
                     <input
                       type="range"
