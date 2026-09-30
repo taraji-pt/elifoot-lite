@@ -318,7 +318,7 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
           <img
             src={imageSrc}
             alt={team.stadium || `Estádio de ${team.name}`}
-            className="max-h-[70vh] w-full object-contain"
+            className="max-h-[250px] w-full object-contain"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}
@@ -1057,6 +1057,8 @@ function Match({
     const isCup = cupPending;
     const home = state.teams[isCup ? cupTie!.homeId : fixture.homeId] as Team;
     const away = state.teams[isCup ? cupTie!.awayId : fixture.awayId] as Team;
+    const homeDb = loadDatabase().find((t) => t.id === home.id);
+    const homeStadiumImage = home.stadiumImage?.trim() || homeDb?.stadiumImage?.trim() || "";
     const availableCount = team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0).length;
     const ok = availableCount === 11;
     return (
@@ -1071,11 +1073,11 @@ function Match({
             O teu jogo da Liga já terminou. Agora é a tua vez na Taça.
           </div>
         )}
-        {home.stadium?.trim() && home.city?.trim() && (
-        home.stadiumImage?.trim() ? (
+      {home.stadium?.trim() && home.city?.trim() && (
+        homeStadiumImage ? (
           <button
             type="button"
-            className="group mt-2 inline-flex items-center justify-center gap-2 rounded-sm text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="group mx-auto mt-2 inline-flex items-center justify-center gap-2 rounded-sm text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
             onClick={() => setStadiumOpen(true)}
             title={`Ver foto de ${home.stadium.trim()}`}
           >
@@ -1093,7 +1095,12 @@ function Match({
           </div>
         )
       )}
-      {stadiumOpen && <StadiumModal team={home} onClose={() => setStadiumOpen(false)} />}
+      {stadiumOpen && (
+        <StadiumModal
+          team={{ ...home, stadiumImage: homeStadiumImage }}
+          onClose={() => setStadiumOpen(false)}
+        />
+      )}
       <div className="mx-auto my-6 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 text-lg">
           <div className="flex justify-end">
             <MatchTeam team={home} side="home" />
