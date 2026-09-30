@@ -450,7 +450,7 @@ function Game({ state }: { state: GameState }) {
 }
 
 function CareerImageSettings({ state, onClose }: { state: GameState; onClose: () => void }) {
-  const { save } = useGame();
+  const { setCareerImage } = useGame();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -460,8 +460,7 @@ function CareerImageSettings({ state, onClose }: { state: GameState; onClose: ()
     setBusy(true);
     try {
       const image = await compressCareerImage(file);
-      const next = { ...state, careerImage: image };
-      saveGameDirect(next);
+      setCareerImage(image);
     } catch (e) {
       console.error(e);
       setError("Não foi possível processar essa imagem. Escolhe uma fotografia JPG, PNG ou WebP.");
@@ -470,13 +469,8 @@ function CareerImageSettings({ state, onClose }: { state: GameState; onClose: ()
     }
   };
 
-  const saveGameDirect = (next: GameState) => {
-    saveGame(next);
-    window.location.reload();
-  };
-
   const remove = () => {
-    saveGameDirect({ ...state, careerImage: null });
+    setCareerImage(null);
   };
 
   return (
