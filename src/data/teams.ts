@@ -117,7 +117,7 @@ export const TEAMS: TeamSeed[] = [
   },
   {
     "id": 2,
-    "name": "Juventus",
+    "name": "Juventus2",
     "country": "ITA",
     "rating": 78,
     "badge": "/assets/badges/juventus.png",
