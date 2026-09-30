@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -165,3 +166,5 @@
 }
 body { font-family: "Space Grotesk", system-ui, sans-serif; }
 .font-mono-num { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+
+.font-club-name { font-family: "Instrument Serif", Georgia, serif; font-weight: 600; font-synthesis: weight; }
