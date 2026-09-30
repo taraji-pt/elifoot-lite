@@ -20853,7 +20853,7 @@ export const TEAMS: TeamSeed[] = [
     },
     {
       "name": "Zlatko Nastevski",
-      "position": "MED",
+      "position": "AV",
       "nationality": "MKD"
     },
     {
