@@ -8973,7 +8973,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Real Valladolid",
     "country": "ESP",
     "rating": 68,
-    "badge": "/assets/badges/valladolid.jpg",
+    "badge": "/assets/badges/valladolid.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
