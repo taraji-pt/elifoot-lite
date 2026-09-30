@@ -20,6 +20,8 @@ export interface Team {
   stadium?: string;
   /** cidade onde o clube joga em casa; opcional */
   city?: string;
+  /** nome do ficheiro da foto do estádio em public/assets/stadiums; opcional */
+  stadiumImage?: string;
   /** 1..N = divisões a competir; 0 = Reserva (fora das divisões) */
   division: number;
   /** força do clube (0-100) — gera ratings e orçamento */
