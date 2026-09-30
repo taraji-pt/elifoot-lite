@@ -16,6 +16,10 @@ export interface Team {
   id: number;
   name: string;
   country: string;
+  /** estádio habitual do clube; opcional */
+  stadium?: string;
+  /** cidade onde o clube joga em casa; opcional */
+  city?: string;
   /** 1..N = divisões a competir; 0 = Reserva (fora das divisões) */
   division: number;
   /** força do clube (0-100) — gera ratings e orçamento */
