@@ -22,6 +22,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Escolhe titulares, joga, faz substituições e sobe de divisão." },
       { property: "og:title", content: "Mini Elifoot — Gere a tua equipa" },
       { property: "og:description", content: "Escolhe titulares, joga, faz substituições e sobe de divisão." },
+      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.svg`, type: "image/svg+xml" },
     ],
   }),
   component: () => (
@@ -452,7 +453,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                     return (
                       <tr
                         key={r.teamId}
-                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${i === 0 && review.userDivision === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions
+                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${i === 0 && review.userDivision === 1 ? "bg-yellow-400/25 text-yellow-900 dark:bg-yellow-400/20 dark:text-yellow-200" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions
                           ? i >= rows.length - relegationSpots
                             ? "bg-red-500/10 text-red-700 dark:text-red-300"
                             : ""
