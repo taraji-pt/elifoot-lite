@@ -20795,104 +20795,79 @@ export const TEAMS: TeamSeed[] = [
     "country": "AUS",
     "rating": 48,
     "badge": "/assets/badges/marconi.png",
-    "primaryColor": "#333333",
+    "primaryColor": "#1B3A8A",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Mark Bosnich",
-        "position": "GR",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Zeljko Kalac",
-        "position": "GR",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Alex Tobin",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Craig Moore",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Tony Vidmar",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Frank Farina",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Robbie Slater",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Ned Zelic",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Paul Okon",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Aurelio Vidmar",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Schwarzer",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Harry Kewell",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Bresciano",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Damian Mori",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Frank Farina",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Damian Mori",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Viduka",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Tim Cahill",
-        "position": "AV",
-        "nationality": "AUS"
-      }
-    ]
-  },
+    "stadium": "Marconi Stadium",
+    "city": "Sydney",
+    "stadiumImage": "/assets/stadiums/marconi.jpg",
+   "players": [
+    {
+      "name": "Les Pogliacomi",
+      "position": "GR",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Luke Casserly",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Jean-Paul de Marigny",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Dominic Longo",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Gary van Egmond",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Nick Bosevski",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Yane Talcevski",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Brad Maloney",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Matt Bingley",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Robert Stanton",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Zlatko Nastevski",
+      "position": "MED",
+      "nationality": "MKD"
+    },
+    {
+      "name": "Craig Foster",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Francis Awaritefe",
+      "position": "AV",
+      "nationality": "AUS"
+    }
+  ]
+},
   {
     "id": 199,
     "name": "Waitakere City",
