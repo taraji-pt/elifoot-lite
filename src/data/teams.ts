@@ -21243,9 +21243,9 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/beitar.png",
     "primaryColor": "#F7C600",
     "secondaryColor": "#000000",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
+    "stadium": "Teddy Stadium (אצטדיון טדי)",
+    "city": "Jerusalem",
+    "stadiumImage": "/assets/stadiums/teddy.jpg",
     "players": [
       {
         "name": "Itzik Kornfein",
