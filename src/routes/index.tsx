@@ -294,6 +294,9 @@ function stadiumImageSrc(team: Team) {
 function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
   const imageSrc = stadiumImageSrc(team);
   if (!imageSrc) return null;
+  const mapQuery = encodeURIComponent(
+    [team.city?.trim(), COUNTRIES[team.country]?.name ?? team.country].filter(Boolean).join(", "),
+  );
 
   return (
     <div
@@ -314,15 +317,28 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
           </div>
           <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
-        <div className="bg-black/10">
-          <img
-            src={imageSrc}
-            alt={team.stadium || `Estádio de ${team.name}`}
-            className="max-h-[250px] w-full object-contain"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
+        <div className="grid gap-4 p-4 sm:grid-cols-2">
+          <div className="flex min-h-[180px] items-center justify-center rounded-lg border border-border bg-black/10 p-2">
+            <img
+              src={imageSrc}
+              alt={team.stadium || `Estádio de ${team.name}`}
+              className="max-h-[200px] w-full object-contain"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          </div>
+          {team.city?.trim() && (
+            <div className="overflow-hidden rounded-lg border border-border bg-black/10">
+              <iframe
+                title={`Localização de ${team.city}`}
+                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+                className="h-[200px] w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -476,6 +492,7 @@ function Game({ state }: { state: GameState }) {
   const { message, setMessage, save, deleteSave } = useGame();
   const [tab, setTab] = useState<Tab>("equipa");
   const [showCareerImageSettings, setShowCareerImageSettings] = useState(false);
+  const [stadiumOpen, setStadiumOpen] = useState(false);
   const team = userTeam(state);
   const activeTab: Tab = state.match ? "jogo" : tab;
 
@@ -504,9 +521,14 @@ function Game({ state }: { state: GameState }) {
         <div className="absolute inset-0 bg-black/35" />
         <div className="relative flex flex-wrap items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-4">
-            <div className="rounded-xl bg-black/20 p-1.5 shadow-md ring-1 ring-white/15">
+            <button
+              type="button"
+              className="rounded-xl bg-black/20 p-1.5 shadow-md ring-1 ring-white/15"
+              onClick={() => setStadiumOpen(true)}
+              aria-label={`Ver estádio de ${team.name}`}
+            >
               <TeamBadge team={team} size={52} />
-            </div>
+            </button>
             <div className="min-w-0 text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.75)]">
               <div className="font-club-name text-2xl font-semibold leading-none tracking-tight sm:text-3xl">
                 {team.name}
@@ -540,6 +562,13 @@ function Game({ state }: { state: GameState }) {
           </div>
         </div>
       </header>
+
+      {stadiumOpen && (
+        <StadiumModal
+          team={team}
+          onClose={() => setStadiumOpen(false)}
+        />
+      )}
 
       <nav className="mt-4 flex flex-wrap gap-1">
         {TABS.map(([id, label]) => (
