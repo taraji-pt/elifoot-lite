@@ -357,7 +357,7 @@ function Game({ state }: { state: GameState }) {
             alt=""
             className="h-full w-full object-cover opacity-[0.14] blur-[1px]"
           />
-          <div className="absolute inset-0 bg-background/75" />
+          <div className="absolute inset-0 bg-background/55" />
         </div>
       )}
 
@@ -1226,7 +1226,20 @@ function Standings({ state }: { state: GameState }) {
             return (
               <tr key={r.teamId} className={`border-t border-border ${rowClass}`}>
                 <td className={`py-1.5 font-mono-num ${positionClass}`}>{i + 1}</td>
-                <td className={teamClass}><TeamIdentityWithFlag team={t} size={20} /></td>
+                <td className={teamClass}>
+                  {t.id === state.userTeamId ? (
+                    <TeamIdentityWithFlag team={t} size={20} />
+                  ) : (
+                    <button
+                      type="button"
+                      className="inline-flex max-w-full items-center rounded-sm text-left hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      onClick={() => setViewTeamId(t.id)}
+                      title={`Ver plantel de ${t.name}`}
+                    >
+                      <TeamIdentityWithFlag team={t} size={20} />
+                    </button>
+                  )}
+                </td>
                 <td className="text-right font-mono-num">{r.played}</td>
                 <td className="text-right font-mono-num">{r.won}</td>
                 <td className="text-right font-mono-num">{r.drawn}</td>
