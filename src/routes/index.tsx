@@ -1619,6 +1619,7 @@ function Transfers({ state }: { state: GameState }) {
 
 function CupView({ state }: { state: GameState }) {
   const cup = state.cup;
+  const [viewTeamId, setViewTeamId] = useState<number | null>(null);
   return (
     <div className="space-y-4">
       {cup.winnerId !== null && (
@@ -1668,13 +1669,27 @@ function CupView({ state }: { state: GameState }) {
                 >
                   <div className="grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2">
                     <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
-                      <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
+                      <button
+                        type="button"
+                        className="w-full rounded-sm text-left hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        onClick={() => setViewTeamId(h.id)}
+                        title={`Ver plantel de ${h.name}`}
+                      >
+                        <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
+                      </button>
                     </div>
                     <span className={`w-14 text-center font-mono-num ${penaltyClass}`}>
                       {score}
                     </span>
                     <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
-                      <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
+                      <button
+                        type="button"
+                        className="w-full rounded-sm text-right hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        onClick={() => setViewTeamId(a.id)}
+                        title={`Ver plantel de ${a.name}`}
+                      >
+                        <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
+                      </button>
                     </div>
                   </div>
                       {userOutcome && (
@@ -1692,6 +1707,13 @@ function CupView({ state }: { state: GameState }) {
           </div>
         </div>
       ))}
+      {viewTeamId !== null && state.teams[viewTeamId] && (
+        <TeamSquadModal
+          state={state}
+          team={state.teams[viewTeamId] as Team}
+          onClose={() => setViewTeamId(null)}
+        />
+      )}
     </div>
   );
 }
