@@ -125,7 +125,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#FFFFFF",
     "stadium": "Stadio delle Alpi",
     "city": "Torino",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/stadiums/alpi.jpg",
     "players": [
       {
         "name": "Angelo Peruzzi",
