@@ -484,7 +484,20 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                     return (
                       <tr key={r.teamId} className={`border-t border-border ${rowClass}`}>
                         <td className={`py-1.5 font-mono-num ${positionClass}`}>{i + 1}</td>
-                        <td className={teamClass}><TeamIdentityWithFlag team={t} size={20} /></td>
+                        <td className={teamClass}>
+                  {t.id === state.userTeamId ? (
+                    <TeamIdentityWithFlag team={t} size={20} />
+                  ) : (
+                    <button
+                      type="button"
+                      className="rounded-sm text-left hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      onClick={() => setViewTeamId(t.id)}
+                      title={`Ver plantel de ${t.name}`}
+                    >
+                      <TeamIdentityWithFlag team={t} size={20} />
+                    </button>
+                  )}
+                </td>
                         <td className="text-right font-mono-num">{r.played}</td>
                         <td className="text-right font-mono-num">{r.goalsFor}-{r.goalsAgainst}</td>
                         <td className="text-right font-mono-num">{r.points}</td>
@@ -1028,6 +1041,7 @@ function Match({ state }: { state: GameState }) {
 
 function Standings({ state }: { state: GameState }) {
   const [division, setDivision] = useState(userTeam(state).division || GAME_CONFIG.numberOfDivisions);
+  const [viewTeamId, setViewTeamId] = useState<number | null>(null);
   const rows = computeStandings(state.leagues[division] ?? [], divisionTeamIds(state, division));
   const { promotionSpots, relegationSpots, numberOfDivisions } = GAME_CONFIG;
   const reserveCount = Object.values(state.teams).filter((t) => t.division === 0).length;
@@ -1091,6 +1105,81 @@ function Standings({ state }: { state: GameState }) {
         </tbody>
       </table>
       <TopScorers state={state} division={division} />
+      {viewTeamId !== null && state.teams[viewTeamId] && (
+        <TeamSquadModal state={state} team={state.teams[viewTeamId] as Team} onClose={() => setViewTeamId(null)} />
+      )}
+    </div>
+  );
+}
+
+function TeamSquadModal({
+  state,
+  team,
+  onClose,
+}: {
+  state: GameState;
+  team: Team;
+  onClose: () => void;
+}) {
+  const squad = sortSquad(getPlayers(team.playerIds, state.players));
+  const rating = teamRating(team, state.players);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-6"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Plantel de ${team.name}`}
+      onClick={onClose}
+    >
+      <div
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
+          <div className="flex min-w-0 items-center gap-3">
+            <TeamBadge team={team} size={48} />
+            <div className="min-w-0">
+              <div className="font-club-name text-2xl leading-none">{team.name}</div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {divisionLabel(team.division)} · Rating {rating}
+              </div>
+            </div>
+          </div>
+          <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
+        </div>
+
+        <div className="mt-4 text-sm font-semibold">
+          Plantel ({squad.length})
+        </div>
+
+        <div className="mt-2 space-y-3">
+          {(["GR", "DEF", "MED", "AV"] as const).map((position) => {
+            const players = squad.filter((p) => p.position === position);
+            if (!players.length) return null;
+            const label =
+              position === "GR" ? "Guarda-redes" :
+              position === "DEF" ? "Defesas" :
+              position === "MED" ? "Médios" : "Avançados";
+
+            return (
+              <div key={position} className="rounded-lg border border-border/70 bg-background/20 p-2.5">
+                <div className="mb-1.5 flex items-center justify-between px-1 text-sm font-semibold">
+                  <span>{label}</span>
+                  <span className="text-xs font-normal text-muted-foreground">{players.length}</span>
+                </div>
+                <PlayerTable players={players} />
+              </div>
+            );
+          })}
+        </div>
+
+        {!squad.length && (
+          <div className="py-6 text-center text-sm text-muted-foreground">
+            Não há jogadores definidos para este clube.
+          </div>
+        )}
+      </div>
     </div>
   );
 }
