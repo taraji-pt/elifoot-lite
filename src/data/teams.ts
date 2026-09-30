@@ -20720,7 +20720,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Sydney Olympic",
     "country": "AUS",
     "rating": 48,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/SOFC.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
