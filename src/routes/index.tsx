@@ -193,17 +193,17 @@ function TeamIdentityWithFlag({
     </span>
   );
 }
-function MatchTeam({ team, side, size = 40 }: { team: Team; side: "home" | "away"; size?: number }) {
+function MatchTeam({ team, side, size = 50 }: { team: Team; side: "home" | "away"; size?: number }) {
   return (
     <div className={`flex min-w-0 flex-1 items-center gap-2 ${side === "home" ? "justify-start" : "justify-end"}`}>
       {side === "home" ? (
         <>
           <TeamBadge team={team} size={size} />
-          <span className="min-w-0 text-left font-semibold leading-tight">{team.name}</span>
+          <span className="font-club-name min-w-0 text-left text-xl leading-none sm:text-2xl">{team.name}</span>
         </>
       ) : (
         <>
-          <span className="min-w-0 text-right font-semibold leading-tight">{team.name}</span>
+          <span className="font-club-name min-w-0 text-right text-xl leading-none sm:text-2xl">{team.name}</span>
           <TeamBadge team={team} size={size} />
         </>
       )}
@@ -297,8 +297,7 @@ function Game({ state }: { state: GameState }) {
     <div className="mx-auto max-w-5xl px-4 py-6">
       <header
         className="relative overflow-hidden rounded-xl border border-white/10 px-4 py-3 shadow-lg sm:px-5"
-        style={{
-          background: `linear-gradient(110deg, ${team.primaryColor} 0%, ${team.primaryColor} 38%, ${team.secondaryColor} 100%)`,
+        style={{          background: `linear-gradient(110deg, ${team.primaryColor} 0%, ${team.primaryColor} 38%, ${team.secondaryColor} 100%)`,
         }}
       >
         <div className="absolute inset-0 bg-black/35" />
@@ -597,8 +596,7 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
                       : "";
                   return (
                     <span className="inline-flex items-center gap-2">
-                      {yellows > 0 && <span className="font-mono-num text-yellow-600 dark:text-yellow-400">🟨 {yellows}/5</span>}
-                      {status}
+                      {yellows > 0 && <span className="font-mono-num text-yellow-600 dark:text-yellow-400">🟨 {yellows}/5</span>}                      {status}
                     </span>
                   );
                 }}
@@ -700,8 +698,15 @@ function Match({ state }: { state: GameState }) {
     if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
   }, [match?.events.length, elapsedMs]);
 
-  // O jogo já tem todos os eventos simulados no início; o flash deve
-  // disparar quando cada evento fica visível no relógio.
+  const flashedEventRef = useRef<string | null>(null);
+
+  // O jogo já tem todos os eventos simulados no início; o flash dispara
+  // apenas no instante em que um golo ou cartão vermelho fica visível.
+  useEffect(() => {
+    flashedEventRef.current = null;
+    setFlashEvent(null);
+  }, [match?.half]);
+
   useEffect(() => {
     if (!match || !lastMatchEvent) return;
 
@@ -721,14 +726,16 @@ function Match({ state }: { state: GameState }) {
     const visibleEvents = [...visibleFirst, ...visibleSecond];
     const event = visibleEvents[visibleEvents.length - 1] ?? null;
 
-    if (!event) return;
+    if (!event || flashedEventRef.current === event) return;
+
     const kind = event.split("|")[3];
     if (kind !== "G" && kind !== "R") return;
 
+    flashedEventRef.current = event;
     setFlashEvent(event);
-    const timer = window.setTimeout(() => setFlashEvent(null), 1200);
+    const timer = window.setTimeout(() => setFlashEvent(null), 750);
     return () => window.clearTimeout(timer);
-  }, [match, elapsedMs, lastMatchEvent]);
+  }, [match, match?.events, elapsedMs, lastMatchEvent]);
 
   const fixture = userFixture(state);
   const cupTie = userCupTie(state);
@@ -877,6 +884,13 @@ function Match({ state }: { state: GameState }) {
           </div>
         </div>
 
+        {flashEvent && (
+          <div
+            className={`match-flash ${parseEvent(flashEvent).kind === "R" ? "match-flash-red" : "match-flash-goal"}`}
+            aria-hidden="true"
+          />
+        )}
+
         <div className="mx-auto my-4 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4">
           <div className="flex justify-end">
             <MatchTeam team={home} side="home" />
@@ -897,8 +911,7 @@ function Match({ state }: { state: GameState }) {
                 const isPenalty = parsed.half === "P";
                 const isUserGoal = parsed.teamId === state.userTeamId;
                 return (
-                  <li
-                    key={`${event}-${i}`}
+                  <li                    key={`${event}-${i}`}
                     className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? `font-bold text-red-600 dark:text-red-400 ${flashEvent === event ? "animate-pulse" : ""}` : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
                   >
                     <span className="w-9 shrink-0 text-xs">
@@ -1197,8 +1210,7 @@ function Transfers({ state }: { state: GameState }) {
   const mine = sortSquad(getPlayers(team.playerIds, state.players));
   return (
     <div className="grid gap-4 lg:grid-cols-2">
-      <div className={card}>
-        <div className="mb-2 font-semibold">Mercado</div>
+      <div className={card}>        <div className="mb-2 font-semibold">Mercado</div>
         <div className="mb-3 space-y-2">
           <input
             className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
@@ -1497,8 +1509,7 @@ function History({ state }: { state: GameState }) {
                     <span>{t.club}</span>
                   </div>
                 </div>
-              );
-            })}
+              );            })}
           </div>
         ) : (
           <div className="mt-4 rounded-md border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
