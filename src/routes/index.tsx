@@ -346,8 +346,23 @@ function Game({ state }: { state: GameState }) {
   const activeTab: Tab = state.match ? "jogo" : tab;
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-6">
-      <header
+    <div className="relative min-h-screen">
+      {state.careerImage && (
+        <div
+          className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <img
+            src={state.careerImage}
+            alt=""
+            className="h-full w-full object-cover opacity-[0.14] blur-[1px]"
+          />
+          <div className="absolute inset-0 bg-background/75" />
+        </div>
+      )}
+
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-6">
+        <header
         className="relative overflow-hidden rounded-xl border border-white/10 px-4 py-3 shadow-lg sm:px-5"
         style={{          background: `linear-gradient(110deg, ${team.primaryColor} 0%, ${team.primaryColor} 38%, ${team.secondaryColor} 100%)`,
         }}
@@ -372,15 +387,15 @@ function Game({ state }: { state: GameState }) {
             <span className="rounded-md bg-black/25 px-2.5 py-1 font-mono-num text-sm font-semibold text-white shadow-sm">
               {formatMoney(team.budget)}
             </span>
-            <button className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25" onClick={save}>
-              Guardar
-            </button>
             <button
               className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25"
               onClick={() => setShowCareerImageSettings(true)}
               title="Imagem da carreira"
             >
               📷
+            </button>
+            <button className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25" onClick={save}>
+              Guardar
             </button>
             <button
               className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25"
@@ -412,22 +427,7 @@ function Game({ state }: { state: GameState }) {
         </div>
       )}
 
-      {state.careerImage && (
-        <div
-          className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
-          aria-hidden="true"
-        >
-          <img
-            src={state.careerImage}
-            alt=""
-            className="h-full w-full object-cover opacity-[0.075] blur-[1px]"
-          />
-          <div className="absolute inset-0 bg-background/85" />
-        </div>
-      )}
-
-      <div className="relative z-10">
-        {state.celebration && <CelebrationPopup state={state} />}
+      {state.celebration && <CelebrationPopup state={state} />}
 
         {state.seasonReview && <SeasonReviewBanner state={state} />}
 
@@ -443,6 +443,7 @@ function Game({ state }: { state: GameState }) {
         {activeTab === "taca" && <CupView state={state} />}
         {activeTab === "historico" && <History state={state} />}
       </main>
+        </div>
       </div>
       {showCareerImageSettings && <CareerImageSettings state={state} onClose={() => setShowCareerImageSettings(false)} />}
     </div>
