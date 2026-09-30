@@ -19,6 +19,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/milan.png",
     "primaryColor": "#AC1E2D",
     "secondaryColor": "#000000",
+    "stadium": "Stadio Giuseppe Meazza (San Siro)",
+    "city": "Milano",
     "players": [
       {
         "name": "Sebastiano Rossi",
@@ -110,9 +112,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "Stadio Giuseppe Meazza (San Siro)",
-    "city": "Milano"
+    ]
   },
   {
     "id": 2,
@@ -122,6 +122,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/juventus.png",
     "primaryColor": "#111111",
     "secondaryColor": "#FFFFFF",
+    "stadium": "Stadio delle Alpi",
+    "city": "Torino",
     "players": [
       {
         "name": "Angelo Peruzzi",
@@ -213,9 +215,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "Stadio delle Alpi",
-    "city": "Torino"
+    ]
   },
   {
     "id": 3,
@@ -225,6 +225,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/int_milan.png",
     "primaryColor": "#0068A8",
     "secondaryColor": "#111111",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Gianluca Pagliuca",
@@ -356,9 +358,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 4,
@@ -368,6 +368,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/roma.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Giovanni Cervone",
@@ -529,9 +531,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 5,
@@ -541,6 +541,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/lazio.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "Stadio Olimpico",
+    "city": "Roma",
     "players": [
       {
         "name": "Stefano Sorrentino",
@@ -687,9 +689,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "Stadio Olimpico",
-    "city": "Roma"
+    ]
   },
   {
     "id": 6,
@@ -699,6 +699,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/parma.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "Stadio Ennio Tardini",
+    "city": "Parma",
     "players": [
       {
         "name": "Luca Bucci",
@@ -840,9 +842,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "Stadio Ennio Tardini",
-    "city": "Parma"
+    ]
   },
   {
     "id": 7,
@@ -852,6 +852,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/samp.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Kurnia Sandy",
@@ -983,9 +985,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 8,
@@ -995,6 +995,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/napoli.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "Stadio San Paolo",
+    "city": "Napoli",
     "players": [
       {
         "name": "Giuseppe Taglialatela",
@@ -1156,9 +1158,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "Stadio San Paolo",
-    "city": "Napoli"
+    ]
   },
   {
     "id": 9,
@@ -1168,6 +1168,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/fiorentina.png",
     "primaryColor": "#482683",
     "secondaryColor": "#FFFFFF",
+    "stadium": "Stadio Artemio Franchi",
+    "city": "Firenze",
     "players": [
       {
         "name": "Francesco Toldo",
@@ -1259,9 +1261,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "Stadio Artemio Franchi",
-    "city": "Firenze"
+    ]
   },
   {
     "id": 10,
@@ -1271,6 +1271,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/ajax.png",
     "primaryColor": "#D2122E",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Edwin van der Sar",
@@ -1362,9 +1364,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 11,
@@ -1374,6 +1374,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/psv.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Edwin van der Sar",
@@ -1465,9 +1467,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 12,
@@ -1477,6 +1477,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/feyenoord.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Edwin van der Sar",
@@ -1568,9 +1570,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 13,
@@ -1580,6 +1580,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#A50044",
     "secondaryColor": "#004D98",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -1671,9 +1673,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 14,
@@ -1683,6 +1683,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#1D3557",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -1774,9 +1776,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 15,
@@ -1786,6 +1786,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -1877,9 +1879,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 16,
@@ -1889,6 +1889,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -1980,9 +1982,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 17,
@@ -1992,6 +1992,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -2083,9 +2085,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 18,
@@ -2095,6 +2095,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -2186,9 +2188,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 19,
@@ -2198,6 +2198,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -2289,9 +2291,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 20,
@@ -2301,6 +2301,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#DC052D",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -2392,9 +2394,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 21,
@@ -2404,6 +2404,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -2495,9 +2497,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 22,
@@ -2507,6 +2507,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -2598,9 +2600,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 23,
@@ -2610,6 +2610,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -2701,9 +2703,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 24,
@@ -2713,6 +2713,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -2804,9 +2806,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 25,
@@ -2816,6 +2816,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -2907,9 +2909,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 26,
@@ -2919,6 +2919,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Oliver Kahn",
@@ -3010,9 +3012,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 27,
@@ -3022,6 +3022,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/ManUtd.png",
     "primaryColor": "#DA291C",
     "secondaryColor": "#FBE122",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3113,9 +3115,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 28,
@@ -3125,6 +3125,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/arsenal.png",
     "primaryColor": "#EF0107",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3216,9 +3218,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 29,
@@ -3228,6 +3228,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/liverpool.png",
     "primaryColor": "#C8102E",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3319,9 +3321,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 30,
@@ -3331,6 +3331,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/chelsea.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3422,9 +3424,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 31,
@@ -3434,6 +3434,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/BlackR.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3525,9 +3527,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 32,
@@ -3537,6 +3537,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/newcastle.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3628,9 +3630,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 33,
@@ -3640,6 +3640,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/aston.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3731,9 +3733,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 34,
@@ -3743,6 +3743,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/spurs.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3834,9 +3836,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 35,
@@ -3846,6 +3846,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/leeds.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -3937,9 +3939,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 36,
@@ -3949,6 +3949,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -4040,9 +4042,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SCO"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 37,
@@ -4052,6 +4052,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -4143,9 +4145,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SCO"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 38,
@@ -4155,6 +4155,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#0A3D91",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Vítor Baía",
@@ -4246,9 +4248,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "POR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 39,
@@ -4258,6 +4258,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Vítor Baía",
@@ -4349,9 +4351,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "POR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 40,
@@ -4361,6 +4361,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#0B7A3B",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Vítor Baía",
@@ -4452,9 +4454,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "POR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 41,
@@ -4464,6 +4464,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "Stade Vélodrome",
+    "city": "Marseille",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -4555,9 +4557,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "Stade Vélodrome",
-    "city": "Marseille"
+    ]
   },
   {
     "id": 42,
@@ -4567,6 +4567,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -4658,9 +4660,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 43,
@@ -4670,6 +4670,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -4761,9 +4763,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 44,
@@ -4773,6 +4773,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -4864,9 +4866,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 45,
@@ -4876,6 +4876,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -4967,9 +4969,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 46,
@@ -4979,6 +4979,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -5070,9 +5072,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 47,
@@ -5082,6 +5082,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -5173,9 +5175,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 48,
@@ -5185,6 +5185,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -5276,9 +5278,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 49,
@@ -5288,6 +5288,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5379,9 +5381,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 50,
@@ -5391,6 +5391,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5482,9 +5484,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 51,
@@ -5494,6 +5494,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5585,9 +5587,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 52,
@@ -5597,6 +5597,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5688,9 +5690,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ROU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 53,
@@ -5700,6 +5700,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5791,9 +5793,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ROU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 54,
@@ -5803,6 +5803,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5894,9 +5896,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ROU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 55,
@@ -5906,6 +5906,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -5997,9 +5999,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RUS"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 56,
@@ -6009,6 +6009,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6100,9 +6102,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RUS"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 57,
@@ -6112,6 +6112,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6203,9 +6205,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RUS"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 58,
@@ -6215,6 +6215,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6306,9 +6308,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "UKR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 59,
@@ -6318,6 +6318,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6409,9 +6411,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "UKR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 60,
@@ -6421,6 +6421,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6512,9 +6514,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 61,
@@ -6524,6 +6524,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6615,9 +6617,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 62,
@@ -6627,6 +6627,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6718,9 +6720,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 63,
@@ -6730,6 +6730,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6821,9 +6823,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NOR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 64,
@@ -6833,6 +6833,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -6924,9 +6926,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SWE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 65,
@@ -6936,6 +6936,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7027,9 +7029,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SWE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 66,
@@ -7039,6 +7039,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7130,9 +7132,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "DEN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 67,
@@ -7142,6 +7142,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7233,9 +7235,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "DEN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 68,
@@ -7245,6 +7245,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/anderlecht.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7336,9 +7338,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BEL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 69,
@@ -7348,6 +7348,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/brugge.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7439,9 +7441,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BEL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 70,
@@ -7451,6 +7451,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/liege.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7542,9 +7544,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BEL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 71,
@@ -7554,6 +7554,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7645,9 +7647,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SRB"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 72,
@@ -7657,6 +7657,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7748,9 +7750,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SRB"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 73,
@@ -7760,6 +7760,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7851,9 +7853,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRO"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 74,
@@ -7863,6 +7863,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -7954,9 +7956,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRO"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 75,
@@ -7966,6 +7966,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -8057,9 +8059,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CZE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 76,
@@ -8069,6 +8069,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -8160,9 +8162,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CZE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 77,
@@ -8172,6 +8172,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -8263,9 +8265,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SVK"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 78,
@@ -8275,6 +8275,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/bologna.png",
     "primaryColor": "#1A2F5A",
     "secondaryColor": "#C8102E",
+    "stadium": "Stadio Renato Dall'Ara",
+    "city": "Bologna",
     "players": [
       {
         "name": "Francesco Antonioli",
@@ -8366,9 +8368,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "Stadio Renato Dall'Ara",
-    "city": "Bologna"
+    ]
   },
   {
     "id": 79,
@@ -8378,6 +8378,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/genoa.png",
     "primaryColor": "#C8102E",
     "secondaryColor": "#1B3A5B",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Gianluca Berti",
@@ -8469,9 +8471,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 80,
@@ -8481,6 +8481,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -8572,9 +8574,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 81,
@@ -8584,6 +8584,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -8675,9 +8677,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 82,
@@ -8687,6 +8687,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -8778,9 +8780,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 83,
@@ -8790,6 +8790,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -8881,9 +8883,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 84,
@@ -8893,6 +8893,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -8984,9 +8986,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 85,
@@ -8996,6 +8996,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Andoni Zubizarreta",
@@ -9087,9 +9089,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 86,
@@ -9099,6 +9099,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -9190,9 +9192,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 87,
@@ -9202,6 +9202,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Fabien Barthez",
@@ -9293,9 +9295,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 88,
@@ -9305,6 +9305,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -9396,9 +9398,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SUI"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 89,
@@ -9408,6 +9408,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -9499,9 +9501,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SUI"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 90,
@@ -9511,6 +9511,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/austria-wien.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -9602,9 +9604,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUT"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 91,
@@ -9614,6 +9614,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/rapid.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -9705,9 +9707,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUT"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 92,
@@ -9717,6 +9717,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/salzb.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -9808,9 +9810,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUT"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 93,
@@ -9820,6 +9820,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -9911,9 +9913,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BUL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 94,
@@ -9923,6 +9923,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -10014,9 +10016,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BUL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 95,
@@ -10026,6 +10026,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -10117,9 +10119,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 96,
@@ -10129,6 +10129,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -10220,9 +10222,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ISR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 97,
@@ -10232,6 +10232,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -10323,9 +10325,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GEO"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 98,
@@ -10335,6 +10335,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/vitesse.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Edwin van der Sar",
@@ -10426,9 +10428,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 99,
@@ -10438,6 +10438,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/twente.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Edwin van der Sar",
@@ -10529,9 +10531,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 100,
@@ -10541,6 +10541,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/Heerenveen.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Edwin van der Sar",
@@ -10632,9 +10634,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 101,
@@ -10644,6 +10644,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -10735,9 +10737,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 102,
@@ -10747,6 +10747,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#006437",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -10838,9 +10840,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 103,
@@ -10850,6 +10850,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -10941,9 +10943,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 104,
@@ -10953,6 +10953,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11044,9 +11046,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 105,
@@ -11056,6 +11056,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#C52613",
     "secondaryColor": "#111111",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11147,9 +11149,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 106,
@@ -11159,6 +11159,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11250,9 +11252,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 107,
@@ -11262,6 +11262,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11353,9 +11355,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 108,
@@ -11365,6 +11365,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11456,9 +11458,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 109,
@@ -11468,6 +11468,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11559,9 +11561,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 110,
@@ -11571,6 +11571,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11662,9 +11664,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 111,
@@ -11674,6 +11674,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11765,9 +11767,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 112,
@@ -11777,6 +11777,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -11868,9 +11870,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 113,
@@ -11880,6 +11880,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/velez.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -11971,9 +11973,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 114,
@@ -11983,6 +11983,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/river.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#E31B23",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12074,9 +12076,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 115,
@@ -12086,6 +12086,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/boca.png",
     "primaryColor": "#003B7A",
     "secondaryColor": "#F6C400",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12177,9 +12179,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 116,
@@ -12189,6 +12189,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/indep.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12280,9 +12282,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 117,
@@ -12292,6 +12292,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/racing.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12383,9 +12385,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 118,
@@ -12395,6 +12395,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/SL.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12486,9 +12488,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 119,
@@ -12498,6 +12498,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/rosario.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12589,9 +12591,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 120,
@@ -12601,6 +12601,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/NOB.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12692,9 +12694,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 121,
@@ -12704,6 +12704,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/estudiantes.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12795,9 +12797,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 122,
@@ -12807,6 +12807,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/gimnLP.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -12898,9 +12900,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 123,
@@ -12910,6 +12910,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/lanus.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Goycochea",
@@ -13001,9 +13003,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 124,
@@ -13013,6 +13013,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Vargas",
@@ -13104,9 +13106,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 125,
@@ -13116,6 +13116,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Vargas",
@@ -13207,9 +13209,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 126,
@@ -13219,6 +13219,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Vargas",
@@ -13310,9 +13312,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 127,
@@ -13322,6 +13322,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#111111",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Seré",
@@ -13413,9 +13415,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 128,
@@ -13425,6 +13425,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#0B3D91",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Seré",
@@ -13516,9 +13518,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 129,
@@ -13528,6 +13528,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Seré",
@@ -13619,9 +13621,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 130,
@@ -13631,6 +13631,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Seré",
@@ -13722,9 +13724,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 131,
@@ -13734,6 +13734,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "José Luis Chilavert",
@@ -13825,9 +13827,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 132,
@@ -13837,6 +13837,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "José Luis Chilavert",
@@ -13928,9 +13930,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 133,
@@ -13940,6 +13940,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "José Luis Chilavert",
@@ -14031,9 +14033,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 134,
@@ -14043,6 +14043,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "José Luis Chilavert",
@@ -14134,9 +14136,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 135,
@@ -14146,6 +14146,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -14237,9 +14239,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 136,
@@ -14249,6 +14249,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -14340,9 +14342,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 137,
@@ -14352,6 +14352,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -14443,9 +14445,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 138,
@@ -14455,6 +14455,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "René Higuita",
@@ -14546,9 +14548,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 139,
@@ -14558,6 +14558,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "René Higuita",
@@ -14649,9 +14651,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 140,
@@ -14661,6 +14661,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "René Higuita",
@@ -14752,9 +14754,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 141,
@@ -14764,6 +14764,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "René Higuita",
@@ -14855,9 +14857,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 142,
@@ -14867,6 +14867,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "René Higuita",
@@ -14958,9 +14960,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 143,
@@ -14970,6 +14970,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -15061,9 +15063,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 144,
@@ -15073,6 +15073,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -15164,9 +15166,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 145,
@@ -15176,6 +15176,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -15267,9 +15269,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PER"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 146,
@@ -15279,6 +15279,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Sergio Vargas",
@@ -15370,9 +15372,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 147,
@@ -15382,6 +15382,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -15473,9 +15475,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BOL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 148,
@@ -15485,6 +15485,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -15576,9 +15578,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BOL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 149,
@@ -15588,6 +15588,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -15679,9 +15681,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 150,
@@ -15691,6 +15691,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Cláudio Taffarel",
@@ -15782,9 +15784,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 151,
@@ -15794,6 +15794,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#D71920",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Ahmed Shobair",
@@ -15885,9 +15887,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "EGY"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 152,
@@ -15897,6 +15897,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#C8102E",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Ahmed Shobair",
@@ -15988,9 +15990,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "EGY"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 153,
@@ -16000,6 +16000,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Ahmed Shobair",
@@ -16091,9 +16093,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "EGY"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 154,
@@ -16103,6 +16103,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Chokri El-Ouaer",
@@ -16194,9 +16196,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 155,
@@ -16206,6 +16206,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/EST.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Chokri El-Ouaer",
@@ -16292,9 +16294,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 156,
@@ -16304,6 +16304,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Chokri El-Ouaer",
@@ -16395,9 +16397,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 157,
@@ -16407,6 +16407,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#00843D",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Badou Zaki",
@@ -16498,9 +16500,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 158,
@@ -16510,6 +16510,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Badou Zaki",
@@ -16601,9 +16603,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MAR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 159,
@@ -16613,6 +16613,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/jsk.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#00843D",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mehdi Cerbah",
@@ -16704,9 +16706,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ALG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 160,
@@ -16716,6 +16716,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/setif.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mehdi Cerbah",
@@ -16807,9 +16809,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ALG"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 161,
@@ -16819,6 +16819,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Alain Gouaméné",
@@ -16910,9 +16912,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CIV"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 162,
@@ -16922,6 +16922,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Alain Gouaméné",
@@ -17013,9 +17015,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CIV"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 163,
@@ -17025,6 +17025,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Richard Kingson",
@@ -17116,9 +17118,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GHA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 164,
@@ -17128,6 +17128,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Richard Kingson",
@@ -17219,9 +17221,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GHA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 165,
@@ -17231,6 +17231,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#111111",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Bruce Grobbelaar",
@@ -17322,9 +17324,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 166,
@@ -17334,6 +17334,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#111111",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Bruce Grobbelaar",
@@ -17425,9 +17427,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 167,
@@ -17437,6 +17437,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Bruce Grobbelaar",
@@ -17528,9 +17530,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 168,
@@ -17540,6 +17540,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Kalusha Bwalya",
@@ -17631,9 +17633,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ZAM"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 169,
@@ -17643,6 +17643,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -17734,9 +17736,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ZIM"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 170,
@@ -17746,6 +17746,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -17837,9 +17839,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SDN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 171,
@@ -17849,6 +17849,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#1E5AA8",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mohammed Al-Deayea",
@@ -17940,9 +17942,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 172,
@@ -17952,6 +17952,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mohammed Al-Deayea",
@@ -18043,9 +18045,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 173,
@@ -18055,6 +18055,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mohammed Al-Deayea",
@@ -18146,9 +18148,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 174,
@@ -18158,6 +18158,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mohammed Al-Deayea",
@@ -18249,9 +18251,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 175,
@@ -18261,6 +18261,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#0057B8",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Ahmad Reza Abedzadeh",
@@ -18352,9 +18354,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "IRN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 176,
@@ -18364,6 +18364,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Ahmad Reza Abedzadeh",
@@ -18455,9 +18457,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "IRN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 177,
@@ -18467,6 +18467,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Ahmad Reza Abedzadeh",
@@ -18558,9 +18560,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "IRN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 178,
@@ -18570,6 +18570,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Kim Byung-ji",
@@ -18661,9 +18663,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KOR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 179,
@@ -18673,6 +18673,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Kim Byung-ji",
@@ -18764,9 +18766,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KOR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 180,
@@ -18776,6 +18776,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Shinkichi Kikuchi",
@@ -18867,9 +18869,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "JPN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 181,
@@ -18879,6 +18879,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Thawisak Petchsingh",
@@ -18970,9 +18972,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "THA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 182,
@@ -18982,6 +18982,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -19073,9 +19075,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 183,
@@ -19085,6 +19085,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#003B7A",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19176,9 +19178,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 184,
@@ -19188,6 +19188,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#0057B8",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19279,9 +19281,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 185,
@@ -19291,6 +19291,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19382,9 +19384,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 186,
@@ -19394,6 +19394,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19485,9 +19487,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 187,
@@ -19497,6 +19497,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19588,9 +19590,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 188,
@@ -19600,6 +19600,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19691,9 +19693,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 189,
@@ -19703,6 +19703,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19794,9 +19796,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 190,
@@ -19806,6 +19806,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jorge Campos",
@@ -19897,9 +19899,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 191,
@@ -19909,6 +19909,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#6A1B9A",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Luis Gabelo Conejo",
@@ -20000,9 +20002,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRC"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 192,
@@ -20012,6 +20012,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Luis Gabelo Conejo",
@@ -20103,9 +20105,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRC"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 193,
@@ -20115,6 +20115,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Luis Gabelo Conejo",
@@ -20206,9 +20208,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRC"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 194,
@@ -20218,6 +20218,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#E31837",
     "secondaryColor": "#111111",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Tony Meola",
@@ -20309,9 +20311,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "USA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 195,
@@ -20321,6 +20321,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Tony Meola",
@@ -20412,9 +20414,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "USA"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 196,
@@ -20424,6 +20424,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/Lakers.png",
     "primaryColor": "#003DA5",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Michael Petkovic",
@@ -20515,9 +20517,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUS"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 197,
@@ -20527,6 +20527,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mark Bosnich",
@@ -20618,9 +20620,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUS"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 198,
@@ -20630,6 +20630,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Mark Bosnich",
@@ -20721,9 +20723,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUS"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 199,
@@ -20733,6 +20733,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Jason Batty",
@@ -20824,9 +20826,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NZL"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 200,
@@ -20836,6 +20836,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Peter Schmeichel",
@@ -20927,9 +20929,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FIJ"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 201,
@@ -20939,6 +20939,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/ferenc.png",
     "primaryColor": "#00843D",
     "secondaryColor": "#FFFFFF",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "József Szeiler",
@@ -21030,9 +21032,7 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "HUN"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   },
   {
     "id": 202,
@@ -21042,6 +21042,8 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/beitar.png",
     "primaryColor": "#F7C600",
     "secondaryColor": "#000000",
+    "stadium": "",
+    "city": "",
     "players": [
       {
         "name": "Itzik Kornfein",
@@ -21123,8 +21125,6 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ISR"
       }
-    ],
-    "stadium": "",
-    "city": ""
+    ]
   }
 ];
