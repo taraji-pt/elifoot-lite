@@ -313,7 +313,7 @@ function StartingLineups({ home, away, state }: { home: Team; away: Team; state:
 
   return (
     <div className="mx-auto mt-5 max-w-2xl">
-      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Onzes</div>
+      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Onzes iniciais</div>
       <div className="grid gap-3 sm:grid-cols-2">
         {renderList(home)}
         {renderList(away, true)}
