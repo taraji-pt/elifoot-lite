@@ -282,6 +282,57 @@ function ClickableTeamIdentityWithFlag({
     </button>
   );
 }
+function StartingLineups({ home, away, state }: { home: Team; away: Team; state: GameState }) {
+  const playersFor = (team: Team) =>
+    team.lineup
+      .map((id) => state.players[id])
+      .filter((player): player is Player => Boolean(player));
+
+  const renderList = (team: Team, reverse = false) => {
+    const players = playersFor(team);
+    return (
+      <div className="rounded-lg border border-border/70 bg-background/20 p-3">
+        <div className={`mb-2 flex items-center gap-2 border-b border-border/70 pb-2 ${reverse ? "justify-end" : "justify-start"}`}>
+          <TeamBadge team={team} size={20} />
+          <span className="font-club-name text-lg leading-none">{team.name}</span>
+        </div>
+        <ol className="space-y-1">
+          {players.map((player, index) => (
+            <li
+              key={player.id}
+              className={`flex items-center gap-2 text-sm ${reverse ? "justify-end text-right" : ""}`}
+            >
+              {reverse ? (
+                <>
+                  <span className="min-w-0 truncate">{player.name}</span>
+                  <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
+                  <span className="w-5 shrink-0 text-xs text-muted-foreground">{index + 1}</span>
+                </>
+              ) : (
+                <>
+                  <span className="w-5 shrink-0 text-xs text-muted-foreground">{index + 1}</span>
+                  <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
+                  <span className="min-w-0 truncate">{player.name}</span>
+                </>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    );
+  };
+
+  return (
+    <div className="mx-auto mt-5 max-w-2xl">
+      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Onzes</div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {renderList(home)}
+        {renderList(away, true)}
+      </div>
+    </div>
+  );
+}
+
 function MatchTeam({ team, side, size = 50 }: { team: Team; side: "home" | "away"; size?: number }) {
   return (
     <div className={`flex min-w-0 flex-1 items-center gap-2 ${side === "home" ? "justify-start" : "justify-end"}`}>
@@ -982,8 +1033,11 @@ function Match({ state }: { state: GameState }) {
             <MatchTeam team={away} side="away" />
           </div>
         </div>
-        {!ok && <p className="mb-3 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
-        <button className={btn} disabled={!ok} onClick={startMatch}>
+
+        <StartingLineups home={home} away={away} state={state} />
+
+        {!ok && <p className="mb-3 mt-4 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
+        <button className={btn + " mt-4"} disabled={!ok} onClick={startMatch}>
           Jogar jogo
         </button>
       </div>
