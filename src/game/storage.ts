@@ -1,4 +1,5 @@
 import type { GameState } from "./types";
+import { loadDatabase } from "@/data/db";
 
 const KEY = "elifoot-mini-save-v3";
 
@@ -12,7 +13,17 @@ export function loadGame(): GameState | null {
   const raw = window.localStorage.getItem(KEY);
   if (!raw) return null;
   try {
-    return JSON.parse(raw) as GameState;
+    const state = JSON.parse(raw) as GameState;
+    const database = loadDatabase();
+    const byId = new Map(database.map((team) => [team.id, team]));
+    for (const team of Object.values(state.teams)) {
+      const seed = byId.get(team.id);
+      if (!seed) continue;
+      team.stadium = seed.stadium;
+      team.city = seed.city;
+      team.stadiumImage = seed.stadiumImage;
+    }
+    return state;
   } catch {
     return null;
   }
