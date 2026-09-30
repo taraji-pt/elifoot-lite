@@ -293,7 +293,9 @@ function stadiumImageSrc(team: Team) {
 
 function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
   const imageSrc = stadiumImageSrc(team);
-  if (!imageSrc) return null;
+  const hasStadium = Boolean(team.stadium?.trim());
+  const hasCity = Boolean(team.city?.trim());
+  if (!imageSrc && !hasStadium && !hasCity) return null;
   const mapQuery = encodeURIComponent(
     [team.city?.trim(), COUNTRIES[team.country]?.name ?? team.country].filter(Boolean).join(", "),
   );
@@ -312,22 +314,27 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
       >
         <div className="flex items-center justify-between gap-3 border-b border-border p-4">
           <div className="min-w-0">
-            <div className="font-club-name text-2xl leading-none">{team.stadium}</div>
-            <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground"><Flag code={team.country} size={16} /><span>{team.city} · {team.name}</span></div>
+            {hasStadium && <div className="font-club-name text-2xl leading-none">{team.stadium}</div>}
+            <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
+              <Flag code={team.country} size={16} />
+              <span>{[team.city?.trim(), team.name].filter(Boolean).join(" · ")}</span>
+            </div>
           </div>
           <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
-        <div className="grid gap-4 p-4 sm:grid-cols-2">
-          <div className="flex min-h-[180px] items-center justify-center rounded-lg border border-border bg-black/10 p-2">
-            <img
-              src={imageSrc}
-              alt={team.stadium || `Estádio de ${team.name}`}
-              className="max-h-[200px] w-full object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
-          </div>
+        <div className={`grid gap-4 p-4 ${imageSrc && team.city?.trim() ? "sm:grid-cols-2" : ""}`}>
+          {imageSrc && (
+            <div className="flex min-h-[180px] items-center justify-center rounded-lg border border-border bg-black/10 p-2">
+              <img
+                src={imageSrc}
+                alt={team.stadium || `Estádio de ${team.name}`}
+                className="max-h-[200px] w-full object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+          )}
           {team.city?.trim() && (
             <div className="overflow-hidden rounded-lg border border-border bg-black/10">
               <iframe
@@ -1101,27 +1108,18 @@ function Match({ state }: { state: GameState }) {
             O teu jogo da Liga já terminou. Agora é a tua vez na Taça.
           </div>
         )}
-      {home.stadium?.trim() && home.city?.trim() && (
-        homeStadiumImage ? (
-          <button
-            type="button"
-            className="group mx-auto mt-2 inline-flex items-center justify-center gap-2 rounded-sm text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-            onClick={() => setStadiumOpen(true)}
-            title={`Ver foto de ${home.stadium.trim()}`}
-          >
-            <span aria-hidden="true">🏟️</span>
-            <span className="group-hover:underline">{home.stadium.trim()}</span>
-            <span>·</span>
-            <span className="group-hover:underline">{home.city.trim()}</span>
-          </button>
-        ) : (
-          <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <span aria-hidden="true">🏟️</span>
-            <span>{home.stadium.trim()}</span>
-            <span>·</span>
-            <span>{home.city.trim()}</span>
-          </div>
-        )
+      {(home.stadium?.trim() || home.city?.trim()) && (
+        <button
+          type="button"
+          className="group mx-auto mt-2 inline-flex items-center justify-center gap-2 rounded-sm text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+          onClick={() => setStadiumOpen(true)}
+          title={home.stadium?.trim() ? `Ver informações de ${home.stadium.trim()}` : `Ver localização de ${home.city?.trim()}`}
+        >
+          {home.stadium?.trim() && <span aria-hidden="true">🏟️</span>}
+          {home.stadium?.trim() && <span className="group-hover:underline">{home.stadium.trim()}</span>}
+          {home.stadium?.trim() && home.city?.trim() && <span>·</span>}
+          {home.city?.trim() && <span className="group-hover:underline">{home.city.trim()}</span>}
+        </button>
       )}
       {stadiumOpen && (
         <StadiumModal
