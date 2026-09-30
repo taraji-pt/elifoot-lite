@@ -244,6 +244,44 @@ function TeamIdentityWithFlag({
     </span>
   );
 }
+function ClickableTeamIdentityWithFlag({
+  team,
+  size = 20,
+  reverse = false,
+  onClick,
+  title,
+  className = "",
+}: {
+  team: Team;
+  size?: number;
+  reverse?: boolean;
+  onClick: () => void;
+  title?: string;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      className={`group inline-flex min-w-0 items-center gap-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary/50 ${reverse ? "justify-end" : "justify-start"} ${className}`}
+      onClick={onClick}
+      title={title}
+    >
+      {reverse ? (
+        <>
+          <span className="min-w-0 truncate group-hover:underline">{team.name}</span>
+          <TeamBadge team={team} size={size} />
+          <Flag code={team.country} size={16} />
+        </>
+      ) : (
+        <>
+          <Flag code={team.country} size={16} />
+          <TeamBadge team={team} size={size} />
+          <span className="min-w-0 truncate group-hover:underline">{team.name}</span>
+        </>
+      )}
+    </button>
+  );
+}
 function MatchTeam({ team, side, size = 50 }: { team: Team; side: "home" | "away"; size?: number }) {
   return (
     <div className={`flex min-w-0 flex-1 items-center gap-2 ${side === "home" ? "justify-start" : "justify-end"}`}>
@@ -1230,14 +1268,12 @@ function Standings({ state }: { state: GameState }) {
                   {t.id === state.userTeamId ? (
                     <TeamIdentityWithFlag team={t} size={20} />
                   ) : (
-                    <button
-                      type="button"
-                      className="inline-flex max-w-full items-center rounded-sm text-left hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    <ClickableTeamIdentityWithFlag
+                      team={t}
+                      size={20}
                       onClick={() => setViewTeamId(t.id)}
                       title={`Ver plantel de ${t.name}`}
-                    >
-                      <TeamIdentityWithFlag team={t} size={20} />
-                    </button>
+                    />
                   )}
                 </td>
                 <td className="text-right font-mono-num">{r.played}</td>
@@ -1669,27 +1705,34 @@ function CupView({ state }: { state: GameState }) {
                 >
                   <div className="grid grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-2">
                     <div className={`min-w-0 ${tie.winnerId === h.id ? "font-bold" : ""}`}>
-                      <button
-                        type="button"
-                        className="w-full rounded-sm text-left hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
-                        onClick={() => setViewTeamId(h.id)}
-                        title={`Ver plantel de ${h.name}`}
-                      >
-                        <TeamIdentityWithFlag team={h} size={18} className="w-full justify-start" />
-                      </button>
+                      {h.id === state.userTeamId ? (
+                        <TeamIdentityWithFlag team={h} size={20} className="w-full justify-start" />
+                      ) : (
+                        <ClickableTeamIdentityWithFlag
+                          team={h}
+                          size={20}
+                          className="w-full"
+                          onClick={() => setViewTeamId(h.id)}
+                          title={`Ver plantel de ${h.name}`}
+                        />
+                      )}
                     </div>
                     <span className={`w-14 text-center font-mono-num ${penaltyClass}`}>
                       {score}
                     </span>
                     <div className={`min-w-0 flex justify-end ${tie.winnerId === a.id ? "font-bold" : ""}`}>
-                      <button
-                        type="button"
-                        className="w-full rounded-sm text-right hover:underline focus:outline-none focus:ring-2 focus:ring-primary/50"
-                        onClick={() => setViewTeamId(a.id)}
-                        title={`Ver plantel de ${a.name}`}
-                      >
-                        <TeamIdentityWithFlag team={a} size={18} className="w-full justify-end" reverse />
-                      </button>
+                      {a.id === state.userTeamId ? (
+                        <TeamIdentityWithFlag team={a} size={20} className="w-full justify-end" reverse />
+                      ) : (
+                        <ClickableTeamIdentityWithFlag
+                          team={a}
+                          size={20}
+                          reverse
+                          className="w-full"
+                          onClick={() => setViewTeamId(a.id)}
+                          title={`Ver plantel de ${a.name}`}
+                        />
+                      )}
                     </div>
                   </div>
                       {userOutcome && (
