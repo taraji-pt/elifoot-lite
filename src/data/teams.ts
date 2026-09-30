@@ -20721,110 +20721,80 @@ export const TEAMS: TeamSeed[] = [
     "country": "AUS",
     "rating": 48,
     "badge": "/assets/badges/SOFC.png",
-    "primaryColor": "#333333",
+    "primaryColor": "#003B7A",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
+    "stadium": "Belmore Sports Ground",
+    "city": "Sydney",
     "stadiumImage": "",
     "players": [
-      {
-        "name": "Mark Bosnich",
-        "position": "GR",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Zeljko Kalac",
-        "position": "GR",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Alex Tobin",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Craig Moore",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Tony Vidmar",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Frank Farina",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Robbie Slater",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Ned Zelic",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Paul Okon",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Aurelio Vidmar",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Schwarzer",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Harry Kewell",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Bresciano",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Damian Mori",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Frank Farina",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Damian Mori",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Viduka",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Tim Cahill",
-        "position": "AV",
-        "nationality": "AUS"
-      }
-    ]
-  },
+    {
+      "name": "George Bouhoutsos",
+      "position": "GR",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Tony Franken",
+      "position": "GR",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Ivan Zelic",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Milan Blagojevic",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Jimmy Patikas",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Robert Ironside",
+      "position": "MED",
+      "nationality": "NZL"
+    },
+    {
+      "name": "Peter Tsekenis",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Brett Emerton",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Walter Ardone",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Carlos Gonzalez",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Steve Refenes",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Kris Trajanovski",
+      "position": "AV",
+      "nationality": "AUS"
+    }
+  ]
+},
   {
     "id": 198,
     "name": "Marconi Stallions",
     "country": "AUS",
     "rating": 48,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/marconi.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
