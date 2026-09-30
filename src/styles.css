@@ -168,3 +168,26 @@ body { font-family: "Barlow Condensed", system-ui, sans-serif; }
 .font-mono-num { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
 
 .font-club-name { font-family: "Instrument Serif", Georgia, serif; font-weight: 600; font-synthesis: weight; }
+
+
+.match-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  animation: match-flash 750ms ease-out forwards;
+}
+
+.match-flash-goal {
+  background: oklch(0.98 0.02 100 / 0.32);
+}
+
+.match-flash-red {
+  background: oklch(0.62 0.2 25 / 0.28);
+}
+
+@keyframes match-flash {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  100% { opacity: 0; }
+}
