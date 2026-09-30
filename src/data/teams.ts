@@ -4398,104 +4398,104 @@ export const TEAMS: TeamSeed[] = [
     "country": "POR",
     "rating": 70,
     "badge": "/assets/badges/SCP.png",
-    "primaryColor": "#0B7A3B",
+    "primaryColor": "#008B3E",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
+    "stadium": "Estádio José Alvalade",
     "city": "Lisboa",
     "stadiumImage": "",
     "players": [
-      {
-        "name": "Vítor Baía",
-        "position": "GR",
-        "nationality": "POR"
-      },
-      {
-        "name": "Neno",
-        "position": "GR",
-        "nationality": "POR"
-      },
-      {
-        "name": "Fernando Couto",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Jorge Costa",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Abel Xavier",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Dimas Teixeira",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Paulo Madeira",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Luís Figo",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "João Vieira Pinto",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Paulo Sousa",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Sérgio Conceição",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Domingos Paciência",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "João Pinto",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Nuno Gomes",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Jardel",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Luís Figo",
-        "position": "AV",
-        "nationality": "POR"
-      }
-    ]
-  },
+    {
+      "name": "Filip De Wilde",
+      "position": "GR",
+      "nationality": "BEL"
+    },
+    {
+      "name": "Costinha",
+      "position": "GR",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Marco Aurélio",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Beto",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Luís Miguel",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Gil Baiano",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Andrija Balajic",
+      "position": "DEF",
+      "nationality": "SRB"
+    },
+    {
+      "name": "Abdelilah Saber",
+      "position": "DEF",
+      "nationality": "MAR"
+    },
+    {
+      "name": "Pedrosa",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Oceano",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Ivaylo Iordanov",
+      "position": "MED",
+      "nationality": "BUL"
+    },
+    {
+      "name": "Pedro Barbosa",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Pedro Martins",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Afonso Martins",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Mustapha Hadji",
+      "position": "AV",
+      "nationality": "MAR"
+    },
+    {
+      "name": "Sá Pinto",
+      "position": "AV",
+      "nationality": "PRT"
+    },
+    {
+      "name": "José Dominguez",
+      "position": "AV",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Paulo Alves",
+      "position": "AV",
+      "nationality": "PRT"
+    }
+  ]
+},
   {
     "id": 41,
     "name": "Marseille",
