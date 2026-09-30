@@ -4296,7 +4296,7 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/SLB.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
-    "stadium": "/assets/stadiums/Luz.png",
+    "stadium": "/assets/stadiums/Luz.jpg",
     "city": "Lisboa",
     "stadiumImage": "/assets/badges/SLB.png",
     "players": [
