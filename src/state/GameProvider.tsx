@@ -39,12 +39,13 @@ interface GameContextValue {
   saveExists: boolean;
   message: string | null;
   setMessage: (m: string | null) => void;
-  newGame: (teamId: number, seeds: TeamSeed[]) => void;
+  newGame: (teamId: number, seeds: TeamSeed[], careerImage?: string | null) => void;
   takeOffer: (teamId: number) => void;
   rejectOffers: () => void;
   takeBid: (playerId: number) => void;
   refuseBid: (playerId: number) => void;
   save: () => void;
+  setCareerImage: (image: string | null) => void;
   load: () => void;
   deleteSave: () => void;
   setLineup: (lineup: number[]) => void;
@@ -104,9 +105,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
       saveExists,
       message,
       setMessage,
-      newGame: (teamId: number, seeds: TeamSeed[]) => {
+      newGame: (teamId: number, seeds: TeamSeed[], careerImage: string | null = null) => {
         setMessage(null);
-        persist(createNewGame(teamId, seeds));
+        persist(createNewGame(teamId, seeds, careerImage));
       },
       takeOffer: (teamId: number) => mutate((draft) => acceptOffer(draft, teamId)),
       rejectOffers: () => mutate((draft) => declineOffers(draft)),
@@ -119,6 +120,10 @@ export function GameProvider({ children }: { children: ReactNode }) {
           setMessage("Jogo guardado.");
         }
       },
+      setCareerImage: (image: string | null) =>
+        mutate((draft) => {
+          draft.careerImage = image;
+        }),
       load: () => {
         const loaded = loadGame();
         if (loaded) {
