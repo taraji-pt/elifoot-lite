@@ -12,207 +12,211 @@ import type { TeamSeed } from "./schema";
  */
 export const TEAMS: TeamSeed[] = [
   {
-  "id": 1,
-  "name": "AC Milan",
-  "country": "ITA",
-  "rating": 75,
-  "badge": "/assets/badges/milan.png",
-  "primaryColor": "#AC1E2D",
-  "secondaryColor": "#000000",
-  "players": [
-    {
-      "name": "Sebastiano Rossi",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Angelo Pagotto",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Alessandro Costacurta",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Marcel Desailly",
-      "position": "DEF",
-      "nationality": "FRA"
-    },
-    {
-      "name": "Paolo Maldini",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Franco Baresi",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Christian Panucci",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Pietro Vierchowod",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Demetrio Albertini",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Zvonimir Boban",
-      "position": "MED",
-      "nationality": "CRO"
-    },
-    {
-      "name": "Stefano Eranio",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Edgar Davids",
-      "position": "MED",
-      "nationality": "NED"
-    },
-    {
-      "name": "Dejan Savicevic",
-      "position": "MED",
-      "nationality": "MNE"
-    },
-    {
-      "name": "Massimo Ambrosini",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "George Weah",
-      "position": "AV",
-      "nationality": "LBR"
-    },
-    {
-      "name": "Roberto Baggio",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Marco Simone",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Christophe Dugarry",
-      "position": "AV",
-      "nationality": "FRA"
-    }
-  ]
-},
- {
-  "id": 2,
-  "name": "Juventus",
-  "country": "ITA",
-  "rating": 78,
-  "badge": "/assets/badges/juventus.png",
-  "primaryColor": "#111111",
-  "secondaryColor": "#FFFFFF",
-  "players": [
-    {
-      "name": "Angelo Peruzzi",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Michelangelo Rampulla",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Ciro Ferrara",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Paolo Montero",
-      "position": "DEF",
-      "nationality": "URU"
-    },
-    {
-      "name": "Sergio Porrini",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Moreno Torricelli",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Gianluca Pessotto",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Mark Iuliano",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Didier Deschamps",
-      "position": "MED",
-      "nationality": "FRA"
-    },
-    {
-      "name": "Angelo Di Livio",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Zinédine Zidane",
-      "position": "MED",
-      "nationality": "FRA"
-    },
-    {
-      "name": "Vladimir Jugovic",
-      "position": "MED",
-      "nationality": "SRB"
-    },
-    {
-      "name": "Alessio Tacchinardi",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Attilio Lombardo",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Alessandro Del Piero",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Alen Boksic",
-      "position": "AV",
-      "nationality": "CRO"
-    },
-    {
-      "name": "Christian Vieri",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Nicola Amoruso",
-      "position": "AV",
-      "nationality": "ITA"
-    }
-  ]
-},
+    "id": 1,
+    "name": "AC Milan",
+    "country": "ITA",
+    "rating": 75,
+    "badge": "/assets/badges/milan.png",
+    "primaryColor": "#AC1E2D",
+    "secondaryColor": "#000000",
+    "players": [
+      {
+        "name": "Sebastiano Rossi",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Angelo Pagotto",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Alessandro Costacurta",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marcel Desailly",
+        "position": "DEF",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Paolo Maldini",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Franco Baresi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Christian Panucci",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pietro Vierchowod",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Demetrio Albertini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Zvonimir Boban",
+        "position": "MED",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Stefano Eranio",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Edgar Davids",
+        "position": "MED",
+        "nationality": "NED"
+      },
+      {
+        "name": "Dejan Savicevic",
+        "position": "MED",
+        "nationality": "MNE"
+      },
+      {
+        "name": "Massimo Ambrosini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "George Weah",
+        "position": "AV",
+        "nationality": "LBR"
+      },
+      {
+        "name": "Roberto Baggio",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marco Simone",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Christophe Dugarry",
+        "position": "AV",
+        "nationality": "FRA"
+      }
+    ],
+    "stadium": "Stadio Giuseppe Meazza (San Siro)",
+    "city": "Milano"
+  },
+  {
+    "id": 2,
+    "name": "Juventus",
+    "country": "ITA",
+    "rating": 78,
+    "badge": "/assets/badges/juventus.png",
+    "primaryColor": "#111111",
+    "secondaryColor": "#FFFFFF",
+    "players": [
+      {
+        "name": "Angelo Peruzzi",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Michelangelo Rampulla",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Ciro Ferrara",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Paolo Montero",
+        "position": "DEF",
+        "nationality": "URU"
+      },
+      {
+        "name": "Sergio Porrini",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Moreno Torricelli",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gianluca Pessotto",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mark Iuliano",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Didier Deschamps",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Angelo Di Livio",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Zinédine Zidane",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Vladimir Jugovic",
+        "position": "MED",
+        "nationality": "SRB"
+      },
+      {
+        "name": "Alessio Tacchinardi",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Attilio Lombardo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Alessandro Del Piero",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Alen Boksic",
+        "position": "AV",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Christian Vieri",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Nicola Amoruso",
+        "position": "AV",
+        "nationality": "ITA"
+      }
+    ],
+    "stadium": "Stadio delle Alpi",
+    "city": "Torino"
+  },
   {
     "id": 3,
     "name": "Inter Milan",
@@ -352,7 +356,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 4,
@@ -523,7 +529,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 5,
@@ -679,7 +687,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ]
+    ],
+    "stadium": "Stadio Olimpico",
+    "city": "Roma"
   },
   {
     "id": 6,
@@ -830,7 +840,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ]
+    ],
+    "stadium": "Stadio Ennio Tardini",
+    "city": "Parma"
   },
   {
     "id": 7,
@@ -971,7 +983,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 8,
@@ -1142,7 +1156,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ITA"
       }
-    ]
+    ],
+    "stadium": "Stadio San Paolo",
+    "city": "Napoli"
   },
   {
     "id": 9,
@@ -1152,101 +1168,101 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/fiorentina.png",
     "primaryColor": "#482683",
     "secondaryColor": "#FFFFFF",
-   "players": [
-    {
-      "name": "Francesco Toldo",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Gianmatteo Mareggini",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Giulio Falcone",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Lorenzo Amoruso",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Vittorio Pusceddu",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Daniele Carnasciali",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Pasquale Padalino",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Aldo Firicano",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-
-    {
-      "name": "Rui Costa",
-      "position": "MED",
-      "nationality": "POR"
-    },
-    {
-      "name": "Stefan Schwarz",
-      "position": "MED",
-      "nationality": "SWE"
-    },
-    {
-      "name": "Sandro Cois",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Giovanni Piacentini",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Emiliano Bigica",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Mirko Benin",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-
-    {
-      "name": "Gabriel Batistuta",
-      "position": "AV",
-      "nationality": "ARG"
-    },
-    {
-      "name": "Luís Oliveira",
-      "position": "AV",
-      "nationality": "BEL"
-    },
-    {
-      "name": "Anselmo Robbiati",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Francesco Baiano",
-      "position": "AV",
-      "nationality": "ITA"
-    }
-  ]
-},
+    "players": [
+      {
+        "name": "Francesco Toldo",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gianmatteo Mareggini",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giulio Falcone",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Lorenzo Amoruso",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Vittorio Pusceddu",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Daniele Carnasciali",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pasquale Padalino",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Aldo Firicano",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Rui Costa",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Stefan Schwarz",
+        "position": "MED",
+        "nationality": "SWE"
+      },
+      {
+        "name": "Sandro Cois",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giovanni Piacentini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Emiliano Bigica",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mirko Benin",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gabriel Batistuta",
+        "position": "AV",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Luís Oliveira",
+        "position": "AV",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Anselmo Robbiati",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Francesco Baiano",
+        "position": "AV",
+        "nationality": "ITA"
+      }
+    ],
+    "stadium": "Stadio Artemio Franchi",
+    "city": "Firenze"
+  },
   {
     "id": 10,
     "name": "Ajax",
@@ -1346,7 +1362,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 11,
@@ -1447,7 +1465,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 12,
@@ -1548,7 +1568,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 13,
@@ -1649,7 +1671,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 14,
@@ -1750,7 +1774,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 15,
@@ -1851,7 +1877,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 16,
@@ -1952,7 +1980,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 17,
@@ -2053,7 +2083,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 18,
@@ -2154,7 +2186,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 19,
@@ -2255,7 +2289,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 20,
@@ -2356,7 +2392,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 21,
@@ -2457,7 +2495,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 22,
@@ -2558,7 +2598,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 23,
@@ -2659,7 +2701,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 24,
@@ -2760,7 +2804,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 25,
@@ -2861,7 +2907,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 26,
@@ -2962,7 +3010,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 27,
@@ -3063,7 +3113,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 28,
@@ -3164,7 +3216,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 29,
@@ -3265,7 +3319,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 30,
@@ -3366,7 +3422,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 31,
@@ -3467,7 +3525,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 32,
@@ -3568,7 +3628,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 33,
@@ -3669,7 +3731,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 34,
@@ -3770,7 +3834,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 35,
@@ -3871,7 +3937,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ENG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 36,
@@ -3972,7 +4040,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SCO"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 37,
@@ -4073,7 +4143,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SCO"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 38,
@@ -4174,7 +4246,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "POR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 39,
@@ -4275,7 +4349,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "POR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 40,
@@ -4376,7 +4452,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "POR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 41,
@@ -4477,7 +4555,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "Stade Vélodrome",
+    "city": "Marseille"
   },
   {
     "id": 42,
@@ -4578,7 +4658,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 43,
@@ -4679,7 +4761,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 44,
@@ -4780,7 +4864,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 45,
@@ -4881,7 +4967,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 46,
@@ -4982,7 +5070,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 47,
@@ -5083,7 +5173,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 48,
@@ -5184,7 +5276,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 49,
@@ -5285,7 +5379,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 50,
@@ -5386,7 +5482,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 51,
@@ -5487,7 +5585,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 52,
@@ -5588,7 +5688,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ROU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 53,
@@ -5689,7 +5791,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ROU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 54,
@@ -5790,7 +5894,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ROU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 55,
@@ -5891,7 +5997,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RUS"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 56,
@@ -5992,7 +6100,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RUS"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 57,
@@ -6093,7 +6203,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RUS"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 58,
@@ -6194,7 +6306,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "UKR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 59,
@@ -6295,7 +6409,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "UKR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 60,
@@ -6396,7 +6512,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 61,
@@ -6497,7 +6615,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 62,
@@ -6598,7 +6718,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 63,
@@ -6699,7 +6821,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NOR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 64,
@@ -6800,7 +6924,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SWE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 65,
@@ -6901,7 +7027,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SWE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 66,
@@ -7002,7 +7130,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "DEN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 67,
@@ -7103,7 +7233,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "DEN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 68,
@@ -7204,7 +7336,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BEL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 69,
@@ -7305,7 +7439,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BEL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 70,
@@ -7406,7 +7542,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BEL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 71,
@@ -7507,7 +7645,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SRB"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 72,
@@ -7608,7 +7748,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SRB"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 73,
@@ -7709,7 +7851,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRO"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 74,
@@ -7810,7 +7954,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRO"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 75,
@@ -7911,7 +8057,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CZE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 76,
@@ -8012,7 +8160,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CZE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 77,
@@ -8113,213 +8263,216 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SVK"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
- {
-  "id": 78,
-  "name": "Bologna",
-  "country": "ITA",
-  "rating": 70,
-  "badge": "/assets/badges/bologna.png",
-  "primaryColor": "#1A2F5A",
-  "secondaryColor": "#C8102E",
-  "players": [
-    {
-      "name": "Francesco Antonioli",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Alex Brunner",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Michele Paramatti",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Stefano Torrisi",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Andrea Tarozzi",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Giuseppe Cardone",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Amedeo Mangone",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Cristiano Pavone",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-
-    {
-      "name": "Giancarlo Marocchi",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Cristiano Scapolo",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Oscar Magoni",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Marco de Marchi",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Carlo Nervo",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Davide Fontolan",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Kennet Andersson",
-      "position": "AV",
-      "nationality": "SWE"
-    },
-    {
-      "name": "Igor Kolyvanov",
-      "position": "AV",
-      "nationality": "RUS"
-    },
-    {
-      "name": "Igor Shalimov",
-      "position": "AV",
-      "nationality": "RUS"
-    },
-    {
-      "name": "Pierpaolo Bresciani",
-      "position": "AV",
-      "nationality": "ITA"
-    }
-  ]
-},
-{
-  "id": 79,
-  "name": "Genoa",
-  "country": "ITA",
-  "rating": 71,
-  "badge": "/assets/badges/genoa.png",
-  "primaryColor": "#C8102E",
-  "secondaryColor": "#1B3A5B",
-  "players": [
-    {
-      "name": "Gianluca Berti",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Mario Ielpo",
-      "position": "GR",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Silvio Vottorio Giampietro",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Felice Centofanti",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Davide Nicola",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Vincenzo Torrente",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Fabio Rossi",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Gianluca Francesconi",
-      "position": "DEF",
-      "nationality": "ITA"
-    },
-
-    {
-      "name": "Mario Bortolazzi",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Filippo Masolini",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Luca Cavallo",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Gennaro Ruotolo",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Cristiano Scazzola",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Pier Giovanni Rutzittu",
-      "position": "MED",
-      "nationality": "ITA"
-    },
-
-    {
-      "name": "Michaël Goossens",
-      "position": "AV",
-      "nationality": "BEL"
-    },
-    {
-      "name": "Marco Nappi",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Dario Morello",
-      "position": "AV",
-      "nationality": "ITA"
-    },
-    {
-      "name": "Luigi Beghetto",
-      "position": "AV",
-      "nationality": "ITA"
-    }
-  ]
-},
+  {
+    "id": 78,
+    "name": "Bologna",
+    "country": "ITA",
+    "rating": 70,
+    "badge": "/assets/badges/bologna.png",
+    "primaryColor": "#1A2F5A",
+    "secondaryColor": "#C8102E",
+    "players": [
+      {
+        "name": "Francesco Antonioli",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Alex Brunner",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Michele Paramatti",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Stefano Torrisi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Andrea Tarozzi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giuseppe Cardone",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Amedeo Mangone",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Cristiano Pavone",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Giancarlo Marocchi",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Cristiano Scapolo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Oscar Magoni",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marco de Marchi",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Carlo Nervo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Davide Fontolan",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Kennet Andersson",
+        "position": "AV",
+        "nationality": "SWE"
+      },
+      {
+        "name": "Igor Kolyvanov",
+        "position": "AV",
+        "nationality": "RUS"
+      },
+      {
+        "name": "Igor Shalimov",
+        "position": "AV",
+        "nationality": "RUS"
+      },
+      {
+        "name": "Pierpaolo Bresciani",
+        "position": "AV",
+        "nationality": "ITA"
+      }
+    ],
+    "stadium": "Stadio Renato Dall'Ara",
+    "city": "Bologna"
+  },
+  {
+    "id": 79,
+    "name": "Genoa",
+    "country": "ITA",
+    "rating": 71,
+    "badge": "/assets/badges/genoa.png",
+    "primaryColor": "#C8102E",
+    "secondaryColor": "#1B3A5B",
+    "players": [
+      {
+        "name": "Gianluca Berti",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mario Ielpo",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Silvio Vottorio Giampietro",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Felice Centofanti",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Davide Nicola",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Vincenzo Torrente",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Fabio Rossi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gianluca Francesconi",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mario Bortolazzi",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Filippo Masolini",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Luca Cavallo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Gennaro Ruotolo",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Cristiano Scazzola",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pier Giovanni Rutzittu",
+        "position": "MED",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Michaël Goossens",
+        "position": "AV",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Marco Nappi",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Dario Morello",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Luigi Beghetto",
+        "position": "AV",
+        "nationality": "ITA"
+      }
+    ],
+    "stadium": "",
+    "city": ""
+  },
   {
     "id": 80,
     "name": "Real Zaragoza",
@@ -8419,7 +8572,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 81,
@@ -8520,7 +8675,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 82,
@@ -8621,7 +8778,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 83,
@@ -8722,7 +8881,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 84,
@@ -8823,7 +8984,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 85,
@@ -8924,7 +9087,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ESP"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 86,
@@ -9025,7 +9190,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 87,
@@ -9126,7 +9293,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 88,
@@ -9227,7 +9396,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SUI"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 89,
@@ -9328,7 +9499,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SUI"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 90,
@@ -9429,7 +9602,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUT"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 91,
@@ -9530,7 +9705,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUT"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 92,
@@ -9631,7 +9808,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUT"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 93,
@@ -9732,7 +9911,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BUL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 94,
@@ -9833,7 +10014,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BUL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 95,
@@ -9934,7 +10117,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GRE"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 96,
@@ -10035,7 +10220,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ISR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 97,
@@ -10136,7 +10323,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GEO"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 98,
@@ -10237,7 +10426,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 99,
@@ -10338,7 +10529,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 100,
@@ -10439,7 +10632,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NED"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 101,
@@ -10540,7 +10735,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 102,
@@ -10641,7 +10838,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 103,
@@ -10742,7 +10941,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 104,
@@ -10843,7 +11044,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 105,
@@ -10944,7 +11147,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 106,
@@ -11045,7 +11250,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 107,
@@ -11146,7 +11353,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 108,
@@ -11247,7 +11456,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 109,
@@ -11348,7 +11559,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 110,
@@ -11449,7 +11662,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 111,
@@ -11550,7 +11765,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 112,
@@ -11651,7 +11868,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 113,
@@ -11752,7 +11971,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 114,
@@ -11853,7 +12074,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 115,
@@ -11954,7 +12177,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 116,
@@ -12055,7 +12280,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 117,
@@ -12156,7 +12383,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 118,
@@ -12257,7 +12486,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 119,
@@ -12358,7 +12589,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 120,
@@ -12459,7 +12692,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 121,
@@ -12560,7 +12795,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 122,
@@ -12661,7 +12898,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 123,
@@ -12762,7 +13001,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ARG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 124,
@@ -12863,7 +13104,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 125,
@@ -12964,7 +13207,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 126,
@@ -13065,7 +13310,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 127,
@@ -13166,7 +13413,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 128,
@@ -13267,7 +13516,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 129,
@@ -13368,7 +13619,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 130,
@@ -13469,7 +13722,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "URU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 131,
@@ -13570,7 +13825,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 132,
@@ -13671,7 +13928,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 133,
@@ -13772,7 +14031,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 134,
@@ -13873,7 +14134,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PAR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 135,
@@ -13974,7 +14237,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 136,
@@ -14075,7 +14340,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 137,
@@ -14176,7 +14443,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 138,
@@ -14277,7 +14546,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 139,
@@ -14378,7 +14649,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 140,
@@ -14479,7 +14752,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 141,
@@ -14580,7 +14855,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 142,
@@ -14681,7 +14958,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "COL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 143,
@@ -14782,7 +15061,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 144,
@@ -14883,7 +15164,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 145,
@@ -14984,7 +15267,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "PER"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 146,
@@ -15085,7 +15370,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHI"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 147,
@@ -15186,7 +15473,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BOL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 148,
@@ -15287,7 +15576,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BOL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 149,
@@ -15388,7 +15679,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ECU"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 150,
@@ -15489,7 +15782,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "BRA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 151,
@@ -15590,7 +15885,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "EGY"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 152,
@@ -15691,7 +15988,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "EGY"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 153,
@@ -15792,7 +16091,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "EGY"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 154,
@@ -15893,7 +16194,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 155,
@@ -15904,95 +16207,95 @@ export const TEAMS: TeamSeed[] = [
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
-    {
-      "name": "Chokri El-Ouaer",
-      "position": "GR",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Khaled Badra",
-      "position": "DEF",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Radhi Jaïdi",
-      "position": "DEF",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Taoufik Hichri",
-      "position": "DEF",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Tarek Thabet",
-      "position": "DEF",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Bechir Sahbani",
-      "position": "DEF",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Mourad Chebbi",
-      "position": "DEF",
-      "nationality": "TUN"
-    },
-
-    {
-      "name": "Garba Lawal",
-      "position": "MED",
-      "nationality": "NGA"
-    },
-    {
-      "name": "Hassen Gabsi",
-      "position": "MED",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Hakim Nouira",
-      "position": "MED",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Sirajeddine Chihi",
-      "position": "MED",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Marouane Bokri",
-      "position": "MED",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Maher Kanzari",
-      "position": "MED",
-      "nationality": "TUN"
-    },
-
-    {
-      "name": "Kenneth Malitoli",
-      "position": "AV",
-      "nationality": "ZAM"
-    },
-    {
-      "name": "Ayadi Hamrouni",
-      "position": "AV",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Sami Laroussi",
-      "position": "AV",
-      "nationality": "TUN"
-    },
-    {
-      "name": "Mohamed El Badraoui",
-      "position": "AV",
-      "nationality": "MAR"
-    }
-  ]
-},
+      {
+        "name": "Chokri El-Ouaer",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Khaled Badra",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Radhi Jaïdi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Taoufik Hichri",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Tarek Thabet",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bechir Sahbani",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mourad Chebbi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Garba Lawal",
+        "position": "MED",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Hassen Gabsi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hakim Nouira",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sirajeddine Chihi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Marouane Bokri",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Maher Kanzari",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Kenneth Malitoli",
+        "position": "AV",
+        "nationality": "ZAM"
+      },
+      {
+        "name": "Ayadi Hamrouni",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sami Laroussi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed El Badraoui",
+        "position": "AV",
+        "nationality": "MAR"
+      }
+    ],
+    "stadium": "",
+    "city": ""
+  },
   {
     "id": 156,
     "name": "Étoile du Sahel",
@@ -16092,7 +16395,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "TUN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 157,
@@ -16193,7 +16498,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MAR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 158,
@@ -16294,7 +16601,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MAR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 159,
@@ -16395,7 +16704,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ALG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 160,
@@ -16496,7 +16807,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ALG"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 161,
@@ -16597,7 +16910,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CIV"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 162,
@@ -16698,7 +17013,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CIV"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 163,
@@ -16799,7 +17116,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GHA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 164,
@@ -16900,7 +17219,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "GHA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 165,
@@ -17001,7 +17322,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 166,
@@ -17102,7 +17425,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 167,
@@ -17203,7 +17528,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "RSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 168,
@@ -17304,7 +17631,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ZAM"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 169,
@@ -17405,7 +17734,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "ZIM"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 170,
@@ -17506,7 +17837,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "SDN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 171,
@@ -17607,7 +17940,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 172,
@@ -17708,7 +18043,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 173,
@@ -17809,7 +18146,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 174,
@@ -17910,7 +18249,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KSA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 175,
@@ -18011,7 +18352,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "IRN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 176,
@@ -18112,7 +18455,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "IRN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 177,
@@ -18213,7 +18558,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "IRN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 178,
@@ -18314,7 +18661,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KOR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 179,
@@ -18415,7 +18764,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "KOR"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 180,
@@ -18516,7 +18867,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "JPN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 181,
@@ -18617,7 +18970,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "THA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 182,
@@ -18718,7 +19073,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CHN"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 183,
@@ -18819,7 +19176,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 184,
@@ -18920,7 +19279,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 185,
@@ -19021,7 +19382,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 186,
@@ -19122,7 +19485,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 187,
@@ -19223,7 +19588,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 188,
@@ -19324,7 +19691,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 189,
@@ -19425,7 +19794,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 190,
@@ -19526,7 +19897,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "MEX"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 191,
@@ -19627,7 +20000,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRC"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 192,
@@ -19728,7 +20103,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRC"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 193,
@@ -19829,7 +20206,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "CRC"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 194,
@@ -19930,7 +20309,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "USA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 195,
@@ -20031,7 +20412,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "USA"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 196,
@@ -20041,101 +20424,101 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/Lakers.png",
     "primaryColor": "#003DA5",
     "secondaryColor": "#FFFFFF",
-  "players": [
-    {
-      "name": "Michael Petkovic",
-      "position": "GR",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Peter Zoïs",
-      "position": "GR",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Fausto de Amicis",
-      "position": "DEF",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Steve Iosifidis",
-      "position": "DEF",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Robert Liparoti",
-      "position": "DEF",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Con Anthopolous",
-      "position": "DEF",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Con Anthios",
-      "position": "DEF",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Tansel Baser",
-      "position": "DEF",
-      "nationality": "AUS"
-    },
-
-    {
-      "name": "George Goutzioulis",
-      "position": "MED",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Danny Allsopp",
-      "position": "MED",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Mike Petersen",
-      "position": "MED",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Bill Damianos",
-      "position": "MED",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Jason Polak",
-      "position": "MED",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Steve Panopoulos",
-      "position": "MED",
-      "nationality": "AUS"
-    },
-
-    {
-      "name": "Vaughan Coveny",
-      "position": "AV",
-      "nationality": "NZL"
-    },
-    {
-      "name": "Paul Trimboli",
-      "position": "AV",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Michael Curcija",
-      "position": "AV",
-      "nationality": "AUS"
-    },
-    {
-      "name": "Warren Spink",
-      "position": "AV",
-      "nationality": "AUS"
-    }
-  ]
-},
+    "players": [
+      {
+        "name": "Michael Petkovic",
+        "position": "GR",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Peter Zoïs",
+        "position": "GR",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Fausto de Amicis",
+        "position": "DEF",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Steve Iosifidis",
+        "position": "DEF",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Robert Liparoti",
+        "position": "DEF",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Con Anthopolous",
+        "position": "DEF",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Con Anthios",
+        "position": "DEF",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Tansel Baser",
+        "position": "DEF",
+        "nationality": "AUS"
+      },
+      {
+        "name": "George Goutzioulis",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Danny Allsopp",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Mike Petersen",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Bill Damianos",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Jason Polak",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Steve Panopoulos",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Vaughan Coveny",
+        "position": "AV",
+        "nationality": "NZL"
+      },
+      {
+        "name": "Paul Trimboli",
+        "position": "AV",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Michael Curcija",
+        "position": "AV",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Warren Spink",
+        "position": "AV",
+        "nationality": "AUS"
+      }
+    ],
+    "stadium": "",
+    "city": ""
+  },
   {
     "id": 197,
     "name": "Sydney Olympic",
@@ -20235,7 +20618,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUS"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 198,
@@ -20336,7 +20721,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "AUS"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 199,
@@ -20437,7 +20824,9 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "NZL"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
     "id": 200,
@@ -20538,201 +20927,204 @@ export const TEAMS: TeamSeed[] = [
         "position": "AV",
         "nationality": "FIJ"
       }
-    ]
+    ],
+    "stadium": "",
+    "city": ""
   },
   {
-  "id": 201,
-  "name": "Ferencváros",
-  "country": "HUN",
-  "rating": 76,
-  "badge": "/assets/badges/ferenc.png",
-  "primaryColor": "#00843D",
-  "secondaryColor": "#FFFFFF",
-  "players": [
-    {
-      "name": "József Szeiler",
-      "position": "GR",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Attila Hajdú",
-      "position": "GR",
-      "nationality": "HUN"
-    },
-    {
-      "name": "András Telek",
-      "position": "DEF",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Norbert Nagy",
-      "position": "DEF",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Mihaly Szücs",
-      "position": "DEF",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Zoltan Jagodics",
-      "position": "DEF",
-      "nationality": "HUN"
-    },
-    {
-      "name": "János Hrutka",
-      "position": "DEF",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Dejan Milovanovic",
-      "position": "DEF",
-      "nationality": "SRB"
-    },
-
-    {
-      "name": "Elek Nyilas",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "László Arany",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Zsolt Limperger",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Krisztián Lisztes",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Zsolt Páling",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Gabor Zavadszky",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-
-    {
-      "name": "Ferenc Horváth",
-      "position": "AV",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Ihor Nichenko",
-      "position": "AV",
-      "nationality": "UKR"
-    },
-    {
-      "name": "Zsolt Nagy",
-      "position": "AV",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Richárd Holló",
-      "position": "AV",
-      "nationality": "HUN"
-    }
-  ]
-},
-{
-  "id": 202,
-  "name": "Beitar Jerusalem",
-  "country": "ISR",
-  "rating": 75,
-  "badge": "/assets/badges/beitar.png",
-  "primaryColor": "#F7C600",
-  "secondaryColor": "#000000",
-  "players": [
-    {
-      "name": "Itzik Kornfein",
-      "position": "GR",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Shmuel Levy",
-      "position": "DEF",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Serhiy Tretyak",
-      "position": "DEF",
-      "nationality": "UKR"
-    },
-    {
-      "name": "Ehud Cahila",
-      "position": "DEF",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Raanan Deree",
-      "position": "DEF",
-      "nationality": "ISR"
-    },
-    {
-      "name": "David Amsalem",
-      "position": "DEF",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Eytan Mizrahi",
-      "position": "DEF",
-      "nationality": "ISR"
-    },
-
-    {
-      "name": "István Pisont",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "István Sallói",
-      "position": "MED",
-      "nationality": "HUN"
-    },
-    {
-      "name": "Yossi Abuksis",
-      "position": "MED",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Jan Talesnikov",
-      "position": "MED",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Itzhaq Zohar",
-      "position": "MED",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Ronen Harazi",
-      "position": "AV",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Ronen Shwaig",
-      "position": "AV",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Eli Ohana",
-      "position": "AV",
-      "nationality": "ISR"
-    },
-    {
-      "name": "Nir Sivilia",
-      "position": "AV",
-      "nationality": "ISR"
-    }
-  ]
-}
-]
+    "id": 201,
+    "name": "Ferencváros",
+    "country": "HUN",
+    "rating": 76,
+    "badge": "/assets/badges/ferenc.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#FFFFFF",
+    "players": [
+      {
+        "name": "József Szeiler",
+        "position": "GR",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Attila Hajdú",
+        "position": "GR",
+        "nationality": "HUN"
+      },
+      {
+        "name": "András Telek",
+        "position": "DEF",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Norbert Nagy",
+        "position": "DEF",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Mihaly Szücs",
+        "position": "DEF",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Zoltan Jagodics",
+        "position": "DEF",
+        "nationality": "HUN"
+      },
+      {
+        "name": "János Hrutka",
+        "position": "DEF",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Dejan Milovanovic",
+        "position": "DEF",
+        "nationality": "SRB"
+      },
+      {
+        "name": "Elek Nyilas",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "László Arany",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Zsolt Limperger",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Krisztián Lisztes",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Zsolt Páling",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Gabor Zavadszky",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Ferenc Horváth",
+        "position": "AV",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Ihor Nichenko",
+        "position": "AV",
+        "nationality": "UKR"
+      },
+      {
+        "name": "Zsolt Nagy",
+        "position": "AV",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Richárd Holló",
+        "position": "AV",
+        "nationality": "HUN"
+      }
+    ],
+    "stadium": "",
+    "city": ""
+  },
+  {
+    "id": 202,
+    "name": "Beitar Jerusalem",
+    "country": "ISR",
+    "rating": 75,
+    "badge": "/assets/badges/beitar.png",
+    "primaryColor": "#F7C600",
+    "secondaryColor": "#000000",
+    "players": [
+      {
+        "name": "Itzik Kornfein",
+        "position": "GR",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Shmuel Levy",
+        "position": "DEF",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Serhiy Tretyak",
+        "position": "DEF",
+        "nationality": "UKR"
+      },
+      {
+        "name": "Ehud Cahila",
+        "position": "DEF",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Raanan Deree",
+        "position": "DEF",
+        "nationality": "ISR"
+      },
+      {
+        "name": "David Amsalem",
+        "position": "DEF",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Eytan Mizrahi",
+        "position": "DEF",
+        "nationality": "ISR"
+      },
+      {
+        "name": "István Pisont",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "István Sallói",
+        "position": "MED",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Yossi Abuksis",
+        "position": "MED",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Jan Talesnikov",
+        "position": "MED",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Itzhaq Zohar",
+        "position": "MED",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Ronen Harazi",
+        "position": "AV",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Ronen Shwaig",
+        "position": "AV",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Eli Ohana",
+        "position": "AV",
+        "nationality": "ISR"
+      },
+      {
+        "name": "Nir Sivilia",
+        "position": "AV",
+        "nationality": "ISR"
+      }
+    ],
+    "stadium": "",
+    "city": ""
+  }
+];
