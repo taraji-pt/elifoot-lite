@@ -453,7 +453,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                     return (
                       <tr
                         key={r.teamId}
-                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${i === 0 && review.userDivision === 1 ? "bg-yellow-400/25 text-yellow-900 dark:bg-yellow-400/20 dark:text-yellow-200" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions
+                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions
                           ? i >= rows.length - relegationSpots
                             ? "bg-red-500/10 text-red-700 dark:text-red-300"
                             : ""
@@ -462,7 +462,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                             : ""}`}
                       >
                         <td className="py-1.5 font-mono-num">{i + 1}</td>
-                        <td><TeamIdentityWithFlag team={t} size={20} /></td>
+                        <td className={i === 0 && review.userDivision === 1 ? "bg-yellow-400/25 text-yellow-900 dark:bg-yellow-400/20 dark:text-yellow-200 font-semibold rounded-sm" : ""}><TeamIdentityWithFlag team={t} size={20} /></td>
                         <td className="text-right font-mono-num">{r.played}</td>
                         <td className="text-right font-mono-num">{r.goalsFor}-{r.goalsAgainst}</td>
                         <td className="text-right font-mono-num">{r.points}</td>
