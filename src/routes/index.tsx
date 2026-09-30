@@ -453,19 +453,38 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                 <tbody>
                   {rows.map((r, i) => {
                     const t = state.teams[r.teamId] as Team;
+                    const isDivisionOneChampion = review.userDivision === 1 && i === 0;
+                    const isPromoted = review.userDivision > 1 && i < promotionSpots;
+                    const isRelegated = review.userDivision < numberOfDivisions
+                      ? i >= rows.length - relegationSpots
+                      : lastDivisionRelegationSpots > 0 && i >= rows.length - lastDivisionRelegationSpots;
+                    const rowClass = isDivisionOneChampion
+                      ? "bg-[#DFD32B]/10"
+                      : isPromoted
+                        ? "bg-green-500/10 text-green-700 dark:text-green-300"
+                        : isRelegated
+                          ? "bg-red-500/10 text-red-700 dark:text-red-300"
+                          : t.id === state.userTeamId
+                            ? "bg-primary/10 font-bold"
+                            : "";
+                    const positionClass = isDivisionOneChampion
+                      ? "text-[#DFD32B] font-bold"
+                      : isPromoted
+                        ? "text-green-700 dark:text-green-300 font-bold"
+                        : isRelegated
+                          ? "text-red-700 dark:text-red-300 font-bold"
+                          : "";
+                    const teamClass = isDivisionOneChampion
+                      ? "text-[#DFD32B] font-semibold"
+                      : isPromoted
+                        ? "text-green-700 dark:text-green-300 font-semibold"
+                        : isRelegated
+                          ? "text-red-700 dark:text-red-300 font-semibold"
+                          : "";
                     return (
-                      <tr
-                        key={r.teamId}
-                        className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10 font-bold" : ""} ${review.userDivision > 1 && i < promotionSpots ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${review.userDivision < numberOfDivisions
-                          ? i >= rows.length - relegationSpots
-                            ? "bg-red-500/10 text-red-700 dark:text-red-300"
-                            : ""
-                          : lastDivisionRelegationSpots > 0 && i >= rows.length - lastDivisionRelegationSpots
-                            ? "bg-red-500/10 text-red-700 dark:text-red-300"
-                            : ""}`}
-                      >
-                        <td className="py-1.5 font-mono-num">{i + 1}</td>
-                        <td className={i === 0 && review.userDivision === 1 ? "bg-yellow-400/25 text-yellow-900 dark:bg-yellow-400/20 dark:text-yellow-200 font-semibold rounded-sm" : ""}><TeamIdentityWithFlag team={t} size={20} /></td>
+                      <tr key={r.teamId} className={`border-t border-border ${rowClass}`}>
+                        <td className={`py-1.5 font-mono-num ${positionClass}`}>{i + 1}</td>
+                        <td className={teamClass}><TeamIdentityWithFlag team={t} size={20} /></td>
                         <td className="text-right font-mono-num">{r.played}</td>
                         <td className="text-right font-mono-num">{r.goalsFor}-{r.goalsAgainst}</td>
                         <td className="text-right font-mono-num">{r.points}</td>
