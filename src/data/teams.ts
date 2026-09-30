@@ -4296,9 +4296,9 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/SLB.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
-    "stadium": "/assets/stadiums/Luz.jpg",
+    "stadium": "Estádio da Luz",
     "city": "Lisboa",
-    "stadiumImage": "/assets/badges/SLB.png",
+    "stadiumImage": "/assets/stadiums/Luz.jpg",
     "players": [
       {
         "name": "Vítor Baía",
