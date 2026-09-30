@@ -4194,7 +4194,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#FFFFFF",
     "stadium": "",
     "city": "Porto",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/stadiums/Antas.png",
     "players": [
       {
         "name": "Vítor Baía",
@@ -4296,7 +4296,7 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/SLB.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
+    "stadium": "/assets/stadiums/Luz.png",
     "city": "Lisboa",
     "stadiumImage": "/assets/badges/SLB.png",
     "players": [
@@ -4402,7 +4402,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#FFFFFF",
     "stadium": "Estádio José Alvalade",
     "city": "Lisboa",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/stadiums/Alvalade.png",
     "players": [
     {
       "name": "Filip De Wilde",
@@ -4412,7 +4412,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Costinha",
       "position": "GR",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Marco Aurélio",
@@ -4422,12 +4422,12 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Beto",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Luís Miguel",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "ANG"
     },
     {
       "name": "Gil Baiano",
@@ -4447,12 +4447,12 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Pedrosa",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Oceano",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Ivaylo Iordanov",
@@ -4462,17 +4462,17 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Pedro Barbosa",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Pedro Martins",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Afonso Martins",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Mustapha Hadji",
@@ -4482,17 +4482,17 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Sá Pinto",
       "position": "AV",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "José Dominguez",
       "position": "AV",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Paulo Alves",
       "position": "AV",
-      "nationality": "PRT"
+      "nationality": "POR"
     }
   ]
 },
