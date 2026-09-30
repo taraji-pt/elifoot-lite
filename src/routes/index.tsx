@@ -22,7 +22,10 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Escolhe titulares, joga, faz substituições e sobe de divisão." },
       { property: "og:title", content: "Mini Elifoot — Gere a tua equipa" },
       { property: "og:description", content: "Escolhe titulares, joga, faz substituições e sobe de divisão." },
-      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.svg`, type: "image/svg+xml" },
+      
+    ],
+    links: [
+      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico`, type: "image/x-icon" },
     ],
   }),
   component: () => (
