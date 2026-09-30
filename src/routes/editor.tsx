@@ -216,6 +216,13 @@ function Editor() {
                     <input className={input} value={selected.city ?? ""} placeholder="Ex.: Florença" onChange={(e) => update({ city: e.target.value })} />
                   </label>
                   <label className="text-sm">
+                    Foto do estádio
+                    <input className={input} value={selected.stadiumImage ?? ""} placeholder="Ex.: san-siro.jpg" onChange={(e) => update({ stadiumImage: e.target.value })} />
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      Ficheiro em <code>public/assets/stadiums/</code>.
+                    </span>
+                  </label>
+                  <label className="text-sm">
                     Força do clube: <b className="font-mono-num">{selected.rating}</b>
                     <input
                       type="range"
