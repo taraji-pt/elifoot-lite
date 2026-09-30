@@ -23,7 +23,28 @@ export function loadDatabase(): TeamSeed[] {
   if (!raw) return defaultDatabase();
   try {
     const parsed = parseDatabase(raw);
-    return parsed.length ? parsed : defaultDatabase();
+    if (!parsed.length) return defaultDatabase();
+
+    // Migração transparente de bases guardadas antes de existirem os campos
+    // de estádio. Só preenche propriedades que não existiam; não sobrescreve
+    // uma edição feita pelo utilizador no Editor.
+    const defaults = defaultDatabase();
+    const defaultsById = new Map(defaults.map((team) => [team.id, team]));
+    return parsed.map((team) => {
+      const source = defaultsById.get(team.id);
+      if (!source) return team;
+      const migrated = { ...team };
+      if (!Object.prototype.hasOwnProperty.call(team, "stadium") && source.stadium) {
+        migrated.stadium = source.stadium;
+      }
+      if (!Object.prototype.hasOwnProperty.call(team, "city") && source.city) {
+        migrated.city = source.city;
+      }
+      if (!Object.prototype.hasOwnProperty.call(team, "stadiumImage") && source.stadiumImage) {
+        migrated.stadiumImage = source.stadiumImage;
+      }
+      return migrated;
+    });
   } catch {
     return defaultDatabase();
   }
