@@ -21328,5 +21328,109 @@ export const TEAMS: TeamSeed[] = [
         "nationality": "ISR"
       }
     ]
-  }
+  },
+  {
+    "id": 203,
+    "name": "VfB Stuttgart",
+    "country": "GER",
+    "rating": 75,
+    "badge": "/assets/badges/stutt.png",
+    "primaryColor": "#E32219",
+    "secondaryColor": "#000000",
+    "stadium": "Neckarstadion",
+    "city": "Stuttgart",
+    "stadiumImage": "/assets/stadiums/Neckarstadion.png",
+ "players": [
+    {
+      "name": "Franz Wohlfahrt",
+      "position": "GR",
+      "nationality": "AUT"
+    },
+    {
+      "name": "Thorsten Walther",
+      "position": "GR",
+      "nationality": "GER"
+    },
+    {
+      "name": "Frank Verlaat",
+      "position": "DEF",
+      "nationality": "NED"
+    },
+    {
+      "name": "Thomas Berthold",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Thomas Schneider",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Hendrik Herzog",
+      "position": "DEF",
+      "nationality": "SUI"
+    },
+    {
+      "name": "Marco Grimm",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Franco Foda",
+      "position": "DEF",
+      "nationality": "AUT"
+    },
+    {
+      "name": "Krasimir Balakov",
+      "position": "MED",
+      "nationality": "BUL"
+    },
+    {
+      "name": "Matthias Hagner",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Gerhard Poschner",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Zvonimir Soldo",
+      "position": "MED",
+      "nationality": "CRO"
+    },
+    {
+      "name": "Thorsten Legat",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Marco Haber",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Élber",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Fredi Bobic",
+      "position": "AV",
+      "nationality": "GER"
+    },
+    {
+      "name": "Radosław Gilewicz",
+      "position": "AV",
+      "nationality": "POL"
+    },
+    {
+      "name": "Sreto Ristic",
+      "position": "AV",
+      "nationality": "GER"
+    }
+  ]
+}
 ];
