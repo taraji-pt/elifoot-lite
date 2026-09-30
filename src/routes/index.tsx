@@ -14,6 +14,7 @@ import { formatMoney, getPlayers, sortSquad, teamRating } from "@/game/ratings";
 import { validateSquad } from "@/game/players";
 import { computeStandings } from "@/game/standings";
 import type { GameState, Player, Position, Team } from "@/game/types";
+import { compressCareerImage } from "@/game/careerImage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +65,9 @@ function App() {
 
 function Start() {
   const { newGame, saveExists, load } = useGame();
+  const [careerImage, setCareerImage] = useState<string | null>(null);
+  const [careerImageBusy, setCareerImageBusy] = useState(false);
+  const [careerImageError, setCareerImageError] = useState<string | null>(null);
   const [db] = useState<TeamSeed[]>(() => loadDatabase());
   const countries = useMemo(
     () => [...countryList(db)].sort((a, b) =>
@@ -133,7 +137,50 @@ function Start() {
       )}
       {enough && (
         <>
-          <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">2. O teu clube</h2>
+          <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">2. Imagem da carreira <span className="font-normal normal-case">· opcional</span></h2>
+          <div className="mt-2 rounded-lg border border-border bg-card p-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border bg-secondary px-3 py-2 text-sm hover:bg-accent">
+                📷 {careerImageBusy ? "A comprimir…" : careerImage ? "Trocar imagem" : "Escolher imagem"}
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  className="hidden"
+                  disabled={careerImageBusy}
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    e.target.value = "";
+                    if (!file) return;
+                    setCareerImageError(null);
+                    setCareerImageBusy(true);
+                    try {
+                      setCareerImage(await compressCareerImage(file));
+                    } catch (error) {
+                      console.error(error);
+                      setCareerImageError("Não foi possível processar essa imagem. Escolhe uma fotografia JPG, PNG ou WebP.");
+                    } finally {
+                      setCareerImageBusy(false);
+                    }
+                  }}
+                />
+              </label>
+              {careerImage && (
+                <>
+                  <span className="text-xs text-muted-foreground">Imagem pronta e comprimida</span>
+                  <button className={btn2} onClick={() => setCareerImage(null)} disabled={careerImageBusy}>Remover</button>
+                </>
+              )}
+            </div>
+            {careerImageError && <div className="mt-2 text-xs text-destructive">{careerImageError}</div>}
+            {careerImage && (
+              <div className="mt-3 h-28 overflow-hidden rounded-md border border-border bg-background">
+                <img src={careerImage} alt="" className="h-full w-full object-cover opacity-70" />
+              </div>
+            )}
+            <p className="mt-2 text-xs text-muted-foreground">A imagem é redimensionada e comprimida para ficar leve no jogo.</p>
+          </div>
+
+          <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">3. O teu clube</h2>
           <div className="mt-2 flex gap-2">
             {Array.from({ length: GAME_CONFIG.numberOfDivisions }, (_, i) => i + 1).map((d) => (
               <button key={d} className={d === division ? btn : btn2} onClick={() => setDivision(d)}>
@@ -145,7 +192,7 @@ function Start() {
             {list.map(({ seed: t }) => (
               <button
                 key={t.id}
-                onClick={() => newGame(t.id, seeds)}
+                onClick={() => newGame(t.id, seeds, careerImage)}
                 disabled={!enough || invalidTeams.length > 0}
                 className={`${card} flex items-center justify-between text-left hover:border-primary disabled:cursor-not-allowed disabled:opacity-50`}
               >
@@ -294,6 +341,7 @@ function PlayerBids({ state }: { state: GameState }) {
 function Game({ state }: { state: GameState }) {
   const { message, setMessage, save, deleteSave } = useGame();
   const [tab, setTab] = useState<Tab>("equipa");
+  const [showCareerImageSettings, setShowCareerImageSettings] = useState(false);
   const team = userTeam(state);
   const activeTab: Tab = state.match ? "jogo" : tab;
 
@@ -329,6 +377,13 @@ function Game({ state }: { state: GameState }) {
             </button>
             <button
               className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25"
+              onClick={() => setShowCareerImageSettings(true)}
+              title="Imagem da carreira"
+            >
+              📷
+            </button>
+            <button
+              className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25"
               onClick={() => confirm("Apagar o jogo e começar de novo?") && deleteSave()}
             >
               Novo jogo
@@ -357,11 +412,26 @@ function Game({ state }: { state: GameState }) {
         </div>
       )}
 
-      {state.celebration && <CelebrationPopup state={state} />}
+      {state.careerImage && (
+        <div
+          className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <img
+            src={state.careerImage}
+            alt=""
+            className="h-full w-full object-cover opacity-[0.075] blur-[1px]"
+          />
+          <div className="absolute inset-0 bg-background/85" />
+        </div>
+      )}
 
-      {state.seasonReview && <SeasonReviewBanner state={state} />}
+      <div className="relative z-10">
+        {state.celebration && <CelebrationPopup state={state} />}
 
-      <CoachOffers state={state} />
+        {state.seasonReview && <SeasonReviewBanner state={state} />}
+
+        <CoachOffers state={state} />
       <PlayerBids state={state} />
 
       <main className="mt-4">
@@ -373,6 +443,76 @@ function Game({ state }: { state: GameState }) {
         {activeTab === "taca" && <CupView state={state} />}
         {activeTab === "historico" && <History state={state} />}
       </main>
+      </div>
+      {showCareerImageSettings && <CareerImageSettings state={state} onClose={() => setShowCareerImageSettings(false)} />}
+    </div>
+  );
+}
+
+function CareerImageSettings({ state, onClose }: { state: GameState; onClose: () => void }) {
+  const { save } = useGame();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const choose = async (file: File | undefined) => {
+    if (!file) return;
+    setError(null);
+    setBusy(true);
+    try {
+      const image = await compressCareerImage(file);
+      const next = { ...state, careerImage: image };
+      saveGameDirect(next);
+    } catch (e) {
+      console.error(e);
+      setError("Não foi possível processar essa imagem. Escolhe uma fotografia JPG, PNG ou WebP.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const saveGameDirect = (next: GameState) => {
+    saveGame(next);
+    window.location.reload();
+  };
+
+  const remove = () => {
+    saveGameDirect({ ...state, careerImage: null });
+  };
+
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4 py-6" role="dialog" aria-modal="true">
+      <div className="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-2xl">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <div className="font-semibold">Imagem da carreira</div>
+            <div className="text-xs text-muted-foreground">Fica como fundo discreto em todos os menus.</div>
+          </div>
+          <button className={btn2} onClick={onClose}>✕</button>
+        </div>
+        {state.careerImage && (
+          <div className="mt-4 h-36 overflow-hidden rounded-md border border-border">
+            <img src={state.careerImage} alt="" className="h-full w-full object-cover opacity-70" />
+          </div>
+        )}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <label className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-border bg-secondary px-3 py-2 text-sm hover:bg-accent">
+            📷 {busy ? "A comprimir…" : state.careerImage ? "Trocar imagem" : "Escolher imagem"}
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="hidden"
+              disabled={busy}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = "";
+                void choose(file);
+              }}
+            />
+          </label>
+          {state.careerImage && <button className={btn2} onClick={remove} disabled={busy}>Remover</button>}
+        </div>
+        {error && <div className="mt-2 text-xs text-destructive">{error}</div>}
+      </div>
     </div>
   );
 }
