@@ -971,9 +971,8 @@ function PlayerTable({
   );
 }
 
-function Match({
+function Match({ state }: { state: GameState }) {
   const [stadiumOpen, setStadiumOpen] = useState(false);
- state }: { state: GameState }) {
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
