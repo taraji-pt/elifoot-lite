@@ -295,26 +295,42 @@ function Game({ state }: { state: GameState }) {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-6">
-      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
-        <div className="flex items-center gap-3">
-          <TeamBadge team={team} size={44} />
-          <div>
-            <div className="text-xl font-bold">{team.name}</div>
-            <div className="text-sm text-muted-foreground">
-              Época {seasonLabel(state.seasonYear)} · {divisionLabel(team.division)} · Jornada {state.round}/
-              {totalRounds(state)} · Rating {teamRating(team, state.players)}
+      <header
+        className="relative overflow-hidden rounded-xl border border-white/10 px-4 py-3 shadow-lg sm:px-5"
+        style={{
+          background: `linear-gradient(110deg, ${team.primaryColor} 0%, ${team.primaryColor} 38%, ${team.secondaryColor} 100%)`,
+        }}
+      >
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="relative flex flex-wrap items-center justify-between gap-3">
+          <div className="flex min-w-0 items-center gap-4">
+            <div className="rounded-xl bg-black/20 p-1.5 shadow-md ring-1 ring-white/15">
+              <TeamBadge team={team} size={52} />
+            </div>
+            <div className="min-w-0 text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.75)]">
+              <div className="font-club-name text-2xl font-semibold leading-none tracking-tight sm:text-3xl">
+                {team.name}
+              </div>
+              <div className="mt-1.5 text-sm font-medium text-white/85">
+                Época {seasonLabel(state.seasonYear)} · {divisionLabel(team.division)} · Jornada {state.round}/
+                {totalRounds(state)} · Rating {teamRating(team, state.players)}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-mono-num text-sm text-primary">{formatMoney(team.budget)}</span>
-          <button className={btn2} onClick={save}>Guardar</button>
-          <button
-            className={btn2}
-            onClick={() => confirm("Apagar o jogo e começar de novo?") && deleteSave()}
-          >
-            Novo jogo
-          </button>
+          <div className="flex items-center gap-2">
+            <span className="rounded-md bg-black/25 px-2.5 py-1 font-mono-num text-sm font-semibold text-white shadow-sm">
+              {formatMoney(team.budget)}
+            </span>
+            <button className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25" onClick={save}>
+              Guardar
+            </button>
+            <button
+              className="rounded-md border border-white/20 bg-white/15 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/25"
+              onClick={() => confirm("Apagar o jogo e começar de novo?") && deleteSave()}
+            >
+              Novo jogo
+            </button>
+          </div>
         </div>
       </header>
 
