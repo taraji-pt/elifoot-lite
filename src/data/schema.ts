@@ -17,6 +17,10 @@ export interface TeamSeed {
   name: string;
   /** código de 3 letras do país (ver data/countries.ts) */
   country: string;
+  /** nome do estádio onde o clube joga em casa (opcional) */
+  stadium?: string;
+  /** cidade do estádio (opcional) */
+  city?: string;
   /** força do clube 0-100 */
   rating: number;
   /** "" = emblema gerado; ou "/assets/badges/x.png" */
