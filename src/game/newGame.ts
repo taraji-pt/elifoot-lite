@@ -81,7 +81,7 @@ export function splitByActivity(teams: Record<number, Team>) {
   return { active, reserve };
 }
 
-export function createNewGame(userTeamId: number, seeds: TeamSeed[]): GameState {
+export function createNewGame(userTeamId: number, seeds: TeamSeed[], careerImage: string | null = null): GameState {
   const { teams, players, nextPlayerId } = buildWorld(seeds);
   const { active, reserve } = splitByActivity(teams);
 
@@ -101,6 +101,7 @@ export function createNewGame(userTeamId: number, seeds: TeamSeed[]): GameState 
     history: [],
     scorerStats: {},
     nextPlayerId,
+    careerImage,
   };
 }
 
