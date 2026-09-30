@@ -4199,7 +4199,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Hilário",
       "position": "GR",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Andrzej Wozniak",
@@ -4209,7 +4209,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Jorge Costa",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Aloísio",
@@ -4219,27 +4219,27 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Fernando Mendes",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "João Manuel Pinto",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "João Pinto",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Rui Jorge",
       "position": "DEF",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Paulinho Santos",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Zlatko Zahovic",
@@ -4254,12 +4254,12 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Barroso",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Rui Barros",
       "position": "MED",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Arnold Wetl",
@@ -4279,12 +4279,12 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Sérgio Conceição",
       "position": "AV",
-      "nationality": "PRT"
+      "nationality": "POR"
     },
     {
       "name": "Artur",
       "position": "AV",
-      "nationality": "PRT"
+      "nationality": "BRA"
     }
   ]
 },
