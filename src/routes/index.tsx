@@ -286,7 +286,7 @@ function stadiumImageSrc(team: Team) {
   const value = team.stadiumImage?.trim();
   if (!value) return "";
   if (value.startsWith("/")) {
-    return `${import.meta.env.BASE_URL}${value.replace(/^\\/+/, "")}`;
+    return `${import.meta.env.BASE_URL}${value.replace(/^\/+/, "")}`;
   }
   return `${import.meta.env.BASE_URL}assets/stadiums/${value.replace(/^\\/+/, "")}`;
 }
