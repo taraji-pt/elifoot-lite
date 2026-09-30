@@ -20725,7 +20725,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#FFFFFF",
     "stadium": "Belmore Sports Ground",
     "city": "Sydney",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/badges/belmore.jpg",
     "players": [
     {
       "name": "George Bouhoutsos",
