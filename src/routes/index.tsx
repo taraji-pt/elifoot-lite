@@ -1062,7 +1062,7 @@ function Match({ state }: { state: GameState }) {
     const ok = availableCount === 11;
     return (
       <div className={`${card} text-center`}>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm font-semibold text-muted-foreground">
           {isCup
             ? `🏆 Taça — ${state.cup.rounds[state.cup.currentRound]?.name ?? "Eliminatória"}`
             : `Jornada ${state.round}`}
