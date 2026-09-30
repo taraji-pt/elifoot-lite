@@ -21369,7 +21369,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Hendrik Herzog",
       "position": "DEF",
-      "nationality": "SUI"
+      "nationality": "GER"
     },
     {
       "name": "Marco Grimm",
@@ -21379,7 +21379,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Franco Foda",
       "position": "DEF",
-      "nationality": "AUT"
+      "nationality": "GER"
     },
     {
       "name": "Krasimir Balakov",
@@ -21429,7 +21429,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Sreto Ristic",
       "position": "AV",
-      "nationality": "GER"
+      "nationality": "SRB"
     }
   ]
 }
