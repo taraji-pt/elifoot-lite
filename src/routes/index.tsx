@@ -443,7 +443,6 @@ function Game({ state }: { state: GameState }) {
         {activeTab === "taca" && <CupView state={state} />}
         {activeTab === "historico" && <History state={state} />}
       </main>
-        </div>
       </div>
       {showCareerImageSettings && <CareerImageSettings state={state} onClose={() => setShowCareerImageSettings(false)} />}
     </div>
