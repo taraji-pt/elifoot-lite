@@ -298,12 +298,21 @@ function StartingLineups({ home, away, state }: { home: Team; away: Team; state:
               key={player.id}
               className={`flex items-center gap-2 text-sm ${reverse ? "justify-end text-right" : ""}`}
             >
-              <>
-                <span className="w-5 shrink-0 text-xs text-muted-foreground">{index + 1}</span>
-                <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
-                <Flag code={player.nationality} size={16} />
-                <span className="min-w-0 truncate">{player.name}</span>
-              </>
+              {reverse ? (
+                <>
+                  <span className="min-w-0 truncate">{player.name}</span>
+                  <Flag code={player.nationality} size={16} />
+                  <span className="w-7 shrink-0 text-left font-mono-num text-xs text-muted-foreground">{player.position}</span>
+                  <span className="w-5 shrink-0 text-right text-xs text-muted-foreground">{index + 1}</span>
+                </>
+              ) : (
+                <>
+                  <span className="w-5 shrink-0 text-left text-xs text-muted-foreground">{index + 1}</span>
+                  <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
+                  <Flag code={player.nationality} size={16} />
+                  <span className="min-w-0 truncate">{player.name}</span>
+                </>
+              )}
             </li>
           ))}
         </ol>
