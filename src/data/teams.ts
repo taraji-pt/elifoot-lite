@@ -4189,11 +4189,11 @@ export const TEAMS: TeamSeed[] = [
     "name": "Porto",
     "country": "POR",
     "rating": 87,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/FCP.png",
     "primaryColor": "#0A3D91",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
-    "city": "",
+    "city": "Porto",
     "stadiumImage": "",
     "players": [
       {
@@ -4293,12 +4293,12 @@ export const TEAMS: TeamSeed[] = [
     "name": "Benfica",
     "country": "POR",
     "rating": 87,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/SLB.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
-    "city": "",
-    "stadiumImage": "",
+    "city": "Lisboa",
+    "stadiumImage": "/assets/badges/SLB.png",
     "players": [
       {
         "name": "Vítor Baía",
@@ -4397,11 +4397,11 @@ export const TEAMS: TeamSeed[] = [
     "name": "Sporting CP",
     "country": "POR",
     "rating": 70,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/SCP.png",
     "primaryColor": "#0B7A3B",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
-    "city": "",
+    "city": "Lisboa",
     "stadiumImage": "",
     "players": [
       {
