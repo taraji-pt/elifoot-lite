@@ -15,7 +15,7 @@ export const TEAMS: TeamSeed[] = [
   "id": 1,
   "name": "AC Milan",
   "country": "ITA",
-  "rating": 90,
+  "rating": 75,
   "badge": "/assets/badges/milan.png",
   "primaryColor": "#AC1E2D",
   "secondaryColor": "#000000",
@@ -116,7 +116,7 @@ export const TEAMS: TeamSeed[] = [
   "id": 2,
   "name": "Juventus",
   "country": "ITA",
-  "rating": 90,
+  "rating": 78,
   "badge": "/assets/badges/juventus.png",
   "primaryColor": "#111111",
   "secondaryColor": "#FFFFFF",
@@ -217,7 +217,7 @@ export const TEAMS: TeamSeed[] = [
     "id": 3,
     "name": "Inter Milan",
     "country": "ITA",
-    "rating": 90,
+    "rating": 75,
     "badge": "/assets/badges/int_milan.png",
     "primaryColor": "#0068A8",
     "secondaryColor": "#111111",
@@ -358,7 +358,7 @@ export const TEAMS: TeamSeed[] = [
     "id": 4,
     "name": "AS Roma",
     "country": "ITA",
-    "rating": 90,
+    "rating": 75,
     "badge": "/assets/badges/roma.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
@@ -529,7 +529,7 @@ export const TEAMS: TeamSeed[] = [
     "id": 5,
     "name": "Lazio",
     "country": "ITA",
-    "rating": 90,
+    "rating": 73,
     "badge": "/assets/badges/lazio.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
@@ -685,7 +685,7 @@ export const TEAMS: TeamSeed[] = [
     "id": 6,
     "name": "Parma",
     "country": "ITA",
-    "rating": 90,
+    "rating": 70,
     "badge": "/assets/badges/parma.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
@@ -836,7 +836,7 @@ export const TEAMS: TeamSeed[] = [
     "id": 7,
     "name": "Sampdoria",
     "country": "ITA",
-    "rating": 90,
+    "rating": 70,
     "badge": "/assets/badges/samp.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
@@ -977,7 +977,7 @@ export const TEAMS: TeamSeed[] = [
     "id": 8,
     "name": "Napoli",
     "country": "ITA",
-    "rating": 90,
+    "rating": 75,
     "badge": "/assets/badges/napoli.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
@@ -1148,164 +1148,111 @@ export const TEAMS: TeamSeed[] = [
     "id": 9,
     "name": "Fiorentina",
     "country": "ITA",
-    "rating": 90,
+    "rating": 74,
     "badge": "/assets/badges/fiorentina.png",
-    "primaryColor": "#333333",
+    "primaryColor": "#482683",
     "secondaryColor": "#FFFFFF",
-    "players": [
-      {
-        "name": "Giacomo Dondoli",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Francesco Toldo",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Zandonà",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gianmatteo Mareggini",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Chiarini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Carnasciali",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Michele Serena",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lorenzo Amoruso",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Aldo Firicano",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Mirri",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giulio Falcone",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Vittorio Pusceddu",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Pasquale Padalino",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Danilo Stefani",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giovanni Piacentini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Stefan Schwarz",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Sandro Cois",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Emiliano Bigica",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Mirko Benin",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Andrea Mussi",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Francesco Baiano",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Luís Oliveira",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Massimo Orlando",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Marco Vendrame",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Anselmo Robbiati",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Beltrammi",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Andrei Kanchelskis",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+   "players": [
+    {
+      "name": "Francesco Toldo",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Gianmatteo Mareggini",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giulio Falcone",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Lorenzo Amoruso",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Vittorio Pusceddu",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Daniele Carnasciali",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Pasquale Padalino",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Aldo Firicano",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+
+    {
+      "name": "Rui Costa",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Stefan Schwarz",
+      "position": "MED",
+      "nationality": "SWE"
+    },
+    {
+      "name": "Sandro Cois",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giovanni Piacentini",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Emiliano Bigica",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Mirko Benin",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+
+    {
+      "name": "Gabriel Batistuta",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Luís Oliveira",
+      "position": "AV",
+      "nationality": "BEL"
+    },
+    {
+      "name": "Anselmo Robbiati",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Francesco Baiano",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 10,
     "name": "Ajax",
     "country": "NED",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/ajax.png",
     "primaryColor": "#D2122E",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -1406,7 +1353,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "PSV Eindhoven",
     "country": "NED",
     "rating": 90,
-    "badge": "",
+    "badge": "/assets/badges/psv.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -1507,7 +1454,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Feyenoord",
     "country": "NED",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/feyenoord.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -1608,7 +1555,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Barcelona",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#A50044",
     "secondaryColor": "#004D98",
     "players": [
@@ -1709,7 +1656,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Real Madrid",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#1D3557",
     "players": [
@@ -1810,7 +1757,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Atlético Madrid",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -1911,7 +1858,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Valencia",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2012,7 +1959,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Deportivo La Coruña",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2113,7 +2060,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Athletic Bilbao",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2214,7 +2161,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Sevilla",
     "country": "ESP",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2315,7 +2262,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Bayern Munich",
     "country": "GER",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#DC052D",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2416,7 +2363,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Borussia Dortmund",
     "country": "GER",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2517,7 +2464,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Bayer Leverkusen",
     "country": "GER",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2618,7 +2565,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Werder Bremen",
     "country": "GER",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2719,7 +2666,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Schalke 04",
     "country": "GER",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2820,7 +2767,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Kaiserslautern",
     "country": "GER",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -2921,7 +2868,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Hamburg",
     "country": "GER",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3022,7 +2969,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Manchester United",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/ManUtd.png",
     "primaryColor": "#DA291C",
     "secondaryColor": "#FBE122",
     "players": [
@@ -3123,7 +3070,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Arsenal",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/arsenal.png",
     "primaryColor": "#EF0107",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3224,7 +3171,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Liverpool",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/liverpool.png",
     "primaryColor": "#C8102E",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3325,7 +3272,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Chelsea",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/chelsea.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3426,7 +3373,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Blackburn Rovers",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/BlackR.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3527,7 +3474,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Newcastle United",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/newcastle.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3628,7 +3575,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Aston Villa",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/aston.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3729,7 +3676,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Tottenham Hotspur",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/spurs.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3830,7 +3777,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Leeds United",
     "country": "ENG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/leeds.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -3931,7 +3878,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Rangers",
     "country": "SCO",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4032,7 +3979,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Celtic",
     "country": "SCO",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4133,7 +4080,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Porto",
     "country": "POR",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#0A3D91",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4234,7 +4181,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Benfica",
     "country": "POR",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4334,8 +4281,8 @@ export const TEAMS: TeamSeed[] = [
     "id": 40,
     "name": "Sporting CP",
     "country": "POR",
-    "rating": 87,
-    "badge": "",
+    "rating": 70,
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#0B7A3B",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4436,7 +4383,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Marseille",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4537,7 +4484,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Paris Saint-Germain",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4638,7 +4585,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Monaco",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4739,7 +4686,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Auxerre",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4840,7 +4787,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Bordeaux",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -4941,7 +4888,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Nantes",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5042,7 +4989,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Lyon",
     "country": "FRA",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5143,7 +5090,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Lens",
     "country": "FRA",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5244,7 +5191,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Galatasaray",
     "country": "TUR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5345,7 +5292,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Fenerbahçe",
     "country": "TUR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5446,7 +5393,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Beşiktaş",
     "country": "TUR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5547,7 +5494,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Steaua București",
     "country": "ROU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5648,7 +5595,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Rapid București",
     "country": "ROU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5749,7 +5696,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Dinamo București",
     "country": "ROU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5850,7 +5797,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "CSKA Moscow",
     "country": "RUS",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -5951,7 +5898,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Spartak Moscow",
     "country": "RUS",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6052,7 +5999,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Lokomotiv Moscow",
     "country": "RUS",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6153,7 +6100,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Dynamo Kyiv",
     "country": "UKR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6254,7 +6201,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Shakhtar Donetsk",
     "country": "UKR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6355,7 +6302,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Panathinaikos",
     "country": "GRE",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6456,7 +6403,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Olympiacos",
     "country": "GRE",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6557,7 +6504,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "AEK Athens",
     "country": "GRE",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6658,7 +6605,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Rosenborg",
     "country": "NOR",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6759,7 +6706,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "IFK Göteborg",
     "country": "SWE",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6860,7 +6807,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "AIK",
     "country": "SWE",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -6961,7 +6908,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "FC København",
     "country": "DEN",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7062,7 +7009,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Brøndby",
     "country": "DEN",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7163,7 +7110,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Anderlecht",
     "country": "BEL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/anderlecht.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7264,7 +7211,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Club Brugge",
     "country": "BEL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/brugge.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7365,7 +7312,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Standard Liège",
     "country": "BEL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/liege.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7466,7 +7413,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Red Star Belgrade",
     "country": "SRB",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7567,7 +7514,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Partizan",
     "country": "SRB",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7668,7 +7615,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Dinamo Zagreb",
     "country": "CRO",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7769,7 +7716,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Hajduk Split",
     "country": "CRO",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7870,7 +7817,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Sparta Prague",
     "country": "CZE",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -7971,7 +7918,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Slavia Prague",
     "country": "CZE",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8072,7 +8019,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Slovan Bratislava",
     "country": "SVK",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8172,7 +8119,7 @@ export const TEAMS: TeamSeed[] = [
   "id": 78,
   "name": "Bologna",
   "country": "ITA",
-  "rating": 90,
+  "rating": 70,
   "badge": "/assets/badges/bologna.png",
   "primaryColor": "#1A2F5A",
   "secondaryColor": "#C8102E",
@@ -8270,38 +8217,115 @@ export const TEAMS: TeamSeed[] = [
     }
   ]
 },
-  {
-    "id": 79,
-    "name": "Genoa",
-    "country": "ITA",
-    "rating": 84,
-    "badge": "/assets/badges/genoa.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "players": [
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Sebastiano Rossi",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "ITA"
-      }
-    ]
-  },
+{
+  "id": 79,
+  "name": "Genoa",
+  "country": "ITA",
+  "rating": 71,
+  "badge": "/assets/badges/genoa.png",
+  "primaryColor": "#C8102E",
+  "secondaryColor": "#1B3A5B",
+  "players": [
+    {
+      "name": "Gianluca Berti",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Mario Ielpo",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Silvio Vottorio Giampietro",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Felice Centofanti",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Davide Nicola",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Vincenzo Torrente",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Fabio Rossi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Gianluca Francesconi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+
+    {
+      "name": "Mario Bortolazzi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Filippo Masolini",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Luca Cavallo",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Gennaro Ruotolo",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Cristiano Scazzola",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Pier Giovanni Rutzittu",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+
+    {
+      "name": "Michaël Goossens",
+      "position": "AV",
+      "nationality": "BEL"
+    },
+    {
+      "name": "Marco Nappi",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Dario Morello",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Luigi Beghetto",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 80,
     "name": "Real Zaragoza",
     "country": "ESP",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8402,7 +8426,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Real Sociedad",
     "country": "ESP",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8503,7 +8527,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Villarreal",
     "country": "ESP",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8604,7 +8628,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Real Betis",
     "country": "ESP",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8705,7 +8729,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Real Valladolid",
     "country": "ESP",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8806,7 +8830,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Tenerife",
     "country": "ESP",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -8907,7 +8931,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Montpellier",
     "country": "FRA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9008,7 +9032,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Saint-Étienne",
     "country": "FRA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9109,7 +9133,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Grasshopper",
     "country": "SUI",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9210,7 +9234,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "FC Basel",
     "country": "SUI",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9310,8 +9334,8 @@ export const TEAMS: TeamSeed[] = [
     "id": 90,
     "name": "Austria Wien",
     "country": "AUT",
-    "rating": 83,
-    "badge": "",
+    "rating": 66,
+    "badge": "/assets/badges/austria-wien.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9411,8 +9435,8 @@ export const TEAMS: TeamSeed[] = [
     "id": 91,
     "name": "Rapid Wien",
     "country": "AUT",
-    "rating": 83,
-    "badge": "",
+    "rating": 64,
+    "badge": "/assets/badges/rapid.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9512,8 +9536,8 @@ export const TEAMS: TeamSeed[] = [
     "id": 92,
     "name": "Salzburg",
     "country": "AUT",
-    "rating": 83,
-    "badge": "",
+    "rating": 69,
+    "badge": "/assets/badges/salzb.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9614,7 +9638,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "CSKA Sofia",
     "country": "BUL",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9715,7 +9739,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Levski Sofia",
     "country": "BUL",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9816,7 +9840,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "PAOK",
     "country": "GRE",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -9917,7 +9941,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Maccabi Haifa",
     "country": "ISR",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10018,7 +10042,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Dinamo Tbilisi",
     "country": "GEO",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10119,7 +10143,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Vitesse",
     "country": "NED",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/vitesse.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10220,7 +10244,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Twente",
     "country": "NED",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/twente.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10321,7 +10345,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Heerenveen",
     "country": "NED",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/Heerenveen.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10422,7 +10446,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "São Paulo",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10523,7 +10547,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Palmeiras",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#006437",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10624,7 +10648,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Corinthians",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10725,7 +10749,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Santos",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -10826,7 +10850,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Flamengo",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#C52613",
     "secondaryColor": "#111111",
     "players": [
@@ -10927,7 +10951,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Vasco da Gama",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11028,7 +11052,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Grêmio",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11129,7 +11153,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Internacional",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11230,7 +11254,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Cruzeiro",
     "country": "BRA",
     "rating": 89,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11331,7 +11355,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Atlético Mineiro",
     "country": "BRA",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11432,7 +11456,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Botafogo",
     "country": "BRA",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11533,7 +11557,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Fluminense",
     "country": "BRA",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11634,7 +11658,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Vélez Sarsfield",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/velez.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -11735,7 +11759,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "River Plate",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/river.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#E31B23",
     "players": [
@@ -11836,7 +11860,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Boca Juniors",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/boca.png",
     "primaryColor": "#003B7A",
     "secondaryColor": "#F6C400",
     "players": [
@@ -11937,7 +11961,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Independiente",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/indep.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12038,7 +12062,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Racing Club",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/racing.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12139,7 +12163,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "San Lorenzo",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/SL.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12240,7 +12264,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Rosario Central",
     "country": "ARG",
     "rating": 88,
-    "badge": "",
+    "badge": "/assets/badges/rosario.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12341,7 +12365,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Newell's Old Boys",
     "country": "ARG",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/NOB.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12442,7 +12466,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Estudiantes",
     "country": "ARG",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/estudiantes.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12543,7 +12567,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Gimnasia La Plata",
     "country": "ARG",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/gimnLP.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12644,7 +12668,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Lanús",
     "country": "ARG",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/lanus.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12745,7 +12769,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Colo-Colo",
     "country": "CHI",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12846,7 +12870,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Universidad de Chile",
     "country": "CHI",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -12947,7 +12971,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Universidad Católica",
     "country": "CHI",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13048,7 +13072,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Peñarol",
     "country": "URU",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#111111",
     "players": [
@@ -13149,7 +13173,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Nacional",
     "country": "URU",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#0B3D91",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13250,7 +13274,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Danubio",
     "country": "URU",
     "rating": 87,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13351,7 +13375,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Defensor Sporting",
     "country": "URU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13452,7 +13476,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Olimpia",
     "country": "PAR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13553,7 +13577,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Cerro Porteño",
     "country": "PAR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13654,7 +13678,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Libertad",
     "country": "PAR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13755,7 +13779,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Guaraní",
     "country": "PAR",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13856,7 +13880,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Emelec",
     "country": "ECU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -13957,7 +13981,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Barcelona SC",
     "country": "ECU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14058,7 +14082,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "LDU Quito",
     "country": "ECU",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14159,7 +14183,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Deportivo Cali",
     "country": "COL",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14260,7 +14284,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "América de Cali",
     "country": "COL",
     "rating": 86,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14361,7 +14385,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Atlético Nacional",
     "country": "COL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14462,7 +14486,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Millonarios",
     "country": "COL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14563,7 +14587,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Once Caldas",
     "country": "COL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14664,7 +14688,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Universitario",
     "country": "PER",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14765,7 +14789,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Alianza Lima",
     "country": "PER",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14866,7 +14890,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Sporting Cristal",
     "country": "PER",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -14967,7 +14991,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Cobreloa",
     "country": "CHI",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15068,7 +15092,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Bolívar",
     "country": "BOL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15169,7 +15193,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "The Strongest",
     "country": "BOL",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15270,7 +15294,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Independiente del Valle",
     "country": "ECU",
     "rating": 85,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15371,7 +15395,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Portuguesa",
     "country": "BRA",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15472,7 +15496,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al Ahly",
     "country": "EGY",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#D71920",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15573,7 +15597,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Zamalek",
     "country": "EGY",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#C8102E",
     "players": [
@@ -15674,7 +15698,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Ismaily",
     "country": "EGY",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15775,7 +15799,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Club Africain",
     "country": "TUN",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -15875,109 +15899,106 @@ export const TEAMS: TeamSeed[] = [
     "id": 155,
     "name": "Espérance de Tunis",
     "country": "TUN",
-    "rating": 84,
-    "badge": "",
+    "rating": 67,
+    "badge": "/assets/badges/EST.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
-      {
-        "name": "Chokri El-Ouaer",
-        "position": "GR",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Sadok Sassi",
-        "position": "GR",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Radhi Jaïdi",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Tarek Thabet",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Hédi Berkhissa",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Khaled Badra",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Zoubeir Beya",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Sami Trabelsi",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Nabil Maâloul",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Hassen Gabsi",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Ziad Jaziri",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Adel Sellimi",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Mehdi Ben Slimane",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Adel Chedly",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Ziad Jaziri",
-        "position": "AV",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Adel Sellimi",
-        "position": "AV",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Hassen Gabsi",
-        "position": "AV",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Riadh Bouazizi",
-        "position": "AV",
-        "nationality": "TUN"
-      }
-    ]
-  },
+    {
+      "name": "Chokri El-Ouaer",
+      "position": "GR",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Khaled Badra",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Radhi Jaïdi",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Taoufik Hichri",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Tarek Thabet",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Bechir Sahbani",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Mourad Chebbi",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+
+    {
+      "name": "Garba Lawal",
+      "position": "MED",
+      "nationality": "NGA"
+    },
+    {
+      "name": "Hassen Gabsi",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Hakim Nouira",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Sirajeddine Chihi",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Marouane Bokri",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Maher Kanzari",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+
+    {
+      "name": "Kenneth Malitoli",
+      "position": "AV",
+      "nationality": "ZAM"
+    },
+    {
+      "name": "Ayadi Hamrouni",
+      "position": "AV",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Sami Laroussi",
+      "position": "AV",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Mohamed El Badraoui",
+      "position": "AV",
+      "nationality": "MAR"
+    }
+  ]
+},
   {
     "id": 156,
     "name": "Étoile du Sahel",
     "country": "TUN",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16078,7 +16099,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Raja Casablanca",
     "country": "MAR",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#00843D",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16179,7 +16200,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Wydad Casablanca",
     "country": "MAR",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16280,7 +16301,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "JS Kabylie",
     "country": "ALG",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/jsk.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#00843D",
     "players": [
@@ -16381,7 +16402,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "ES Sétif",
     "country": "ALG",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/setif.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16482,7 +16503,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "ASEC Mimosas",
     "country": "CIV",
     "rating": 84,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16583,7 +16604,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Africa Sports",
     "country": "CIV",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16684,7 +16705,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Asante Kotoko",
     "country": "GHA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16785,7 +16806,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Hearts of Oak",
     "country": "GHA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16886,7 +16907,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Orlando Pirates",
     "country": "RSA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#111111",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -16987,7 +17008,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Kaizer Chiefs",
     "country": "RSA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#111111",
     "players": [
@@ -17088,7 +17109,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Mamelodi Sundowns",
     "country": "RSA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17189,7 +17210,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Nkana Red Devils",
     "country": "ZAM",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17290,7 +17311,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Dynamos FC",
     "country": "ZIM",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17391,7 +17412,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al-Hilal Omdurman",
     "country": "SDN",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17492,7 +17513,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al Hilal",
     "country": "KSA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#1E5AA8",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17593,7 +17614,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al Ittihad",
     "country": "KSA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17694,7 +17715,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al Nassr",
     "country": "KSA",
     "rating": 83,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17795,7 +17816,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al Shabab",
     "country": "KSA",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17896,7 +17917,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Esteghlal",
     "country": "IRN",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#0057B8",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -17997,7 +18018,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Persepolis",
     "country": "IRN",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18098,7 +18119,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "PAS Tehran",
     "country": "IRN",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18199,7 +18220,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Pohang Steelers",
     "country": "KOR",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18300,7 +18321,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Ilhwa Chunma",
     "country": "KOR",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18401,7 +18422,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Jubilo Iwata",
     "country": "JPN",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18502,7 +18523,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Thai Farmers Bank",
     "country": "THA",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18603,7 +18624,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Dalian Wanda",
     "country": "CHN",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18704,7 +18725,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Club América",
     "country": "MEX",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#FFD700",
     "secondaryColor": "#003B7A",
     "players": [
@@ -18805,7 +18826,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Cruz Azul",
     "country": "MEX",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#0057B8",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -18906,7 +18927,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Necaxa",
     "country": "MEX",
     "rating": 82,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19007,7 +19028,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Puebla",
     "country": "MEX",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19108,7 +19129,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Toluca",
     "country": "MEX",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19209,7 +19230,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Pumas UNAM",
     "country": "MEX",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19310,7 +19331,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Chivas Guadalajara",
     "country": "MEX",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19411,7 +19432,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Santos Laguna",
     "country": "MEX",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19512,7 +19533,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Deportivo Saprissa",
     "country": "CRC",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#6A1B9A",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19613,7 +19634,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "LD Alajuelense",
     "country": "CRC",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19714,7 +19735,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "CS Cartaginés",
     "country": "CRC",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -19815,7 +19836,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "DC United",
     "country": "USA",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#E31837",
     "secondaryColor": "#111111",
     "players": [
@@ -19916,7 +19937,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "LA Galaxy",
     "country": "USA",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -20017,108 +20038,110 @@ export const TEAMS: TeamSeed[] = [
     "name": "South Melbourne",
     "country": "AUS",
     "rating": 81,
-    "badge": "",
-    "primaryColor": "#003B7A",
+    "badge": "/assets/badges/Lakers.png",
+    "primaryColor": "#003DA5",
     "secondaryColor": "#FFFFFF",
-    "players": [
-      {
-        "name": "Mark Bosnich",
-        "position": "GR",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Zeljko Kalac",
-        "position": "GR",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Alex Tobin",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Craig Moore",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Tony Vidmar",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Frank Farina",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Robbie Slater",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Ned Zelic",
-        "position": "DEF",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Paul Okon",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Aurelio Vidmar",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Schwarzer",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Harry Kewell",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Bresciano",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Damian Mori",
-        "position": "MED",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Frank Farina",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Damian Mori",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Mark Viduka",
-        "position": "AV",
-        "nationality": "AUS"
-      },
-      {
-        "name": "Tim Cahill",
-        "position": "AV",
-        "nationality": "AUS"
-      }
-    ]
-  },
+  "players": [
+    {
+      "name": "Michael Petkovic",
+      "position": "GR",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Peter Zoïs",
+      "position": "GR",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Fausto de Amicis",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Steve Iosifidis",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Robert Liparoti",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Con Anthopolous",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Con Anthios",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Tansel Baser",
+      "position": "DEF",
+      "nationality": "AUS"
+    },
+
+    {
+      "name": "George Goutzioulis",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Danny Allsopp",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Mike Petersen",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Bill Damianos",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Jason Polak",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Steve Panopoulos",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+
+    {
+      "name": "Vaughan Coveny",
+      "position": "AV",
+      "nationality": "NZL"
+    },
+    {
+      "name": "Paul Trimboli",
+      "position": "AV",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Michael Curcija",
+      "position": "AV",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Warren Spink",
+      "position": "AV",
+      "nationality": "AUS"
+    }
+  ]
+},
   {
     "id": 197,
     "name": "Sydney Olympic",
     "country": "AUS",
     "rating": 81,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -20219,7 +20242,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Marconi Stallions",
     "country": "AUS",
     "rating": 80,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -20320,7 +20343,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Waitakere City",
     "country": "NZL",
     "rating": 80,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -20421,7 +20444,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Nadi",
     "country": "FIJ",
     "rating": 80,
-    "badge": "",
+    "badge": "/assets/badges/x.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "players": [
@@ -20516,5 +20539,200 @@ export const TEAMS: TeamSeed[] = [
         "nationality": "FIJ"
       }
     ]
-  }
+  },
+  {
+  "id": 201,
+  "name": "Ferencváros",
+  "country": "HUN",
+  "rating": 76,
+  "badge": "/assets/badges/ferenc.png",
+  "primaryColor": "#00843D",
+  "secondaryColor": "#FFFFFF",
+  "players": [
+    {
+      "name": "József Szeiler",
+      "position": "GR",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Attila Hajdú",
+      "position": "GR",
+      "nationality": "HUN"
+    },
+    {
+      "name": "András Telek",
+      "position": "DEF",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Norbert Nagy",
+      "position": "DEF",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Mihaly Szücs",
+      "position": "DEF",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Zoltan Jagodics",
+      "position": "DEF",
+      "nationality": "HUN"
+    },
+    {
+      "name": "János Hrutka",
+      "position": "DEF",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Dejan Milovanovic",
+      "position": "DEF",
+      "nationality": "SRB"
+    },
+
+    {
+      "name": "Elek Nyilas",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "László Arany",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Zsolt Limperger",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Krisztián Lisztes",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Zsolt Páling",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Gabor Zavadszky",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+
+    {
+      "name": "Ferenc Horváth",
+      "position": "AV",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Ihor Nichenko",
+      "position": "AV",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Zsolt Nagy",
+      "position": "AV",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Richárd Holló",
+      "position": "AV",
+      "nationality": "HUN"
+    }
+  ]
+},
+{
+  "id": 202,
+  "name": "Beitar Jerusalem",
+  "country": "ISR",
+  "rating": 75,
+  "badge": "/assets/badges/beitar.png",
+  "primaryColor": "#F7C600",
+  "secondaryColor": "#000000",
+  "players": [
+    {
+      "name": "Itzik Kornfein",
+      "position": "GR",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Shmuel Levy",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Serhiy Tretyak",
+      "position": "DEF",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Ehud Cahila",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Raanan Deree",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+    {
+      "name": "David Amsalem",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Eytan Mizrahi",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+
+    {
+      "name": "István Pisont",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "István Sallói",
+      "position": "MED",
+      "nationality": "HUN"
+    },
+    {
+      "name": "Yossi Abuksis",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Jan Talesnikov",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Itzhaq Zohar",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Ronen Harazi",
+      "position": "AV",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Ronen Shwaig",
+      "position": "AV",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Eli Ohana",
+      "position": "AV",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Nir Sivilia",
+      "position": "AV",
+      "nationality": "ISR"
+    }
+  ]
+}
 ]
