@@ -1046,15 +1046,39 @@ function Standings({ state }: { state: GameState }) {
         <tbody>
           {rows.map((r, i) => {
             const t = state.teams[r.teamId] as Team;
+            const isDivisionOneChampion = division === 1 && i === 0;
             const up = division > 1 && i < promotionSpots;
             const down =
               division < numberOfDivisions
                 ? i >= rows.length - relegationSpots
                 : division === numberOfDivisions && lastDivisionRelegationSpots > 0 && i >= rows.length - lastDivisionRelegationSpots;
+            const rowClass = isDivisionOneChampion
+              ? "bg-[#DFD32B]/10"
+              : up
+                ? "bg-green-500/10 text-green-700 dark:text-green-300"
+                : down
+                  ? "bg-red-500/10 text-red-700 dark:text-red-300"
+                  : t.id === state.userTeamId
+                    ? "bg-primary/10"
+                    : "";
+            const positionClass = isDivisionOneChampion
+              ? "text-[#DFD32B] font-bold"
+              : up
+                ? "text-green-700 dark:text-green-300 font-bold"
+                : down
+                  ? "text-red-700 dark:text-red-300 font-bold"
+                  : "";
+            const teamClass = isDivisionOneChampion
+              ? "text-[#DFD32B] font-semibold"
+              : up
+                ? "text-green-700 dark:text-green-300 font-semibold"
+                : down
+                  ? "text-red-700 dark:text-red-300 font-semibold"
+                  : "";
             return (
-              <tr key={r.teamId} className={`border-t border-border ${t.id === state.userTeamId ? "bg-primary/10" : ""} ${i === 0 && division === 1 ? "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300" : ""} ${up ? "bg-green-500/10 text-green-700 dark:text-green-300" : ""} ${down ? "bg-red-500/10 text-red-700 dark:text-red-300" : ""}`}>
-                <td className={`py-1.5 font-mono-num ${up ? "text-primary" : down ? "text-destructive" : ""}`}>{i + 1}</td>
-                <td><TeamIdentityWithFlag team={t} size={20} /></td>
+              <tr key={r.teamId} className={`border-t border-border ${rowClass}`}>
+                <td className={`py-1.5 font-mono-num ${positionClass}`}>{i + 1}</td>
+                <td className={teamClass}><TeamIdentityWithFlag team={t} size={20} /></td>
                 <td className="text-right font-mono-num">{r.played}</td>
                 <td className="text-right font-mono-num">{r.won}</td>
                 <td className="text-right font-mono-num">{r.drawn}</td>
