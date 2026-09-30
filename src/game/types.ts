@@ -161,4 +161,6 @@ export interface GameState {
   /** amarelos acumulados na época por jogador (reset a zero ao atingir 5) */
   yellowCards?: Record<number, number>;
   nextPlayerId: number;
+  /** imagem opcional personalizada da carreira, comprimida */ 
+  careerImage?: string | null;
 }
