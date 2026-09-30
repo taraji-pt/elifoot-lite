@@ -21336,10 +21336,10 @@ export const TEAMS: TeamSeed[] = [
     "rating": 75,
     "badge": "/assets/badges/stutt.png",
     "primaryColor": "#E32219",
-    "secondaryColor": "#000000",
+    "secondaryColor": "#FFFFFF",
     "stadium": "Neckarstadion",
     "city": "Stuttgart",
-    "stadiumImage": "/assets/stadiums/Neckarstadion.png",
+    "stadiumImage": "/assets/stadiums/Neckarstadion.jpg",
  "players": [
     {
       "name": "Franz Wohlfahrt",
