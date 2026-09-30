@@ -4437,7 +4437,7 @@ export const TEAMS: TeamSeed[] = [
     {
       "name": "Andrija Balajic",
       "position": "DEF",
-      "nationality": "SRB"
+      "nationality": "CRO"
     },
     {
       "name": "Abdelilah Saber",
