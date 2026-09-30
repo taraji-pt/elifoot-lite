@@ -9,7 +9,7 @@ import type { PlayerSeed, TeamSeed } from "./schema";
 import { TEAMS } from "./teams";
 
 const KEY = "elifoot-db-v1";
-type RawRec = { [K in "id" | "name" | "country" | "stadium" | "city" | "rating" | "badge" | "primaryColor" | "secondaryColor" | "players" | "position" | "nationality"]?: unknown };
+type RawRec = { [K in "id" | "name" | "country" | "stadium" | "city" | "stadiumImage" | "rating" | "badge" | "primaryColor" | "secondaryColor" | "players" | "position" | "nationality"]?: unknown };
 
 const deepClone = <T,>(v: T): T => JSON.parse(JSON.stringify(v)) as T;
 
@@ -100,6 +100,7 @@ export function parseDatabase(json: string): TeamSeed[] {
       country: String(t.country ?? "POR").toUpperCase().slice(0, 3),
       ...(String(t.stadium ?? "").trim() ? { stadium: String(t.stadium).trim() } : {}),
       ...(String(t.city ?? "").trim() ? { city: String(t.city).trim() } : {}),
+      ...(String(t.stadiumImage ?? "").trim() ? { stadiumImage: String(t.stadiumImage).trim() } : {}),
       rating: clampRating(t.rating),
       badge: String(t.badge ?? ""),
       primaryColor: String(t.primaryColor ?? "#1F6F4A"),
@@ -131,6 +132,7 @@ export function emptyTeam(id: number): TeamSeed {
     country: "POR",
     stadium: "",
     city: "",
+    stadiumImage: "",
     rating: 50,
     badge: "",
     primaryColor: "#1F6F4A",
