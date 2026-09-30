@@ -4190,104 +4190,104 @@ export const TEAMS: TeamSeed[] = [
     "country": "POR",
     "rating": 87,
     "badge": "/assets/badges/FCP.png",
-    "primaryColor": "#0A3D91",
+    "primaryColor": "#0050A4",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
+    "stadium": "Estádio das Antas",
     "city": "Porto",
     "stadiumImage": "/assets/stadiums/Antas.png",
     "players": [
-      {
-        "name": "Vítor Baía",
-        "position": "GR",
-        "nationality": "POR"
-      },
-      {
-        "name": "Neno",
-        "position": "GR",
-        "nationality": "POR"
-      },
-      {
-        "name": "Fernando Couto",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Jorge Costa",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Abel Xavier",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Dimas Teixeira",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Paulo Madeira",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Luís Figo",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "João Vieira Pinto",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Paulo Sousa",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Sérgio Conceição",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Domingos Paciência",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "João Pinto",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Nuno Gomes",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Jardel",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Luís Figo",
-        "position": "AV",
-        "nationality": "POR"
-      }
-    ]
-  },
+    {
+      "name": "Hilário",
+      "position": "GR",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Andrzej Wozniak",
+      "position": "GR",
+      "nationality": "POL"
+    },
+    {
+      "name": "Jorge Costa",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Aloísio",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Fernando Mendes",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "João Manuel Pinto",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "João Pinto",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Rui Jorge",
+      "position": "DEF",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Paulinho Santos",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Zlatko Zahovic",
+      "position": "MED",
+      "nationality": "SVN"
+    },
+    {
+      "name": "Edmílson",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Barroso",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Rui Barros",
+      "position": "MED",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Arnold Wetl",
+      "position": "MED",
+      "nationality": "AUT"
+    },
+    {
+      "name": "Mário Jardel",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Ljubinko Drulovic",
+      "position": "AV",
+      "nationality": "SRB"
+    },
+    {
+      "name": "Sérgio Conceição",
+      "position": "AV",
+      "nationality": "PRT"
+    },
+    {
+      "name": "Artur",
+      "position": "AV",
+      "nationality": "PRT"
+    }
+  ]
+},
   {
     "id": 39,
     "name": "Benfica",
