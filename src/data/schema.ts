@@ -21,6 +21,8 @@ export interface TeamSeed {
   stadium?: string;
   /** cidade do estádio (opcional) */
   city?: string;
+  /** nome do ficheiro da foto em public/assets/stadiums (opcional) */
+  stadiumImage?: string;
   /** força do clube 0-100 */
   rating: number;
   /** "" = emblema gerado; ou "/assets/badges/x.png" */
