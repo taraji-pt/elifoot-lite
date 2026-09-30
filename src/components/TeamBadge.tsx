@@ -11,11 +11,14 @@ interface Props {
 export function TeamBadge({ team, size = 32, className = "" }: Props) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(team.badge) && !failed;
+  const badgeSrc = team.badge
+    ? `${import.meta.env.BASE_URL}${team.badge.replace(/^\/+/, "")}`
+    : "";
 
   if (showImage) {
     return (
       <img
-        src={team.badge}
+        src={badgeSrc}
         alt={team.name}
         width={size}
         height={size}
