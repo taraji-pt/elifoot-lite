@@ -288,7 +288,7 @@ function stadiumImageSrc(team: Team) {
   if (value.startsWith("/")) {
     return `${import.meta.env.BASE_URL}${value.replace(/^\/+/, "")}`;
   }
-  return `${import.meta.env.BASE_URL}assets/stadiums/${value.replace(/^\\/+/, "")}`;
+  return `${import.meta.env.BASE_URL}assets/stadiums/${value.replace(/^\/+/, "")}`;
 }
 
 function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
