@@ -4402,7 +4402,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#FFFFFF",
     "stadium": "Estádio José Alvalade",
     "city": "Lisboa",
-    "stadiumImage": "/assets/stadiums/Alvalade.png",
+    "stadiumImage": "/assets/stadiums/Alvalade.jpg",
     "players": [
     {
       "name": "Filip De Wilde",
