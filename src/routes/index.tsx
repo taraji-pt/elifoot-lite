@@ -292,29 +292,18 @@ function StartingLineups({ home, away, state }: { home: Team; away: Team; state:
     const players = playersFor(team);
     return (
       <div className="rounded-lg border border-border/70 bg-background/20 p-3">
-        <div className={`mb-2 flex items-center gap-2 border-b border-border/70 pb-2 ${reverse ? "justify-end" : "justify-start"}`}>
-          <TeamBadge team={team} size={20} />
-          <span className="font-club-name text-lg leading-none">{team.name}</span>
-        </div>
         <ol className="space-y-1">
           {players.map((player, index) => (
             <li
               key={player.id}
               className={`flex items-center gap-2 text-sm ${reverse ? "justify-end text-right" : ""}`}
             >
-              {reverse ? (
-                <>
-                  <span className="min-w-0 truncate">{player.name}</span>
-                  <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
-                  <span className="w-5 shrink-0 text-xs text-muted-foreground">{index + 1}</span>
-                </>
-              ) : (
-                <>
-                  <span className="w-5 shrink-0 text-xs text-muted-foreground">{index + 1}</span>
-                  <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
-                  <span className="min-w-0 truncate">{player.name}</span>
-                </>
-              )}
+              <>
+                <span className="w-5 shrink-0 text-xs text-muted-foreground">{index + 1}</span>
+                <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
+                <Flag code={player.nationality} size={16} />
+                <span className="min-w-0 truncate">{player.name}</span>
+              </>
             </li>
           ))}
         </ol>
@@ -1024,7 +1013,15 @@ function Match({ state }: { state: GameState }) {
             O teu jogo da Liga já terminou. Agora é a tua vez na Taça.
           </div>
         )}
-        <div className="mx-auto my-6 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 text-lg">
+        {home.stadium?.trim() && home.city?.trim() && (
+        <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <span aria-hidden="true">🏟️</span>
+          <span>{home.stadium.trim()}</span>
+          <span>·</span>
+          <span>{home.city.trim()}</span>
+        </div>
+      )}
+      <div className="mx-auto my-6 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 text-lg">
           <div className="flex justify-end">
             <MatchTeam team={home} side="home" />
           </div>
