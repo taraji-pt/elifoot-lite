@@ -313,7 +313,7 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
         <div className="flex items-center justify-between gap-3 border-b border-border p-4">
           <div className="min-w-0">
             <div className="font-club-name text-2xl leading-none">{team.stadium}</div>
-            <div className="mt-1 text-sm text-muted-foreground">{team.city} · {team.name}</div>
+            <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground"><Flag code={team.country} size={16} /><span>{team.city} · {team.name}</span></div>
           </div>
           <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
