@@ -282,6 +282,53 @@ function ClickableTeamIdentityWithFlag({
     </button>
   );
 }
+function stadiumImageSrc(team: Team) {
+  const value = team.stadiumImage?.trim();
+  if (!value) return "";
+  if (value.startsWith("/")) {
+    return `${import.meta.env.BASE_URL}${value.replace(/^\\/+/, "")}`;
+  }
+  return `${import.meta.env.BASE_URL}assets/stadiums/${value.replace(/^\\/+/, "")}`;
+}
+
+function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
+  const imageSrc = stadiumImageSrc(team);
+  if (!imageSrc) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-6"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Estádio de ${team.name}`}
+      onClick={onClose}
+    >
+      <div
+        className="max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between gap-3 border-b border-border p-4">
+          <div className="min-w-0">
+            <div className="font-club-name text-2xl leading-none">{team.stadium}</div>
+            <div className="mt-1 text-sm text-muted-foreground">{team.city} · {team.name}</div>
+          </div>
+          <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
+        </div>
+        <div className="bg-black/10">
+          <img
+            src={imageSrc}
+            alt={team.stadium || `Estádio de ${team.name}`}
+            className="max-h-[70vh] w-full object-contain"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function StartingLineups({ home, away, state }: { home: Team; away: Team; state: GameState }) {
   const playersFor = (team: Team) =>
     team.lineup
@@ -924,7 +971,9 @@ function PlayerTable({
   );
 }
 
-function Match({ state }: { state: GameState }) {
+function Match({
+  const [stadiumOpen, setStadiumOpen] = useState(false);
+ state }: { state: GameState }) {
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
@@ -1023,13 +1072,28 @@ function Match({ state }: { state: GameState }) {
           </div>
         )}
         {home.stadium?.trim() && home.city?.trim() && (
-        <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <span aria-hidden="true">🏟️</span>
-          <span>{home.stadium.trim()}</span>
-          <span>·</span>
-          <span>{home.city.trim()}</span>
-        </div>
+        home.stadiumImage?.trim() ? (
+          <button
+            type="button"
+            className="group mt-2 inline-flex items-center justify-center gap-2 rounded-sm text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+            onClick={() => setStadiumOpen(true)}
+            title={`Ver foto de ${home.stadium.trim()}`}
+          >
+            <span aria-hidden="true">🏟️</span>
+            <span className="group-hover:underline">{home.stadium.trim()}</span>
+            <span>·</span>
+            <span className="group-hover:underline">{home.city.trim()}</span>
+          </button>
+        ) : (
+          <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <span aria-hidden="true">🏟️</span>
+            <span>{home.stadium.trim()}</span>
+            <span>·</span>
+            <span>{home.city.trim()}</span>
+          </div>
+        )
       )}
+      {stadiumOpen && <StadiumModal team={home} onClose={() => setStadiumOpen(false)} />}
       <div className="mx-auto my-6 grid max-w-2xl grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 text-lg">
           <div className="flex justify-end">
             <MatchTeam team={home} side="home" />
