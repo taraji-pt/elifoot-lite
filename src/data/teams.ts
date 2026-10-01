@@ -16362,7 +16362,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#FFD700",
     "stadium": "Stade Olympique d'El Menzah",
     "city": "Tunis",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/stadiums/menzah.jpg",
     "players": [
       {
         "name": "Chokri El-Ouaer",
