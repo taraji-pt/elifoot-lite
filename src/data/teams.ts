@@ -4299,99 +4299,99 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Estádio da Luz",
     "city": "Lisboa",
     "stadiumImage": "/assets/stadiums/Luz.jpg",
-    "players": [
-      {
-        "name": "Vítor Baía",
-        "position": "GR",
-        "nationality": "POR"
-      },
-      {
-        "name": "Neno",
-        "position": "GR",
-        "nationality": "POR"
-      },
-      {
-        "name": "Fernando Couto",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Jorge Costa",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Abel Xavier",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Dimas Teixeira",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Paulo Madeira",
-        "position": "DEF",
-        "nationality": "POR"
-      },
-      {
-        "name": "Luís Figo",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Rui Costa",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "João Vieira Pinto",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Paulo Sousa",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Sérgio Conceição",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "Domingos Paciência",
-        "position": "MED",
-        "nationality": "POR"
-      },
-      {
-        "name": "João Pinto",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Nuno Gomes",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Jardel",
-        "position": "AV",
-        "nationality": "POR"
-      },
-      {
-        "name": "Luís Figo",
-        "position": "AV",
-        "nationality": "POR"
-      }
-    ]
-  },
+"players": [
+    {
+      "name": "Michel Preud’homme",
+      "position": "GR",
+      "nationality": "BEL"
+    },
+    {
+      "name": "Fernando Brassard",
+      "position": "GR",
+      "nationality": "POR"
+    },
+    {
+      "name": "Jorge Bermúdez",
+      "position": "DEF",
+      "nationality": "COL"
+    },
+    {
+      "name": "Tahar El-Khalej",
+      "position": "DEF",
+      "nationality": "MAR"
+    },
+    {
+      "name": "Jorge Soares",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Pedro Henriques",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Marinho",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Hélder Cristóvão",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "João Vieira Pinto",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Valdo",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Calado",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Amaral",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Nica Panduru",
+      "position": "MED",
+      "nationality": "ROU"
+    },
+    {
+      "name": "Jamir",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Donizete",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Edgar",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Valdir Bigode",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Martin Pringle",
+      "position": "AV",
+      "nationality": "SWE"
+    }
+  ]
+},
   {
     "id": 40,
     "name": "Sporting CP",
