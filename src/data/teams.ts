@@ -16286,9 +16286,9 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "TUN"
     },
     {
-      "name": "Nabil Kouki",
+      "name": "Lantame Ouadja",
       "position": "MED",
-      "nationality": "TUN"
+      "nationality": "TOG"
     },
     {
       "name": "Nabil Maaloul",
@@ -16306,9 +16306,9 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "TUN"
     },
     {
-      "name": "Lantame Ouadja",
+      "name": "Nabil Kouki",
       "position": "MED",
-      "nationality": "TOG"
+      "nationality": "TUN"
     },
     {
       "name": "Sabri Jaballah",
