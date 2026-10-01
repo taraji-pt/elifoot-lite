@@ -16259,99 +16259,74 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Olympique d'El Menzah",
     "city": "Tunis",
     "stadiumImage": "/assets/stadiums/menzah.jpg",
-    "players": [
-      {
-        "name": "Chokri El-Ouaer",
-        "position": "GR",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Sadok Sassi",
-        "position": "GR",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Radhi Jaïdi",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Tarek Thabet",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Hédi Berkhissa",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Khaled Badra",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Zoubeir Beya",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Sami Trabelsi",
-        "position": "DEF",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Nabil Maâloul",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Hassen Gabsi",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Ziad Jaziri",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Adel Sellimi",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Mehdi Ben Slimane",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Adel Chedly",
-        "position": "MED",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Ziad Jaziri",
-        "position": "AV",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Adel Sellimi",
-        "position": "AV",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Hassen Gabsi",
-        "position": "AV",
-        "nationality": "TUN"
-      },
-      {
-        "name": "Riadh Bouazizi",
-        "position": "AV",
-        "nationality": "TUN"
-      }
-    ]
-  },
+   "players": [
+    {
+      "name": "Boubaker Zitouni",
+      "position": "GR",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Khaled Fadhel",
+      "position": "GR",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Mohamed Trabelsi",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Lassad Hanini",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Ahmed Trabelsi",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Nabil Kouki",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Nabil Maaloul",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Samir Sellimi",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Maher Zdiri",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Lantame Ouadja",
+      "position": "MED",
+      "nationality": "TOG"
+    },
+    {
+      "name": "Sabri Jaballah",
+      "position": "MED",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Faouzi Rouissi",
+      "position": "AV",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Belhassen Aloui",
+      "position": "AV",
+      "nationality": "TUN"
+    }
+  ]
+},
   {
     "id": 155,
     "name": "Espérance de Tunis",
