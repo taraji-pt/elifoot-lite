@@ -16253,12 +16253,12 @@ export const TEAMS: TeamSeed[] = [
     "name": "Club Africain",
     "country": "TUN",
     "rating": 65,
-    "badge": "/assets/badges/x.png",
-    "primaryColor": "#333333",
+    "badge": "/assets/badges/CA.png",
+    "primaryColor": "#E30613",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
+    "stadium": "Stade Olympique d'El Menzah",
+    "city": "Tunis",
+    "stadiumImage": "/assets/stadiums/menzah.jpg",
     "players": [
       {
         "name": "Chokri El-Ouaer",
@@ -16358,10 +16358,10 @@ export const TEAMS: TeamSeed[] = [
     "country": "TUN",
     "rating": 65,
     "badge": "/assets/badges/EST.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#FFD700",
+    "stadium": "Stade Olympique d'El Menzah",
+    "city": "Tunis",
     "stadiumImage": "",
     "players": [
       {
