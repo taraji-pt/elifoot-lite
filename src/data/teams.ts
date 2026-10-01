@@ -12718,104 +12718,104 @@ export const TEAMS: TeamSeed[] = [
     "country": "ARG",
     "rating": 69,
     "badge": "/assets/badges/NOB.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
+    "primaryColor": "#E30613",
+    "secondaryColor": "#000000",
+    "stadium": "El Coloso del Parque",
+    "city": "Rosario",
+    "stadiumImage": "/assets/stadiums/NOB.png",
     "players": [
-      {
-        "name": "Sergio Goycochea",
-        "position": "GR",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Carlos Roa",
-        "position": "GR",
-        "nationality": "ARG"
-      },
-      {
-        "name": "José Chamot",
-        "position": "DEF",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Roberto Ayala",
-        "position": "DEF",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Javier Zanetti",
-        "position": "DEF",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Oscar Ruggeri",
-        "position": "DEF",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Néstor Sensini",
-        "position": "DEF",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Fernando Cáceres",
-        "position": "DEF",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Diego Simeone",
-        "position": "MED",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Fernando Redondo",
-        "position": "MED",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Ariel Ortega",
-        "position": "MED",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Juan Sebastián Verón",
-        "position": "MED",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Marcelo Gallardo",
-        "position": "MED",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Juan Román Riquelme",
-        "position": "MED",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Hernán Crespo",
-        "position": "AV",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Claudio López",
-        "position": "AV",
-        "nationality": "ARG"
-      },
-      {
-        "name": "Diego Simeone",
-        "position": "AV",
-        "nationality": "ARG"
-      }
-    ]
-  },
+    {
+      "name": "Luis Islas",
+      "position": "GR",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Sebastián Cejas",
+      "position": "GR",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Gustavo Siviero",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Wálter Samuel",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Fabricio Fuentes",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Fabián Basualdo",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Gustavo Raggio",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Juan Pablo Vojvoda",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Lionel Scaloni",
+      "position": "MED",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Aldo Duscher",
+      "position": "MED",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Jorge Priotti",
+      "position": "MED",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Damián Teres",
+      "position": "MED",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Eduardo Morales",
+      "position": "MED",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Julio César Baldivieso",
+      "position": "MED",
+      "nationality": "BOL"
+    },
+    {
+      "name": "Bruno Marioni",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Ivan Gabrich",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Matías Gigli",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Diego Quintana",
+      "position": "AV",
+      "nationality": "ARG"
+    }
+  ]
+},
   {
     "id": 121,
     "name": "Estudiantes",
