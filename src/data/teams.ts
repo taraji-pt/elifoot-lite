@@ -21377,5 +21377,109 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "SRB"
     }
   ]
+},
+{
+  "id": 204,
+  "name": "Boavista",
+  "country": "POR",
+  "stadium": "Estádio do Bessa",
+  "city": "Porto",
+  "rating": 53,
+  "badge": "/assets/badges/boavista.png",
+  "primaryColor": "#000000",
+  "secondaryColor": "#FFFFFF",
+   "stadiumImage": "/assets/stadiums/bessa.jpg",
+  "players": [
+    {
+      "name": "Ricardo",
+      "position": "GR",
+      "nationality": "POR"
+    },
+    {
+      "name": "Alfredo",
+      "position": "GR",
+      "nationality": "POR"
+    },
+    {
+      "name": "Litos",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Paulo Sousa",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Isaías",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Pedro Emanuel",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Mário Silva",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Tavares",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Sérgio Duarte",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Hélder Batista",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Russell Latapy",
+      "position": "MED",
+      "nationality": "TRI"
+    },
+    {
+      "name": "Rui Bento",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Nelo",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Erwin Sánchez",
+      "position": "MED",
+      "nationality": "BOL"
+    },
+    {
+      "name": "Nuno Gomes",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Jimmy Hasselbaink",
+      "position": "AV",
+      "nationality": "NED"
+    },
+    {
+      "name": "Jorge Couto",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Martelinho",
+      "position": "AV",
+      "nationality": "POR"
+    }
+  ]
 }
 ];
