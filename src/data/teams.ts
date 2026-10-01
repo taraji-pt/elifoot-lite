@@ -12760,9 +12760,9 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "ARG"
     },
     {
-      "name": "Juan Pablo Vojvoda",
-      "position": "DEF",
-      "nationality": "ARG"
+      "name": "Velko Yotov",
+      "position": "AV",
+      "nationality": "BUL"
     },
     {
       "name": "Lionel Scaloni",
