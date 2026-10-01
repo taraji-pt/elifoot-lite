@@ -12722,7 +12722,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#000000",
     "stadium": "El Coloso del Parque",
     "city": "Rosario",
-    "stadiumImage": "/assets/stadiums/NOB.png",
+    "stadiumImage": "/assets/stadiums/NOB.jpg",
     "players": [
     {
       "name": "Luis Islas",
