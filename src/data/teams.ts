@@ -21561,4 +21561,108 @@ export const TEAMS: TeamSeed[] = [
 }
 ]
 },
+  {
+  "id": 206,
+  "name": "Gil Vicente",
+  "country": "POR",
+  "stadium": "Estádio Adelino Ribeiro Novo",
+  "city": "Barcelos",
+  "rating": 64,
+  "badge": "/assets/badges/gil-vicente.png",
+  "primaryColor": "#E30613",
+  "secondaryColor": "#FFFFFF",
+  "stadiumImage": "/assets/stadiums/adelino.jpg",
+  "players": [
+    {
+      "name": "Vatroslav Mihacic",
+      "position": "GR",
+      "nationality": "CRO"
+    },
+    {
+      "name": "Jorge Vital",
+      "position": "GR",
+      "nationality": "POR"
+    },
+    {
+      "name": "Lila",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Wilson Estrela",
+      "position": "DEF",
+      "nationality": "ANG"
+    },
+    {
+      "name": "José Lemos",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Miguel Marques",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Alexandre Margarido",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Sérgio Cruz",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Tuck",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Formoso",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Carlos Filipe",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Robinho",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Beto",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Joaquim Jorge",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Carlitos",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Lim",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Possi",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Paulo Vida",
+      "position": "AV",
+      "nationality": "POR"
+    }
+  ]
+},
 ];
