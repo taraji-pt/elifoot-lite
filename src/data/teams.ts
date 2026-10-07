@@ -8245,105 +8245,105 @@ export const TEAMS: TeamSeed[] = [
     "name": "Slovan Bratislava",
     "country": "SVK",
     "rating": 62,
-    "badge": "/assets/badges/x.png",
-    "primaryColor": "#333333",
+    "badge": "/assets/badges/slovan.png",
+    "primaryColor": "#003DA5",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Peter Schmeichel",
-        "position": "GR",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Fernando Hierro",
-        "position": "DEF",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Marcel Desailly",
-        "position": "DEF",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Roberto Ayala",
-        "position": "DEF",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Frank de Boer",
-        "position": "DEF",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Zinedine Zidane",
-        "position": "MED",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Lothar Matthäus",
-        "position": "MED",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Clarence Seedorf",
-        "position": "MED",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Luis Figo",
-        "position": "MED",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Rivaldo",
-        "position": "MED",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Fernando Redondo",
-        "position": "MED",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Romário",
-        "position": "AV",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "SVK"
-      },
-      {
-        "name": "Zinedine Zidane",
-        "position": "AV",
-        "nationality": "SVK"
-      }
-    ]
-  },
+    "stadium": "Tehelné pole",
+    "city": "Bratislava",
+    "stadiumImage": "/assets/stadiums/pole.jpg",
+   "players": [
+    {
+      "name": "Ladislav Molnár",
+      "position": "GR",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Miroslav König",
+      "position": "GR",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Tomás Stúpala",
+      "position": "DEF",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Milos Sobona",
+      "position": "DEF",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Vladimír Kinder",
+      "position": "DEF",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Stefan Maixner",
+      "position": "DEF",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Igor Demo",
+      "position": "DEF",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Samuel Slovák",
+      "position": "DEF",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Ladislav Pecko",
+      "position": "MED",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Lubomir Faktor",
+      "position": "MED",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Dušan Tittel",
+      "position": "MED",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Róbert Tomaschek",
+      "position": "MED",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Jozef Juriga",
+      "position": "MED",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Duke Udi",
+      "position": "MED",
+      "nationality": "NGA"
+    },
+    {
+      "name": "Szilard Nemeth",
+      "position": "AV",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Patrik Karasy",
+      "position": "AV",
+      "nationality": "SVK"
+    },
+    {
+      "name": "Fabio Luis",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Stefan Rusnak",
+      "position": "AV",
+      "nationality": "SVK"
+    }
+  ]
+},
   {
     "id": 78,
     "name": "Bologna",
