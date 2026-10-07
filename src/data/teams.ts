@@ -21570,7 +21570,7 @@ export const TEAMS: TeamSeed[] = [
   "rating": 64,
   "badge": "/assets/badges/gil-vicente.png",
   "primaryColor": "#E30613",
-  "secondaryColor": "#FFFFFF",
+  "secondaryColor": "#2398D7",
   "stadiumImage": "/assets/stadiums/adelino.jpg",
   "players": [
     {
