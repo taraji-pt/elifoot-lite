@@ -21665,4 +21665,108 @@ export const TEAMS: TeamSeed[] = [
     }
   ]
 },
+  {
+  "id": 207,
+  "name": "Defensor Sporting",
+  "country": "URU",
+  "stadium": "Estadio Luis Franzini",
+  "city": "Montevideo",
+  "rating": 65,
+  "badge": "/assets/badges/defensor.png",
+  "primaryColor": "#6B2C91",
+  "secondaryColor": "#FFFFFF",
+  "stadiumImage": "/assets/stadiums/86.jpg",
+  "players": [
+    {
+      "name": "Leonardo Romay",
+      "position": "GR",
+      "nationality": "URU"
+    },
+    {
+      "name": "Fernando Baleato",
+      "position": "GR",
+      "nationality": "URU"
+    },
+    {
+      "name": "Pablo Hernández",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Alejandro Traversa",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Nelson Gutiérrez",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Rubén dos Santos",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Fernando Fajardo",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Carlos Díaz",
+      "position": "DEF",
+      "nationality": "URU"
+    },
+    {
+      "name": "Diego Viera",
+      "position": "MED",
+      "nationality": "URU"
+    },
+    {
+      "name": "Andrés Martínez",
+      "position": "MED",
+      "nationality": "URU"
+    },
+    {
+      "name": "Andrés Fleurquín",
+      "position": "MED",
+      "nationality": "URU"
+    },
+    {
+      "name": "Fernando Fadeuille",
+      "position": "MED",
+      "nationality": "URU"
+    },
+    {
+      "name": "Pablo Gaglianone",
+      "position": "MED",
+      "nationality": "URU"
+    },
+    {
+      "name": "Tabaré Silva",
+      "position": "MED",
+      "nationality": "URU"
+    },
+    {
+      "name": "Vidal González",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Manuel Abreu",
+      "position": "AV",
+      "nationality": "URU"
+    },
+    {
+      "name": "Jorge da Silva",
+      "position": "AV",
+      "nationality": "URU"
+    },
+    {
+      "name": "Nicolás Olivera",
+      "position": "AV",
+      "nationality": "URU"
+    }
+  ]
+},
 ];
