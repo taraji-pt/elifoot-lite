@@ -2314,108 +2314,108 @@ export const TEAMS: TeamSeed[] = [
   },
   {
     "id": 20,
-    "name": "Bayern Munich",
+    "name": "Bayern München",
     "country": "GER",
     "rating": 77,
     "badge": "/assets/badges/bayern.png",
     "primaryColor": "#DC052D",
     "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Oliver Kahn",
-        "position": "GR",
-        "nationality": "GER"
-      },
-      {
-        "name": "Bodo Illgner",
-        "position": "GR",
-        "nationality": "GER"
-      },
-      {
-        "name": "Matthias Sammer",
-        "position": "DEF",
-        "nationality": "GER"
-      },
-      {
-        "name": "Jürgen Kohler",
-        "position": "DEF",
-        "nationality": "GER"
-      },
-      {
-        "name": "Thomas Helmer",
-        "position": "DEF",
-        "nationality": "GER"
-      },
-      {
-        "name": "Christian Wörns",
-        "position": "DEF",
-        "nationality": "GER"
-      },
-      {
-        "name": "Andreas Brehme",
-        "position": "DEF",
-        "nationality": "GER"
-      },
-      {
-        "name": "Thomas Berthold",
-        "position": "DEF",
-        "nationality": "GER"
-      },
-      {
-        "name": "Stefan Effenberg",
-        "position": "MED",
-        "nationality": "GER"
-      },
-      {
-        "name": "Thomas Hässler",
-        "position": "MED",
-        "nationality": "GER"
-      },
-      {
-        "name": "Andreas Möller",
-        "position": "MED",
-        "nationality": "GER"
-      },
-      {
-        "name": "Mehmet Scholl",
-        "position": "MED",
-        "nationality": "GER"
-      },
-      {
-        "name": "Mario Basler",
-        "position": "MED",
-        "nationality": "GER"
-      },
-      {
-        "name": "Michael Ballack",
-        "position": "MED",
-        "nationality": "GER"
-      },
-      {
-        "name": "Jürgen Klinsmann",
-        "position": "AV",
-        "nationality": "GER"
-      },
-      {
-        "name": "Karl-Heinz Riedle",
-        "position": "AV",
-        "nationality": "GER"
-      },
-      {
-        "name": "Oliver Bierhoff",
-        "position": "AV",
-        "nationality": "GER"
-      },
-      {
-        "name": "Stefan Effenberg",
-        "position": "AV",
-        "nationality": "GER"
-      }
-    ]
-  },
+    "stadium": "Olympiastadion",
+    "city": "München",
+    "stadiumImage": "/assets/stadiums/olympiastadion.jpg",
+     "players": [
+    {
+      "name": "Oliver Kahn",
+      "position": "GR",
+      "nationality": "GER"
+    },
+    {
+      "name": "Sven Scheuer",
+      "position": "GR",
+      "nationality": "GER"
+    },
+    {
+      "name": "Markus Babbel",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Thomas Helmer",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Samuel Kuffour",
+      "position": "DEF",
+      "nationality": "GHA"
+    },
+    {
+      "name": "Markus Münch",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Oliver Kreuzer",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Frank Wiblishauser",
+      "position": "DEF",
+      "nationality": "GER"
+    },
+    {
+      "name": "Christian Nerlinger",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Christian Ziege",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Lothar Matthäus",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Mario Basler",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Thomas Strunz",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Dietmar Hamann",
+      "position": "MED",
+      "nationality": "GER"
+    },
+    {
+      "name": "Jürgen Klinsmann",
+      "position": "AV",
+      "nationality": "GER"
+    },
+    {
+      "name": "Alexander Zickler",
+      "position": "AV",
+      "nationality": "GER"
+    },
+    {
+      "name": "Ruggiero Rizzitelli",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Carsten Jancker",
+      "position": "AV",
+      "nationality": "GER"
+    }
+  ]
+},
   {
     "id": 21,
     "name": "Borussia Dortmund",
