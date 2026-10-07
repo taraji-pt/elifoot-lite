@@ -21,7 +21,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#000000",
     "stadium": "Stadio Giuseppe Meazza (San Siro)",
     "city": "Milano",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/stadiums/milan.webp",
     "players": [
       {
         "name": "Sebastiano Rossi",
