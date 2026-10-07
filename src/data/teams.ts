@@ -21456,5 +21456,109 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "POR"
     }
   ]
+},
+  {
+"id": 205,
+"name": "Vitória Guimarães",
+"country": "POR",
+"stadium": "Estádio D. Afonso Henriques",
+"city": "Guimarães",
+"rating": 62,
+"badge": "/assets/badges/vitoria-sc.png",
+"primaryColor": "#FFFFFF",
+"secondaryColor": "#000000",
+"stadiumImage": "/assets/stadiums/afonso.jpg",
+"players": [
+{
+"name": "Neno",
+"position": "GR",
+"nationality": "POR"
+},
+{
+"name": "Madureira",
+"position": "GR",
+"nationality": "POR"
+},
+{
+"name": "José Carlos",
+"position": "DEF",
+"nationality": "POR"
+},
+{
+"name": "Quim Berto",
+"position": "DEF",
+"nationality": "POR"
+},
+{
+"name": "Arley Álvares",
+"position": "DEF",
+"nationality": "BRA"
+},
+{
+"name": "Alexandre Souza",
+"position": "DEF",
+"nationality": "BRA"
+},
+{
+"name": "Vítor Silva",
+"position": "DEF",
+"nationality": "POR"
+},
+{
+"name": "Fernando Meira",
+"position": "DEF",
+"nationality": "POR"
+},
+{
+"name": "Capucho",
+"position": "MED",
+"nationality": "POR"
+},
+{
+"name": "Vítor Paneira",
+"position": "MED",
+"nationality": "POR"
+},
+{
+"name": "Marco Freitas",
+"position": "MED",
+"nationality": "ANG"
+},
+{
+"name": "Branko Milovanović",
+"position": "MED",
+"nationality": "SRB"
+},
+{
+"name": "Toniño",
+"position": "MED",
+"nationality": "ESP"
+},
+{
+"name": "Fredrik Söderström",
+"position": "MED",
+"nationality": "SWE"
+},
+{
+"name": "Gilmar",
+"position": "AV",
+"nationality": "BRA"
+},
+{
+"name": "Riva",
+"position": "AV",
+"nationality": "BRA"
+},
+{
+"name": "Ricardo Lopes",
+"position": "AV",
+"nationality": "POR"
+},
+{
+"name": "Basílio Almeida",
+"position": "AV",
+"nationality": "POR"
 }
+]
+},
 ];
