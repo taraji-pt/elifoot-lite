@@ -433,313 +433,208 @@ export const TEAMS: TeamSeed[] = [
     "country": "ITA",
     "rating": 72,
     "badge": "/assets/badges/lazio.png",
-    "primaryColor": "#333333",
+    "primaryColor": "#87CEEB",
     "secondaryColor": "#FFFFFF",
     "stadium": "Stadio Olimpico",
     "city": "Roma",
-    "stadiumImage": "",
+    "stadiumImage": "/assets/stadiums/olimpico.jpg",
     "players": [
-      {
-        "name": "Stefano Sorrentino",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Andrea Cano",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Luca Marchegiani",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fernando Orsi",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Carlo Cudicini",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Mauro Di Lello",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paolo Negro",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Mark Fish",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giuseppe Favalli",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "José Chamot",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Nesta",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Grandoni",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Stefano Bellè",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Mirko Laurentini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Dario Marcolin",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Rambaudi",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Renato Buso",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Diego Fuser",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Baronio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paul Okon",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Guerino Gottardi",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Pavel Nedved",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Franceschini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giorgio Venturin",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Federici",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Marco Piovanelli",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Pierluigi Casiraghi",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Igor Protti",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giuseppe Signori",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+    {
+      "name": "Luca Marchegiani",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Fernando Orsi",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "José Chamot",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Paolo Negro",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giuseppe Favalli",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alessandro Nesta",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alessandro Grandoni",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Mark Fish",
+      "position": "DEF",
+      "nationality": "RSA"
+    },
+    {
+      "name": "Pavel Nedved",
+      "position": "MED",
+      "nationality": "CZE"
+    },
+    {
+      "name": "Diego Fuser",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Roberto Rambaudi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Paul Okon",
+      "position": "MED",
+      "nationality": "AUS"
+    },
+    {
+      "name": "Guerino Gottardi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Dario Marcolin",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giuseppe Signori",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Pierluigi Casiraghi",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Igor Protti",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marco Piovanelli",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 6,
     "name": "Parma",
     "country": "ITA",
     "rating": 69,
     "badge": "/assets/badges/parma.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
+    "primaryColor": "#FFD700",
+    "secondaryColor": "#003B7A",
     "stadium": "Stadio Ennio Tardini",
     "city": "Parma",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Luca Bucci",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gianluigi Buffon",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Nista",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Enrico Morello",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Luca Pinton",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Luigi Apolloni",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Antonio Benarrivo",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Néstor Sensini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Mussi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Cannavaro",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lilian Thuram",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Zé Maria",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Simone Barone",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Mario Caruso",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniel Bravo",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Dino Baggio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Massimo Crippa",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Amaral",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Massimo Brambilla",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Pietro Strada",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Reynald Pedros",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Mario Stanic",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gianfranco Zola",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Hernan Crespo",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gianluca Triuzzi",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Melli",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Enrico Chiesa",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Tomas Brolin",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+    "stadiumImage": "/assets/stadiums/parma.jpg",
+   "players": [
+    {
+      "name": "Gianluigi Buffon",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Luca Bucci",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Lilian Thuram",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Néstor Sensini",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Fabio Cannavaro",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Roberto Mussi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Antonio Benarrivo",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Zé Maria",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Dino Baggio",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Massimo Crippa",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Pietro Strada",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Daniel Bravo",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Mario Stanic",
+      "position": "MED",
+      "nationality": "CRO"
+    },
+    {
+      "name": "Massimo Brambilla",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Enrico Chiesa",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Hernan Crespo",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Gianfranco Zola",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Alessandro Melli",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 7,
     "name": "Sampdoria",
