@@ -333,7 +333,7 @@ export const TEAMS: TeamSeed[] = [
     "secondaryColor": "#F4C300",
     "stadium": "Stadio Olimpico",
     "city": "Roma",
-    "stadiumImage": "/assets/stadiums/olimpico.webp",
+    "stadiumImage": "/assets/stadiums/olimpico.jpg",
      "players": [
     {
       "name": "Giorgio Sterchele",
