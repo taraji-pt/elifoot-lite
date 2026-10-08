@@ -19,7 +19,7 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/milan.png",
     "primaryColor": "#AC1E2D",
     "secondaryColor": "#000000",
-    "stadium": "Stadio Giuseppe Meazza (San Siro)",
+    "stadium": "San Siro",
     "city": "Milano",
     "stadiumImage": "/assets/stadiums/milan.webp",
     "players": [
@@ -226,317 +226,207 @@ export const TEAMS: TeamSeed[] = [
     "rating": 74,
     "badge": "/assets/badges/int_milan.png",
     "primaryColor": "#0068A8",
-    "secondaryColor": "#111111",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
+    "secondaryColor": "#000000",
+    "stadium": "Stadio Giuseppe Meazza",
+    "city": "Milano",
+    "stadiumImage": "/assets/stadiums/meazza.jpg",
     "players": [
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Andrea Mazzantini",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Pantanelli",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giuseppe Bergomi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Alessandro Pistone",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Javier Zanetti",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Galante",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Salvatore Fresi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gianluca Festa",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Massimo Paganin",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Jocelyn Angloma",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Massimo Tarantino",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Matteo Ferrari",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Sergio D’Autilia",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Andrea Seno",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Paul Ince",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Aron Winter",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Nicola Berti",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Ciriaco Sforza",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Youri Djorkaeff",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Iván Zamorano",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Benito Carbone",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Nwankwo Kanu",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Maurizio Ganz",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Marco Branca",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Arturo Di Napoli",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+    {
+      "name": "Gianluca Pagliuca",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Andrea Mazzantini",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Massimo Paganin",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Javier Zanetti",
+      "position": "DEF",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Salvatore Fresi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Jocelyn Angloma",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Alessandro Pistone",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Fabio Galante",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Paul Ince",
+      "position": "MED",
+      "nationality": "ENG"
+    },
+    {
+      "name": "Ciriaco Sforza",
+      "position": "MED",
+      "nationality": "SUI"
+    },
+    {
+      "name": "Aron Winter",
+      "position": "MED",
+      "nationality": "NED"
+    },
+    {
+      "name": "Nicola Berti",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giuseppe Bergomi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Andrea Seno",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Youri Djorkaeff",
+      "position": "AV",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Iván Zamorano",
+      "position": "AV",
+      "nationality": "CHI"
+    },
+    {
+      "name": "Maurizio Ganz",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marco Branca",
+      "position": "AV",
+      "nationality": "ITA"
+    }
+  ]
+},
   {
     "id": 4,
     "name": "AS Roma",
     "country": "ITA",
     "rating": 74,
     "badge": "/assets/badges/roma.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Giovanni Cervone",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giorgio Sterchele",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Giampaolo Di Magno",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gianluca Berti",
-        "position": "GR",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Roberto Trotta",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Marco Lanna",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Enrico Annoni",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Francesco Statuto",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Amedeo Carboni",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Fabio Petruzzi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Gabriele Grossi",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lorenzo Stovini",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Matteo Pivotto",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Omari Tetradze",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Vincent Candela",
-        "position": "DEF",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Romondini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Jonas Thern",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Francesco Moriero",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Berretta",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Luigi Di Biagio",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Damiano Tommasi",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Massimiliano Cappioli",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Antonio Bernardini",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniele Conti",
-        "position": "MED",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Abel Balbo",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Daniel Fonseca",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Martin Dahlin",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Francesco Totti",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Lampros Choutos",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Marco Delvecchio",
-        "position": "AV",
-        "nationality": "ITA"
-      },
-      {
-        "name": "Andrea Conti",
-        "position": "AV",
-        "nationality": "ITA"
-      }
-    ]
-  },
+    "primaryColor": "#8E1F2F",
+    "secondaryColor": "#F4C300",
+    "stadium": "Stadio Olimpico",
+    "city": "Roma",
+    "stadiumImage": "/assets/stadiums/olimpico.webp",
+     "players": [
+    {
+      "name": "Giorgio Sterchele",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Giovanni Cervone",
+      "position": "GR",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Aldair",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Fabio Petruzzi",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marco Lanna",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Amedeo Carboni",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Francesco Statuto",
+      "position": "DEF",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Vincent Candela",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Damiano Tommasi",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Luigi Di Biagio",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Jonas Thern",
+      "position": "MED",
+      "nationality": "SWE"
+    },
+    {
+      "name": "Francesco Moriero",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Antonio Bernardini",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Massimiliano Cappioli",
+      "position": "MED",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Abel Balbo",
+      "position": "AV",
+      "nationality": "ARG"
+    },
+    {
+      "name": "Francesco Totti",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Marco Delvecchio",
+      "position": "AV",
+      "nationality": "ITA"
+    },
+    {
+      "name": "Daniel Fonseca",
+      "position": "AV",
+      "nationality": "URU"
+    }
+  ]
+},
   {
     "id": 5,
     "name": "Lazio",
