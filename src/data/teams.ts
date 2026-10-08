@@ -7611,10 +7611,10 @@ export const TEAMS: TeamSeed[] = [
   },
   {
     "id": 73,
-    "name": "Dinamo Zagreb",
+    "name": "Croatia Zagreb",
     "country": "CRO",
     "rating": 66,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/croatia_zagreb.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
