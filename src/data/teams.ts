@@ -13958,7 +13958,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Emelec",
     "country": "ECU",
     "rating": 64,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/emelec.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
@@ -14062,11 +14062,11 @@ export const TEAMS: TeamSeed[] = [
     "name": "Barcelona SC",
     "country": "ECU",
     "rating": 65,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/BSC.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
-    "city": "",
+    "city": "Guayaquil",
     "stadiumImage": "",
     "players": [
       {
@@ -14166,11 +14166,11 @@ export const TEAMS: TeamSeed[] = [
     "name": "LDU Quito",
     "country": "ECU",
     "rating": 65,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/ldu.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
-    "city": "",
+    "city": "Quito",
     "stadiumImage": "",
     "players": [
       {
@@ -15410,110 +15410,6 @@ export const TEAMS: TeamSeed[] = [
     ]
   },
   {
-    "id": 149,
-    "name": "Independiente del Valle",
-    "country": "ECU",
-    "rating": 63,
-    "badge": "/assets/badges/x.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Peter Schmeichel",
-        "position": "GR",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Fernando Hierro",
-        "position": "DEF",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Marcel Desailly",
-        "position": "DEF",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Roberto Ayala",
-        "position": "DEF",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Frank de Boer",
-        "position": "DEF",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Zinedine Zidane",
-        "position": "MED",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Lothar Matthäus",
-        "position": "MED",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Clarence Seedorf",
-        "position": "MED",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Luis Figo",
-        "position": "MED",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Rivaldo",
-        "position": "MED",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Fernando Redondo",
-        "position": "MED",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Romário",
-        "position": "AV",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "ECU"
-      },
-      {
-        "name": "Zinedine Zidane",
-        "position": "AV",
-        "nationality": "ECU"
-      }
-    ]
-  },
-  {
     "id": 150,
     "name": "Portuguesa",
     "country": "BRA",
@@ -15622,7 +15518,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Al Ahly",
     "country": "EGY",
     "rating": 65,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/ahly.png",
     "primaryColor": "#D71920",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
@@ -15726,7 +15622,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Zamalek",
     "country": "EGY",
     "rating": 63,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/zamalek.png",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#C8102E",
     "stadium": "",
@@ -15830,7 +15726,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Ismaily",
     "country": "EGY",
     "rating": 61,
-    "badge": "/assets/badges/x.png",
+    "badge": "/assets/badges/ismaily.png",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
