@@ -18192,7 +18192,7 @@ export const TEAMS: TeamSeed[] = [
     "name": "Pohang Steelers",
     "country": "KOR",
     "rating": 64,
-    "badge": "/assets/badges/pohang.png",
+    "badge": "/assets/badges/pohang.webp",
     "primaryColor": "#333333",
     "secondaryColor": "#FFFFFF",
     "stadium": "",
