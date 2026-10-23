@@ -21034,4 +21034,108 @@ export const TEAMS: TeamSeed[] = [
     }
   ]
 },
+{
+  "id": 208,
+  "name": "Châteauroux",
+  "country": "FRA",
+  "stadium": "Stade Gaston Petit",
+  "city": "Châteauroux",
+  "rating": 62,
+  "badge": "/assets/badges/chateauroux.png",
+  "primaryColor": "#c32a21",
+  "secondaryColor": "#11218b",
+  "stadiumImage": "/assets/stadiums/gaston-petit.jpg",
+  "players": [
+    {
+      "name": "Frédéric Guéguen",
+      "position": "GR",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Ronan Le Crom",
+      "position": "GR",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Nicolas Weber",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Baudoin",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Moulin",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Raouf Bouzaiene",
+      "position": "DEF",
+      "nationality": "TUN"
+    },
+    {
+      "name": "Jean-Claude Fernandes",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Karim El-Khebir",
+      "position": "DEF",
+      "nationality": "NIG"
+    },
+    {
+      "name": "Ferdinand Coly",
+      "position": "MED",
+      "nationality": "SEN"
+    },
+    {
+      "name": "Laurent Debrosse",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Yann Lachuer",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "David Le Frapper",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Chavrondier",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Frédéric Adam",
+      "position": "MED",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Laurent Dufresne",
+      "position": "AV",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Nono Mayélé",
+      "position": "AV",
+      "nationality": "COD"
+    },
+    {
+      "name": "Paulo Vida",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Régis Garrault",
+      "position": "AV",
+      "nationality": "FRA"
+    }
+  ]
+},
 ];
