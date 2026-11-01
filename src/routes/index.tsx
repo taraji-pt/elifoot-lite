@@ -869,7 +869,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
             return (
               <div className="mt-4 rounded-md border border-border bg-card p-3">
                 <div className="mb-1 font-semibold">Evolução do plantel</div>
-                <p className="mb-3 text-xs text-muted-foreground">Ratings ajustados com base nas presenças, golos e desempenho colectivo. As alterações são aplicadas ao iniciar a nova época.</p>
+                <p className="mb-3 text-xs text-muted-foreground">Ratings ajustados pela percentagem de jogos disputados, golos e desempenho colectivo. A presença conta se o jogador entrar em campo, mesmo como suplente. As alterações são aplicadas ao iniciar a nova época.</p>
                 {changes.length ? (
                   <div className="grid gap-1 sm:grid-cols-2">
                     {changes.map((item) => {
@@ -878,7 +878,7 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
                       return (
                         <div key={item.playerId} className="flex items-center justify-between gap-2 border-t border-border py-1.5 text-sm">
                           <span className="min-w-0 truncate">{player.name} <span className="text-xs text-muted-foreground">({player.position})</span></span>
-                          <span className="shrink-0 font-mono-num">{item.previousRating} → <b>{item.newRating}</b> <span className={item.change > 0 ? "text-green-600" : "text-red-600"}>{item.change > 0 ? `+${item.change}` : item.change}</span></span>
+                          <span className="shrink-0 text-right font-mono-num">{item.appearances}/{item.matchesPlayed} jogos · {item.previousRating} → <b>{item.newRating}</b> <span className={item.change > 0 ? "text-green-600" : "text-red-600"}>{item.change > 0 ? `+${item.change}` : item.change}</span></span>
                         </div>
                       );
                     })}
