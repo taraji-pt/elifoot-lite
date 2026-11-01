@@ -106,6 +106,7 @@ export interface PlayerDevelopment {
   newRating: number;
   change: number;
   appearances: number;
+  matchesPlayed: number;
   goals: number;
 }
 
