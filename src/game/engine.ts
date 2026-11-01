@@ -375,8 +375,8 @@ function endSeason(state: GameState) {
     let change = appearances >= 25 ? 1 : appearances >= 12 ? 0 : -1;
     const goalThreshold = player.position === "AV" ? 10 : player.position === "MED" ? 6 : player.position === "DEF" ? 3 : Infinity;
     if (goals >= goalThreshold) change += 1;
-    if (review.promoted.includes(team.id) || championId === team.id || review.cupWinnerId === team.id) change += 1;
-    if (review.relegatedDown.includes(team.id) || review.droppedOut.includes(team.id)) change -= 1;
+    if (promoted.includes(team.id) || championId === team.id || state.cup.winnerId === team.id) change += 1;
+    if (relegatedDown.includes(team.id) || droppedOut.includes(team.id)) change -= 1;
     change = Math.max(-2, Math.min(3, change));
     const newRating = Math.max(GAME_CONFIG.minPlayerRating, Math.min(GAME_CONFIG.maxPlayerRating, player.rating + change));
     return [{ playerId, previousRating: player.rating, newRating, change: newRating - player.rating, appearances, goals }];
