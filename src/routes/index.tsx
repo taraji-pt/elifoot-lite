@@ -862,6 +862,32 @@ function SeasonReviewBanner({ state }: { state: GameState }) {
 
           <TopScorers state={state} division={review.userDivision} stats={review.scorers} />
 
+          {(() => {
+            const changes = (review.playerDevelopment ?? [])
+              .filter((item) => state.teams[state.userTeamId]?.playerIds.includes(item.playerId))
+              .sort((a, b) => b.change - a.change || b.appearances - a.appearances);
+            return (
+              <div className="mt-4 rounded-md border border-border bg-card p-3">
+                <div className="mb-1 font-semibold">Evolução do plantel</div>
+                <p className="mb-3 text-xs text-muted-foreground">Ratings ajustados com base nas presenças, golos e desempenho colectivo. As alterações são aplicadas ao iniciar a nova época.</p>
+                {changes.length ? (
+                  <div className="grid gap-1 sm:grid-cols-2">
+                    {changes.map((item) => {
+                      const player = state.players[item.playerId];
+                      if (!player) return null;
+                      return (
+                        <div key={item.playerId} className="flex items-center justify-between gap-2 border-t border-border py-1.5 text-sm">
+                          <span className="min-w-0 truncate">{player.name} <span className="text-xs text-muted-foreground">({player.position})</span></span>
+                          <span className="shrink-0 font-mono-num">{item.previousRating} → <b>{item.newRating}</b> <span className={item.change > 0 ? "text-green-600" : "text-red-600"}>{item.change > 0 ? `+${item.change}` : item.change}</span></span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : <div className="text-sm text-muted-foreground">Não houve alterações de rating no teu plantel esta época.</div>}
+              </div>
+            );
+          })()}
+
           <div className="mt-6 flex justify-center">
             <button className={btn} onClick={continueSeason}>
               Continuar para a nova época
@@ -915,11 +941,19 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
   const counts = lineupCounts(team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0), state.players);
   const suspended = squad.filter((p) => (state.suspensions?.[p.id] ?? 0) > 0);
-  const disabledIds = suspended.map((p) => p.id);
+  const disabledIds = squad.filter((p) => {
+    if ((state.suspensions?.[p.id] ?? 0) > 0) return true;
+    if (team.lineup.includes(p.id)) return false;
+    return counts[p.position] >= GAME_CONFIG.startingLineup[p.position];
+  }).map((p) => p.id);
   const toggle = (id: number) => {
     if ((state.suspensions?.[id] ?? 0) > 0) return;
     if (team.lineup.includes(id)) setLineup(team.lineup.filter((x) => x !== id));
-    else if (team.lineup.length < 11) setLineup([...team.lineup, id]);
+    else {
+      const player = state.players[id];
+      if (!player || counts[player.position] >= GAME_CONFIG.startingLineup[player.position] || team.lineup.length >= 11) return;
+      setLineup([...team.lineup, id]);
+    }
   };
   return (
     <div className={card}>
@@ -928,7 +962,7 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
           Titulares disponíveis: <b>{counts.GR + counts.DEF + counts.MED + counts.AV}/11</b> · GR {counts.GR} · DEF {counts.DEF} · MED{" "}
           {counts.MED} · AV {counts.AV}
         </div>
-        <span className="text-xs text-muted-foreground">Clica num jogador para o pôr/tirar do onze.</span>
+        <span className="text-xs text-muted-foreground">Clica num jogador para o pôr/tirar do onze. Cada jogador só pode ocupar a sua posição.</span>
       </div>
       {suspended.length > 0 && (
         <div className="mb-3 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-700 dark:text-red-300">
