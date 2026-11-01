@@ -4,6 +4,7 @@ import { RESERVE_DIVISION, buildLeagues, seasonLabel, splitByActivity } from "./
 import { bestLineup, teamRating } from "./ratings";
 import { shuffle } from "./rng";
 import { penaltyShootout, simulateMatch } from "./simulation";
+import { transferValueFor } from "./players";
 import { computeStandings } from "./standings";
 import type { Fixture, GameState, GoalStats, Player, Team } from "./types";
 
@@ -20,6 +21,11 @@ export function totalRounds(state: GameState): number {
 
 export function userTeam(state: GameState): Team {
   return state.teams[state.userTeamId] as Team;
+}
+
+function addAppearances(state: GameState, playerIds: number[]) {
+  if (!state.appearanceStats) state.appearanceStats = {};
+  for (const id of new Set(playerIds)) state.appearanceStats[id] = (state.appearanceStats[id] ?? 0) + 1;
 }
 
 function addScorerGoals(state: GameState, scorerIds: number[], competition: "league" | "cup") {
@@ -64,8 +70,9 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
         // Retira o suspenso do onze e coloca automaticamente o melhor
         // substituto disponível, para o plantel continuar com 11 titulares.
         team.lineup = team.lineup.filter((id) => id !== card.playerId);
+        const suspendedPlayer = state.players[card.playerId];
         const available = team.playerIds
-          .filter((id) => (state.suspensions?.[id] ?? 0) <= 0 && !team.lineup.includes(id))
+          .filter((id) => (state.suspensions?.[id] ?? 0) <= 0 && !team.lineup.includes(id) && state.players[id]?.position === suspendedPlayer?.position)
           .sort((a, b) => (state.players[b]?.rating ?? 0) - (state.players[a]?.rating ?? 0));
         if (team.lineup.length < 11 && available.length > 0) {
           team.lineup.push(available[0]);
@@ -126,6 +133,8 @@ function simulateRound(state: GameState) {
       fixture.homeGoals = result.homeGoals;
       fixture.awayGoals = result.awayGoals;
       fixture.scorerIds = result.scorers.map((s) => s.playerId);
+      fixture.appearanceIds = [...homeLineup, ...awayLineup];
+      addAppearances(state, fixture.appearanceIds);
       fixture.redCardIds = result.cards.filter((c) => c.type === "red").map((c) => c.playerId);
       addScorerGoals(state, fixture.scorerIds, "league");
       recordMatchDiscipline(state, result.cards.map((c) => ({ playerId: c.playerId, type: c.type })));
@@ -133,12 +142,14 @@ function simulateRound(state: GameState) {
   }
 }
 
-export function recordUserResult(state: GameState, homeGoals: number, awayGoals: number, scorerIds: number[] = []) {
+export function recordUserResult(state: GameState, homeGoals: number, awayGoals: number, scorerIds: number[] = [], appearanceIds: number[] = []) {
   const fixture = userFixture(state);
   if (fixture) {
     fixture.homeGoals = homeGoals;
     fixture.awayGoals = awayGoals;
     fixture.scorerIds = [...scorerIds];
+    fixture.appearanceIds = [...new Set(appearanceIds)];
+    addAppearances(state, fixture.appearanceIds);
     addScorerGoals(state, scorerIds, "league");
   }
 }
@@ -149,12 +160,15 @@ export function recordUserCupResult(
   awayGoals: number,
   penaltyWinnerId?: number,
   scorerIds: number[] = [],
+  appearanceIds: number[] = [],
 ) {
   const tie = userCupTie(state);
   if (!tie) return;
   tie.homeGoals = homeGoals;
   tie.awayGoals = awayGoals;
   tie.scorerIds = [...scorerIds];
+  tie.appearanceIds = [...new Set(appearanceIds)];
+  addAppearances(state, tie.appearanceIds);
   addScorerGoals(state, scorerIds, "cup");
 
   if (homeGoals > awayGoals) {
@@ -189,6 +203,7 @@ export function advanceRound(state: GameState) {
     for (const tie of playedCupRound?.ties ?? []) {
       const userTie = tie.homeId === state.userTeamId || tie.awayId === state.userTeamId;
       if (!userTie && tie.scorerIds?.length) addScorerGoals(state, tie.scorerIds, "cup");
+      if (!userTie && tie.appearanceIds?.length) addAppearances(state, tie.appearanceIds);
       if (tie.yellowCardIds?.length) {
         recordMatchDiscipline(state, tie.yellowCardIds.map((playerId) => ({ playerId, type: "yellow" as const })));
       }
@@ -345,7 +360,27 @@ function endSeason(state: GameState) {
     scorers: Object.fromEntries(
       Object.entries(state.scorerStats ?? {}).map(([id, stats]) => [id, { ...stats }]),
     ),
+    playerDevelopment: [],
   };
+
+  const teamByPlayer = new Map<number, Team>();
+  for (const team of Object.values(state.teams)) for (const playerId of team.playerIds) teamByPlayer.set(playerId, team);
+  const championId = computeStandings(state.leagues[1] ?? [], divisionTeamIds(state, 1))[0]?.teamId;
+  state.seasonReview.playerDevelopment = Object.entries(state.appearanceStats ?? {}).flatMap(([id, appearances]) => {
+    const playerId = Number(id);
+    const player = state.players[playerId];
+    const team = teamByPlayer.get(playerId);
+    if (!player || !team || appearances <= 0) return [];
+    const goals = (state.scorerStats?.[playerId]?.league ?? 0) + (state.scorerStats?.[playerId]?.cup ?? 0);
+    let change = appearances >= 25 ? 1 : appearances >= 12 ? 0 : -1;
+    const goalThreshold = player.position === "AV" ? 10 : player.position === "MED" ? 6 : player.position === "DEF" ? 3 : Infinity;
+    if (goals >= goalThreshold) change += 1;
+    if (review.promoted.includes(team.id) || championId === team.id || review.cupWinnerId === team.id) change += 1;
+    if (review.relegatedDown.includes(team.id) || review.droppedOut.includes(team.id)) change -= 1;
+    change = Math.max(-2, Math.min(3, change));
+    const newRating = Math.max(GAME_CONFIG.minPlayerRating, Math.min(GAME_CONFIG.maxPlayerRating, player.rating + change));
+    return [{ playerId, previousRating: player.rating, newRating, change: newRating - player.rating, appearances, goals }];
+  }).filter((item) => item.change !== 0);
 }
 
 /** Fecha a época terminada depois de o utilizador consultar a classificação, calendário e Taça. */
@@ -354,6 +389,13 @@ export function continueAfterSeasonReview(state: GameState) {
   if (!review) return;
 
   const { numberOfDivisions: N } = GAME_CONFIG;
+
+  for (const development of review.playerDevelopment ?? []) {
+    const player = state.players[development.playerId];
+    if (!player) continue;
+    player.rating = development.newRating;
+    player.transferValue = transferValueFor(player.rating);
+  }
 
   for (const id of review.promoted) {
     const team = state.teams[id];
@@ -408,6 +450,7 @@ export function continueAfterSeasonReview(state: GameState) {
   state.seasonYear += 1;
   state.round = 1;
   state.scorerStats = {};
+  state.appearanceStats = {};
   state.yellowCards = {};
   // As suspensões disciplinares não transitam para a nova época.
   state.suspensions = {};
