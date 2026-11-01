@@ -1,5 +1,6 @@
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { shuffle } from "./rng";
+import { bestLineup } from "./ratings";
 import { penaltyShootout, simulateMatch } from "./simulation";
 import type { Cup, CupTie, Player, Team } from "./types";
 
@@ -78,6 +79,16 @@ export function playCupRound(
     if (!home || !away) return tie;
     for (const id of home.playerIds) if ((suspensions[id] ?? 0) > 0) suspensions[id] = Math.max(0, (suspensions[id] ?? 0) - 1);
     for (const id of away.playerIds) if ((suspensions[id] ?? 0) > 0) suspensions[id] = Math.max(0, (suspensions[id] ?? 0) - 1);
+    const validLineup = (team: Team) => {
+      const counts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
+      for (const id of team.lineup) {
+        const position = players[id]?.position;
+        if (position) counts[position] = (counts[position] ?? 0) + 1;
+      }
+      return team.lineup.length === 11 && (["GR", "DEF", "MED", "AV"] as const).every((position) => counts[position] === GAME_CONFIG.startingLineup[position]);
+    };
+    if (!validLineup(home)) home.lineup = bestLineup(home.playerIds, players);
+    if (!validLineup(away)) away.lineup = bestLineup(away.playerIds, players);
     const homeLineup = home.lineup.filter((id) => (suspensions[id] ?? 0) <= 0);
     const awayLineup = away.lineup.filter((id) => (suspensions[id] ?? 0) <= 0);
     const result = simulateMatch(home, away, players, homeLineup, awayLineup);
