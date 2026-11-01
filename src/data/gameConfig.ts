@@ -32,8 +32,8 @@ export const GAME_CONFIG = {
   /** Substituições permitidas ao intervalo. */
   maxSubstitutions: 3,
 
-  /** Época inicial (1996/97). */
-  firstSeasonYear: 1996,
+  /** Época inicial predefinida (editável antes de iniciar cada carreira). */
+  firstSeasonYear: 2026,
 
   /** Taça: nº de equipas sorteadas (potência de 2). */
   cupTeams: 32,
