@@ -27,16 +27,7 @@ export function bestLineup(playerIds: number[], players: Record<number, Player>)
       .slice(0, needed);
     lineup.push(...candidates.map((p) => p.id));
   }
-  // Se não houver jogadores suficientes por posição, completar o onze com os melhores restantes.
-  if (lineup.length < 11) {
-    const rest = squad
-      .filter((p) => !lineup.includes(p.id))
-      .sort((a, b) => b.rating - a.rating);
-    for (const p of rest) {
-      if (lineup.length >= 11) break;
-      lineup.push(p.id);
-    }
-  }
+  // Não preencher vagas de campo com guarda-redes (nem vice-versa).
   return lineup;
 }
 
