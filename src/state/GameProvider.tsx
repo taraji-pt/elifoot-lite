@@ -225,7 +225,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
           match.userLineup[index] = inId;
           match.appearedPlayerIds = [...new Set([...(match.appearedPlayerIds ?? match.userLineup), inId])];
           match.subsUsed += 1;
-          const team = draft.teams[draft.userTeamId];
           if (team) team.lineup = [...match.userLineup];
           const out = draft.players[outId];
           const inn = draft.players[inId];
