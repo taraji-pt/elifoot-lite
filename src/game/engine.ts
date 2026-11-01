@@ -155,7 +155,8 @@ export function recordUserResult(state: GameState, homeGoals: number, awayGoals:
     fixture.homeGoals = homeGoals;
     fixture.awayGoals = awayGoals;
     fixture.scorerIds = [...scorerIds];
-    fixture.appearanceIds = [...new Set(appearanceIds)];
+    const opponentId = fixture.homeId === state.userTeamId ? fixture.awayId : fixture.homeId;
+    fixture.appearanceIds = [...new Set([...appearanceIds, ...(state.teams[opponentId]?.lineup ?? [])])];
     addAppearances(state, fixture.appearanceIds);
     addScorerGoals(state, scorerIds, "league");
   }
@@ -174,7 +175,8 @@ export function recordUserCupResult(
   tie.homeGoals = homeGoals;
   tie.awayGoals = awayGoals;
   tie.scorerIds = [...scorerIds];
-  tie.appearanceIds = [...new Set(appearanceIds)];
+  const opponentId = tie.homeId === state.userTeamId ? tie.awayId : tie.homeId;
+  tie.appearanceIds = [...new Set([...appearanceIds, ...(state.teams[opponentId]?.lineup ?? [])])];
   addAppearances(state, tie.appearanceIds);
   addScorerGoals(state, scorerIds, "cup");
 
