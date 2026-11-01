@@ -21138,4 +21138,1828 @@ export const TEAMS: TeamSeed[] = [
     }
   ]
 },
+ {
+    "id": 300,
+    "name": "Avenir Sportif de La Marsa",
+    "country": "TUN",
+    "stadium": "Stade Abdelaziz Chtioui",
+    "city": "La Marsa",
+    "rating": 52,
+    "badge": "/assets/badges/avenir-sportif-de-la-marsa.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/avenir-sportif-de-la-marsa.jpg",
+    "players": [
+      {
+        "name": "Hamza Ben Cherifia",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sami Helal",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussema Jebali",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Aziz Chaouch",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ameur Omrani",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fares Meskini",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Kechiche",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Soufiane Mestari",
+        "position": "DEF",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Ricky Gnéba",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Ojonugwa Adejoh",
+        "position": "MED",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Kouni Khalfa",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Rayen Hamrouni",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fares Neji",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Khaloui",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nour Mani",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssouf Dao",
+        "position": "AV",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Firas Iffia",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Haroun Ayari",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Polaco",
+        "position": "AV",
+        "nationality": "AGO"
+      },
+      {
+        "name": "Nabih Hablani",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 301,
+    "name": "Club Africain",
+    "country": "TUN",
+    "stadium": "Stade Olympique Hammadi Agrebi",
+    "city": "Tunis",
+    "rating": 58,
+    "badge": "/assets/badges/club-africain.png",
+    "primaryColor": "#D71920",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/club-africain.jpg",
+    "players": [
+      {
+        "name": "Abdelmouhib Chamakh",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghaith Yeferni",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghaith Zaalouni",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ismaïla Simpara",
+        "position": "DEF",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Houssem Ben Ali",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yassine Bouabid",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Houssem Hassen Romdhane",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghassen Mahersi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Aymen Harzi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bilel Ait-Malek",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Osama Al Shreimy",
+        "position": "MED",
+        "nationality": "LBY"
+      },
+      {
+        "name": "Mootez Zaddem",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Philippe Kinzumbi",
+        "position": "MED",
+        "nationality": "COD"
+      },
+      {
+        "name": "Saidou Khan",
+        "position": "MED",
+        "nationality": "GMB"
+      },
+      {
+        "name": "Haykeul Chikhaoui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Khadhraoui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bassem Srarfi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussema Bouguerra",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sadok Kadida",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Taddeus Nkeng",
+        "position": "AV",
+        "nationality": "CMR"
+      }
+    ]
+  },
+  {
+    "id": 302,
+    "name": "Club Athlétique Bizertin",
+    "country": "TUN",
+    "stadium": "Stade du 15 Octobre",
+    "city": "Bizerte",
+    "rating": 52,
+    "badge": "/assets/badges/club-athletique-bizertin.png",
+    "primaryColor": "#F7D117",
+    "secondaryColor": "#000000",
+    "stadiumImage": "/assets/stadiums/club-athletique-bizertin.jpg",
+    "players": [
+      {
+        "name": "Youssef Maktouf",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Moatez Hanzouli",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Allela",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hani Amamou",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Aziz Gasmi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Malek Doukali",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Rayane Rehimi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Farouk Bougatfa",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamadou Lamine Ba",
+        "position": "MED",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Alaaedine Dridi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sada Diallo",
+        "position": "MED",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Iyed Midani",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Lamine Traoré",
+        "position": "MED",
+        "nationality": "BFA"
+      },
+      {
+        "name": "Bilel Ouni",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bilel Mejri",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Wassim Chihi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nurudeen Ayinde",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Zied Berrima",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Marius Glo",
+        "position": "AV",
+        "nationality": "TGO"
+      },
+      {
+        "name": "Wahid Timi",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 303,
+    "name": "Club Sportif de Hammam-Lif",
+    "country": "TUN",
+    "stadium": "Stade Municipal de Hammam-Lif",
+    "city": "Hammam-Lif",
+    "rating": 50,
+    "badge": "/assets/badges/club-sportif-hammam-lif.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/club-sportif-hammam-lif.jpg",
+    "players": [
+      {
+        "name": "Moez Ben Cherifia",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Iheb Ben Mansour",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bahaeddine Sellami",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Chiheb Ben Frej",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Habib Ghrairi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Aymen Abbassi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Firas Ben Ammar",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Aziz Koudhai",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssef Mosrati",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Namory Sangaré",
+        "position": "MED",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Zied Ben Salem",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Adem Ben Ahmed",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ahmed Ben Tiba",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Aziz Boukobba",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yassine Chamakhi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bechir Mkadem",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Omar Jobe",
+        "position": "AV",
+        "nationality": "GMB"
+      },
+      {
+        "name": "Rafik Kamergi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Ali Mejri",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Rabie Karouia",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 304,
+    "name": "Club Sportif Sfaxien",
+    "country": "TUN",
+    "stadium": "Stade Taïeb Mhiri",
+    "city": "Sfax",
+    "rating": 59,
+    "badge": "/assets/badges/club-sportif-sfaxien.png",
+    "primaryColor": "#000000",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/club-sportif-sfaxien.jpg",
+    "players": [
+      {
+        "name": "Aymen Dahmen",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Abdessalem Hallaoui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ali Maâloul",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hichem Baccar",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Mathlouthi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Kévin Mondeko",
+        "position": "DEF",
+        "nationality": "COD"
+      },
+      {
+        "name": "Rayen Derbali",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssef Habchia",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Jacques Mbé",
+        "position": "MED",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Hasamadou Ouédraogo",
+        "position": "MED",
+        "nationality": "BFA"
+      },
+      {
+        "name": "Mohamed Trabelsi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Iyed Belwafi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghaith Sghaier",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Louay Trayi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Travis Mutyaba",
+        "position": "AV",
+        "nationality": "UGA"
+      },
+      {
+        "name": "Moemen Rahmani",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Emmanuel Ogbole",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Nour Karoui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Josna Loulendo",
+        "position": "AV",
+        "nationality": "COG"
+      },
+      {
+        "name": "Mohamed Amine Aidi",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 305,
+    "name": "Espérance Sportive de Tunis",
+    "country": "TUN",
+    "stadium": "Stade Olympique Hammadi Agrebi",
+    "city": "Tunis",
+    "rating": 63,
+    "badge": "/assets/badges/esperance-sportive-tunis.png",
+    "primaryColor": "#E31E24",
+    "secondaryColor": "#F7D117",
+    "stadiumImage": "/assets/stadiums/esperance-sportive-tunis.jpg",
+    "players": [
+      {
+        "name": "Béchir Ben Saïd",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Montassar Essid",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Jelassi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Marouane Sahraoui",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Ben Ali",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Dräger",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Adem Alilet",
+        "position": "DEF",
+        "nationality": "DZA"
+      },
+      {
+        "name": "Raed Chikhaoui",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hadj Mahmoud",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Rafia",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Jesús Castillo",
+        "position": "MED",
+        "nationality": "PER"
+      },
+      {
+        "name": "Moez Ben Haj Ali",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Abdramane Konaté",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Imad Faraj",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Lucas Ribeiro",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Youcef Belaïli",
+        "position": "AV",
+        "nationality": "DZA"
+      },
+      {
+        "name": "Florian Danho",
+        "position": "AV",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Hazem Mastouri",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Achref Jabri",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Zinedine Kada",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 306,
+    "name": "Espérance Sportive de Zarzis",
+    "country": "TUN",
+    "stadium": "Complexe Sportif Abdessalem Kazzouz",
+    "city": "Zarzis",
+    "rating": 52,
+    "badge": "/assets/badges/esperance-sportive-zarzis.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/esperance-sportive-zarzis.jpg",
+    "players": [
+      {
+        "name": "Seifeddine Charfi",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Ghanmi",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Lamjed Rjili",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Firas Ghouma",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Adem Taous",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hazem Mounadi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mokhtar Ben Zid",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Jassem Ben Kilani",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "David Nyengue",
+        "position": "MED",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Ousseynou Touré",
+        "position": "MED",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Khalil Kassab",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yacine El Kassah",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Rayane Smaali",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yosri Dhiflaoui",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamdi Labidi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Kebba Sowe",
+        "position": "AV",
+        "nationality": "GMB"
+      },
+      {
+        "name": "Hedi Jertila",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Adepoju Oluwaseun",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Rayen Sghaier",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Chinomso Onyemuchara",
+        "position": "AV",
+        "nationality": "NGA"
+      }
+    ]
+  },
+  {
+    "id": 307,
+    "name": "Espoir Sportif de Hammam-Sousse",
+    "country": "TUN",
+    "stadium": "Stade Municipal Bou Ali-Lahouar",
+    "city": "Hammam Sousse",
+    "rating": 48,
+    "badge": "/assets/badges/espoir-sportif-hammam-sousse.png",
+    "primaryColor": "#F7D117",
+    "secondaryColor": "#000000",
+    "stadiumImage": "/assets/stadiums/espoir-sportif-hammam-sousse.jpg",
+    "players": [
+      {
+        "name": "Mohamed Amine Hazgui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Charfeddine Nasralli",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Tayeb Ben Zitoun",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ayoub Chaabane",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Rayen Issaoui",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Hlel",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nour El Beji",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghazi Abderrazzak",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Malek Baayou",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Omar Smari",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mossaab Sassi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fedi Slimane",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ahmed Halila",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Iyadh Houli",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nour Karoui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Jarraya",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fakhreddine Ouji",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ali Ben Hassine",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Abdellaoui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Moemen Ben Salah",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 308,
+    "name": "Étoile Sportive de Métlaoui",
+    "country": "TUN",
+    "stadium": "Stade Olympique de Métlaoui",
+    "city": "Métlaoui",
+    "rating": 49,
+    "badge": "/assets/badges/etoile-sportive-metlaoui.png",
+    "primaryColor": "#F7D117",
+    "secondaryColor": "#000000",
+    "stadiumImage": "/assets/stadiums/etoile-sportive-metlaoui.jpg",
+    "players": [
+      {
+        "name": "Sadok Yeddes",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Aziz Bejaoui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussama Bahri",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Aziz Ghrissi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ayoub Tlili",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Ameur Belghith",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussama Hichri",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yassine Soltani",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Chérif Bodian",
+        "position": "MED",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Kouassi Koffi",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Ismail Hermes",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sory",
+        "position": "MED",
+        "nationality": "GIN"
+      },
+      {
+        "name": "Mohamed Ameur Jouini",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yassine Sabeur",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bacem Hajji",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ifeanyi Ogba",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Najd Dabbabi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussama Neffati",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Drissa Traoré",
+        "position": "AV",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Mohamed Ali Ourimi",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 309,
+    "name": "Étoile Sportive du Sahel",
+    "country": "TUN",
+    "stadium": "Stade Olympique de Sousse",
+    "city": "Sousse",
+    "rating": 55,
+    "badge": "/assets/badges/etoile-sportive-sahel.png",
+    "primaryColor": "#E31E24",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/etoile-sportive-sahel.jpg",
+    "players": [
+      {
+        "name": "Sabri Ben Hessen",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Raed Gazzeh",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Wajdi Kechrida",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Alphonce Otieno Omija",
+        "position": "DEF",
+        "nationality": "KEN"
+      },
+      {
+        "name": "Houssem Dagdoug",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Azmi Ghouma",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohammed Sangaré",
+        "position": "DEF",
+        "nationality": "LBR"
+      },
+      {
+        "name": "Najeh Ferjani",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussama Abid",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Achraf Ben Dhiaf",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ambrose Ochigbo",
+        "position": "MED",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Rayane Anane",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nizar Smichi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ousmane Diakhaté",
+        "position": "MED",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Kingsley Eduwo",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Sunday Megwo",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Yassine Chaabani",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Chadi Bouslama",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Raid Najjar",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ayoub Fejjari",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 310,
+    "name": "Jeunesse Sportive d'El Omrane",
+    "country": "TUN",
+    "stadium": "Stade Chedli Zouiten",
+    "city": "Tunis",
+    "rating": 50,
+    "badge": "/assets/badges/jeunesse-sportive-el-omrane.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/jeunesse-sportive-el-omrane.jpg",
+    "players": [
+      {
+        "name": "Oussema Hanzouli",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Wassim Karoui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Moustapha Souissi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bilel Mgannem",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Haroun Kouki",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Sami Hammami",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Malek Jammel",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Samer Marouani",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ali Chinonso",
+        "position": "MED",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Ouday Belhaj",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghaith Ben Hamida",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghaith Ben Hassine",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Askri",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Anouar Jouini",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Chiheb Zoghlami",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bilel Touati",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Hosni Guezmir",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Aboubacar Sidiki Leno",
+        "position": "AV",
+        "nationality": "GIN"
+      },
+      {
+        "name": "Saber Hammami",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Lionel Mondésir",
+        "position": "AV",
+        "nationality": "CIV"
+      }
+    ]
+  },
+  {
+    "id": 311,
+    "name": "Olympique de Béja",
+    "country": "TUN",
+    "stadium": "Stade Boujemaa Kmiti",
+    "city": "Béja",
+    "rating": 51,
+    "badge": "/assets/badges/olympique-beja.png",
+    "primaryColor": "#E31E24",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/olympique-beja.jpg",
+    "players": [
+      {
+        "name": "Chahine Smaoui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamdi Chairet",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Islem Chelghoumi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Chérif Camara",
+        "position": "DEF",
+        "nationality": "GIN"
+      },
+      {
+        "name": "Firas Fadhli",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mehrez Ben Rajeh",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Mabrouk",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssef Azib",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Rabii Hamri",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Alpha Sidibé",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Manoubi Haddad",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Hedi Hadouchi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Anicet Ishimwe",
+        "position": "MED",
+        "nationality": "RWA"
+      },
+      {
+        "name": "Mohamed Amine Ammar",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Max Ravel",
+        "position": "AV",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Baha Cherni",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Obaid Mekni",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Oussama Sayari",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fayed Ben Hassine",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mouhamed Diouf",
+        "position": "AV",
+        "nationality": "SEN"
+      }
+    ]
+  },
+  {
+    "id": 312,
+    "name": "Progrès Sportif de Sakiet Eddaier",
+    "country": "TUN",
+    "stadium": "Stade Municipal de Sakiet Eddaier",
+    "city": "Sakiet Eddaier",
+    "rating": 50,
+    "badge": "/assets/badges/progres-sportif-sakiet-eddaier.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/progres-sportif-sakiet-eddaier.jpg",
+    "players": [
+      {
+        "name": "Abdelkader Chouaya",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Majdi Moncer",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bertrand Bationo",
+        "position": "DEF",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Amadou Bâ",
+        "position": "DEF",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Dhia Maatougui",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamza Rebai",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mossaab Ajili",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Amine Naoui",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Charfeddine Ouni",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hamdi Jhinaoui",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fedi Darguech",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Haroun Ben Ameur",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bahaeddine Mouelhi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fraj Ajroudi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nacef Atoui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Ali Omri",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Zied Aloui",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Amir Jaouadi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Akram Bahloul",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Firas Ben Hassine",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 313,
+    "name": "Stade Tunisien",
+    "country": "TUN",
+    "stadium": "Stade Hedi Enneifer",
+    "city": "Le Bardo",
+    "rating": 55,
+    "badge": "/assets/badges/stade-tunisien.png",
+    "primaryColor": "#00843D",
+    "secondaryColor": "#E31E24",
+    "stadiumImage": "/assets/stadiums/stade-tunisien.jpg",
+    "players": [
+      {
+        "name": "Noureddine Farhati",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mehdi Ben Mrad",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Hedi Khalfa",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Skander Sghaier",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Salifou Tapsoba",
+        "position": "DEF",
+        "nationality": "BFA"
+      },
+      {
+        "name": "Aziz Saihi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Wael Ouerghemi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Rayed Derbali",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssouf Oumarou",
+        "position": "MED",
+        "nationality": "NER"
+      },
+      {
+        "name": "Yusuf Touré",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Baraket Hmidi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssef Saafi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Boubacar Camara",
+        "position": "MED",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Malek Chouikh",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Amadou Dia N'Diaye",
+        "position": "AV",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Fakhreddine Ben Youssef",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Amine Haboubi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Amir Jaouadi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Bienvenu Vigninou",
+        "position": "AV",
+        "nationality": "BEN"
+      },
+      {
+        "name": "Moncef Gharbi",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  },
+  {
+    "id": 314,
+    "name": "Union Sportive de Ben Guerdane",
+    "country": "TUN",
+    "stadium": "Stade Municipal 7 Mars",
+    "city": "Ben Guerdane",
+    "rating": 50,
+    "badge": "/assets/badges/union-sportive-ben-guerdane.png",
+    "primaryColor": "#F7D117",
+    "secondaryColor": "#000000",
+    "stadiumImage": "/assets/stadiums/union-sportive-ben-guerdane.jpg",
+    "players": [
+      {
+        "name": "Lassaad Hammami",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mohamed Ifaoui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Aymen Amri",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Daniel Oboh",
+        "position": "DEF",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Mohamed Habib Yeken",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Salah Harrabi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Foued Timoumi",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Jassem Abcha",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghazi Ayadi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ayoub Ben Mcharek",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Abdelouahab Bakhouche",
+        "position": "MED",
+        "nationality": "DZA"
+      },
+      {
+        "name": "Borhene Hakimi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ghislain Mounguidé",
+        "position": "MED",
+        "nationality": "CAF"
+      },
+      {
+        "name": "Mohamed Chérif Camara",
+        "position": "MED",
+        "nationality": "GIN"
+      },
+      {
+        "name": "Idriss Mhirsi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nassim Chachia",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Anas Bouatay",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Kais Fdhil",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Fedi Tayechi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Amadou Diakité",
+        "position": "AV",
+        "nationality": "GIN"
+      }
+    ]
+  },
+  {
+    "id": 315,
+    "name": "Union Sportive Monastirienne",
+    "country": "TUN",
+    "stadium": "Stade Mustapha Ben Jannet",
+    "city": "Monastir",
+    "rating": 53,
+    "badge": "/assets/badges/union-sportive-monastirienne.png",
+    "primaryColor": "#0066B3",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/union-sportive-monastirienne.jpg",
+    "players": [
+      {
+        "name": "Ahmed Slimane",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Dries Arfaoui",
+        "position": "GR",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Raed Bouchniba",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Mahmoud Ghorbel",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Rayen Azzouz",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ayman Ben Mohamed",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Youssef Herch",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Nour Zamen Zammouri",
+        "position": "DEF",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ousmane Diané",
+        "position": "MED",
+        "nationality": "GIN"
+      },
+      {
+        "name": "Chaïm El Djebali",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Yassine Amri",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Adam Boulila",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Alpha Sidibé",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Nassim Douihech",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ahmed Bouassida",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Adnene Yaakoubi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Ibrahim Gadiaga",
+        "position": "AV",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Mohamed Boussadia",
+        "position": "AV",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Bechir Yacoub",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Seifeddine Souissi",
+        "position": "AV",
+        "nationality": "TUN"
+      }
+    ]
+  }
 ];
