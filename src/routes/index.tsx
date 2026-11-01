@@ -68,6 +68,9 @@ function Start() {
   const [careerImage, setCareerImage] = useState<string | null>(null);
   const [careerImageBusy, setCareerImageBusy] = useState(false);
   const [careerImageError, setCareerImageError] = useState<string | null>(null);
+  const [startingSeason, setStartingSeason] = useState(String(GAME_CONFIG.firstSeasonYear));
+  const seasonYear = Number(startingSeason);
+  const validSeason = /^\d{4}$/.test(startingSeason) && seasonYear >= 1800 && seasonYear <= 9998;
   const [db] = useState<TeamSeed[]>(() => loadDatabase());
   const countries = useMemo(
     () => [...countryList(db)].sort((a, b) =>
@@ -102,7 +105,27 @@ function Start() {
           Continuar jogo guardado
         </button>
       )}
-      <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">1. Países</h2>
+      <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">1. Época inicial</h2>
+      <div className="mt-2 max-w-xs rounded-lg border border-border bg-card p-3">
+        <label className="block text-sm font-medium" htmlFor="starting-season">Ano de início</label>
+        <input
+          id="starting-season"
+          type="number"
+          inputMode="numeric"
+          min={1800}
+          max={9998}
+          step={1}
+          value={startingSeason}
+          onChange={(e) => setStartingSeason(e.target.value)}
+          className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 font-mono-num text-lg"
+          aria-invalid={!validSeason}
+        />
+        <p className="mt-1 text-xs text-muted-foreground">
+          A carreira começa em {validSeason ? seasonLabel(seasonYear) : "—"} e avança automaticamente no final de cada época.
+        </p>
+        {!validSeason && <p className="mt-1 text-xs text-destructive">Introduz um ano entre 1800 e 9998.</p>}
+      </div>
+      <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">2. Países</h2>
       <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
         {countries.map((c) => (
           <button
@@ -180,7 +203,7 @@ function Start() {
             <p className="mt-2 text-xs text-muted-foreground">A imagem é redimensionada e comprimida para ficar leve no jogo.</p>
           </div>
 
-          <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">3. O teu clube</h2>
+          <h2 className="mt-8 text-sm font-semibold uppercase text-muted-foreground">4. O teu clube</h2>
           <div className="mt-2 flex gap-2">
             {Array.from({ length: GAME_CONFIG.numberOfDivisions }, (_, i) => i + 1).map((d) => (
               <button key={d} className={d === division ? btn : btn2} onClick={() => setDivision(d)}>
@@ -192,8 +215,8 @@ function Start() {
             {list.map(({ seed: t }) => (
               <button
                 key={t.id}
-                onClick={() => newGame(t.id, seeds, careerImage)}
-                disabled={!enough || invalidTeams.length > 0}
+                onClick={() => newGame(t.id, seeds, careerImage, seasonYear)}
+                disabled={!enough || invalidTeams.length > 0 || !validSeason}
                 className={`${card} flex items-center justify-between text-left hover:border-primary disabled:cursor-not-allowed disabled:opacity-50`}
               >
                 <TeamIdentity team={{ ...t, division, budget: 0, playerIds: [], lineup: [] }} />
