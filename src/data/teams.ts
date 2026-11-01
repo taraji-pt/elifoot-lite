@@ -22961,5 +22961,119 @@ export const TEAMS: TeamSeed[] = [
         "nationality": "TUN"
       }
     ]
-  }
+  },
+  {
+  "id": 316,
+  "name": "Grupo Desportivo Alcochetense",
+  "country": "POR",
+  "stadium": "Estádio António Almeida Correia (Foni)",
+  "city": "Alcochete",
+  "rating": 46,
+  "badge": "/assets/badges/alcochetense.png",
+  "primaryColor": "#00843D",
+  "secondaryColor": "#FFFFFF",
+  "stadiumImage": "/assets/stadiums/antonio-almeida-correia-foni.jpg",
+  "players": [
+    {
+      "name": "Luís Ribeiro",
+      "position": "GR",
+      "nationality": "POR"
+    },
+    {
+      "name": "Guilherme Christino",
+      "position": "GR",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Tiago Palancha",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "David Lopes",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Jorge Teixeira",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Miguel Abreu",
+      "position": "DEF",
+      "nationality": "GNB"
+    },
+    {
+      "name": "Marinho",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Fábio Celestino",
+      "position": "DEF",
+      "nationality": "POR"
+    },
+    {
+      "name": "Fabinho",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Gonçalo Pinto",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Rúben Pinto",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "David Freire",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Rúben Moreno",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Jorge Lino",
+      "position": "MED",
+      "nationality": "POR"
+    },
+    {
+      "name": "Valdu Té",
+      "position": "AV",
+      "nationality": "GNB"
+    },
+    {
+      "name": "Gildo",
+      "position": "AV",
+      "nationality": "MOZ"
+    },
+    {
+      "name": "José Precatado",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Leandro Tipote",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Diogo Ferreira",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Harramiz",
+      "position": "AV",
+      "nationality": "STP"
+    }
+  ]
+}
 ];
