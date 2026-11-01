@@ -142,7 +142,18 @@ export function GameProvider({ children }: { children: ReactNode }) {
       setLineup: (lineup: number[]) =>
         mutate((draft) => {
           const team = draft.teams[draft.userTeamId];
-          if (team) team.lineup = lineup;
+          if (!team) return;
+          const unique = [...new Set(lineup)];
+          if (unique.length !== lineup.length || unique.some((id) => !team.playerIds.includes(id))) return "Escolhe apenas jogadores do teu plantel.";
+          const counts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
+          for (const id of unique) {
+            const position = draft.players[id]?.position;
+            if (position) counts[position] = (counts[position] ?? 0) + 1;
+          }
+          for (const position of ["GR", "DEF", "MED", "AV"] as const) {
+            if (counts[position] > GAME_CONFIG.startingLineup[position]) return `Só podes escolher ${GAME_CONFIG.startingLineup[position]} jogador(es) para a posição ${position}.`;
+          }
+          team.lineup = unique;
         }),
       buy: (playerId: number) => mutate((draft) => buyPlayer(draft, playerId)),
       sell: (playerId: number) => mutate((draft) => sellPlayer(draft, playerId)),
@@ -166,6 +177,14 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const away = draft.teams[awayId] as Team;
           const previewUserLineup = availableLineup(draft, draft.teams[draft.userTeamId] as Team);
           if (previewUserLineup.length < 11) return "Tens jogadores suspensos. Não tens 11 jogadores disponíveis para este jogo.";
+          const positionCounts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
+          for (const id of previewUserLineup) {
+            const position = draft.players[id]?.position;
+            if (position) positionCounts[position] = (positionCounts[position] ?? 0) + 1;
+          }
+          if ((["GR", "DEF", "MED", "AV"] as const).some((position) => positionCounts[position] !== GAME_CONFIG.startingLineup[position])) {
+            return "O onze tem de respeitar as posições definidas na formação.";
+          }
           const homeLineup = prepareTeamForMatch(draft, home);
           const awayLineup = prepareTeamForMatch(draft, away);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
@@ -178,6 +197,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             awayGoals: half.awayGoals,
             half: 1,
             userLineup: [...userLineup],
+            appearedPlayerIds: [...userLineup],
             subsUsed: 0,
             events: [
               ...half.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
@@ -197,7 +217,13 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (match.subsUsed >= GAME_CONFIG.maxSubstitutions) return "Substituições esgotadas.";
           const index = match.userLineup.indexOf(outId);
           if (index === -1) return;
+          const team = draft.teams[draft.userTeamId];
+          const outgoing = draft.players[outId];
+          const incoming = draft.players[inId];
+          if (!team?.playerIds.includes(inId) || match.userLineup.includes(inId) || !outgoing || !incoming || outgoing.position !== incoming.position) return "A substituição tem de respeitar a mesma posição.";
+          if ((draft.suspensions?.[inId] ?? 0) > 0) return "Esse jogador está suspenso.";
           match.userLineup[index] = inId;
+          match.appearedPlayerIds = [...new Set([...(match.appearedPlayerIds ?? match.userLineup), inId])];
           match.subsUsed += 1;
           const team = draft.teams[draft.userTeamId];
           if (team) team.lineup = [...match.userLineup];
@@ -268,9 +294,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
           }
 
           if (match.competition === "cup") {
-            recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId, match.scorerIds);
+            recordUserCupResult(draft, match.homeGoals, match.awayGoals, match.cupPenaltyWinnerId, match.scorerIds, match.appearedPlayerIds ?? match.userLineup);
           } else {
-            recordUserResult(draft, match.homeGoals, match.awayGoals, match.scorerIds);
+            recordUserResult(draft, match.homeGoals, match.awayGoals, match.scorerIds, match.appearedPlayerIds ?? match.userLineup);
           }
           advanceRound(draft);
         }),
