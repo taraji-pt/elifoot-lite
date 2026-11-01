@@ -39,7 +39,7 @@ interface GameContextValue {
   saveExists: boolean;
   message: string | null;
   setMessage: (m: string | null) => void;
-  newGame: (teamId: number, seeds: TeamSeed[], careerImage?: string | null) => void;
+  newGame: (teamId: number, seeds: TeamSeed[], careerImage?: string | null, seasonYear?: number) => void;
   takeOffer: (teamId: number) => void;
   rejectOffers: () => void;
   takeBid: (playerId: number) => void;
@@ -105,9 +105,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
       saveExists,
       message,
       setMessage,
-      newGame: (teamId: number, seeds: TeamSeed[], careerImage: string | null = null) => {
+      newGame: (teamId: number, seeds: TeamSeed[], careerImage: string | null = null, seasonYear: number = GAME_CONFIG.firstSeasonYear) => {
         setMessage(null);
-        persist(createNewGame(teamId, seeds, careerImage));
+        persist(createNewGame(teamId, seeds, careerImage, seasonYear));
       },
       takeOffer: (teamId: number) => mutate((draft) => acceptOffer(draft, teamId)),
       rejectOffers: () => mutate((draft) => declineOffers(draft)),
