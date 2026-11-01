@@ -43,6 +43,7 @@ export interface Fixture {
   awayGoals: number | null;
   scorerIds?: number[];
   redCardIds?: number[];
+  appearanceIds?: number[];
 }
 
 export interface CupTie {
@@ -55,6 +56,7 @@ export interface CupTie {
   scorerIds?: number[];
   redCardIds?: number[];
   yellowCardIds?: number[];
+  appearanceIds?: number[];
   winnerId: number | null;
 }
 
@@ -83,6 +85,7 @@ export interface MatchState {
   subsUsed: number;
   events: string[];
   scorerIds: number[];
+  appearedPlayerIds?: number[];
   /** jogadores expulsos neste jogo */
   redCardIds?: number[];
   /** jogadores que viram amarelo neste jogo */
@@ -97,6 +100,15 @@ export interface GoalStats {
   cup: number;
 }
 
+export interface PlayerDevelopment {
+  playerId: number;
+  previousRating: number;
+  newRating: number;
+  change: number;
+  appearances: number;
+  goals: number;
+}
+
 export interface SeasonReview {
   season: string;
   userDivision: number;
@@ -109,6 +121,7 @@ export interface SeasonReview {
   climbers: number[];
   outcome: "promoted" | "stayed" | "relegated" | "out";
   scorers: Record<number, GoalStats>;
+  playerDevelopment: PlayerDevelopment[];
 }
 
 export interface Celebration {
@@ -162,6 +175,8 @@ export interface GameState {
   history: SeasonSummary[];
   /** golos acumulados na época em curso */
   scorerStats: Record<number, GoalStats>;
+  /** presenças acumuladas na época em curso */
+  appearanceStats?: Record<number, number>;
   /** número de jogos que cada jogador ainda tem de cumprir por suspensão */
   suspensions?: Record<number, number>;
   /** amarelos acumulados na época por jogador (reset a zero ao atingir 5) */
