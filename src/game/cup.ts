@@ -94,6 +94,7 @@ export function playCupRound(
       homeGoals: result.homeGoals,
       awayGoals: result.awayGoals,
       scorerIds: result.scorers.map((s) => s.playerId),
+      appearanceIds: [...homeLineup, ...awayLineup],
       redCardIds: result.cards.filter((c) => c.type === "red").map((c) => c.playerId),
       yellowCardIds: result.cards.filter((c) => c.type === "yellow").map((c) => c.playerId),
       winnerId,
