@@ -155,8 +155,7 @@ export function recordUserResult(state: GameState, homeGoals: number, awayGoals:
     fixture.homeGoals = homeGoals;
     fixture.awayGoals = awayGoals;
     fixture.scorerIds = [...scorerIds];
-    const opponentId = fixture.homeId === state.userTeamId ? fixture.awayId : fixture.homeId;
-    fixture.appearanceIds = [...new Set([...appearanceIds, ...(state.teams[opponentId]?.lineup ?? [])])];
+    fixture.appearanceIds = [...new Set(appearanceIds)];
     addAppearances(state, fixture.appearanceIds);
     addScorerGoals(state, scorerIds, "league");
   }
@@ -175,8 +174,7 @@ export function recordUserCupResult(
   tie.homeGoals = homeGoals;
   tie.awayGoals = awayGoals;
   tie.scorerIds = [...scorerIds];
-  const opponentId = tie.homeId === state.userTeamId ? tie.awayId : tie.homeId;
-  tie.appearanceIds = [...new Set([...appearanceIds, ...(state.teams[opponentId]?.lineup ?? [])])];
+  tie.appearanceIds = [...new Set(appearanceIds)];
   addAppearances(state, tie.appearanceIds);
   addScorerGoals(state, scorerIds, "cup");
 
@@ -380,15 +378,22 @@ function endSeason(state: GameState) {
     const player = state.players[playerId];
     const team = teamByPlayer.get(playerId);
     if (!player || !team || appearances <= 0) return [];
+    const leagueMatches = Object.values(state.leagues).flat().filter((round) => round.some((fixture) => (fixture.homeId === team.id || fixture.awayId === team.id) && fixture.homeGoals !== null)).length;
+    const cupMatches = state.cup.rounds.reduce((total, round) => total + round.ties.filter((tie) => (tie.homeId === team.id || tie.awayId === team.id) && tie.homeGoals !== null).length, 0);
+    const matchesPlayed = leagueMatches + cupMatches;
+    if (matchesPlayed === 0) return [];
+    const participation = appearances / matchesPlayed;
     const goals = (state.scorerStats?.[playerId]?.league ?? 0) + (state.scorerStats?.[playerId]?.cup ?? 0);
-    let change = appearances >= 25 ? 1 : appearances >= 12 ? 0 : -1;
+    // Presenças são relativas aos jogos efectivamente disputados pelo clube:
+    // titular ou suplente utilizado conta uma presença, sem duplicar por jogo.
+    let change = participation >= 0.75 ? 1 : participation >= 0.4 ? 0 : -1;
     const goalThreshold = player.position === "AV" ? 10 : player.position === "MED" ? 6 : player.position === "DEF" ? 3 : Infinity;
     if (goals >= goalThreshold) change += 1;
     if (promoted.includes(team.id) || championId === team.id || state.cup.winnerId === team.id) change += 1;
     if (relegatedDown.includes(team.id) || droppedOut.includes(team.id)) change -= 1;
     change = Math.max(-2, Math.min(3, change));
     const newRating = Math.max(GAME_CONFIG.minPlayerRating, Math.min(GAME_CONFIG.maxPlayerRating, player.rating + change));
-    return [{ playerId, previousRating: player.rating, newRating, change: newRating - player.rating, appearances, goals }];
+    return [{ playerId, previousRating: player.rating, newRating, change: newRating - player.rating, appearances, matchesPlayed, goals }];
   }).filter((item) => item.change !== 0);
 }
 
