@@ -197,7 +197,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             awayGoals: half.awayGoals,
             half: 1,
             userLineup: [...userLineup],
-            appearedPlayerIds: [...userLineup],
+            appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
             subsUsed: 0,
             events: [
               ...half.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
