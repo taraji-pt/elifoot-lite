@@ -22969,7 +22969,7 @@ export const TEAMS: TeamSeed[] = [
   "stadium": "Estádio António Almeida Correia (Foni)",
   "city": "Alcochete",
   "rating": 46,
-  "badge": "/assets/badges/alcochetense.png",
+  "badge": "/assets/badges/alcochetense.webp",
   "primaryColor": "#00843D",
   "secondaryColor": "#FFFFFF",
   "stadiumImage": "/assets/stadiums/antonio-almeida-correia-foni.jpg",
