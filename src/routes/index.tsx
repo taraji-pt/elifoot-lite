@@ -2059,7 +2059,7 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
   const pagePlayers = market.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
   return (
     <div className="grid items-stretch gap-4 lg:grid-cols-2">
-      <div className={`${card} flex flex-col lg:h-[680px]`}>        <div className="mb-2 font-semibold">Mercado</div>
+      <div className={`${card} flex flex-col`}>        <div className="mb-2 font-semibold">Mercado</div>
         <div className="mb-3 space-y-2">
           <input
             className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
@@ -2166,9 +2166,8 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
           </div>
         </div>
       </div>
-      <div className={`${card} flex flex-col lg:h-[680px]`}>
+      <div className={card}>
         <div className="mb-2 font-semibold">O meu plantel ({mine.length})</div>
-        <div className="min-h-0 flex-1 overflow-y-auto">
         <table className="w-full text-sm">
           <tbody>
             {mine.map((p) => (
@@ -2189,7 +2188,6 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
             ))}
           </tbody>
         </table>
-        </div>
       </div>
     </div>
   );
