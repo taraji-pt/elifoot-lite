@@ -62,6 +62,7 @@ export interface CupTie {
   scorerIds?: number[];
   redCardIds?: number[];
   yellowCardIds?: number[];
+  secondYellowCardIds?: number[];
   appearanceIds?: number[];
   winnerId: number | null;
 }
@@ -102,6 +103,7 @@ export interface MatchState {
   redCardIds?: number[];
   /** jogadores que viram amarelo neste jogo */
   yellowCardIds?: number[];
+  secondYellowCardIds?: number[];
   /** acontecimentos do jogo, com minuto e marcador */
   finished: boolean;
   /** simulação imediata: apresentar diretamente o apito final */
