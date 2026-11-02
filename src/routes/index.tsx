@@ -546,9 +546,9 @@ function Game({ state }: { state: GameState }) {
           <img
             src={state.careerImage}
             alt=""
-            className="h-full w-full object-cover opacity-[0.14] blur-[1px]"
+            className="h-full w-full object-cover opacity-[0.22] blur-[1px]"
           />
-          <div className="absolute inset-0 bg-background/55" />
+          <div className="absolute inset-0 bg-background/30" />
         </div>
       )}
 
