@@ -2016,6 +2016,7 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
   const [maxPrice, setMaxPrice] = useState(true);
   const [marketSeed] = useState(() => Math.random());
   const [marketPage, setMarketPage] = useState(0);
+  useEffect(() => setMarketPage(0), [pos, search, minRating, maxValue, maxPrice]);
   const team = userTeam(state);
 
   const market = useMemo(() => {
