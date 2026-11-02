@@ -1061,11 +1061,18 @@ function PlayerTable({
             }`}
           >
             <td className="py-1.5 font-mono-num text-xs">{p.position}</td>
-            <td className="truncate"><button type="button" className={`max-w-full truncate text-left ${onPlayerClick ? "hover:underline focus:outline-none focus:ring-1 focus:ring-primary" : "cursor-default"}`} onClick={(event) => { event.stopPropagation(); onPlayerClick?.(p.id); }}>{p.name}</button></td>
+            <td className="truncate">{p.name}</td>
             <td><Flag code={p.nationality} /></td>
             <td className="text-left font-mono-num">{p.rating}</td>
             <td className="text-right font-mono-num text-muted-foreground">{formatMoney(p.transferValue)}</td>
-            <td className="pl-2 text-right text-xs text-primary">{action?.(p)}</td>
+            <td className="pl-2 text-right text-xs text-primary">
+              <div className="flex items-center justify-end gap-1">
+                {action?.(p)}
+                {onPlayerClick && (
+                  <button type="button" className="rounded px-1.5 py-0.5 text-muted-foreground hover:bg-accent hover:text-foreground" title={`Ver ficha de ${p.name}`} aria-label={`Ver ficha de ${p.name}`} onClick={(event) => { event.stopPropagation(); onPlayerClick(p.id); }}>ⓘ</button>
+                )}
+              </div>
+            </td>
           </tr>
         ))}
       </tbody>
@@ -1075,7 +1082,7 @@ function PlayerTable({
 
 function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (playerId: number) => void }) {
   const [stadiumOpen, setStadiumOpen] = useState(false);
-  const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
+  const { startMatch, substitute, setTacticalIntent, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
   const [flashEvent, setFlashEvent] = useState<string | null>(null);
@@ -1373,6 +1380,35 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
           </div>
         )}
 
+        {phaseComplete && !match.finished && (
+          <div className={`${card} space-y-3`}>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="font-semibold">Abordagem táctica para a 2.ª parte</div>
+              <div className={`text-sm font-bold ${(match.tacticalIntent ?? 0) > 0 ? "text-orange-600 dark:text-orange-400" : (match.tacticalIntent ?? 0) < 0 ? "text-sky-600 dark:text-sky-400" : "text-muted-foreground"}`}>
+                {(match.tacticalIntent ?? 0) > 0 ? "Mais ofensiva" : (match.tacticalIntent ?? 0) < 0 ? "Mais defensiva" : "Equilibrada"} · {Math.abs(match.tacticalIntent ?? 0)}%
+              </div>
+            </div>
+            <input
+              type="range"
+              min="-100"
+              max="100"
+              step="5"
+              value={match.tacticalIntent ?? 0}
+              onChange={(event) => setTacticalIntent(Number(event.target.value))}
+              className="w-full accent-primary"
+              aria-label="Orientação táctica, de defensiva a ofensiva"
+            />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>−100% Defensiva</span><span>Equilibrada</span><span>Ofensiva +100%</span>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              A formação ajusta automaticamente a orientação: mais avançados ou menos defesas tornam a equipa mais ofensiva. Podes afinar manualmente antes de começar a segunda parte.
+            </p>
+          </div>
+        )}
+
+
+
         {match.competition === "cup" && match.finished && phaseComplete && (
           <div className={`mt-3 text-sm font-black ${cupOutcomeClass}`}>
             {cupUserWon
@@ -1605,16 +1641,26 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
   const records = state.playerSeasonHistory?.[playerId] ?? [];
   const currentTeam = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(playerId));
   const currentGoals = state.scorerStats?.[playerId] ?? { league: 0, cup: 0 };
-  const currentAppearances = state.appearanceStats?.[playerId] ?? 0;
-  const currentRecord = {
+  const currentClubStats = state.playerClubSeasonStats?.[playerId] ?? {};
+  const currentRecords = Object.entries(currentClubStats).map(([teamId, stats]) => ({
     season: seasonLabel(state.seasonYear),
+    teamId: Number(teamId),
+    teamName: state.teams[Number(teamId)]?.name ?? "Clube desconhecido",
+    appearances: stats.appearances,
+    goalsLeague: stats.goalsLeague,
+    goalsCup: stats.goalsCup,
+    rating: player.rating,
+  }));
+  if (!currentRecords.length) currentRecords.push({
+    season: seasonLabel(state.seasonYear),
+    teamId: currentTeam?.id ?? null,
     teamName: currentTeam?.name ?? "Sem clube",
-    appearances: currentAppearances,
+    appearances: state.appearanceStats?.[playerId] ?? 0,
     goalsLeague: currentGoals.league,
     goalsCup: currentGoals.cup,
     rating: player.rating,
-  };
-  const allRecords = [...records, currentRecord];
+  });
+  const allRecords = [...records, ...currentRecords];
   const totals = allRecords.reduce((sum, item) => ({
     appearances: sum.appearances + item.appearances,
     goals: sum.goals + item.goalsLeague + item.goalsCup,
@@ -1635,7 +1681,7 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
           <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
-          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Épocas</div><div className="text-xl font-bold">{records.length + 1}</div></div>
+          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Épocas</div><div className="text-xl font-bold">{new Set(allRecords.map((record) => record.season)).size}</div></div>
           <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Presenças</div><div className="text-xl font-bold">{totals.appearances}</div></div>
           <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Golos</div><div className="text-xl font-bold">{totals.goals}</div></div>
         </div>
