@@ -81,6 +81,40 @@ function deriveTacticalIntent(startingIds: number[], currentIds: number[], playe
   return Math.max(-100, Math.min(100, change * 25));
 }
 
+function halftimeAiChanges(
+  team: Team,
+  lineup: number[],
+  players: GameState["players"],
+  goalsFor: number,
+  goalsAgainst: number,
+): { lineup: number[]; events: string[]; incomingIds: number[] } {
+  let current = [...lineup];
+  const events: string[] = [];
+  const incomingIds: number[] = [];
+  for (let change = 0; change < GAME_CONFIG.maxSubstitutions; change++) {
+    const currentPlayers = current.map((id) => players[id]).filter(Boolean);
+    const bench = team.playerIds.map((id) => players[id]).filter((p) => p && !current.includes(p.id));
+    if (!bench.length) break;
+    const preferred = goalsFor < goalsAgainst
+      ? ["AV", "MED", "DEF", "GR"]
+      : goalsFor > goalsAgainst
+        ? ["DEF", "MED", "AV", "GR"]
+        : ["MED", "AV", "DEF", "GR"];
+    const candidates = preferred.flatMap((position) => currentPlayers
+      .filter((p) => p.position === position)
+      .sort((a, b) => a.rating - b.rating)
+      .map((out) => ({ out, incoming: bench.filter((p) => p.position === position).sort((a, b) => b.rating - a.rating)[0] }))
+      .filter((pair) => pair.incoming && pair.incoming.rating > pair.out.rating));
+    const choice = candidates[0];
+    if (!choice) break;
+    current = current.filter((id) => id !== choice.out.id);
+    current.push(choice.incoming.id);
+    incomingIds.push(choice.incoming.id);
+    events.push(`1|45|${team.id}|S|${choice.out.name}|${choice.incoming.name}`);
+  }
+  return { lineup: current, events, incomingIds };
+}
+
 export function GameProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<GameState | null>(null);
   const [ready, setReady] = useState(false);
@@ -213,12 +247,17 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
           const first = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 1, 45);
           const firstRedIds = first.cards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId);
-          const second = simulateHalf(home, away, draft.players, homeLineup.filter((id) => !firstRedIds.includes(id)), awayLineup.filter((id) => !firstRedIds.includes(id)), 46, 90, firstRedIds, 0, 0, first.cards.filter((c) => c.type === "yellow").map((c) => c.playerId));
+          const firstHomeLineup = homeLineup.filter((id) => !firstRedIds.includes(id));
+          const firstAwayLineup = awayLineup.filter((id) => !firstRedIds.includes(id));
+          const homeChanges = halftimeAiChanges(home, firstHomeLineup, draft.players, first.homeGoals, first.awayGoals);
+          const awayChanges = halftimeAiChanges(away, firstAwayLineup, draft.players, first.awayGoals, first.homeGoals);
+          const second = simulateHalf(home, away, draft.players, homeChanges.lineup, awayChanges.lineup, 46, 90, firstRedIds, 0, 0, first.cards.filter((c) => c.type === "yellow").map((c) => c.playerId));
           const events = [
             ...first.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
-            ...first.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "yellow" ? "Y" : "R"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+            ...first.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "yellow" ? "Y" : c.type === "second-yellow" ? "2Y" : "R"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+            ...homeChanges.events, ...awayChanges.events,
             ...second.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
-            ...second.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+            ...second.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : c.type === "second-yellow" ? "2Y" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
           ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1]));
           const allCards = [...first.cards, ...second.cards];
           const homeGoals = first.homeGoals + second.homeGoals;
@@ -227,11 +266,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (penaltyWinner !== undefined) events.push(`P|90|-1|Penáltis — passou o ${draft.teams[penaltyWinner]?.name ?? "equipa vencedora"}.`);
           draft.match = {
             competition: playCup ? "cup" : "league", homeId: home.id, awayId: away.id,
-            homeGoals, awayGoals, half: 2, userLineup: [...userLineup], startingUserLineup: [...userLineup],
+            homeGoals, awayGoals, half: 2, userLineup: [...(draft.userTeamId === home.id ? homeChanges.lineup : awayChanges.lineup)], startingUserLineup: [...userLineup],
             unavailablePlayerIds, tacticalIntent: 0, appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
             subsUsed: 0, events, scorerIds: [...first.scorers, ...second.scorers].map((s) => s.playerId),
             redCardIds: allCards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId),
-            yellowCardIds: allCards.filter((c) => c.type === "yellow").map((c) => c.playerId),
+            yellowCardIds: allCards.filter((c) => c.type === "yellow" || c.type === "second-yellow").map((c) => c.playerId),
             secondYellowCardIds: allCards.filter((c) => c.type === "second-yellow").map((c) => c.playerId),
             finished: true,
             instantSimulation: true,
@@ -314,6 +353,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if ((outgoing.position === "GR" || incoming.position === "GR") && outgoing.position !== incoming.position) return "Um guarda-redes só pode ser substituído por outro guarda-redes.";
           if ((draft.suspensions?.[inId] ?? 0) > 0) return "Esse jogador está suspenso.";
           match.userLineup[index] = inId;
+          match.events.push(`1|45|${draft.userTeamId}|S|${outgoing.name}|${incoming.name}`);
+          match.events.sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1]));
           match.tacticalIntent = deriveTacticalIntent(match.startingUserLineup ?? match.userLineup, match.userLineup, draft.players);
           match.appearedPlayerIds = [...new Set([...(match.appearedPlayerIds ?? match.userLineup), inId])];
           match.subsUsed += 1;
@@ -342,7 +383,17 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userTeam = draft.teams[draft.userTeamId];
           if (userTeam) userTeam.lineup = [...match.userLineup];
           const userIntent = match.tacticalIntent ?? 0;
-          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent, (match.yellowCardIds ?? []));
+          const homeChanges = userIsHome
+            ? { lineup: homeLineup, events: [], incomingIds: [] as number[] }
+            : halftimeAiChanges(home, homeLineup, draft.players, match.homeGoals, match.awayGoals);
+          const awayChanges = userIsHome
+            ? halftimeAiChanges(away, awayLineup, draft.players, match.awayGoals, match.homeGoals)
+            : { lineup: awayLineup, events: [], incomingIds: [] as number[] };
+          const effectiveHomeLineup = homeChanges.lineup;
+          const effectiveAwayLineup = awayChanges.lineup;
+          const half = simulateHalf(home, away, draft.players, effectiveHomeLineup, effectiveAwayLineup, 46, 90, [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent, (match.yellowCardIds ?? []));
+          match.events.push(...homeChanges.events, ...awayChanges.events);
+          match.appearedPlayerIds = [...new Set([...(match.appearedPlayerIds ?? []), ...homeChanges.incomingIds, ...awayChanges.incomingIds])];
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
           match.half = 2;
@@ -350,12 +401,12 @@ export function GameProvider({ children }: { children: ReactNode }) {
           match.events.push(
             ...[
               ...half.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
-              ...half.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+              ...half.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : c.type === "second-yellow" ? "2Y" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
             ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
           );
           (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
           match.redCardIds = [...(match.redCardIds ?? []), ...half.cards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId)];
-          match.yellowCardIds = [...(match.yellowCardIds ?? []), ...half.cards.filter((c) => c.type === "yellow").map((c) => c.playerId)];
+          match.yellowCardIds = [...(match.yellowCardIds ?? []), ...half.cards.filter((c) => c.type === "yellow" || c.type === "second-yellow").map((c) => c.playerId)];
           match.secondYellowCardIds = [...(match.secondYellowCardIds ?? []), ...half.cards.filter((c) => c.type === "second-yellow").map((c) => c.playerId)];
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
