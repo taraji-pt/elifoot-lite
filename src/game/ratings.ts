@@ -16,11 +16,15 @@ export function teamRating(team: Team, players: Record<number, Player>): number 
 }
 
 /** Escolhe automaticamente o melhor onze segundo GAME_CONFIG.startingLineup. */
-export function bestLineup(playerIds: number[], players: Record<number, Player>): number[] {
+export function bestLineup(
+  playerIds: number[],
+  players: Record<number, Player>,
+  formation?: { DEF: number; MED: number; AV: number },
+): number[] {
   const squad = getPlayers(playerIds, players);
   const lineup: number[] = [];
   for (const pos of POSITION_ORDER) {
-    const needed = GAME_CONFIG.startingLineup[pos];
+    const needed = pos === "GR" ? 1 : formation?.[pos] ?? GAME_CONFIG.startingLineup[pos];
     const candidates = squad
       .filter((p) => p.position === pos)
       .sort((a, b) => b.rating - a.rating)
