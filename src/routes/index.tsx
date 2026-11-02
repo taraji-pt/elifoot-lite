@@ -1643,10 +1643,10 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
         {allRecords.length ? (
           <div className="mt-2 overflow-x-auto">
             <table className="w-full min-w-[420px] text-sm">
-              <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1">Época</th><th>Clube</th><th className="text-right">J</th><th className="text-right">G</th><th className="text-right">Rating</th></tr></thead>
+              <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1">Época</th><th>Clube</th><th className="text-right">J</th><th className="text-right">Liga</th><th className="text-right">Taça</th><th className="text-right">Rating</th></tr></thead>
               <tbody>{[...allRecords].reverse().map((record, index) => (
                 <tr key={`${record.season}-${index}`} className="border-t border-border">
-                  <td className="py-2 font-mono-num">{record.season}</td><td>{record.teamName}</td><td className="text-right font-mono-num">{record.appearances}</td><td className="text-right font-mono-num">{record.goalsLeague + record.goalsCup}</td><td className="text-right font-mono-num">{record.rating}</td>
+                  <td className="py-2 font-mono-num">{record.season}</td><td>{record.teamName}</td><td className="text-right font-mono-num">{record.appearances}</td><td className="text-right font-mono-num">{record.goalsLeague}</td><td className="text-right font-mono-num">{record.goalsCup}</td><td className="text-right font-mono-num">{record.rating}</td>
                 </tr>
               ))}</tbody>
             </table>
