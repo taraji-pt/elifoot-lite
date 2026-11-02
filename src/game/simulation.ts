@@ -89,10 +89,25 @@ export function simulateHalf(
     const missingAwayPlayers = Math.max(0, 11 - activeAwayLineup.length);
     const ratingHome = teamRating({ ...home, lineup: activeHomeLineup }, players) - missingHomePlayers * 4;
     const ratingAway = teamRating({ ...away, lineup: activeAwayLineup }, players) - missingAwayPlayers * 4;
-    const homeAttack = ratingHome + homeTacticalIntent * tacticalScale;
-    const homeDefence = ratingHome - homeTacticalIntent * tacticalScale;
-    const awayAttack = ratingAway + awayTacticalIntent * tacticalScale;
-    const awayDefence = ratingAway - awayTacticalIntent * tacticalScale;
+    const shapeEffect = (lineup: number[]) => {
+      const counts = { DEF: 0, MED: 0, AV: 0 };
+      for (const id of lineup) {
+        const position = players[id]?.position;
+        if (position === "DEF" || position === "MED" || position === "AV") counts[position] += 1;
+      }
+      // A identidade da formação resulta da distribuição real dos sectores:
+      // avançados aumentam a ameaça, defesas protegem a baliza e médios dão controlo.
+      return {
+        attack: (counts.AV - 2) * 1.8 + (counts.MED - 4) * 0.8 - (counts.DEF - 4) * 0.5,
+        defence: (counts.DEF - 4) * 1.7 + (counts.MED - 4) * 0.6 - (counts.AV - 2) * 0.8,
+      };
+    };
+    const homeShape = shapeEffect(activeHomeLineup);
+    const awayShape = shapeEffect(activeAwayLineup);
+    const homeAttack = ratingHome + homeShape.attack + homeTacticalIntent * tacticalScale;
+    const homeDefence = ratingHome + homeShape.defence - homeTacticalIntent * tacticalScale;
+    const awayAttack = ratingAway + awayShape.attack + awayTacticalIntent * tacticalScale;
+    const awayDefence = ratingAway + awayShape.defence - awayTacticalIntent * tacticalScale;
     const duration = intervalEnd - cursor + 1;
     const homeGoals = poisson(lambdaFor(homeAttack, awayDefence, true) * duration / fullDuration);
     const awayGoals = poisson(lambdaFor(awayAttack, homeDefence, false) * duration / fullDuration);
