@@ -48,7 +48,7 @@ interface GameContextValue {
   setCareerImage: (image: string | null) => void;
   load: () => void;
   deleteSave: () => void;
-  setLineup: (lineup: number[]) => void;
+  setLineup: (lineup: number[], formation?: { DEF: number; MED: number; AV: number }) => void;
   buy: (playerId: number) => void;
   sell: (playerId: number) => void;
   startMatch: () => void;
@@ -155,7 +155,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
         setSaveExists(false);
         setMessage(null);
       },
-      setLineup: (lineup: number[]) =>
+      setLineup: (lineup: number[], formation?: { DEF: number; MED: number; AV: number }) =>
         mutate((draft) => {
           const team = draft.teams[draft.userTeamId];
           if (!team) return;
@@ -168,9 +168,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
             if (position) counts[position] = (counts[position] ?? 0) + 1;
           }
           for (const position of ["GR", "DEF", "MED", "AV"] as const) {
-            if (counts[position] > GAME_CONFIG.startingLineup[position]) return `Só podes escolher ${GAME_CONFIG.startingLineup[position]} jogador(es) para a posição ${position}.`;
+            const maximum = formation?.[position as "DEF" | "MED" | "AV"] ?? (position === "GR" ? 1 : GAME_CONFIG.startingLineup[position]);
+            if (counts[position] > maximum) return `Só podes escolher ${maximum} jogador(es) para a posição ${position}.`;
           }
           team.lineup = unique;
+          if (formation) team.lineupFormation = { ...formation };
         }),
       buy: (playerId: number) => mutate((draft) => buyPlayer(draft, playerId)),
       sell: (playerId: number) => mutate((draft) => sellPlayer(draft, playerId)),
@@ -199,7 +201,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
             const position = draft.players[id]?.position;
             if (position) positionCounts[position] = (positionCounts[position] ?? 0) + 1;
           }
-          if ((["GR", "DEF", "MED", "AV"] as const).some((position) => positionCounts[position] !== GAME_CONFIG.startingLineup[position])) {
+          const requiredFormation = { GR: 1, DEF: draft.teams[draft.userTeamId]?.lineupFormation?.DEF ?? GAME_CONFIG.startingLineup.DEF, MED: draft.teams[draft.userTeamId]?.lineupFormation?.MED ?? GAME_CONFIG.startingLineup.MED, AV: draft.teams[draft.userTeamId]?.lineupFormation?.AV ?? GAME_CONFIG.startingLineup.AV };
+          if ((["GR", "DEF", "MED", "AV"] as const).some((position) => positionCounts[position] !== requiredFormation[position])) {
             return "O onze tem de respeitar as posições definidas na formação.";
           }
           const unavailablePlayerIds = [...(draft.teams[draft.userTeamId]?.playerIds ?? [])].filter((id) => (draft.suspensions?.[id] ?? 0) > 0);
