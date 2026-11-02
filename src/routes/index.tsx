@@ -1226,6 +1226,11 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
   const bench = sortSquad(
     getPlayers(team.playerIds.filter((id) => !match.userLineup.includes(id)), state.players),
   );
+  const currentShape = match.userLineup.reduce((counts, id) => {
+    const position = state.players[id]?.position;
+    if (position === "DEF" || position === "MED" || position === "AV") counts[position] += 1;
+    return counts;
+  }, { DEF: 0, MED: 0, AV: 0 });
 
   const parseEvent = (event: string) => {
     const [half, minute, teamId, ...rest] = event.split("|");
@@ -1383,7 +1388,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
         {phaseComplete && !match.finished && (
           <div className={`${card} space-y-3`}>
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="font-semibold">Abordagem táctica para a 2.ª parte</div>
+              <div className="font-semibold">Abordagem táctica para a 2.ª parte <span className="ml-1 text-xs font-normal text-muted-foreground">({currentShape.DEF} DEF · {currentShape.MED} MED · {currentShape.AV} AV)</span></div>
               <div className={`text-sm font-bold ${(match.tacticalIntent ?? 0) > 0 ? "text-orange-600 dark:text-orange-400" : (match.tacticalIntent ?? 0) < 0 ? "text-sky-600 dark:text-sky-400" : "text-muted-foreground"}`}>
                 {(match.tacticalIntent ?? 0) > 0 ? "Mais ofensiva" : (match.tacticalIntent ?? 0) < 0 ? "Mais defensiva" : "Equilibrada"} · {Math.abs(match.tacticalIntent ?? 0)}%
               </div>
@@ -1459,7 +1464,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
             <div className="mb-2 text-sm font-semibold">Suplentes — escolhe quem entra</div>
             <PlayerTable
               players={bench}
-              disabledIds={match.redCardIds ?? []}
+              disabledIds={[...new Set([...(match.redCardIds ?? []), ...(match.unavailablePlayerIds ?? [])])]}
               redCardIds={match.redCardIds ?? []}
               onPlayerClick={onPlayerClick}
               onClick={(id) => {
@@ -1468,7 +1473,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
                   setOutId(null);
                 }
               }}
-              action={(player) => (match.redCardIds ?? []).includes(player.id) ? "🟥 Expulso" : outId ? "Entrar" : ""}
+              action={(player) => (match.redCardIds ?? []).includes(player.id) ? "🟥 Expulso" : (match.unavailablePlayerIds ?? []).includes(player.id) ? "Suspenso" : outId ? "Entrar" : ""}
             />
           </div>
         </div>
@@ -1642,7 +1647,7 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
   const currentTeam = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(playerId));
   const currentGoals = state.scorerStats?.[playerId] ?? { league: 0, cup: 0 };
   const currentClubStats = state.playerClubSeasonStats?.[playerId] ?? {};
-  const currentRecords = Object.entries(currentClubStats).map(([teamId, stats]) => ({
+  const currentRecords: { season: string; teamId: number | null; teamName: string; appearances: number; goalsLeague: number; goalsCup: number; rating: number }[] = Object.entries(currentClubStats).map(([teamId, stats]) => ({
     season: seasonLabel(state.seasonYear),
     teamId: Number(teamId),
     teamName: state.teams[Number(teamId)]?.name ?? "Clube desconhecido",
