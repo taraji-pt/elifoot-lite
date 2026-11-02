@@ -1907,7 +1907,7 @@ function Calendar({ state }: { state: GameState }) {
     if (cup) entries.push({ type: "cup", round: index + 1, ...cup });
   });
   return (
-    <div className={`${card} max-w-3xl`}>
+    <div className={`${card} w-full`}>
       <div className="mb-2 font-semibold">Calendário</div>
       <table className="w-full text-sm"><tbody>
         {entries.map((entry) => {
