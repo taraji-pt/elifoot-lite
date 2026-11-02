@@ -1,6 +1,7 @@
 import { Flag } from "@/components/Flag";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { GAME_CONFIG } from "@/data/gameConfig";
 import { countryList, loadDatabase } from "@/data/db";
 import { COUNTRIES } from "@/data/countries";
@@ -1633,7 +1634,7 @@ function TeamSquadModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-6"
+      className="game-modal-backdrop fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4"
       role="dialog"
       aria-modal="true"
       aria-label={`Plantel de ${team.name}`}
