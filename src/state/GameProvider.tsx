@@ -206,7 +206,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const awayLineup = prepareTeamForMatch(draft, away, away.id === draft.userTeamId);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
           const first = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 1, 45);
-          const firstRedIds = first.cards.filter((c) => c.type === "red").map((c) => c.playerId);
+          const firstRedIds = first.cards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId);
           const second = simulateHalf(home, away, draft.players, homeLineup.filter((id) => !firstRedIds.includes(id)), awayLineup.filter((id) => !firstRedIds.includes(id)), 46, 90, firstRedIds, 0, 0, first.cards.filter((c) => c.type === "yellow").map((c) => c.playerId));
           const events = [
             ...first.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
