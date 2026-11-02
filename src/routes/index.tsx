@@ -1402,7 +1402,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
           </div>
         </div>
 
-        <div ref={eventsScrollRef} className="mx-auto h-48 max-w-xl overflow-y-auto overscroll-contain rounded-md border border-border bg-background/50 p-3 text-left">
+        <div ref={eventsScrollRef} className="mx-auto min-h-[70px] max-w-xl rounded-md border border-border bg-background/50 p-3 text-left">
           {visibleEvents.length ? (
             <ul className="space-y-1.5 text-sm">
               {visibleEvents.map((event, i) => {
