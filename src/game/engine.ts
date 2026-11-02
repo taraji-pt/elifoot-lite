@@ -53,7 +53,7 @@ function addScorerGoals(state: GameState, scorerIds: number[], competition: "lea
   }
 }
 
-export function recordMatchDiscipline(state: GameState, cards: { playerId: number; type: "yellow" | "red" }[]) {
+export function recordMatchDiscipline(state: GameState, cards: { playerId: number; type: "yellow" | "red" | "second-yellow" }[]) {
   if (!state.suspensions) state.suspensions = {};
   if (!state.yellowCards) state.yellowCards = {};
 
@@ -63,17 +63,18 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
       state.playerClubSeasonStats ??= {};
       const byClub = state.playerClubSeasonStats[card.playerId] ??= {};
       const stats = byClub[club.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0, yellowCards: 0, redCards: 0 };
-      if (card.type === "yellow") stats.yellowCards = (stats.yellowCards ?? 0) + 1;
-      else stats.redCards = (stats.redCards ?? 0) + 1;
+      if (card.type === "yellow" || card.type === "second-yellow") stats.yellowCards = (stats.yellowCards ?? 0) + 1;
+      if (card.type === "red" || card.type === "second-yellow") stats.redCards = (stats.redCards ?? 0) + 1;
     }
     let suspended = false;
 
-    if (card.type === "red") {
+    if (card.type === "red" || card.type === "second-yellow") {
       // O valor 2 faz com que a preparação do próximo jogo consuma 1,
       // deixando o jogador efetivamente de fora desse jogo.
-      state.suspensions[card.playerId] = 2;
+      state.suspensions[card.playerId] = card.type === "red" ? 2 : 1;
       suspended = true;
-    } else {
+    }
+    if (card.type === "yellow" || card.type === "second-yellow") {
       const next = (state.yellowCards[card.playerId] ?? 0) + 1;
       if (next >= 5) {
         state.yellowCards[card.playerId] = 0;
@@ -249,7 +250,10 @@ export function advanceRound(state: GameState) {
         recordMatchDiscipline(state, tie.yellowCardIds.map((playerId) => ({ playerId, type: "yellow" as const })));
       }
       if (tie.redCardIds?.length) {
-        recordMatchDiscipline(state, tie.redCardIds.map((playerId) => ({ playerId, type: "red" as const })));
+        recordMatchDiscipline(state, tie.redCardIds.filter((playerId) => !(tie.secondYellowCardIds ?? []).includes(playerId)).map((playerId) => ({ playerId, type: "red" as const })));
+      }
+      if (tie.secondYellowCardIds?.length) {
+        recordMatchDiscipline(state, tie.secondYellowCardIds.map((playerId) => ({ playerId, type: "second-yellow" as const })));
       }
     }
     if (state.cup.winnerId === state.userTeamId) {
