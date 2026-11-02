@@ -16,7 +16,7 @@ export interface MatchCard {
   playerId: number;
   playerName: string;
   minute: number;
-  type: "yellow" | "red";
+  type: "yellow" | "red" | "second-yellow";
 }
 
 export interface HalfResult {
@@ -51,6 +51,7 @@ export function simulateHalf(
   excludedPlayerIds: number[] = [],
   homeTacticalIntent = 0,
   awayTacticalIntent = 0,
+  previousYellowCardIds: number[] = [],
 ): HalfResult {
   const missingHomePlayers = Math.max(0, 11 - homeLineup.length);
   const missingAwayPlayers = Math.max(0, 11 - awayLineup.length);
@@ -80,7 +81,8 @@ export function simulateHalf(
   const cards: MatchCard[] = [];
   const candidates = [...homeLineup.map((id) => ({ id, teamId: home.id })), ...awayLineup.map((id) => ({ id, teamId: away.id }))]
     .filter((x) => !blocked.has(x.id));
-  const cardCount = randInt(1, 4);
+  // Em média, cerca de dois a três cartões por jogo; expulsões directas são raras.
+  const cardCount = randInt(0, 2);
   const used = new Set<number>();
   for (let i = 0; i < cardCount && candidates.length; i++) {
     const available = candidates.filter((x) => !used.has(x.id));
@@ -89,13 +91,9 @@ export function simulateHalf(
     used.add(chosen.id);
     const player = players[chosen.id];
     if (!player) continue;
-    cards.push({
-      teamId: chosen.teamId,
-      playerId: player.id,
-      playerName: player.name,
-      minute: randInt(minuteStart, minuteEnd),
-      type: Math.random() < 0.10 ? "red" : "yellow",
-    });
+    const secondYellow = previousYellowCardIds.includes(player.id);
+    const type = secondYellow ? "second-yellow" : Math.random() < 0.025 ? "red" : "yellow";
+    cards.push({ teamId: chosen.teamId, playerId: player.id, playerName: player.name, minute: randInt(minuteStart, minuteEnd), type });
   }
 
   scorers.sort((a, b) => a.minute - b.minute);
@@ -113,7 +111,7 @@ export function simulateMatch(
 ): { homeGoals: number; awayGoals: number; scorers: HalfResult["scorers"]; cards: MatchCard[] } {
   const h1 = simulateHalf(home, away, players, homeLineup, awayLineup, 1, 45);
   const redFirstHalf = h1.cards.filter((c) => c.type === "red").map((c) => c.playerId);
-  const h2 = simulateHalf(home, away, players, homeLineup, awayLineup, 46, 90, redFirstHalf);
+  const h2 = simulateHalf(home, away, players, homeLineup.filter((id) => !redFirstHalf.includes(id)), awayLineup.filter((id) => !redFirstHalf.includes(id)), 46, 90, redFirstHalf, 0, 0, h1.cards.filter((c) => c.type === "yellow").map((c) => c.playerId));
   return { homeGoals: h1.homeGoals + h2.homeGoals, awayGoals: h1.awayGoals + h2.awayGoals, scorers: [...h1.scorers, ...h2.scorers], cards: [...h1.cards, ...h2.cards] };
 }
 
