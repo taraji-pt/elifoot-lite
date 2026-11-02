@@ -942,20 +942,22 @@ function lineupCounts(ids: number[], players: Record<number, Player>) {
 function Squad({ state, team, onPlayerClick }: { state: GameState; team: Team; onPlayerClick: (playerId: number) => void }) {
   const { setLineup } = useGame();
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
-  const counts = lineupCounts(team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0), state.players);
+  // Limpa da seleção qualquer suspenso que ainda exista em saves antigos.
+  const activeLineup = team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0);
+  const counts = lineupCounts(activeLineup, state.players);
   const suspended = squad.filter((p) => (state.suspensions?.[p.id] ?? 0) > 0);
   const disabledIds = squad.filter((p) => {
     if ((state.suspensions?.[p.id] ?? 0) > 0) return true;
-    if (team.lineup.includes(p.id)) return false;
+    if (activeLineup.includes(p.id)) return false;
     return counts[p.position] >= GAME_CONFIG.startingLineup[p.position];
   }).map((p) => p.id);
   const toggle = (id: number) => {
     if ((state.suspensions?.[id] ?? 0) > 0) return;
-    if (team.lineup.includes(id)) setLineup(team.lineup.filter((x) => x !== id));
+    if (activeLineup.includes(id)) setLineup(activeLineup.filter((x) => x !== id));
     else {
       const player = state.players[id];
-      if (!player || counts[player.position] >= GAME_CONFIG.startingLineup[player.position] || team.lineup.length >= 11) return;
-      setLineup([...team.lineup, id]);
+      if (!player || counts[player.position] >= GAME_CONFIG.startingLineup[player.position] || activeLineup.length >= 11) return;
+      setLineup([...activeLineup, id]);
     }
   };
   return (
