@@ -267,10 +267,10 @@ export function GameProvider({ children }: { children: ReactNode }) {
           draft.match = {
             competition: playCup ? "cup" : "league", homeId: home.id, awayId: away.id,
             homeGoals, awayGoals, half: 2, userLineup: [...(draft.userTeamId === home.id ? homeChanges.lineup : awayChanges.lineup)], startingUserLineup: [...userLineup],
-            unavailablePlayerIds, tacticalIntent: 0, appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
+            unavailablePlayerIds, tacticalIntent: 0, appearedPlayerIds: [...new Set([...homeChanges.lineup, ...awayChanges.lineup])],
             subsUsed: 0, events, scorerIds: [...first.scorers, ...second.scorers].map((s) => s.playerId),
             redCardIds: allCards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId),
-            yellowCardIds: allCards.filter((c) => c.type === "yellow" || c.type === "second-yellow").map((c) => c.playerId),
+            yellowCardIds: allCards.filter((c) => c.type === "yellow").map((c) => c.playerId),
             secondYellowCardIds: allCards.filter((c) => c.type === "second-yellow").map((c) => c.playerId),
             finished: true,
             instantSimulation: true,
@@ -382,7 +382,12 @@ export function GameProvider({ children }: { children: ReactNode }) {
           match.userLineup = [...(userIsHome ? homeLineup : awayLineup)];
           const userTeam = draft.teams[draft.userTeamId];
           if (userTeam) userTeam.lineup = [...match.userLineup];
-          const userIntent = match.tacticalIntent ?? 0;
+          const homeLeads = match.homeGoals > match.awayGoals;
+          const awayLeads = match.awayGoals > match.homeGoals;
+          const scoreIntent = (leading: boolean, trailing: boolean) => leading ? -25 : trailing ? 25 : 0;
+          const userIntent = (match.tacticalIntent ?? 0) + scoreIntent(userIsHome ? homeLeads : awayLeads, userIsHome ? awayLeads : homeLeads);
+          const aiHomeIntent = scoreIntent(homeLeads, awayLeads);
+          const aiAwayIntent = scoreIntent(awayLeads, homeLeads);
           const homeChanges = userIsHome
             ? { lineup: homeLineup, events: [], incomingIds: [] as number[] }
             : halftimeAiChanges(home, homeLineup, draft.players, match.homeGoals, match.awayGoals);
@@ -391,7 +396,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             : { lineup: awayLineup, events: [], incomingIds: [] as number[] };
           const effectiveHomeLineup = homeChanges.lineup;
           const effectiveAwayLineup = awayChanges.lineup;
-          const half = simulateHalf(home, away, draft.players, effectiveHomeLineup, effectiveAwayLineup, 46, 90, [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent, (match.yellowCardIds ?? []));
+          const half = simulateHalf(home, away, draft.players, effectiveHomeLineup, effectiveAwayLineup, 46, 90, [], userIsHome ? userIntent : aiHomeIntent, userIsHome ? aiAwayIntent : userIntent, (match.yellowCardIds ?? []));
           match.events.push(...homeChanges.events, ...awayChanges.events);
           match.appearedPlayerIds = [...new Set([...(match.appearedPlayerIds ?? []), ...homeChanges.incomingIds, ...awayChanges.incomingIds])];
           match.homeGoals += half.homeGoals;
@@ -406,7 +411,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           );
           (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
           match.redCardIds = [...(match.redCardIds ?? []), ...half.cards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId)];
-          match.yellowCardIds = [...(match.yellowCardIds ?? []), ...half.cards.filter((c) => c.type === "yellow" || c.type === "second-yellow").map((c) => c.playerId)];
+          match.yellowCardIds = [...(match.yellowCardIds ?? []), ...half.cards.filter((c) => c.type === "yellow").map((c) => c.playerId)];
           match.secondYellowCardIds = [...(match.secondYellowCardIds ?? []), ...half.cards.filter((c) => c.type === "second-yellow").map((c) => c.playerId)];
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
