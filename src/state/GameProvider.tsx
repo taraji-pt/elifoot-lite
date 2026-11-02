@@ -226,6 +226,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             redCardIds: allCards.filter((c) => c.type === "red").map((c) => c.playerId),
             yellowCardIds: allCards.filter((c) => c.type === "yellow").map((c) => c.playerId),
             finished: true,
+            instantSimulation: true,
             ...(penaltyWinner !== undefined ? { cupPenaltyWinnerId: penaltyWinner } : {}),
           };
         }),
