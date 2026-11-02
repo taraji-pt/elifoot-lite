@@ -163,17 +163,23 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const unique = [...new Set(lineup)];
           if (unique.length !== lineup.length || unique.some((id) => !team.playerIds.includes(id))) return "Escolhe apenas jogadores do teu plantel.";
           if (unique.some((id) => (draft.suspensions?.[id] ?? 0) > 0)) return "Não podes incluir jogadores suspensos no onze.";
+          const activeFormation = formation ?? team.lineupFormation ?? {
+            DEF: GAME_CONFIG.startingLineup.DEF,
+            MED: GAME_CONFIG.startingLineup.MED,
+            AV: GAME_CONFIG.startingLineup.AV,
+          };
           const counts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
           for (const id of unique) {
             const position = draft.players[id]?.position;
             if (position) counts[position] = (counts[position] ?? 0) + 1;
           }
+          const maximums = { GR: 1, ...activeFormation };
           for (const position of ["GR", "DEF", "MED", "AV"] as const) {
-            const maximum = formation?.[position as "DEF" | "MED" | "AV"] ?? (position === "GR" ? 1 : GAME_CONFIG.startingLineup[position]);
+            const maximum = maximums[position];
             if (counts[position] > maximum) return `Só podes escolher ${maximum} jogador(es) para a posição ${position}.`;
           }
           team.lineup = unique;
-          if (formation) team.lineupFormation = { ...formation };
+          team.lineupFormation = { ...activeFormation };
         }),
       buy: (playerId: number) => mutate((draft) => buyPlayer(draft, playerId)),
       sell: (playerId: number) => mutate((draft) => sellPlayer(draft, playerId)),
