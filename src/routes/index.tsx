@@ -393,7 +393,7 @@ function StartingLineups({ home, away, state, onPlayerClick }: { home: Team; awa
             >
               {reverse ? (
                 <>
-                  <button type="button" className="font-club-name min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
+                  <button type="button" className="min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                   <Flag code={player.nationality} size={16} />
                   <span className="w-7 shrink-0 text-left font-mono-num text-xs text-muted-foreground">{player.position}</span>
                   <span className="w-5 shrink-0 text-right text-xs text-muted-foreground">{index + 1}</span>
@@ -403,7 +403,7 @@ function StartingLineups({ home, away, state, onPlayerClick }: { home: Team; awa
                   <span className="w-5 shrink-0 text-left text-xs text-muted-foreground">{index + 1}</span>
                   <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
                   <Flag code={player.nationality} size={16} />
-                  <button type="button" className="font-club-name min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
+                  <button type="button" className="min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                 </>
               )}
             </li>
