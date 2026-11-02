@@ -15,6 +15,7 @@ import { validateSquad } from "@/game/players";
 import { computeStandings } from "@/game/standings";
 import type { GameState, Player, Position, Team } from "@/game/types";
 import { compressCareerImage } from "@/game/careerImage";
+import { FORMATION_GROUPS } from "@/game/formations";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -949,14 +950,7 @@ function lineupCounts(ids: number[], players: Record<number, Player>) {
 
 function Squad({ state, team, onPlayerClick }: { state: GameState; team: Team; onPlayerClick: (playerId: number) => void }) {
   const { setLineup } = useGame();
-  const formations = [
-    { name: "4-4-2", DEF: 4, MED: 4, AV: 2 },
-    { name: "4-3-3", DEF: 4, MED: 3, AV: 3 },
-    { name: "4-2-3-1", DEF: 4, MED: 5, AV: 1 },
-    { name: "3-5-2", DEF: 3, MED: 5, AV: 2 },
-    { name: "3-4-3", DEF: 3, MED: 4, AV: 3 },
-    { name: "5-3-2", DEF: 5, MED: 3, AV: 2 },
-  ];
+  const formations = FORMATION_GROUPS;
   const selectedFormation = team.lineupFormation ?? { DEF: GAME_CONFIG.startingLineup.DEF, MED: GAME_CONFIG.startingLineup.MED, AV: GAME_CONFIG.startingLineup.AV };
   const chooseFormation = (formation: typeof formations[number]) => {
     const available = squad.filter((p) => (state.suspensions?.[p.id] ?? 0) <= 0);
@@ -989,11 +983,26 @@ function Squad({ state, team, onPlayerClick }: { state: GameState; team: Team; o
     <div className={card}>
       <div className="mb-3 rounded-lg border border-border/70 bg-background/20 p-3">
         <div className="mb-2 text-sm font-semibold">Formação táctica</div>
-        <div className="flex flex-wrap gap-2">
-          {formations.map((formation) => (
-            <button key={formation.name} type="button" className={selectedFormation.DEF === formation.DEF && selectedFormation.MED === formation.MED && selectedFormation.AV === formation.AV ? btn : btn2} onClick={() => chooseFormation(formation)}>
-              {formation.name}
-            </button>
+        <div className="grid gap-2 sm:grid-cols-3">
+          {formations.map((group) => (
+            <div key={group.name} className={`rounded-lg border p-2.5 ${group.containerClass}`}>
+              <div className={`mb-2 text-xs font-semibold uppercase tracking-wide ${group.labelClass}`}>{group.name}</div>
+              <div className="flex flex-wrap gap-2">
+                {group.formations.map((formation) => {
+                  const selected = selectedFormation.DEF === formation.DEF && selectedFormation.MED === formation.MED && selectedFormation.AV === formation.AV;
+                  return (
+                    <button
+                      key={formation.name}
+                      type="button"
+                      className={selected ? btn : `rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${group.buttonClass}`}
+                      onClick={() => chooseFormation(formation)}
+                    >
+                      {formation.name}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           ))}
         </div>
         <p className="mt-2 text-xs text-muted-foreground">Escolhe uma formação para selecionar automaticamente os melhores jogadores disponíveis em cada posição. Podes depois ajustar o onze manualmente.</p>
