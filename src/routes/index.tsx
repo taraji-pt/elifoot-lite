@@ -344,8 +344,9 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
               <span>{[team.city?.trim(), team.name].filter(Boolean).join(" · ")}</span>
             </div>
             {hasCapacity && (
-              <div className="mt-1 text-sm font-medium text-muted-foreground">
-                Capacidade: {team.capacity!.toLocaleString("pt-PT")} espectadores
+              <div className="mt-1 text-sm text-muted-foreground">
+                <span className="font-semibold">Capacidade:</span>{" "}
+                {team.capacity!.toLocaleString("pt-PT")} espectadores
               </div>
             )}
           </div>
@@ -570,9 +571,9 @@ function Game({ state }: { state: GameState }) {
             <div className="min-w-0 text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.75)]">
               <div className="font-club-name text-2xl font-semibold leading-none tracking-tight sm:text-3xl">
                 {team.name}
+                {team.founded ? <span className="ml-2">· Fundado em {team.founded}</span> : null}
               </div>
               <div className="mt-1.5 text-sm font-medium text-white/85">
-                {team.founded ? <>Fundado em {team.founded} · </> : null}
                 Época {seasonLabel(state.seasonYear)} · {divisionLabel(team.division)} · Jornada {state.round}/
                 {totalRounds(state)} · Rating {teamRating(team, state.players)}
               </div>
