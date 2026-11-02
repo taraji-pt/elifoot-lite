@@ -1915,7 +1915,7 @@ function Calendar({ state }: { state: GameState }) {
             const f = entry.fixture;
             return (
               <tr key={`league-${entry.round}`} className={`border-t border-border ${entry.round === state.round ? "bg-primary/10" : ""}`}>
-                <td className="w-20 py-2 pr-2 text-xs text-muted-foreground whitespace-nowrap">Jornada {entry.round}</td>
+                <td className="w-28 py-2 pr-2 text-xs text-muted-foreground whitespace-nowrap">Jornada {entry.round}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} className="w-full justify-start" /></td>
                 <td className="px-2 text-center font-mono-num whitespace-nowrap">{f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
@@ -1925,7 +1925,7 @@ function Calendar({ state }: { state: GameState }) {
           const tie = entry.tie;
           return (
             <tr key={`cup-${entry.index}`} className={`border-t border-border ${entry.round === state.round && tie.winnerId === null ? "bg-primary/10" : ""}`}>
-              <td className="w-20 py-2 pr-2 text-xs font-semibold text-muted-foreground whitespace-nowrap">🏆 {entry.name}</td>
+              <td className="w-28 py-2 pr-2 text-xs text-muted-foreground whitespace-nowrap">🏆 {entry.name}</td>
               <td><TeamIdentityWithFlag team={state.teams[tie.homeId] as Team} size={20} className="w-full justify-start" /></td>
               <td className="px-2 text-center font-mono-num whitespace-nowrap">
                 {tie.homeGoals === null || tie.awayGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}`}
