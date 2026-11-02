@@ -100,6 +100,16 @@ export interface GoalStats {
   cup: number;
 }
 
+export interface PlayerSeasonRecord {
+  season: string;
+  teamId: number | null;
+  teamName: string;
+  appearances: number;
+  goalsLeague: number;
+  goalsCup: number;
+  rating: number;
+}
+
 export interface PlayerDevelopment {
   playerId: number;
   previousRating: number;
@@ -176,6 +186,8 @@ export interface GameState {
   history: SeasonSummary[];
   /** golos acumulados na época em curso */
   scorerStats: Record<number, GoalStats>;
+  /** histórico de épocas, clubes e estatísticas por jogador */
+  playerSeasonHistory?: Record<number, PlayerSeasonRecord[]>;
   /** presenças acumuladas na época em curso */
   appearanceStats?: Record<number, number>;
   /** número de jogos que cada jogador ainda tem de cumprir por suspensão */
