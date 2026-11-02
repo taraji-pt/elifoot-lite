@@ -80,7 +80,8 @@ function runScenario(scenario: Scenario, seed: number): Metrics {
     const home = makeTeam(1, "Casa", scenario.homeRating, players);
     const away = makeTeam(2, "Fora", scenario.awayRating, players);
     const homeLineup = [...home.lineup];
-    const awayLineup = away.lineup.slice(0, scenario.awayPlayers);
+    const awayLineup = [...away.lineup];
+    const initialDismissals = away.lineup.slice(scenario.awayPlayers);
     let homeGoalsTotal = 0;
     let awayGoalsTotal = 0;
     let homeWins = 0;
@@ -91,12 +92,12 @@ function runScenario(scenario: Scenario, seed: number): Metrics {
     let matchesWithDismissal = 0;
 
     for (let match = 0; match < MATCHES_PER_SCENARIO; match++) {
-      const first = simulateHalf(home, away, players, homeLineup, awayLineup, 1, 45);
+      const first = simulateHalf(home, away, players, homeLineup, awayLineup, 1, 45, initialDismissals);
       const firstDismissals = first.cards
         .filter((card) => card.type === "red" || card.type === "second-yellow")
         .map((card) => card.playerId);
-      const secondHome = homeLineup.filter((id) => !firstDismissals.includes(id));
-      const secondAway = awayLineup.filter((id) => !firstDismissals.includes(id));
+      const secondHome = homeLineup;
+      const secondAway = awayLineup;
       const second = simulateHalf(
         home,
         away,
@@ -105,7 +106,7 @@ function runScenario(scenario: Scenario, seed: number): Metrics {
         secondAway,
         46,
         90,
-        firstDismissals,
+        [...initialDismissals, ...firstDismissals],
         0,
         0,
         first.cards.filter((card) => card.type === "yellow").map((card) => card.playerId),
