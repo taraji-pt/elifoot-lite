@@ -202,8 +202,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
             return "O onze tem de respeitar as posições definidas na formação.";
           }
           const unavailablePlayerIds = [...userTeam.playerIds].filter((id) => (draft.suspensions?.[id] ?? 0) > 0);
-          const homeLineup = prepareTeamForMatch(draft, home);
-          const awayLineup = prepareTeamForMatch(draft, away);
+          const homeLineup = prepareTeamForMatch(draft, home, home.id === draft.userTeamId);
+          const awayLineup = prepareTeamForMatch(draft, away, away.id === draft.userTeamId);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
           const first = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 1, 45);
           const second = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, first.cards.filter((c) => c.type === "red").map((c) => c.playerId));
@@ -260,8 +260,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
             return "O onze tem de respeitar as posições definidas na formação.";
           }
           const unavailablePlayerIds = [...(draft.teams[draft.userTeamId]?.playerIds ?? [])].filter((id) => (draft.suspensions?.[id] ?? 0) > 0);
-          const homeLineup = prepareTeamForMatch(draft, home);
-          const awayLineup = prepareTeamForMatch(draft, away);
+          const homeLineup = prepareTeamForMatch(draft, home, home.id === draft.userTeamId);
+          const awayLineup = prepareTeamForMatch(draft, away, away.id === draft.userTeamId);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
           const half = simulateHalf(draft.teams[homeId] as Team, draft.teams[awayId] as Team, draft.players, homeLineup, awayLineup, 1, 45);
           draft.match = {
