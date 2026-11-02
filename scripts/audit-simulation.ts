@@ -154,8 +154,11 @@ function percent(value: number) {
 const scenarios: Scenario[] = [
   { name: "Ratings iguais (70 vs 70)", homeRating: 70, awayRating: 70, awayPlayers: 11 },
   { name: "Pequena vantagem casa (73 vs 70)", homeRating: 73, awayRating: 70, awayPlayers: 11 },
+  { name: "Pequena vantagem fora (70 vs 73)", homeRating: 70, awayRating: 73, awayPlayers: 11 },
   { name: "Vantagem moderada casa (77 vs 70)", homeRating: 77, awayRating: 70, awayPlayers: 11 },
+  { name: "Vantagem moderada fora (70 vs 77)", homeRating: 70, awayRating: 77, awayPlayers: 11 },
   { name: "Grande vantagem casa (85 vs 60)", homeRating: 85, awayRating: 60, awayPlayers: 11 },
+  { name: "Grande vantagem fora (60 vs 85)", homeRating: 60, awayRating: 85, awayPlayers: 11 },
   { name: "Casa com 11 vs fora com 10", homeRating: 70, awayRating: 70, awayPlayers: 10 },
   { name: "Casa com 11 vs fora com 9", homeRating: 70, awayRating: 70, awayPlayers: 9 },
 ];
@@ -174,4 +177,4 @@ for (const row of results) {
   console.log(`|${row.scenario}|${row.avgGoals}|${row.avgHomeGoals}|${row.avgAwayGoals}|${row.homeWinsPct}%|${row.drawsPct}%|${row.awayWinsPct}%|${row.avgCards}|${row.avgDismissals}|${row.matchesWithDismissalPct}%|`);
 }
 console.log("");
-console.log("Nota: os cenários de 10 e 9 jogadores representam inferioridade numérica desde o início; não simulam uma expulsão ocorrida a meio do jogo. A influência temporal de expulsões durante o jogo fica coberta pela simulação cronológica do motor e deverá ser avaliada numa segunda bateria específica.");
+console.log("Nota: cada jogo usa o motor real simulateHalf, incluindo geração cronológica de cartões, vermelhos e segundos amarelos. Os cenários de 10 e 9 jogadores representam inferioridade desde o início; os restantes medem disciplina espontânea em jogos com ratings simétricos e assimétricos.");
