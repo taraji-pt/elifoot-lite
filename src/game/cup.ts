@@ -77,18 +77,20 @@ export function playCupRound(
     const home = teams[tie.homeId];
     const away = teams[tie.awayId];
     if (!home || !away) return tie;
-    const validLineup = (team: Team) => {
+    const validLineup = (lineup: number[]) => {
       const counts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
-      for (const id of team.lineup) {
+      for (const id of lineup) {
         const position = players[id]?.position;
         if (position) counts[position] = (counts[position] ?? 0) + 1;
       }
-      return team.lineup.length === 11 && (["GR", "DEF", "MED", "AV"] as const).every((position) => counts[position] === GAME_CONFIG.startingLineup[position]);
+      return lineup.length === 11 && (["GR", "DEF", "MED", "AV"] as const).every((position) => counts[position] === GAME_CONFIG.startingLineup[position]);
     };
     const availableHome = home.playerIds.filter((id) => (suspensions[id] ?? 0) <= 0);
     const availableAway = away.playerIds.filter((id) => (suspensions[id] ?? 0) <= 0);
-    const homeLineup = validLineup(home) ? home.lineup.filter((id) => availableHome.includes(id)) : bestLineup(availableHome, players);
-    const awayLineup = validLineup(away) ? away.lineup.filter((id) => availableAway.includes(id)) : bestLineup(availableAway, players);
+    const eligibleHomeLineup = home.lineup.filter((id) => availableHome.includes(id));
+    const eligibleAwayLineup = away.lineup.filter((id) => availableAway.includes(id));
+    const homeLineup = validLineup(eligibleHomeLineup) ? eligibleHomeLineup : bestLineup(availableHome, players);
+    const awayLineup = validLineup(eligibleAwayLineup) ? eligibleAwayLineup : bestLineup(availableAway, players);
     const result = simulateMatch(home, away, players, homeLineup, awayLineup);
     // A suspensão só é cumprida depois de o jogador ter sido excluído deste jogo.
     for (const id of home.playerIds) if ((suspensions[id] ?? 0) > 0) suspensions[id] = Math.max(0, suspensions[id] - 1);
