@@ -105,14 +105,25 @@ function run(minute: number, dismissals: number, seed: number): Result {
     let wins = 0, draws = 0, losses = 0, comebacks = 0, recoverOrHold = 0, trailingAtDismissal = 0;
     let goals = 0, goalsAfter = 0;
     for (let i = 0; i < MATCHES; i++) {
-      const before = simulateInterval(home, away, players, h, a, 1, minute - 1);
-      const after = simulateInterval(home, away, players, h, reducedAway, minute, 45);
-      const rest = simulateInterval(home, away, players, h, reducedAway, 46, 90);
-      const fh = before.homeGoals + after.homeGoals + rest.homeGoals;
-      const fa = before.awayGoals + after.awayGoals + rest.awayGoals;
-      const wasBehindAtDismissal = before.awayGoals < before.homeGoals;
+      // Divide o jogo em duas partes reais: 1–45 e 46–90.
+      // A expulsão só reduz a equipa a partir do minuto indicado.
+      const firstHalfBefore = simulateInterval(home, away, players, h, a, 1, Math.min(45, minute - 1));
+      const secondHalfBefore = minute > 45
+        ? simulateInterval(home, away, players, h, a, 46, minute - 1)
+        : { homeGoals: 0, awayGoals: 0 };
+      const after = minute <= 45
+        ? simulateInterval(home, away, players, h, reducedAway, minute, 45)
+        : simulateInterval(home, away, players, h, reducedAway, minute, 90);
+      const secondHalfAfter = minute <= 45
+        ? simulateInterval(home, away, players, h, reducedAway, 46, 90)
+        : { homeGoals: 0, awayGoals: 0 };
+      const beforeHome = firstHalfBefore.homeGoals + secondHalfBefore.homeGoals;
+      const beforeAway = firstHalfBefore.awayGoals + secondHalfBefore.awayGoals;
+      const fh = beforeHome + after.homeGoals + secondHalfAfter.homeGoals;
+      const fa = beforeAway + after.awayGoals + secondHalfAfter.awayGoals;
+      const wasBehindAtDismissal = beforeAway < beforeHome;
       goals += fh + fa;
-      goalsAfter += after.homeGoals + after.awayGoals + rest.homeGoals + rest.awayGoals;
+      goalsAfter += after.homeGoals + after.awayGoals + secondHalfAfter.homeGoals + secondHalfAfter.awayGoals;
       if (fa > fh) wins++;
       else if (fa === fh) draws++;
       else losses++;
@@ -138,7 +149,7 @@ function pct(n: number) { return round(n / MATCHES * 100, 2); }
 
 console.log("# Fase 3 — Bateria de expulsões a meio do jogo");
 console.log(`Amostra: ${MATCHES.toLocaleString("pt-PT")} jogos por cenário. Expulsões visitantes; ratings 70–70.`);
-console.log("Modelo: reprodução isolada da fórmula de golos atual, segmentada no minuto da expulsão; não altera nem importa efeitos secundários do jogo.");
+console.log("Modelo: reprodução isolada da fórmula de golos atual, respeitando as partes 1–45 e 46–90; não altera nem importa efeitos secundários do jogo.");
 console.log("");
 console.log("| Minuto | Expulsões | Golos/jogo | Vitória expulsa | Empate | Derrota expulsa | Recupera se perdia | Não perde | Golos após expulsão |");
 console.log("|---:|---:|---:|---:|---:|---:|---:|---:|---:|");
