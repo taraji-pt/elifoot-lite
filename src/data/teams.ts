@@ -21731,7 +21731,7 @@ export const TEAMS: TeamSeed[] = [
     "rating": 63,
     "badge": "/assets/badges/esperance-sportive-tunis.png",
     "primaryColor": "#F6B400",
-    "secondaryColor": "#080808",
+    "secondaryColor": "#CC1F27",
     "stadiumImage": "/assets/stadiums/esperance-sportive-tunis.jpg",
     "players": [
       {
