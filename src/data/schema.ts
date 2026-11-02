@@ -21,6 +21,10 @@ export interface TeamSeed {
   stadium?: string;
   /** cidade do estádio (opcional) */
   city?: string;
+  /** capacidade do estádio em espectadores (opcional) */
+  capacity?: number;
+  /** ano de fundação do clube (opcional) */
+  founded?: number;
   /** nome do ficheiro da foto em public/assets/stadiums (opcional) */
   stadiumImage?: string;
   /** força do clube 0-100 */
