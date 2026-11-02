@@ -193,12 +193,11 @@ body { font-family: "Zen Kaku Gothic New", system-ui, sans-serif; }
 }
 
 
-/* Popup surfaces stay fully opaque for legibility; glass transparency is reserved for the main UI. */
-[role="dialog"],
-[role="alertdialog"],
+/* Popup panels are solid; only the main game screens use the Liquid Glass treatment. */
+.game-modal-panel,
+[role="dialog"] [data-slot="dialog-content"],
+[role="alertdialog"] [data-slot="alert-dialog-content"],
 [data-radix-popper-content-wrapper] [data-slot="popover-content"],
-[data-slot="dialog-content"],
-[data-slot="alert-dialog-content"],
 [data-slot="popover-content"] {
   background-color: oklch(0.25 0.035 155) !important;
   -webkit-backdrop-filter: none !important;
