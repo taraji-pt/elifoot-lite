@@ -1112,7 +1112,7 @@ function PlayerTable({
 
 function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (playerId: number) => void }) {
   const [stadiumOpen, setStadiumOpen] = useState(false);
-  const { startMatch, substitute, setTacticalIntent, playSecondHalf, finishMatch } = useGame();
+  const { startMatch, simulateMatch, substitute, setTacticalIntent, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
   const [flashEvent, setFlashEvent] = useState<string | null>(null);
@@ -1243,9 +1243,10 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
         <StartingLineups home={home} away={away} state={state} onPlayerClick={onPlayerClick} />
 
         {!ok && <p className="mb-3 mt-4 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
-        <button className={btn + " mt-4"} disabled={!ok} onClick={startMatch}>
-          Jogar jogo
-        </button>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          <button className={btn} disabled={!ok} onClick={startMatch}>Jogar jogo</button>
+          <button className={btn2} disabled={!ok} onClick={simulateMatch}>Simular jogo</button>
+        </div>
       </div>
     );
   }
@@ -1867,10 +1868,16 @@ function DivisionPicker({ value, onChange }: { value: number; onChange: (d: numb
 function Calendar({ state }: { state: GameState }) {
   const team = userTeam(state);
   const rounds = state.leagues[team.division] ?? [];
+  const cupMatches = state.cup.rounds.flatMap((round, roundIndex) =>
+    round.ties
+      .filter((tie) => tie.homeId === team.id || tie.awayId === team.id)
+      .map((tie) => ({ ...tie, roundName: round.name, roundIndex })),
+  );
   return (
-    <div className={`${card} max-w-2xl`}>
-      <table className="w-full text-sm">
-        <tbody>
+    <div className="max-w-2xl space-y-5">
+      <div className={card}>
+        <div className="mb-2 font-semibold">Liga</div>
+        <table className="w-full text-sm"><tbody>
           {rounds.map((round, i) => {
             const f = round.find((x) => x.homeId === team.id || x.awayId === team.id);
             if (!f) return null;
@@ -1878,15 +1885,31 @@ function Calendar({ state }: { state: GameState }) {
               <tr key={i} className={`border-t border-border ${i + 1 === state.round ? "bg-primary/10" : ""}`}>
                 <td className="py-1.5 font-mono-num text-xs text-muted-foreground">J{i + 1}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} className="w-full justify-start" /></td>
-                <td className="px-3 text-center font-mono-num">
-                  {f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}
-                </td>
+                <td className="px-3 text-center font-mono-num">{f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
               </tr>
             );
           })}
-        </tbody>
-      </table>
+        </tbody></table>
+      </div>
+      <div className={card}>
+        <div className="mb-2 font-semibold">🏆 Taça</div>
+        {cupMatches.length ? (
+          <table className="w-full text-sm"><tbody>
+            {cupMatches.map((tie) => (
+              <tr key={tie.roundIndex} className={`border-t border-border ${tie.roundIndex === state.cup.currentRound && tie.winnerId === null ? "bg-primary/10" : ""}`}>
+                <td className="py-1.5 pr-2 text-xs text-muted-foreground">{tie.roundName}</td>
+                <td><TeamIdentityWithFlag team={state.teams[tie.homeId] as Team} size={20} className="w-full justify-start" /></td>
+                <td className="px-3 text-center font-mono-num whitespace-nowrap">
+                  {tie.homeGoals === null || tie.awayGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}`}
+                  {tie.penalties ? <span className="ml-1 text-xs text-muted-foreground">(P)</span> : null}
+                </td>
+                <td><TeamIdentityWithFlag team={state.teams[tie.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
+              </tr>
+            ))}
+          </tbody></table>
+        ) : <p className="text-sm text-muted-foreground">Ainda não há jogos da Taça para este clube.</p>}
+      </div>
     </div>
   );
 }
