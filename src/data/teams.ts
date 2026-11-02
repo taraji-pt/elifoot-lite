@@ -25086,17 +25086,17 @@ export const TEAMS: TeamSeed[] = [
   },
   {
     "id": 334,
-    "name": "Sporting CP",
+    "name": "Sporting Clube de Portugal",
     "country": "POR",
     "stadium": "Estádio José Alvalade",
     "city": "Lisbon",
     "rating": 79,
-    "capacity": 52,
+    "capacity": 52000,
     "founded": 1906,
-    "badge": "/assets/badges/sporting-clube-de-portugal.webp",
+    "badge": "/assets/badges/scp.webp",
     "primaryColor": "#186239",
     "secondaryColor": "#FFFFFF",
-    "stadiumImage": "/assets/stadiums/sporting-clube-de-portugal.jpg",
+    "stadiumImage": "/assets/stadiums/ALVALADE.webp",
     "players": [
       {
         "name": "Rui Silva",
