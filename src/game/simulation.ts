@@ -49,12 +49,19 @@ export function simulateHalf(
   minuteStart = 1,
   minuteEnd = 45,
   excludedPlayerIds: number[] = [],
+  homeTacticalIntent = 0,
+  awayTacticalIntent = 0,
 ): HalfResult {
   const ratingHome = teamRating({ ...home, lineup: homeLineup }, players);
   const ratingAway = teamRating({ ...away, lineup: awayLineup }, players);
 
-  const homeGoals = poisson(lambdaFor(ratingHome, ratingAway, true));
-  const awayGoals = poisson(lambdaFor(ratingAway, ratingHome, false));
+  const tacticalScale = 0.025; // intensidade máxima altera o rating em 2,5 pontos
+  const homeAttack = ratingHome + homeTacticalIntent * tacticalScale;
+  const homeDefence = ratingHome - homeTacticalIntent * tacticalScale;
+  const awayAttack = ratingAway + awayTacticalIntent * tacticalScale;
+  const awayDefence = ratingAway - awayTacticalIntent * tacticalScale;
+  const homeGoals = poisson(lambdaFor(homeAttack, awayDefence, true));
+  const awayGoals = poisson(lambdaFor(awayAttack, homeDefence, false));
   const blocked = new Set(excludedPlayerIds);
 
   const scorers: HalfResult["scorers"] = [];
