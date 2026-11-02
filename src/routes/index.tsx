@@ -326,9 +326,9 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
     [team.city?.trim(), COUNTRIES[team.country]?.name ?? team.country].filter(Boolean).join(", "),
   );
 
-  return (
+  return createPortal(
     <div
-      className="game-modal-backdrop fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/70 p-4"
+      className="game-modal-backdrop fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4"
       role="dialog"
       aria-modal="true"
       aria-label={`Estádio de ${team.name}`}
@@ -380,7 +380,8 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -1632,7 +1633,7 @@ function TeamSquadModal({
   const rating = teamRating(team, state.players);
   const [viewPlayerId, setViewPlayerId] = useState<number | null>(null);
 
-  return (
+  return createPortal(
     <div
       className="game-modal-backdrop fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4"
       role="dialog"
@@ -1689,7 +1690,8 @@ function TeamSquadModal({
         )}
       </div>
       {viewPlayerId !== null && <PlayerProfileModal state={state} playerId={viewPlayerId} onClose={() => setViewPlayerId(null)} />}
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -1730,8 +1732,8 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
     redCards: sum.redCards + (item.redCards ?? 0),
   }), { appearances: 0, goals: 0, yellowCards: 0, redCards: 0 });
 
-  return (
-    <div className="game-modal-backdrop fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-black/70 p-4" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
+  return createPortal(
+    <div className="game-modal-backdrop fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-black/70 p-4" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
       <div className="game-modal-panel max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5" onClick={(event) => event.stopPropagation()}>
         <div
           className="relative -mx-4 -mt-4 mb-4 overflow-hidden rounded-t-xl border-b border-white/15 px-4 py-4 sm:-mx-5 sm:-mt-5 sm:px-5"
@@ -1794,7 +1796,8 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
         ) : <p className="mt-2 text-sm text-muted-foreground">Ainda não há épocas concluídas registadas.</p>}
         <div className="mt-3 text-xs text-muted-foreground">Os jogos incluem Liga e Taça. As presenças contam sempre que o jogador entra em campo.</div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
