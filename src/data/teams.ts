@@ -21146,10 +21146,12 @@ export const TEAMS: TeamSeed[] = [
     "country": "TUN",
     "stadium": "Stade Abdelaziz Chtioui",
     "city": "La Marsa",
+    "capacity": 10000,
+    "founded": 1939,
     "rating": 52,
     "badge": "/assets/badges/avenir-sportif-de-la-marsa.png",
-    "primaryColor": "#00843D",
-    "secondaryColor": "#FFFFFF",
+    "primaryColor": "#39AC52",
+    "secondaryColor": "#FFF600",
     "stadiumImage": "/assets/stadiums/avenir-sportif-de-la-marsa.jpg",
     "players": [
       {
@@ -21261,8 +21263,10 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Olympique Hammadi Agrebi",
     "city": "Tunis",
     "rating": 58,
+     "capacity": 75000,
+    "founded": 1920,
     "badge": "/assets/badges/club-africain.png",
-    "primaryColor": "#D71920",
+    "primaryColor": "#DE1820",
     "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/club-africain.jpg",
     "players": [
@@ -21374,10 +21378,12 @@ export const TEAMS: TeamSeed[] = [
     "country": "TUN",
     "stadium": "Stade du 15 Octobre",
     "city": "Bizerte",
+     "capacity": 26000,
+    "founded": 1928
     "rating": 52,
     "badge": "/assets/badges/club-athletique-bizertin.png",
-    "primaryColor": "#F7D117",
-    "secondaryColor": "#000000",
+    "primaryColor": "#FFCD00",
+    "secondaryColor": "#080808",
     "stadiumImage": "/assets/stadiums/club-athletique-bizertin.jpg",
     "players": [
       {
@@ -21489,8 +21495,10 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Municipal de Hammam-Lif",
     "city": "Hammam-Lif",
     "rating": 50,
+     "capacity": 15000,
+    "founded": 1944,
     "badge": "/assets/badges/club-sportif-hammam-lif.png",
-    "primaryColor": "#00843D",
+    "primaryColor": "#008362",
     "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/club-sportif-hammam-lif.jpg",
     "players": [
@@ -21602,9 +21610,11 @@ export const TEAMS: TeamSeed[] = [
     "country": "TUN",
     "stadium": "Stade Taïeb Mhiri",
     "city": "Sfax",
+     "capacity": 16750,
+    "founded": 1928,
     "rating": 59,
     "badge": "/assets/badges/club-sportif-sfaxien.png",
-    "primaryColor": "#000000",
+    "primaryColor": "#080808",
     "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/club-sportif-sfaxien.jpg",
     "players": [
@@ -21713,13 +21723,15 @@ export const TEAMS: TeamSeed[] = [
   {
     "id": 305,
     "name": "Espérance Sportive de Tunis",
+     "capacity": 75000,
+    "founded": 1919,
     "country": "TUN",
     "stadium": "Stade Olympique Hammadi Agrebi",
     "city": "Tunis",
     "rating": 63,
     "badge": "/assets/badges/esperance-sportive-tunis.png",
-    "primaryColor": "#E31E24",
-    "secondaryColor": "#F7D117",
+    "primaryColor": "#F6B400",
+    "secondaryColor": "#080808",
     "stadiumImage": "/assets/stadiums/esperance-sportive-tunis.jpg",
     "players": [
       {
@@ -21832,8 +21844,10 @@ export const TEAMS: TeamSeed[] = [
     "city": "Zarzis",
     "rating": 52,
     "badge": "/assets/badges/esperance-sportive-zarzis.png",
-    "primaryColor": "#00843D",
-    "secondaryColor": "#FFFFFF",
+    "primaryColor": "#E60000",
+     "capacity": 10000,
+    "founded": 1934,
+    "secondaryColor": "#FFF600",
     "stadiumImage": "/assets/stadiums/esperance-sportive-zarzis.jpg",
     "players": [
       {
@@ -21945,9 +21959,11 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Municipal Bou Ali-Lahouar",
     "city": "Hammam Sousse",
     "rating": 48,
+     "capacity": 10000,
+    "founded": 1957,
     "badge": "/assets/badges/espoir-sportif-hammam-sousse.png",
-    "primaryColor": "#F7D117",
-    "secondaryColor": "#000000",
+    "primaryColor": "#FFF600",
+    "secondaryColor": "#080808",
     "stadiumImage": "/assets/stadiums/espoir-sportif-hammam-sousse.jpg",
     "players": [
       {
@@ -22059,9 +22075,11 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Olympique de Métlaoui",
     "city": "Métlaoui",
     "rating": 49,
+     "capacity": 8000,
+    "founded": 1950,
     "badge": "/assets/badges/etoile-sportive-metlaoui.png",
-    "primaryColor": "#F7D117",
-    "secondaryColor": "#000000",
+    "primaryColor": "#FFF600",
+    "secondaryColor": "#E60000",
     "stadiumImage": "/assets/stadiums/etoile-sportive-metlaoui.jpg",
     "players": [
       {
@@ -22174,7 +22192,9 @@ export const TEAMS: TeamSeed[] = [
     "city": "Sousse",
     "rating": 55,
     "badge": "/assets/badges/etoile-sportive-sahel.png",
-    "primaryColor": "#E31E24",
+     "capacity": 60000,
+    "founded": 1925,
+    "primaryColor": "#E60000",
     "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/etoile-sportive-sahel.jpg",
     "players": [
@@ -22287,9 +22307,11 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Chedli Zouiten",
     "city": "Tunis",
     "rating": 50,
+     "capacity": 20000,
+    "founded": 1943,
     "badge": "/assets/badges/jeunesse-sportive-el-omrane.png",
-    "primaryColor": "#00843D",
-    "secondaryColor": "#FFFFFF",
+    "primaryColor": "#0052D5",
+    "secondaryColor": "#FFF600",
     "stadiumImage": "/assets/stadiums/jeunesse-sportive-el-omrane.jpg",
     "players": [
       {
@@ -22401,9 +22423,11 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Boujemaa Kmiti",
     "city": "Béja",
     "rating": 51,
+     "capacity": 10000,
+    "founded": 1929,
     "badge": "/assets/badges/olympique-beja.png",
-    "primaryColor": "#E31E24",
-    "secondaryColor": "#FFFFFF",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#E60000",
     "stadiumImage": "/assets/stadiums/olympique-beja.jpg",
     "players": [
       {
@@ -22515,8 +22539,10 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Municipal de Sakiet Eddaier",
     "city": "Sakiet Eddaier",
     "rating": 50,
+     "capacity": 500,
+    "founded": 1965,
     "badge": "/assets/badges/progres-sportif-sakiet-eddaier.png",
-    "primaryColor": "#00843D",
+    "primaryColor": "#00319C",
     "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/progres-sportif-sakiet-eddaier.jpg",
     "players": [
@@ -22629,9 +22655,11 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Hedi Enneifer",
     "city": "Le Bardo",
     "rating": 55,
+     "capacity": 12000,
+    "founded": 1948,
     "badge": "/assets/badges/stade-tunisien.png",
-    "primaryColor": "#00843D",
-    "secondaryColor": "#E31E24",
+    "primaryColor": "#006231",
+    "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/stade-tunisien.jpg",
     "players": [
       {
@@ -22743,9 +22771,11 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade Municipal 7 Mars",
     "city": "Ben Guerdane",
     "rating": 50,
+     "capacity": 15000,
+    "founded": 1945,
     "badge": "/assets/badges/union-sportive-ben-guerdane.png",
-    "primaryColor": "#F7D117",
-    "secondaryColor": "#000000",
+    "primaryColor": "#FFF600",
+    "secondaryColor": "#080808",
     "stadiumImage": "/assets/stadiums/union-sportive-ben-guerdane.jpg",
     "players": [
       {
@@ -22856,10 +22886,12 @@ export const TEAMS: TeamSeed[] = [
     "country": "TUN",
     "stadium": "Stade Mustapha Ben Jannet",
     "city": "Monastir",
+     "capacity": 20000,
+    "founded": 1923,
     "rating": 53,
     "badge": "/assets/badges/union-sportive-monastirienne.png",
-    "primaryColor": "#0066B3",
-    "secondaryColor": "#FFFFFF",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#005AC5",
     "stadiumImage": "/assets/stadiums/union-sportive-monastirienne.jpg",
     "players": [
       {
