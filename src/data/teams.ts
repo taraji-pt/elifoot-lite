@@ -23227,5 +23227,2094 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "ISR"
     }
   ]
-}
+},
+[
+  {
+    "id": 318,
+    "name": "Ac. Viseu",
+    "country": "POR",
+    "stadium": "Estádio Municipal do Fontelo",
+    "city": "Viseu",
+    "rating": 64,
+    "capacity": 8,
+    "founded": 1914,
+    "badge": "/assets/badges/academico-de-viseu-futebol-clube.webp",
+    "primaryColor": "#080808",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/academico-de-viseu-futebol-clube.jpg",
+    "players": [
+      {
+        "name": "Ewerton",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Juan Soriano",
+        "position": "GR",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Nikos Michelis",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Soufiane Messeguem",
+        "position": "DEF",
+        "nationality": "GER"
+      },
+      {
+        "name": "Robinho",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Anthony Correia",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Valery",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Luís Silva",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Cihan Kahraman",
+        "position": "MED",
+        "nationality": "TUR"
+      },
+      {
+        "name": "João Guilherme",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Lorougnon Gohi",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Cristian Ferreira",
+        "position": "MED",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Álvaro Zamora",
+        "position": "MED",
+        "nationality": "CRC"
+      },
+      {
+        "name": "Paulinho",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "André Clovis",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Mohammed Bouldini",
+        "position": "AV",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Linson Chiquemba",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Tomás Viegas",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Marcus Kouam",
+        "position": "AV",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Aleix Enríquez",
+        "position": "AV",
+        "nationality": "ESP"
+      }
+    ]
+  },
+  {
+    "id": 319,
+    "name": "Casa Pia",
+    "country": "POR",
+    "stadium": "Estádio Pina Manique",
+    "city": "Lisbon",
+    "rating": 63,
+    "capacity": 2,
+    "founded": 1920,
+    "badge": "/assets/badges/casa-pia-atletico-clube.webp",
+    "primaryColor": "#080808",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/casa-pia-atletico-clube.jpg",
+    "players": [
+      {
+        "name": "Patrick Sequeira",
+        "position": "GR",
+        "nationality": "CRC"
+      },
+      {
+        "name": "André Gomes",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "David Sousa",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Selvi",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Khaly",
+        "position": "DEF",
+        "nationality": "ANG"
+      },
+      {
+        "name": "Pedro Rosas",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Abdu Conté",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Lawrence Ofori",
+        "position": "DEF",
+        "nationality": "GHA"
+      },
+      {
+        "name": "Jérémy Livolant",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "João Rego",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Korede Osundina",
+        "position": "MED",
+        "nationality": "USA"
+      },
+      {
+        "name": "Mohamed Salah",
+        "position": "MED",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Benjamin Pauwels",
+        "position": "MED",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Rochinha",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Cassiano",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Henrique Araújo",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Alassana Jatta",
+        "position": "AV",
+        "nationality": "GAM"
+      },
+      {
+        "name": "Clau Mendes",
+        "position": "AV",
+        "nationality": "GNB"
+      },
+      {
+        "name": "Evans Maurin",
+        "position": "AV",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Aymen Zouin",
+        "position": "AV",
+        "nationality": "ITA"
+      }
+    ]
+  },
+  {
+    "id": 320,
+    "name": "Estrela da Amadora SAD",
+    "country": "POR",
+    "stadium": "Estádio José Gomes",
+    "city": "Amadora",
+    "rating": 65,
+    "capacity": 15,
+    "founded": 2020,
+    "badge": "/assets/badges/club-football-estrela-da-amadora-sad.webp",
+    "primaryColor": "#005A41",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/club-football-estrela-da-amadora-sad.jpg",
+    "players": [
+      {
+        "name": "Léo Linck",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Dudu",
+        "position": "GR",
+        "nationality": "GER"
+      },
+      {
+        "name": "Stefan Leković",
+        "position": "DEF",
+        "nationality": "SRB"
+      },
+      {
+        "name": "Eddy Doué",
+        "position": "DEF",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Max Scholze",
+        "position": "DEF",
+        "nationality": "GER"
+      },
+      {
+        "name": "Rafa Soares",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Luan Patrick",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Joan Jordán",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Abraham Marcus",
+        "position": "MED",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Ianis Stoica",
+        "position": "MED",
+        "nationality": "ROU"
+      },
+      {
+        "name": "Jeremy Arévalo",
+        "position": "MED",
+        "nationality": "ECU"
+      },
+      {
+        "name": "Lovro Zvonarek",
+        "position": "MED",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Bénito",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Robinho",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Leandro Antonetti",
+        "position": "AV",
+        "nationality": "PUR"
+      },
+      {
+        "name": "Sydney van Hooijdonk",
+        "position": "AV",
+        "nationality": "NED"
+      },
+      {
+        "name": "René Mitongo",
+        "position": "AV",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Ekanga Ondoa",
+        "position": "AV",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Henrique Poniewas",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Ziad Ayoub",
+        "position": "AV",
+        "nationality": "EGY"
+      }
+    ]
+  },
+  {
+    "id": 321,
+    "name": "MRT",
+    "country": "POR",
+    "stadium": "Estádio do Marítimo",
+    "city": "Funchal",
+    "rating": 63,
+    "capacity": 10,
+    "founded": 1910,
+    "badge": "/assets/badges/club-sport-maritimo-sad.webp",
+    "primaryColor": "#297B52",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/club-sport-maritimo-sad.jpg",
+    "players": [
+      {
+        "name": "Fran Vieites",
+        "position": "GR",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Alfonso Pastor",
+        "position": "GR",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Raphael Guzzo",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Romain Correia",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Paulo Henrique",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Vladan Danilović",
+        "position": "DEF",
+        "nationality": "BIH"
+      },
+      {
+        "name": "Rodrigo Andrade",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Yellu Santiago",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Martín Tejón",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Maxime Dominguez",
+        "position": "MED",
+        "nationality": "SUI"
+      },
+      {
+        "name": "Simo",
+        "position": "MED",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Bryan Limbombe",
+        "position": "MED",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Samuel Bamba",
+        "position": "MED",
+        "nationality": "GER"
+      },
+      {
+        "name": "Enrique Peña Zauner",
+        "position": "MED",
+        "nationality": "VEN"
+      },
+      {
+        "name": "Adrián Butzke",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Maurice Boakye",
+        "position": "AV",
+        "nationality": "GER"
+      },
+      {
+        "name": "Sidney Osei",
+        "position": "AV",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Mons Bassouamina",
+        "position": "AV",
+        "nationality": "CGO"
+      },
+      {
+        "name": "José Melro",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Weslley Brito",
+        "position": "AV",
+        "nationality": "BRA"
+      }
+    ]
+  },
+  {
+    "id": 322,
+    "name": "Nacional da Madeira",
+    "country": "POR",
+    "stadium": "Estádio da Madeira",
+    "city": "Funchal",
+    "rating": 63,
+    "capacity": 5,
+    "founded": 1910,
+    "badge": "/assets/badges/clube-desportivo-nacional.webp",
+    "primaryColor": "#080808",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/clube-desportivo-nacional.jpg",
+    "players": [
+      {
+        "name": "Renato Marin",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "João Gonçalves",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "Liziero",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Léo Santos",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Zé Vitor",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Matheus Dias",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "José Gomes",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "William Kokolo",
+        "position": "DEF",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Song Min-Kyu",
+        "position": "MED",
+        "nationality": "KOR"
+      },
+      {
+        "name": "Miguel Baeza",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Filipe Soares",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Chiheb Labidi",
+        "position": "MED",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Matchoi Djaló",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Daniel Júnior",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Allen Obando",
+        "position": "AV",
+        "nationality": "ECU"
+      },
+      {
+        "name": "Abdel Kader Njoya",
+        "position": "AV",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Fernando Nava",
+        "position": "AV",
+        "nationality": "BOL"
+      },
+      {
+        "name": "Iseppe",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Pablo Ruan",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Bruno Ciscati",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 323,
+    "name": "Alverca SAD",
+    "country": "POR",
+    "stadium": "Complexo Desportivo do Alverca",
+    "city": "Alverca do Ribatejo",
+    "rating": 65,
+    "capacity": 7,
+    "founded": 2020,
+    "badge": "/assets/badges/futebol-clube-de-alverca-sad.webp",
+    "primaryColor": "#0041BD",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/futebol-clube-de-alverca-sad.jpg",
+    "players": [
+      {
+        "name": "Matheus Mendes",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Jhonatan",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Diogo Spencer",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Zé Rafael",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Bastien Meupiyou",
+        "position": "DEF",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Isaac James",
+        "position": "DEF",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Rayan Lucas",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Steven Baseya",
+        "position": "DEF",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Chiquinho",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Figueiredo",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Léo Chú",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Davy Gui",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Ian Luccas",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Matheus França",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Dawda Camara",
+        "position": "AV",
+        "nationality": "MTN"
+      },
+      {
+        "name": "Vivaldo Semedo",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Samy Merheg",
+        "position": "AV",
+        "nationality": "LBN"
+      },
+      {
+        "name": "Felipe Lima",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "André Vidigal",
+        "position": "AV",
+        "nationality": "ANG"
+      },
+      {
+        "name": "Cédric Nuozzi",
+        "position": "AV",
+        "nationality": "BEL"
+      }
+    ]
+  },
+  {
+    "id": 324,
+    "name": "Arouca",
+    "country": "POR",
+    "stadium": "Estádio Municipal de Arouca",
+    "city": "Arouca",
+    "rating": 67,
+    "capacity": 5,
+    "founded": 1952,
+    "badge": "/assets/badges/futebol-clube-de-arouca.webp",
+    "primaryColor": "#FFF600",
+    "secondaryColor": "#0031A4",
+    "stadiumImage": "/assets/stadiums/futebol-clube-de-arouca.jpg",
+    "players": [
+      {
+        "name": "Ignacio de Arruabarrena",
+        "position": "GR",
+        "nationality": "URU"
+      },
+      {
+        "name": "Jakub Vinarčík",
+        "position": "GR",
+        "nationality": "SVK"
+      },
+      {
+        "name": "Taichi Fukui",
+        "position": "DEF",
+        "nationality": "JPN"
+      },
+      {
+        "name": "Javi Sánchez",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Espen van Ee",
+        "position": "DEF",
+        "nationality": "NED"
+      },
+      {
+        "name": "Jose Fontán",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Tiago Esgaio",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Pedro Santos",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Naïs Djouahra",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Lee Hyun-Ju",
+        "position": "MED",
+        "nationality": "KOR"
+      },
+      {
+        "name": "Alfonso Trezza",
+        "position": "MED",
+        "nationality": "URU"
+      },
+      {
+        "name": "Pablo Gozálbez",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Miguel Puche",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Gabriel Rukavina",
+        "position": "MED",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Iván Barbero",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Dylan Nandín",
+        "position": "AV",
+        "nationality": "URU"
+      },
+      {
+        "name": "Fally Mayulu",
+        "position": "AV",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Romualdas Jansonas",
+        "position": "AV",
+        "nationality": "LTU"
+      },
+      {
+        "name": "Brian Mansilla",
+        "position": "AV",
+        "nationality": "URU"
+      },
+      {
+        "name": "Costinha",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 325,
+    "name": "Famalicão",
+    "country": "POR",
+    "stadium": "Estádio Municipal 22 de Junho",
+    "city": "Vila Nova de Famalicão",
+    "rating": 68,
+    "capacity": 5,
+    "founded": 1931,
+    "badge": "/assets/badges/futebol-clube-de-famalicao.webp",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#002052",
+    "stadiumImage": "/assets/stadiums/futebol-clube-de-famalicao.jpg",
+    "players": [
+      {
+        "name": "Lazar Carević",
+        "position": "GR",
+        "nationality": "MNE"
+      },
+      {
+        "name": "Ivan Zlobin",
+        "position": "GR",
+        "nationality": "RUS"
+      },
+      {
+        "name": "Mathias De Amorim",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Rodrigo Pinheiro",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Tom van de Looi",
+        "position": "DEF",
+        "nationality": "NED"
+      },
+      {
+        "name": "Finn van Breemen",
+        "position": "DEF",
+        "nationality": "NED"
+      },
+      {
+        "name": "Marcos Peña",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Leonardo Realpe",
+        "position": "DEF",
+        "nationality": "ECU"
+      },
+      {
+        "name": "Sorriso",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Óscar Aranda",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Giorgos Koutsias",
+        "position": "MED",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Gil Dias",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Roméo Beney",
+        "position": "MED",
+        "nationality": "SUI"
+      },
+      {
+        "name": "Pedro Santos",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Patricio Salas",
+        "position": "AV",
+        "nationality": "MEX"
+      },
+      {
+        "name": "Umar Abubakar",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Rudi Almeida",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Gustavo Ferreira",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Simão Neto",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Vladyslav Ivanko",
+        "position": "AV",
+        "nationality": "UKR"
+      }
+    ]
+  },
+  {
+    "id": 326,
+    "name": "FC Porto",
+    "country": "POR",
+    "stadium": "Estádio do Dragão",
+    "city": "Porto",
+    "rating": 80,
+    "capacity": 50,
+    "founded": 1893,
+    "badge": "/assets/badges/futebol-clube-do-porto.webp",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#20397B",
+    "stadiumImage": "/assets/stadiums/futebol-clube-do-porto.jpg",
+    "players": [
+      {
+        "name": "Diogo Costa",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "Cláudio Ramos",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "Jakub Kiwior",
+        "position": "DEF",
+        "nationality": "POL"
+      },
+      {
+        "name": "Victor Froholdt",
+        "position": "DEF",
+        "nationality": "DEN"
+      },
+      {
+        "name": "Jan Bednarek",
+        "position": "DEF",
+        "nationality": "POL"
+      },
+      {
+        "name": "Hwang In-Beom",
+        "position": "DEF",
+        "nationality": "KOR"
+      },
+      {
+        "name": "Alberto Costa",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Pablo Rosario",
+        "position": "DEF",
+        "nationality": "DOM"
+      },
+      {
+        "name": "Gabri Veiga",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "William Gomes",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Pepê",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Borja Sainz",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Iván Jaime",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Oskar Pietuszewski",
+        "position": "MED",
+        "nationality": "POL"
+      },
+      {
+        "name": "Samu Aghehowa",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Santiago Giménez",
+        "position": "AV",
+        "nationality": "MEX"
+      },
+      {
+        "name": "André Silva",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Tcherno Jamanca",
+        "position": "AV",
+        "nationality": "GNB"
+      },
+      {
+        "name": "Abraham Obasi",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Guilherme Moreira",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 327,
+    "name": "Gil Vicente",
+    "country": "POR",
+    "stadium": "Estádio Cidade de Barcelos",
+    "city": "Barcelos",
+    "rating": 66,
+    "capacity": 12,
+    "founded": 1924,
+    "badge": "/assets/badges/gil-vicente-futebol-clube.webp",
+    "primaryColor": "#0052D5",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/gil-vicente-futebol-clube.jpg",
+    "players": [
+      {
+        "name": "Lucão",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Samuel Portugal",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Marvin Elimbi",
+        "position": "DEF",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Jonathan Buatu",
+        "position": "DEF",
+        "nationality": "ANG"
+      },
+      {
+        "name": "Diogo Prioste",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Ricardo Esgaio",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Weverson",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Mohamed Bamba",
+        "position": "DEF",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Santi García",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Murilo Souza",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Joelson Fernandes",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Gil Martins",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Agustín Moreira",
+        "position": "MED",
+        "nationality": "URU"
+      },
+      {
+        "name": "Tidjany Touré",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Héctor Hernández",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Carlos Eduardo",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Mohamed Kaba",
+        "position": "AV",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Walace França",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Ricardo Martins",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Gabriel Melo",
+        "position": "AV",
+        "nationality": "BRA"
+      }
+    ]
+  },
+  {
+    "id": 328,
+    "name": "Estoril Praia",
+    "country": "POR",
+    "stadium": "Estádio António Coimbra da Mota",
+    "city": "Estoril",
+    "rating": 66,
+    "capacity": 8,
+    "founded": 1939,
+    "badge": "/assets/badges/grupo-desportivo-estoril-praia-sad.webp",
+    "primaryColor": "#FFE610",
+    "secondaryColor": "#0052D5",
+    "stadiumImage": "/assets/stadiums/grupo-desportivo-estoril-praia-sad.jpg",
+    "players": [
+      {
+        "name": "Joel Robles",
+        "position": "GR",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Martin Turk",
+        "position": "GR",
+        "nationality": "SVN"
+      },
+      {
+        "name": "Jordan Holsgrove",
+        "position": "DEF",
+        "nationality": "SCO"
+      },
+      {
+        "name": "Ricard Sánchez",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Xavi Sintes",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Ismael Sierra",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Xeka",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Nail Omerović",
+        "position": "DEF",
+        "nationality": "BIH"
+      },
+      {
+        "name": "Yanis Begraoui",
+        "position": "MED",
+        "nationality": "MAR"
+      },
+      {
+        "name": "João Carvalho",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Rafik Guitane",
+        "position": "MED",
+        "nationality": "ALG"
+      },
+      {
+        "name": "André Lacximicant",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Axel Camblan",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Peixinho",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Salazar",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Kelian Baruti Liamba",
+        "position": "AV",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Martim Dias",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "João Gomes",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Manuel Lamúria",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Luís Gomes",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 329,
+    "name": "Moreirense",
+    "country": "POR",
+    "stadium": "Estádio Comendador Joaquim de Almeida Freitas",
+    "city": "Moreira de Cónegos",
+    "rating": 64,
+    "capacity": 6,
+    "founded": 1938,
+    "badge": "/assets/badges/moreirense-futebol-clube.webp",
+    "primaryColor": "#006A52",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/moreirense-futebol-clube.jpg",
+    "players": [
+      {
+        "name": "André Ferreira",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "Aranha",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Dinis Pinto",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Maracás",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Gilberto Batista",
+        "position": "DEF",
+        "nationality": "GNB"
+      },
+      {
+        "name": "Nile John",
+        "position": "DEF",
+        "nationality": "ENG"
+      },
+      {
+        "name": "Francisco Domingues",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Tiago Andrade",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "João Veloso",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Kiko Bondoso",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Manuel Mendonça",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Chipyoka Songa",
+        "position": "MED",
+        "nationality": "ZAM"
+      },
+      {
+        "name": "Landerson",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Jimi Gower",
+        "position": "MED",
+        "nationality": "ENG"
+      },
+      {
+        "name": "Leonardo Vonić",
+        "position": "AV",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Yan Maranhão",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Afonso Carvalho",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Rodrigo Soares",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Michael Dacosta González",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Diogo Monteiro",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 330,
+    "name": "Rio Ave",
+    "country": "POR",
+    "stadium": "Estádio dos Arcos",
+    "city": "Vila do Conde",
+    "rating": 65,
+    "capacity": 5,
+    "founded": 1939,
+    "badge": "/assets/badges/rio-ave-futebol-clube.webp",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#188B62",
+    "stadiumImage": "/assets/stadiums/rio-ave-futebol-clube.jpg",
+    "players": [
+      {
+        "name": "Cezary Miszta",
+        "position": "GR",
+        "nationality": "POL"
+      },
+      {
+        "name": "Vitor Hugo",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Diogo Nascimento",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Zé Carlos",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Brandon Aguilera",
+        "position": "DEF",
+        "nationality": "CRC"
+      },
+      {
+        "name": "Jakub Brabec",
+        "position": "DEF",
+        "nationality": "CZE"
+      },
+      {
+        "name": "Marios Vrousai",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Francisco Petrasso",
+        "position": "DEF",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Jalen Blesa",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Diogo Bezerra",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Roland Galčík",
+        "position": "MED",
+        "nationality": "SVK"
+      },
+      {
+        "name": "Dario Špikić",
+        "position": "MED",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Malik Sellouki",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Sebastian Clemmensen",
+        "position": "MED",
+        "nationality": "DEN"
+      },
+      {
+        "name": "Tamble Monteiro",
+        "position": "AV",
+        "nationality": "GNB"
+      },
+      {
+        "name": "Radek Šiler",
+        "position": "AV",
+        "nationality": "CZE"
+      },
+      {
+        "name": "Samuel Alves",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Rodrigo Moreira",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Léo Silva",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Rafael Lobato",
+        "position": "AV",
+        "nationality": "BRA"
+      }
+    ]
+  },
+  {
+    "id": 331,
+    "name": "Santa Clara",
+    "country": "POR",
+    "stadium": "Estádio de São Miguel",
+    "city": "Ponta Delgada",
+    "rating": 66,
+    "capacity": 12,
+    "founded": 1921,
+    "badge": "/assets/badges/santa-clara-acores-futebol.webp",
+    "primaryColor": "#CD1018",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/santa-clara-acores-futebol.jpg",
+    "players": [
+      {
+        "name": "Lucas França",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Neneca",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Sidney Lima",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Pedro Ferreira",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Lucas Soares",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "MT",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Pedro Pacheco",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Guilherme Romão",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Vinícius Lopes",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Brenner",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Tiago Ribeiro",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Rildo",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Vitinho",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Luis Fernando",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Gonçalo Paciência",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Wendel Silva",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "João Costa",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Daniel da Silva",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Ryan Pablo",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Sevastian Belov",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 332,
+    "name": "Benfica",
+    "country": "POR",
+    "stadium": "Estádio da Luz",
+    "city": "Lisbon",
+    "rating": 79,
+    "capacity": 68,
+    "founded": 1904,
+    "badge": "/assets/badges/sport-lisboa-e-benfica.webp",
+    "primaryColor": "#CD1018",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/sport-lisboa-e-benfica.jpg",
+    "players": [
+      {
+        "name": "Anatolii Trubin",
+        "position": "GR",
+        "nationality": "UKR"
+      },
+      {
+        "name": "Samuel Soares",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "João Palhinha",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Tomás Araújo",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Leandro Barreiro",
+        "position": "DEF",
+        "nationality": "LUX"
+      },
+      {
+        "name": "Alexander Bah",
+        "position": "DEF",
+        "nationality": "DEN"
+      },
+      {
+        "name": "Clément Lenglet",
+        "position": "DEF",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Richard Ríos",
+        "position": "DEF",
+        "nationality": "COL"
+      },
+      {
+        "name": "Gianluca Prestianni",
+        "position": "MED",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Fredrik Aursnes",
+        "position": "MED",
+        "nationality": "NOR"
+      },
+      {
+        "name": "Andreas Schjelderup",
+        "position": "MED",
+        "nationality": "NOR"
+      },
+      {
+        "name": "Rafa",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Heorhii Sudakov",
+        "position": "MED",
+        "nationality": "UKR"
+      },
+      {
+        "name": "Jakub Kamiński",
+        "position": "MED",
+        "nationality": "POL"
+      },
+      {
+        "name": "Vangelis Pavlidis",
+        "position": "AV",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Jhon Durán",
+        "position": "AV",
+        "nationality": "COL"
+      },
+      {
+        "name": "Dilan Neves",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Anisse Saidi",
+        "position": "AV",
+        "nationality": "TUN"
+      },
+      {
+        "name": "Alan Lembakoali",
+        "position": "AV",
+        "nationality": "SVK"
+      },
+      {
+        "name": "Nazif Inoussa",
+        "position": "AV",
+        "nationality": "SWE"
+      }
+    ]
+  },
+  {
+    "id": 333,
+    "name": "BRG",
+    "country": "POR",
+    "stadium": "Estádio Municipal de Braga",
+    "city": "Braga",
+    "rating": 75,
+    "capacity": 30,
+    "founded": 1921,
+    "badge": "/assets/badges/sporting-clube-de-braga.webp",
+    "primaryColor": "#CD1018",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/sporting-clube-de-braga.jpg",
+    "players": [
+      {
+        "name": "Bernardo Fontes",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Alaa Bellaarouch",
+        "position": "GR",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Víctor Gómez",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "João Moutinho",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Gustaf Lagerbielke",
+        "position": "DEF",
+        "nationality": "SWE"
+      },
+      {
+        "name": "Sikou Niakaté",
+        "position": "DEF",
+        "nationality": "MLI"
+      },
+      {
+        "name": "Vitor Carvalho",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Demir Ege Tıknaz",
+        "position": "DEF",
+        "nationality": "TUR"
+      },
+      {
+        "name": "Ricardo Horta",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Pau Víctor",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Jonas Wind",
+        "position": "MED",
+        "nationality": "DEN"
+      },
+      {
+        "name": "Mario Dorgeles",
+        "position": "MED",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Gabriel Silva",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Diego Rodrigues",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Amine El Ouazzani",
+        "position": "AV",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Fran Navarro",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Gustavo Fonte",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Linus Kurtz",
+        "position": "AV",
+        "nationality": "GER"
+      },
+      {
+        "name": "João Tavares",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Jovan Milošević",
+        "position": "AV",
+        "nationality": "SRB"
+      }
+    ]
+  },
+  {
+    "id": 334,
+    "name": "Sporting CP",
+    "country": "POR",
+    "stadium": "Estádio José Alvalade",
+    "city": "Lisbon",
+    "rating": 79,
+    "capacity": 52,
+    "founded": 1906,
+    "badge": "/assets/badges/sporting-clube-de-portugal.webp",
+    "primaryColor": "#186239",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/sporting-clube-de-portugal.jpg",
+    "players": [
+      {
+        "name": "Rui Silva",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "Kaique",
+        "position": "GR",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Maximiliano Araújo",
+        "position": "DEF",
+        "nationality": "URU"
+      },
+      {
+        "name": "Sergi Altimira",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Gonçalo Inácio",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Zeno Debast",
+        "position": "DEF",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Geny",
+        "position": "DEF",
+        "nationality": "MOZ"
+      },
+      {
+        "name": "Issa Doumbia",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Pote",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Rodrigo Zalazar",
+        "position": "MED",
+        "nationality": "URU"
+      },
+      {
+        "name": "Luís Guilherme",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Flávio Gonçalves",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Nestory Irankunda",
+        "position": "MED",
+        "nationality": "AUS"
+      },
+      {
+        "name": "Biel",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Luis Suárez",
+        "position": "AV",
+        "nationality": "COL"
+      },
+      {
+        "name": "Fotis Ioannidis",
+        "position": "AV",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Rafael Nel",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Diogo Martins",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Víctor Guzmán",
+        "position": "AV",
+        "nationality": "PER"
+      },
+      {
+        "name": "Miguel Almeida",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  },
+  {
+    "id": 335,
+    "name": "VTSC",
+    "country": "POR",
+    "stadium": "Estádio D. Afonso Henriques",
+    "city": "Guimarães",
+    "rating": 67,
+    "capacity": 30,
+    "founded": 1922,
+    "badge": "/assets/badges/vitoria-sport-clube.webp",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#080808",
+    "stadiumImage": "/assets/stadiums/vitoria-sport-clube.jpg",
+    "players": [
+      {
+        "name": "Oliwier Zych",
+        "position": "GR",
+        "nationality": "POL"
+      },
+      {
+        "name": "Juan Diego Castillo",
+        "position": "GR",
+        "nationality": "COL"
+      },
+      {
+        "name": "Tony Strata",
+        "position": "DEF",
+        "nationality": "ROU"
+      },
+      {
+        "name": "João Mendes",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Beni Mukendi",
+        "position": "DEF",
+        "nationality": "ANG"
+      },
+      {
+        "name": "Toni Borevković",
+        "position": "DEF",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Lohann Doucet",
+        "position": "DEF",
+        "nationality": "BFA"
+      },
+      {
+        "name": "Gonçalo Nogueira",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Alan",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Gustavo Silva",
+        "position": "MED",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Samu",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Oumar Camara",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Telmo Arcanjo",
+        "position": "MED",
+        "nationality": "CPV"
+      },
+      {
+        "name": "Miguel Nogueira",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Arnel Jakupović",
+        "position": "AV",
+        "nationality": "AUT"
+      },
+      {
+        "name": "Alioune Ndoye",
+        "position": "AV",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Patrick Ouotro",
+        "position": "AV",
+        "nationality": "CIV"
+      },
+      {
+        "name": "José Sacramento",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Antenory Guenha",
+        "position": "AV",
+        "nationality": "LUX"
+      },
+      {
+        "name": "Dinis Pereira",
+        "position": "AV",
+        "nationality": "POR"
+      }
+    ]
+  }
 ];
