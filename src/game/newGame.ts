@@ -54,7 +54,16 @@ export function buildWorld(seeds: TeamSeed[]) {
       division,
       budget: budgetForRating(seed.rating),
       playerIds,
-      lineup: bestLineup(playerIds, players),
+      lineup: bestLineup(playerIds, players, {
+        DEF: GAME_CONFIG.startingLineup.DEF,
+        MED: GAME_CONFIG.startingLineup.MED,
+        AV: GAME_CONFIG.startingLineup.AV,
+      }),
+      lineupFormation: {
+        DEF: GAME_CONFIG.startingLineup.DEF,
+        MED: GAME_CONFIG.startingLineup.MED,
+        AV: GAME_CONFIG.startingLineup.AV,
+      },
     };
   });
 
