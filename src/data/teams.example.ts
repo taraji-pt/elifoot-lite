@@ -4,6 +4,8 @@
  * - players: só nome, posição (GR/DEF/MED/AV) e nacionalidade (código 3 letras,
  *   ver data/countries.ts). Ordem dentro de cada posição = importância
  *   (os primeiros são titulares). Posições em falta são completadas automaticamente.
+ * - capacity: capacidade do estádio em espectadores (opcional).
+ * - founded: ano de fundação do clube (opcional).
  * - badge: "" gera emblema com as cores; ou "/assets/badges/benfica.png"
  *   (imagem em public/assets/badges/).
  */
@@ -14,6 +16,10 @@ export const EXAMPLE_TEAMS: TeamSeed[] = [
     id: 1,
     name: "Benfica",
     country: "Portugal",
+    stadium: "Estádio da Luz",
+    city: "Lisboa",
+    capacity: 64642,
+    founded: 1904,
     division: 1,
     rating: 84,
     badge: "",
