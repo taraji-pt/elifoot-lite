@@ -1126,13 +1126,17 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
       setElapsedMs(0);
       return;
     }
+    if (match.instantSimulation) {
+      setElapsedMs(10000);
+      return;
+    }
     setElapsedMs(0);
     const started = performance.now();
     const timer = window.setInterval(() => {
       setElapsedMs(Math.min(10000, performance.now() - started));
     }, 100);
     return () => window.clearInterval(timer);
-  }, [match?.half, match?.finished]);
+  }, [match?.half, match?.finished, match?.instantSimulation]);
 
 
 
@@ -1868,48 +1872,53 @@ function DivisionPicker({ value, onChange }: { value: number; onChange: (d: numb
 function Calendar({ state }: { state: GameState }) {
   const team = userTeam(state);
   const rounds = state.leagues[team.division] ?? [];
-  const cupMatches = state.cup.rounds.flatMap((round, roundIndex) =>
-    round.ties
-      .filter((tie) => tie.homeId === team.id || tie.awayId === team.id)
-      .map((tie) => ({ ...tie, roundName: round.name, roundIndex })),
-  );
+  const cupByScheduledRound = new Map<number, { tie: (typeof state.cup.rounds)[number]["ties"][number]; name: string; index: number }>();
+  state.cup.rounds.forEach((round, cupIndex) => {
+    const scheduledRound = GAME_CONFIG.cupRounds[cupIndex];
+    if (scheduledRound === undefined) return;
+    const tie = round.ties.find((item) => item.homeId === team.id || item.awayId === team.id);
+    if (tie) cupByScheduledRound.set(scheduledRound, { tie, name: round.name, index: cupIndex });
+  });
+  const entries: Array<
+    | { type: "league"; round: number; fixture: NonNullable<(typeof rounds)[number][number]> }
+    | { type: "cup"; round: number; tie: (typeof state.cup.rounds)[number]["ties"][number]; name: string; index: number }
+  > = [];
+  rounds.forEach((fixtures, index) => {
+    const fixture = fixtures.find((item) => item.homeId === team.id || item.awayId === team.id);
+    if (fixture) entries.push({ type: "league", round: index + 1, fixture });
+    const cup = cupByScheduledRound.get(index + 1);
+    if (cup) entries.push({ type: "cup", round: index + 1, ...cup });
+  });
   return (
-    <div className="max-w-2xl space-y-5">
-      <div className={card}>
-        <div className="mb-2 font-semibold">Liga</div>
-        <table className="w-full text-sm"><tbody>
-          {rounds.map((round, i) => {
-            const f = round.find((x) => x.homeId === team.id || x.awayId === team.id);
-            if (!f) return null;
+    <div className={`${card} max-w-3xl`}>
+      <div className="mb-2 font-semibold">Calendário</div>
+      <table className="w-full text-sm"><tbody>
+        {entries.map((entry) => {
+          if (entry.type === "league") {
+            const f = entry.fixture;
             return (
-              <tr key={i} className={`border-t border-border ${i + 1 === state.round ? "bg-primary/10" : ""}`}>
-                <td className="py-1.5 font-mono-num text-xs text-muted-foreground">J{i + 1}</td>
+              <tr key={`league-${entry.round}`} className={`border-t border-border ${entry.round === state.round ? "bg-primary/10" : ""}`}>
+                <td className="w-20 py-2 pr-2 text-xs text-muted-foreground whitespace-nowrap">Jornada {entry.round}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} className="w-full justify-start" /></td>
-                <td className="px-3 text-center font-mono-num">{f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}</td>
+                <td className="px-2 text-center font-mono-num whitespace-nowrap">{f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
               </tr>
             );
-          })}
-        </tbody></table>
-      </div>
-      <div className={card}>
-        <div className="mb-2 font-semibold">🏆 Taça</div>
-        {cupMatches.length ? (
-          <table className="w-full text-sm"><tbody>
-            {cupMatches.map((tie) => (
-              <tr key={tie.roundIndex} className={`border-t border-border ${tie.roundIndex === state.cup.currentRound && tie.winnerId === null ? "bg-primary/10" : ""}`}>
-                <td className="py-1.5 pr-2 text-xs text-muted-foreground">{tie.roundName}</td>
-                <td><TeamIdentityWithFlag team={state.teams[tie.homeId] as Team} size={20} className="w-full justify-start" /></td>
-                <td className="px-3 text-center font-mono-num whitespace-nowrap">
-                  {tie.homeGoals === null || tie.awayGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}`}
-                  {tie.penalties ? <span className="ml-1 text-xs text-muted-foreground">(P)</span> : null}
-                </td>
-                <td><TeamIdentityWithFlag team={state.teams[tie.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
-              </tr>
-            ))}
-          </tbody></table>
-        ) : <p className="text-sm text-muted-foreground">Ainda não há jogos da Taça para este clube.</p>}
-      </div>
+          }
+          const tie = entry.tie;
+          return (
+            <tr key={`cup-${entry.index}`} className={`border-t border-border ${entry.round === state.round && tie.winnerId === null ? "bg-primary/10" : ""}`}>
+              <td className="w-20 py-2 pr-2 text-xs font-semibold text-muted-foreground whitespace-nowrap">🏆 {entry.name}</td>
+              <td><TeamIdentityWithFlag team={state.teams[tie.homeId] as Team} size={20} className="w-full justify-start" /></td>
+              <td className="px-2 text-center font-mono-num whitespace-nowrap">
+                {tie.homeGoals === null || tie.awayGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}`}
+                {tie.penalties ? <span className="ml-1 text-xs text-muted-foreground">(P)</span> : null}
+              </td>
+              <td><TeamIdentityWithFlag team={state.teams[tie.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
+            </tr>
+          );
+        })}
+      </tbody></table>
     </div>
   );
 }
