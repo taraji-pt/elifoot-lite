@@ -31,7 +31,7 @@ import {
 import { createNewGame } from "@/game/newGame";
 import { penaltyShootout, simulateHalf } from "@/game/simulation";
 import { clearSave, hasSave, loadGame, saveGame } from "@/game/storage";
-import type { GameState, Team } from "@/game/types";
+import type { GameState, Player, Team } from "@/game/types";
 
 interface GameContextValue {
   ready: boolean;
@@ -104,7 +104,7 @@ function halftimeAiChanges(
       .filter((p) => p.position === position)
       .sort((a, b) => a.rating - b.rating)
       .map((out) => ({ out, incoming: bench.filter((p) => p.position === position).sort((a, b) => b.rating - a.rating)[0] }))
-      .filter((pair) => pair.incoming && pair.incoming.rating > pair.out.rating));
+      .filter((pair): pair is { out: Player; incoming: Player } => Boolean(pair.incoming && pair.incoming.rating > pair.out.rating)));
     const choice = candidates[0];
     if (!choice) break;
     current = current.filter((id) => id !== choice.out.id);
