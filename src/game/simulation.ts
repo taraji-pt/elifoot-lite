@@ -81,8 +81,8 @@ export function simulateHalf(
   const cards: MatchCard[] = [];
   const candidates = [...homeLineup.map((id) => ({ id, teamId: home.id })), ...awayLineup.map((id) => ({ id, teamId: away.id }))]
     .filter((x) => !blocked.has(x.id));
-  // Em média, cerca de dois a três cartões por jogo; expulsões directas são raras.
-  const cardCount = randInt(0, 2);
+  // Entre um e três cartões por parte; probabilidade de vermelho direto ajustada para 6%.
+  const cardCount = randInt(1, 3);
   const used = new Set<number>();
   for (let i = 0; i < cardCount && candidates.length; i++) {
     const available = candidates.filter((x) => !used.has(x.id));
@@ -92,7 +92,7 @@ export function simulateHalf(
     const player = players[chosen.id];
     if (!player) continue;
     const secondYellow = previousYellowCardIds.includes(player.id);
-    const type = secondYellow ? "second-yellow" : Math.random() < 0.025 ? "red" : "yellow";
+    const type = secondYellow ? "second-yellow" : Math.random() < 0.06 ? "red" : "yellow";
     cards.push({ teamId: chosen.teamId, playerId: player.id, playerName: player.name, minute: randInt(minuteStart, minuteEnd), type });
   }
 
