@@ -88,6 +88,8 @@ export interface MatchState {
   appearedPlayerIds?: number[];
   /** onze inicial do utilizador, para comparar a alteração táctica */
   startingUserLineup?: number[];
+  /** jogadores suspensos antes do apito inicial, indisponíveis também no banco */
+  unavailablePlayerIds?: number[];
   /** -100 = muito defensiva; +100 = muito ofensiva */
   tacticalIntent?: number;
   /** jogadores expulsos neste jogo */
