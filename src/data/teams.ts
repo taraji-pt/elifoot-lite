@@ -21379,7 +21379,7 @@ export const TEAMS: TeamSeed[] = [
     "stadium": "Stade du 15 Octobre",
     "city": "Bizerte",
      "capacity": 26000,
-    "founded": 1928
+    "founded": 1928,
     "rating": 52,
     "badge": "/assets/badges/club-athletique-bizertin.png",
     "primaryColor": "#FFCD00",
