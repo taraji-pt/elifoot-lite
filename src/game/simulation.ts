@@ -52,8 +52,11 @@ export function simulateHalf(
   homeTacticalIntent = 0,
   awayTacticalIntent = 0,
 ): HalfResult {
-  const ratingHome = teamRating({ ...home, lineup: homeLineup }, players);
-  const ratingAway = teamRating({ ...away, lineup: awayLineup }, players);
+  const missingHomePlayers = Math.max(0, 11 - homeLineup.length);
+  const missingAwayPlayers = Math.max(0, 11 - awayLineup.length);
+  // Cada jogador em falta por expulsão reduz a força efetiva da equipa.
+  const ratingHome = teamRating({ ...home, lineup: homeLineup }, players) - missingHomePlayers * 4;
+  const ratingAway = teamRating({ ...away, lineup: awayLineup }, players) - missingAwayPlayers * 4;
 
   const tacticalScale = 0.025; // intensidade máxima altera o rating em 2,5 pontos
   const homeAttack = ratingHome + homeTacticalIntent * tacticalScale;
