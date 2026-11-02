@@ -681,8 +681,8 @@ function CareerImageSettings({ state, onClose }: { state: GameState; onClose: ()
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4 py-6" role="dialog" aria-modal="true">
-      <div className="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-2xl">
+    <div className="game-modal-backdrop fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/70 p-4" role="dialog" aria-modal="true">
+      <div className="game-modal-panel max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-xl border border-border bg-card p-5 shadow-2xl">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="font-semibold">Imagem da carreira</div>
@@ -927,8 +927,8 @@ function CelebrationPopup({ state }: { state: GameState }) {
           : "SUBIDA DE DIVISÃO!";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-      <div className="w-full max-w-md rounded-xl border border-primary bg-card p-6 text-center shadow-2xl">
+    <div className="game-modal-backdrop fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4">
+      <div className="game-modal-panel max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-xl border border-primary bg-card p-6 text-center shadow-2xl">
         <div className="text-5xl">{celebration.type === "double" ? "🏆🏆" : celebration.type === "promotion" ? "⬆️🏆" : "🏆"}</div>
         <div className="mt-3 text-2xl font-black tracking-wide text-primary">{title}</div>
         <div className="mt-2 text-lg font-semibold">{team?.name}</div>
