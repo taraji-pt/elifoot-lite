@@ -20,6 +20,8 @@ export const TEAMS: TeamSeed[] = [
     "primaryColor": "#AC1E2D",
     "secondaryColor": "#000000",
     "stadium": "San Siro",
+    "capacity": 64642,
+    "founded": 1904,
     "city": "Milano",
     "stadiumImage": "/assets/stadiums/milan.webp",
     "players": [
