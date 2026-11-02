@@ -23228,7 +23228,6 @@ export const TEAMS: TeamSeed[] = [
     }
   ]
 },
-[
   {
     "id": 318,
     "name": "Ac. Viseu",
