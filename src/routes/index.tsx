@@ -941,6 +941,23 @@ function lineupCounts(ids: number[], players: Record<number, Player>) {
 
 function Squad({ state, team, onPlayerClick }: { state: GameState; team: Team; onPlayerClick: (playerId: number) => void }) {
   const { setLineup } = useGame();
+  const formations = [
+    { name: "4-4-2", DEF: 4, MED: 4, AV: 2 },
+    { name: "4-3-3", DEF: 4, MED: 3, AV: 3 },
+    { name: "4-2-3-1", DEF: 4, MED: 5, AV: 1 },
+    { name: "3-5-2", DEF: 3, MED: 5, AV: 2 },
+    { name: "3-4-3", DEF: 3, MED: 4, AV: 3 },
+    { name: "5-3-2", DEF: 5, MED: 3, AV: 2 },
+  ];
+  const selectedFormation = team.lineupFormation ?? { DEF: GAME_CONFIG.startingLineup.DEF, MED: GAME_CONFIG.startingLineup.MED, AV: GAME_CONFIG.startingLineup.AV };
+  const chooseFormation = (formation: typeof formations[number]) => {
+    const available = squad.filter((p) => (state.suspensions?.[p.id] ?? 0) <= 0);
+    const chosen = (["GR", "DEF", "MED", "AV"] as const).flatMap((position) =>
+      available.filter((p) => p.position === position).sort((a, b) => b.rating - a.rating)
+        .slice(0, position === "GR" ? 1 : formation[position]).map((p) => p.id),
+    );
+    setLineup(chosen, { DEF: formation.DEF, MED: formation.MED, AV: formation.AV });
+  };
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
   // Limpa da seleção qualquer suspenso que ainda exista em saves antigos.
   const activeLineup = team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0);
@@ -949,25 +966,36 @@ function Squad({ state, team, onPlayerClick }: { state: GameState; team: Team; o
   const disabledIds = squad.filter((p) => {
     if ((state.suspensions?.[p.id] ?? 0) > 0) return true;
     if (activeLineup.includes(p.id)) return false;
-    return counts[p.position] >= GAME_CONFIG.startingLineup[p.position];
+    return counts[p.position] >= (p.position === "GR" ? 1 : selectedFormation[p.position]);
   }).map((p) => p.id);
   const toggle = (id: number) => {
     if ((state.suspensions?.[id] ?? 0) > 0) return;
     if (activeLineup.includes(id)) setLineup(activeLineup.filter((x) => x !== id));
     else {
       const player = state.players[id];
-      if (!player || counts[player.position] >= GAME_CONFIG.startingLineup[player.position] || activeLineup.length >= 11) return;
+      if (!player || counts[player.position] >= (player.position === "GR" ? 1 : selectedFormation[player.position]) || activeLineup.length >= 11) return;
       setLineup([...activeLineup, id]);
     }
   };
   return (
     <div className={card}>
+      <div className="mb-3 rounded-lg border border-border/70 bg-background/20 p-3">
+        <div className="mb-2 text-sm font-semibold">Formação táctica</div>
+        <div className="flex flex-wrap gap-2">
+          {formations.map((formation) => (
+            <button key={formation.name} type="button" className={selectedFormation.DEF === formation.DEF && selectedFormation.MED === formation.MED && selectedFormation.AV === formation.AV ? btn : btn2} onClick={() => chooseFormation(formation)}>
+              {formation.name}
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 text-xs text-muted-foreground">Escolhe uma formação para selecionar automaticamente os melhores jogadores disponíveis em cada posição. Podes depois ajustar o onze manualmente.</p>
+      </div>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="text-sm">
           Titulares disponíveis: <b>{counts.GR + counts.DEF + counts.MED + counts.AV}/11</b> · GR {counts.GR} · DEF {counts.DEF} · MED{" "}
           {counts.MED} · AV {counts.AV}
         </div>
-        <span className="text-xs text-muted-foreground">Clica num jogador para o pôr/tirar do onze. Cada jogador só pode ocupar a sua posição.</span>
+        <span className="text-xs text-muted-foreground">Clica num jogador para o pôr/tirar do onze. A formação define quantos DEF, MED e AV podes escolher.</span>
       </div>
       {suspended.length > 0 && (
         <div className="mb-3 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-700 dark:text-red-300">
@@ -1649,13 +1677,15 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
   const currentTeam = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(playerId));
   const currentGoals = state.scorerStats?.[playerId] ?? { league: 0, cup: 0 };
   const currentClubStats = state.playerClubSeasonStats?.[playerId] ?? {};
-  const currentRecords: { season: string; teamId: number | null; teamName: string; appearances: number; goalsLeague: number; goalsCup: number; rating: number }[] = Object.entries(currentClubStats).map(([teamId, stats]) => ({
+  const currentRecords: { season: string; teamId: number | null; teamName: string; appearances: number; goalsLeague: number; goalsCup: number; yellowCards: number; redCards: number; rating: number }[] = Object.entries(currentClubStats).map(([teamId, stats]) => ({
     season: seasonLabel(state.seasonYear),
     teamId: Number(teamId),
     teamName: state.teams[Number(teamId)]?.name ?? "Clube desconhecido",
     appearances: stats.appearances,
     goalsLeague: stats.goalsLeague,
     goalsCup: stats.goalsCup,
+    yellowCards: stats.yellowCards ?? 0,
+    redCards: stats.redCards ?? 0,
     rating: player.rating,
   }));
   if (!currentRecords.length) currentRecords.push({
@@ -1665,13 +1695,17 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
     appearances: state.appearanceStats?.[playerId] ?? 0,
     goalsLeague: currentGoals.league,
     goalsCup: currentGoals.cup,
+    yellowCards: 0,
+    redCards: 0,
     rating: player.rating,
   });
   const allRecords = [...records, ...currentRecords];
   const totals = allRecords.reduce((sum, item) => ({
     appearances: sum.appearances + item.appearances,
     goals: sum.goals + item.goalsLeague + item.goalsCup,
-  }), { appearances: 0, goals: 0 });
+    yellowCards: sum.yellowCards + (item.yellowCards ?? 0),
+    redCards: sum.redCards + (item.redCards ?? 0),
+  }), { appearances: 0, goals: 0, yellowCards: 0, redCards: 0 });
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-4 py-6" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
@@ -1687,21 +1721,29 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
           </div>
           <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
-        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Épocas</div><div className="text-xl font-bold">{new Set(allRecords.map((record) => record.season)).size}</div></div>
           <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Presenças</div><div className="text-xl font-bold">{totals.appearances}</div></div>
-          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Golos</div><div className="text-xl font-bold">{totals.goals}</div></div>
+          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Golos</div><div className="text-xl font-bold">{totals.goals}</div></div><div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">🟨 Amarelos</div><div className="text-xl font-bold">{totals.yellowCards}</div></div><div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">🟥 Vermelhos</div><div className="text-xl font-bold">{totals.redCards}</div></div>
         </div>
         <div className="mt-5 font-semibold">Histórico de carreira</div>
         {allRecords.length ? (
           <div className="mt-2 overflow-x-auto">
-            <table className="w-full min-w-[420px] text-sm">
-              <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1">Época</th><th>Clube</th><th className="text-right">J</th><th className="text-right">Liga</th><th className="text-right">Taça</th><th className="text-right">Rating</th></tr></thead>
-              <tbody>{[...allRecords].reverse().map((record, index) => (
-                <tr key={`${record.season}-${index}`} className="border-t border-border">
-                  <td className="py-2 font-mono-num">{record.season}</td><td>{record.teamName}</td><td className="text-right font-mono-num">{record.appearances}</td><td className="text-right font-mono-num">{record.goalsLeague}</td><td className="text-right font-mono-num">{record.goalsCup}</td><td className="text-right font-mono-num">{record.rating}</td>
-                </tr>
-              ))}</tbody>
+            <table className="w-full min-w-[350px] text-sm">
+              <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1">Época</th><th>Clube</th><th className="text-right">J</th><th className="text-right">⚽</th><th className="text-right">🟨</th><th className="text-right">🟥</th></tr></thead>
+              <tbody>{[...allRecords].reverse().map((record, index) => {
+                const club = record.teamId === null ? undefined : state.teams[record.teamId];
+                return (
+                  <tr key={`${record.season}-${index}`} className="border-t border-border">
+                    <td className="py-2 font-mono-num whitespace-nowrap">{record.season}</td>
+                    <td><span className="inline-flex min-w-0 items-center gap-1.5"><Flag code={club?.country ?? "POR"} size={15} /><span className="truncate">{record.teamName}</span></span></td>
+                    <td className="text-right font-mono-num">{record.appearances}</td>
+                    <td className="text-right font-mono-num">{record.goalsLeague + record.goalsCup}</td>
+                    <td className="text-right font-mono-num">{record.yellowCards ?? 0}</td>
+                    <td className="text-right font-mono-num">{record.redCards ?? 0}</td>
+                  </tr>
+                );
+              })}</tbody>
             </table>
           </div>
         ) : <p className="mt-2 text-sm text-muted-foreground">Ainda não há épocas concluídas registadas.</p>}
