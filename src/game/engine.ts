@@ -107,7 +107,7 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
 }
 
 
-export function prepareTeamForMatch(state: GameState, team: Team): number[] {
+export function prepareTeamForMatch(state: GameState, team: Team, preserveSelectedLineup = false): number[] {
   if (!state.suspensions) state.suspensions = {};
   const formation = team.lineupFormation ?? {
     DEF: GAME_CONFIG.startingLineup.DEF,
@@ -125,7 +125,7 @@ export function prepareTeamForMatch(state: GameState, team: Team): number[] {
   const required = { GR: 1, DEF: formation.DEF, MED: formation.MED, AV: formation.AV };
   const valid = candidateLineup.length === 11 &&
     (["GR", "DEF", "MED", "AV"] as const).every((position) => counts[position] === required[position]);
-  team.lineup = valid ? candidateLineup : bestLineup(availableIds, state.players, formation);
+  team.lineup = preserveSelectedLineup ? candidateLineup : valid ? candidateLineup : bestLineup(availableIds, state.players, formation);
   for (const id of team.playerIds) {
     const remaining = state.suspensions[id] ?? 0;
     if (remaining > 0) state.suspensions[id] = remaining - 1;
