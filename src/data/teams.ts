@@ -23119,6 +23119,8 @@ export const TEAMS: TeamSeed[] = [
   "stadium": "Haifa International Stadium",
   "city": "Haifa",
   "rating": 63,
+     "capacity": 30870,
+    "founded": 1913,
   "badge": "/assets/badges/maccabi-haifa.webp",
   "primaryColor": "#207B31",
   "secondaryColor": "#FFFFFF",
