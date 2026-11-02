@@ -34,6 +34,8 @@ export interface Team {
   playerIds: number[];
   /** 11 titulares (ids). */
   lineup: number[];
+  /** distribuição DEF/MED/AV escolhida para o onze; GR é sempre 1 */
+  lineupFormation?: { DEF: number; MED: number; AV: number };
 }
 
 export interface Fixture {
@@ -110,6 +112,8 @@ export interface PlayerClubSeasonStats {
   appearances: number;
   goalsLeague: number;
   goalsCup: number;
+  yellowCards: number;
+  redCards: number;
 }
 
 export interface PlayerSeasonRecord {
@@ -119,6 +123,8 @@ export interface PlayerSeasonRecord {
   appearances: number;
   goalsLeague: number;
   goalsCup: number;
+  yellowCards: number;
+  redCards: number;
   rating: number;
 }
 
