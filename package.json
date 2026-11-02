@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "bun test"
+    "test": "bun test",
+    "audit:simulation": "bun run scripts/audit-simulation.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"
