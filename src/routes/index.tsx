@@ -1294,8 +1294,8 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
       half,
       minute: Number(minute) || 0,
       teamId: Number(teamId),
-      kind: rest[0] === "G" || rest[0] === "Y" || rest[0] === "R" ? rest[0] : "G",
-      text: (rest[0] === "G" || rest[0] === "Y" || rest[0] === "R") ? rest.slice(1).join("|") : rest.join("|"),
+      kind: rest[0] === "G" || rest[0] === "Y" || rest[0] === "R" || rest[0] === "2Y" || rest[0] === "S" ? rest[0] : "G",
+      text: (rest[0] === "G" || rest[0] === "Y" || rest[0] === "R" || rest[0] === "2Y" || rest[0] === "S") ? rest.slice(1).join("|") : rest.join("|"),
     };
   };
 
@@ -1411,10 +1411,10 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
                 const isUserGoal = parsed.teamId === state.userTeamId;
                 return (
                   <li                    key={`${event}-${i}`}
-                    className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? `font-bold text-red-600 dark:text-red-400 ${flashEvent === event ? "animate-pulse" : ""}` : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : isUserGoal ? "font-semibold text-primary" : ""}`}
+                    className={`flex items-center gap-2 ${isPenalty ? "justify-center" : parsed.teamId === home.id ? "justify-start" : "justify-end text-right"} ${isPenalty ? cupOutcomeClass + " font-bold" : parsed.kind === "R" ? `font-bold text-red-600 dark:text-red-400 ${flashEvent === event ? "animate-pulse" : ""}` : parsed.kind === "2Y" ? "font-bold text-yellow-600 dark:text-yellow-400" : parsed.kind === "Y" ? "font-semibold text-yellow-600 dark:text-yellow-400" : parsed.kind === "S" ? "font-semibold text-primary" : isUserGoal ? "font-semibold text-primary" : ""}`}
                   >
                     <span className="w-9 shrink-0 text-xs">
-                      {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "Y" ? "🟨" : "⚽"}
+                      {isPenalty ? "🥅" : parsed.kind === "R" ? "🟥" : parsed.kind === "2Y" ? "🟨🟨" : parsed.kind === "Y" ? "🟨" : parsed.kind === "S" ? "🔄" : "⚽"}
                     </span>
                     {!isPenalty && (
                       <span className="w-8 shrink-0 font-mono-num text-xs text-muted-foreground">
@@ -1422,7 +1422,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
                       </span>
                     )}
                     <span>
-                      {isPenalty ? parsed.text : parsed.text.replace(/^[^:]+:\s*/, "")}
+                      {isPenalty ? parsed.text : parsed.kind === "S" ? (() => { const [outName, inName] = parsed.text.split("|"); return `${outName} → ${inName}`; })() : parsed.text.replace(/^[^:]+:\s*/, "")}
                     </span>
                   </li>
                 );
