@@ -25,15 +25,31 @@ export function userTeam(state: GameState): Team {
 
 function addAppearances(state: GameState, playerIds: number[]) {
   if (!state.appearanceStats) state.appearanceStats = {};
-  for (const id of new Set(playerIds)) state.appearanceStats[id] = (state.appearanceStats[id] ?? 0) + 1;
+  state.playerClubSeasonStats ??= {};
+  for (const id of new Set(playerIds)) {
+    state.appearanceStats[id] = (state.appearanceStats[id] ?? 0) + 1;
+    const team = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(id));
+    if (!team) continue;
+    const byClub = state.playerClubSeasonStats[id] ??= {};
+    const stats = byClub[team.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0 };
+    stats.appearances += 1;
+  }
 }
 
 function addScorerGoals(state: GameState, scorerIds: number[], competition: "league" | "cup") {
   if (!state.scorerStats) state.scorerStats = {};
+  state.playerClubSeasonStats ??= {};
   for (const playerId of scorerIds) {
     const current: GoalStats = state.scorerStats[playerId] ?? { league: 0, cup: 0 };
     current[competition] += 1;
     state.scorerStats[playerId] = current;
+    const team = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(playerId));
+    if (team) {
+      const byClub = state.playerClubSeasonStats[playerId] ??= {};
+      const stats = byClub[team.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0 };
+      if (competition === "league") stats.goalsLeague += 1;
+      else stats.goalsCup += 1;
+    }
   }
 }
 
@@ -461,30 +477,42 @@ export function continueAfterSeasonReview(state: GameState) {
     },
   ];
 
-  // Guarda uma fotografia estatística por jogador antes de limpar os dados da época.
-  // O clube é o clube em que o jogador termina a época; golos e presenças acumulam toda a época.
+  // Uma linha por clube, para não atribuir ao último clube os golos feitos antes de uma transferência.
   state.playerSeasonHistory ??= {};
   for (const player of Object.values(state.players)) {
-    const team = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(player.id));
-    const goals = state.scorerStats?.[player.id] ?? { league: 0, cup: 0 };
-    const record = {
-      season: review.season,
-      teamId: team?.id ?? null,
-      teamName: team?.name ?? "Sem clube",
-      appearances: state.appearanceStats?.[player.id] ?? 0,
-      goalsLeague: goals.league,
-      goalsCup: goals.cup,
-      rating: player.rating,
-    };
-    const records = state.playerSeasonHistory[player.id] ?? [];
-    records.push(record);
-    state.playerSeasonHistory[player.id] = records;
+    const byClub = state.playerClubSeasonStats?.[player.id] ?? {};
+    const clubEntries = Object.entries(byClub);
+    const fallbackTeam = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(player.id));
+    const entries: [string, { appearances: number; goalsLeague: number; goalsCup: number }][] = clubEntries.length
+      ? clubEntries
+      : fallbackTeam
+        ? [[String(fallbackTeam.id), {
+            appearances: state.appearanceStats?.[player.id] ?? 0,
+            goalsLeague: state.scorerStats?.[player.id]?.league ?? 0,
+            goalsCup: state.scorerStats?.[player.id]?.cup ?? 0,
+          }]]
+        : [];
+    for (const [teamId, stats] of entries) {
+      const club = state.teams[Number(teamId)];
+      const records = state.playerSeasonHistory[player.id] ?? [];
+      records.push({
+        season: review.season,
+        teamId: Number(teamId),
+        teamName: club?.name ?? "Clube desconhecido",
+        appearances: stats.appearances,
+        goalsLeague: stats.goalsLeague,
+        goalsCup: stats.goalsCup,
+        rating: player.rating,
+      });
+      state.playerSeasonHistory[player.id] = records;
+    }
   }
 
   state.seasonYear += 1;
   state.round = 1;
   state.scorerStats = {};
   state.appearanceStats = {};
+  state.playerClubSeasonStats = {};
   state.yellowCards = {};
   // As suspensões disciplinares não transitam para a nova época.
   state.suspensions = {};
