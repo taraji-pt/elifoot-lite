@@ -202,6 +202,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if ((["GR", "DEF", "MED", "AV"] as const).some((position) => positionCounts[position] !== GAME_CONFIG.startingLineup[position])) {
             return "O onze tem de respeitar as posições definidas na formação.";
           }
+          const unavailablePlayerIds = [...(draft.teams[draft.userTeamId]?.playerIds ?? [])].filter((id) => (draft.suspensions?.[id] ?? 0) > 0);
           const homeLineup = prepareTeamForMatch(draft, home);
           const awayLineup = prepareTeamForMatch(draft, away);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
@@ -215,6 +216,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             half: 1,
             userLineup: [...userLineup],
             startingUserLineup: [...userLineup],
+            unavailablePlayerIds,
             tacticalIntent: 0,
             appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
             subsUsed: 0,
@@ -241,6 +243,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const incoming = draft.players[inId];
           if ((match.redCardIds ?? []).includes(outId)) return "Um jogador expulso não pode ser substituído: já foi excluído do jogo.";
           if ((match.redCardIds ?? []).includes(inId)) return "Um jogador expulso não pode voltar a entrar em campo.";
+          if ((match.unavailablePlayerIds ?? []).includes(inId)) return "Esse jogador está suspenso e não pode ser utilizado neste jogo.";
           if (!team?.playerIds.includes(inId) || match.userLineup.includes(inId) || !outgoing || !incoming) return "Escolhe um suplente válido.";
           if ((outgoing.position === "GR" || incoming.position === "GR") && outgoing.position !== incoming.position) return "Um guarda-redes só pode ser substituído por outro guarda-redes.";
           if ((draft.suspensions?.[inId] ?? 0) > 0) return "Esse jogador está suspenso.";
