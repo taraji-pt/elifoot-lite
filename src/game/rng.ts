@@ -31,7 +31,7 @@ export function shuffle<T>(arr: T[]): T[] {
 
 /** Amostra de Poisson (usada para golos). */
 export function poisson(lambda: number): number {
-  const L = Math.exp(-Math.max(0.02, lambda));
+  const L = Math.exp(-Math.max(0, lambda));
   let k = 0;
   let p = 1;
   do {
