@@ -32,6 +32,9 @@ jobs:
       - name: Run discipline tests
         run: bun run test
 
+      - name: Run simulation balance audit
+        run: bun run audit:simulation
+
       - name: Build static site
         run: bun run build
         env:
