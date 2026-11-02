@@ -1160,6 +1160,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
 
 
   const shouldFollowEventsRef = useRef(false);
+  const previousVisibleEventCountRef = useRef<number | null>(null);
 
   useEffect(() => {
     const updateFollowState = () => {
@@ -1176,6 +1177,28 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
       window.removeEventListener("resize", updateFollowState);
     };
   }, []);
+
+  useEffect(() => {
+    if (!match || !lastMatchEvent) {
+      previousVisibleEventCountRef.current = 0;
+      return;
+    }
+    const firstEvents = match.events.filter((e) => e.startsWith("1|"));
+    const secondEvents = match.events.filter((e) => e.startsWith("2|"));
+    const phaseElapsed = Math.min(10000, elapsedMs);
+    const simulatedMinute = match.finished
+      ? 46 + Math.floor((phaseElapsed / 10000) * 44)
+      : 1 + Math.floor((phaseElapsed / 10000) * 44);
+    const visibleCount =
+      (match.finished ? firstEvents.length : firstEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute).length) +
+      (match.finished ? secondEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute).length : 0);
+
+    const previousCount = previousVisibleEventCountRef.current;
+    previousVisibleEventCountRef.current = visibleCount;
+    if (previousCount !== null && visibleCount > previousCount && shouldFollowEventsRef.current) {
+      eventsScrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [match?.events.length, match?.half, match?.finished, elapsedMs, lastMatchEvent]);
 
   const flashedEventRef = useRef<string | null>(null);
 
@@ -1204,10 +1227,6 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
       : [];
     const visibleEvents = [...visibleFirst, ...visibleSecond];
 
-  useEffect(() => {
-    if (!shouldFollowEventsRef.current) return;
-    eventsScrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [visibleEvents.length]);
     const event = visibleEvents[visibleEvents.length - 1] ?? null;
 
     if (!event || flashedEventRef.current === event) return;
