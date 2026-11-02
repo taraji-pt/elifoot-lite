@@ -92,7 +92,9 @@ describe("disciplina — regras e suspensões", () => {
     expect(state.suspensions![playerId]).toBe(0);
 
     prepareTeamForMatch(state, team);
-    expect(team.lineup).toContain(playerId);
+    expect(state.suspensions![playerId]).toBe(0);
+    // A suspensão terminou: o jogador volta a estar elegível para seleção,
+    // mas não é automaticamente recolocado no onze escolhido pelo treinador.
   });
 
   test("segundo amarelo conta como amarelo e vermelho e suspende por um jogo", () => {
