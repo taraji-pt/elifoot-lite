@@ -521,6 +521,8 @@ function PlayerBids({ state }: { state: GameState }) {
 function Game({ state }: { state: GameState }) {
   const { message, setMessage, save, deleteSave } = useGame();
   const [tab, setTab] = useState<Tab>("equipa");
+  const [viewPlayerId, setViewPlayerId] = useState<number | null>(null);
+  const openPlayer = (playerId: number) => setViewPlayerId(playerId);
   const [showCareerImageSettings, setShowCareerImageSettings] = useState(false);
   const [stadiumOpen, setStadiumOpen] = useState(false);
   const team = userTeam(state);
@@ -628,16 +630,17 @@ function Game({ state }: { state: GameState }) {
       <PlayerBids state={state} />
 
       <main className="mt-4">
-        {activeTab === "equipa" && <Squad state={state} team={team} />}
-        {activeTab === "jogo" && <Match state={state} />}
+        {activeTab === "equipa" && <Squad state={state} team={team} onPlayerClick={openPlayer} />}
+        {activeTab === "jogo" && <Match state={state} onPlayerClick={openPlayer} />}
         {activeTab === "classificacao" && <Standings state={state} />}
         {activeTab === "calendario" && <Calendar state={state} />}
-        {activeTab === "transferencias" && <Transfers state={state} />}
+        {activeTab === "transferencias" && <Transfers state={state} onPlayerClick={openPlayer} />}
         {activeTab === "taca" && <CupView state={state} />}
         {activeTab === "historico" && <History state={state} />}
       </main>
       </div>
       {showCareerImageSettings && <CareerImageSettings state={state} onClose={() => setShowCareerImageSettings(false)} />}
+      {viewPlayerId !== null && state.players[viewPlayerId] && <PlayerProfileModal state={state} playerId={viewPlayerId} onClose={() => setViewPlayerId(null)} />}
     </div>
   );
 }
@@ -936,7 +939,7 @@ function lineupCounts(ids: number[], players: Record<number, Player>) {
   return c;
 }
 
-function Squad({ state, team }: { state: GameState; team: Team }) {
+function Squad({ state, team, onPlayerClick }: { state: GameState; team: Team; onPlayerClick: (playerId: number) => void }) {
   const { setLineup } = useGame();
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
   const counts = lineupCounts(team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0), state.players);
@@ -983,6 +986,7 @@ function Squad({ state, team }: { state: GameState; team: Team }) {
                 players={players}
                 highlight={team.lineup.filter((id) => (state.suspensions?.[id] ?? 0) <= 0)}
                 disabledIds={disabledIds}
+                onPlayerClick={onPlayerClick}
                 onClick={toggle}
                 action={(p) => {
                   const yellows = state.yellowCards?.[p.id] ?? 0;
@@ -1012,14 +1016,19 @@ function PlayerTable({
   onClick,
   action,
   disabledIds = [],
+  redCardIds = [],
+  onPlayerClick,
 }: {
   players: Player[];
   highlight?: number[];
   onClick?: (id: number) => void;
   action?: (p: Player) => React.ReactNode;
   disabledIds?: number[];
+  redCardIds?: number[];
+  onPlayerClick?: (id: number) => void;
 }) {
   const disabled = new Set(disabledIds ?? []);
+  const sentOff = new Set(redCardIds);
   return (
     <table className="w-full table-fixed text-sm">
       <colgroup>
@@ -1047,12 +1056,12 @@ function PlayerTable({
             onClick={() => {
               if (!disabled.has(p.id)) onClick?.(p.id);
             }}
-            className={`border-t border-border ${disabled.has(p.id) ? "cursor-not-allowed bg-muted/60 text-muted-foreground opacity-60" : onClick ? "cursor-pointer hover:bg-accent" : ""} ${
-              highlight.includes(p.id) ? "bg-primary/10" : ""
+            className={`border-t border-border ${sentOff.has(p.id) ? "bg-red-500/10 text-red-700 dark:text-red-300" : disabled.has(p.id) ? "cursor-not-allowed bg-muted/60 text-muted-foreground opacity-60" : onClick ? "cursor-pointer hover:bg-accent" : ""} ${
+              highlight.includes(p.id) && !sentOff.has(p.id) ? "bg-primary/10" : ""
             }`}
           >
             <td className="py-1.5 font-mono-num text-xs">{p.position}</td>
-            <td className="truncate">{p.name}</td>
+            <td className="truncate"><button type="button" className={`max-w-full truncate text-left ${onPlayerClick ? "hover:underline focus:outline-none focus:ring-1 focus:ring-primary" : "cursor-default"}`} onClick={(event) => { event.stopPropagation(); onPlayerClick?.(p.id); }}>{p.name}</button></td>
             <td><Flag code={p.nationality} /></td>
             <td className="text-left font-mono-num">{p.rating}</td>
             <td className="text-right font-mono-num text-muted-foreground">{formatMoney(p.transferValue)}</td>
@@ -1064,7 +1073,7 @@ function PlayerTable({
   );
 }
 
-function Match({ state }: { state: GameState }) {
+function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (playerId: number) => void }) {
   const [stadiumOpen, setStadiumOpen] = useState(false);
   const { startMatch, substitute, playSecondHalf, finishMatch } = useGame();
   const [outId, setOutId] = useState<number | null>(null);
@@ -1403,20 +1412,27 @@ function Match({ state }: { state: GameState }) {
             <PlayerTable
               players={starters}
               highlight={outId ? [outId] : []}
+              disabledIds={match.redCardIds ?? []}
+              redCardIds={match.redCardIds ?? []}
+              onPlayerClick={onPlayerClick}
               onClick={(id) => setOutId(id === outId ? null : id)}
+              action={(player) => (match.redCardIds ?? []).includes(player.id) ? "🟥 Expulso" : ""}
             />
           </div>
           <div className={card}>
             <div className="mb-2 text-sm font-semibold">Suplentes — escolhe quem entra</div>
             <PlayerTable
               players={bench}
+              disabledIds={match.redCardIds ?? []}
+              redCardIds={match.redCardIds ?? []}
+              onPlayerClick={onPlayerClick}
               onClick={(id) => {
                 if (outId && match.subsUsed < GAME_CONFIG.maxSubstitutions) {
                   substitute(outId, id);
                   setOutId(null);
                 }
               }}
-              action={() => (outId ? "Entrar" : "")}
+              action={(player) => (match.redCardIds ?? []).includes(player.id) ? "🟥 Expulso" : outId ? "Entrar" : ""}
             />
           </div>
         </div>
@@ -1581,6 +1597,65 @@ function TeamSquadModal({
   );
 }
 
+function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; playerId: number; onClose: () => void }) {
+  const player = state.players[playerId];
+  if (!player) return null;
+  const records = state.playerSeasonHistory?.[playerId] ?? [];
+  const currentTeam = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(playerId));
+  const currentGoals = state.scorerStats?.[playerId] ?? { league: 0, cup: 0 };
+  const currentAppearances = state.appearanceStats?.[playerId] ?? 0;
+  const currentRecord = {
+    season: seasonLabel(state.seasonYear),
+    teamName: currentTeam?.name ?? "Sem clube",
+    appearances: currentAppearances,
+    goalsLeague: currentGoals.league,
+    goalsCup: currentGoals.cup,
+    rating: player.rating,
+  };
+  const allRecords = [...records, currentRecord];
+  const totals = allRecords.reduce((sum, item) => ({
+    appearances: sum.appearances + item.appearances,
+    goals: sum.goals + item.goalsLeague + item.goalsCup,
+  }), { appearances: 0, goals: 0 });
+
+  return (
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-4 py-6" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
+      <div className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5" onClick={(event) => event.stopPropagation()}>
+        <div className="flex items-start justify-between gap-3 border-b border-border pb-3">
+          <div className="flex min-w-0 items-center gap-3">
+            <Flag code={player.nationality} size={28} />
+            <div className="min-w-0">
+              <div className="text-xl font-bold">{player.name}</div>
+              <div className="text-sm text-muted-foreground">{player.position} · Rating {player.rating} · Valor {formatMoney(player.transferValue)}</div>
+              <div className="mt-1 text-xs text-muted-foreground">{currentTeam ? `Actualmente: ${currentTeam.name}` : "Sem clube"}</div>
+            </div>
+          </div>
+          <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Épocas</div><div className="text-xl font-bold">{records.length + 1}</div></div>
+          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Presenças</div><div className="text-xl font-bold">{totals.appearances}</div></div>
+          <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Golos</div><div className="text-xl font-bold">{totals.goals}</div></div>
+        </div>
+        <div className="mt-5 font-semibold">Histórico de carreira</div>
+        {allRecords.length ? (
+          <div className="mt-2 overflow-x-auto">
+            <table className="w-full min-w-[420px] text-sm">
+              <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1">Época</th><th>Clube</th><th className="text-right">J</th><th className="text-right">G</th><th className="text-right">Rating</th></tr></thead>
+              <tbody>{[...allRecords].reverse().map((record, index) => (
+                <tr key={`${record.season}-${index}`} className="border-t border-border">
+                  <td className="py-2 font-mono-num">{record.season}</td><td>{record.teamName}</td><td className="text-right font-mono-num">{record.appearances}</td><td className="text-right font-mono-num">{record.goalsLeague + record.goalsCup}</td><td className="text-right font-mono-num">{record.rating}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        ) : <p className="mt-2 text-sm text-muted-foreground">Ainda não há épocas concluídas registadas.</p>}
+        <div className="mt-3 text-xs text-muted-foreground">Os jogos incluem Liga e Taça. As presenças contam sempre que o jogador entra em campo.</div>
+      </div>
+    </div>
+  );
+}
+
 function TopScorers({
   state,
   division,
@@ -1700,7 +1775,7 @@ function Calendar({ state }: { state: GameState }) {
   );
 }
 
-function Transfers({ state }: { state: GameState }) {
+function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: (playerId: number) => void }) {
   const { buy, sell } = useGame();
   const [pos, setPos] = useState<Position | "ALL">("ALL");
   const [search, setSearch] = useState("");
@@ -1817,7 +1892,7 @@ function Transfers({ state }: { state: GameState }) {
                   <div className="min-w-0">
                     <div className="flex min-w-0 items-center gap-2">
                       <Flag code={player.nationality} size={16} />
-                      <span className="truncate font-medium">{player.name}</span>
+                      <button type="button" className="truncate text-left font-medium hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                     </div>
                     <div className="mt-0.5 flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
                       {teamId ? (
@@ -1850,7 +1925,7 @@ function Transfers({ state }: { state: GameState }) {
                 <td>
                   <span className="inline-flex items-center gap-1">
                     <Flag code={p.nationality} size={16} />
-                    {p.name}
+                    <button type="button" className="text-left hover:underline" onClick={() => onPlayerClick(p.id)}>{p.name}</button>
                   </span>
                 </td>
                 <td className="text-right font-mono-num">{p.rating}</td>
