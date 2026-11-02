@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "bun test",
-    "audit:simulation": "bun run scripts/audit-simulation.ts"
+    "audit:simulation": "bun run scripts/audit-simulation.ts",
+    "audit:dismissals": "bun run scripts/audit-dismissal-timing.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"
