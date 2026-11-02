@@ -325,10 +325,15 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const home = draft.teams[match.homeId] as Team;
           const away = draft.teams[match.awayId] as Team;
           const userIsHome = draft.userTeamId === match.homeId;
-          const homeLineup = userIsHome ? match.userLineup : home.lineup;
-          const awayLineup = userIsHome ? away.lineup : match.userLineup;
+          const sentOff = new Set(match.redCardIds ?? []);
+          // Expulsões da primeira parte retiram efetivamente jogadores das duas equipas.
+          const homeLineup = (userIsHome ? match.userLineup : home.lineup).filter((id) => !sentOff.has(id));
+          const awayLineup = (userIsHome ? away.lineup : match.userLineup).filter((id) => !sentOff.has(id));
+          match.userLineup = [...(userIsHome ? homeLineup : awayLineup)];
+          const userTeam = draft.teams[draft.userTeamId];
+          if (userTeam) userTeam.lineup = [...match.userLineup];
           const userIntent = match.tacticalIntent ?? 0;
-          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, match.redCardIds ?? [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent);
+          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
           match.half = 2;
