@@ -2015,6 +2015,7 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
   const [maxValue, setMaxValue] = useState("");
   const [maxPrice, setMaxPrice] = useState(true);
   const [marketSeed] = useState(() => Math.random());
+  const [marketPage, setMarketPage] = useState(0);
   const team = userTeam(state);
 
   const market = useMemo(() => {
@@ -2029,9 +2030,12 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
       .filter(({ player }) => valueMax === null || player.transferValue <= valueMax)
       .filter(({ player }) => !maxPrice || player.transferValue <= team.budget);
 
-    // Sem pesquisa nominal, o mercado apresenta uma montra aleatória e estável
-    // de 40 jogadores. Com pesquisa, procuramos no universo inteiro.
-    if (query) {
+    // Sem filtros, apresenta uma montra aleatória e estável de 40 jogadores.
+    // Qualquer pesquisa/filtro explícito consulta o universo completo.
+    const hasExplicitFilter = Boolean(
+      query || pos !== "ALL" || minRating !== "" || maxValue !== "" || !maxPrice,
+    );
+    if (hasExplicitFilter) {
       return filtered.sort((a, b) =>
         b.player.rating - a.player.rating ||
         a.player.name.localeCompare(b.player.name, "pt"),
@@ -2048,9 +2052,13 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
   }, [state, pos, search, minRating, maxValue, maxPrice, team.budget, marketSeed]);
 
   const mine = sortSquad(getPlayers(team.playerIds, state.players));
+  const pageSize = 8;
+  const totalPages = Math.max(1, Math.ceil(market.length / pageSize));
+  const currentPage = Math.min(marketPage, totalPages - 1);
+  const pagePlayers = market.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      <div className={card}>        <div className="mb-2 font-semibold">Mercado</div>
+    <div className="grid items-stretch gap-4 lg:grid-cols-2">
+      <div className={`${card} flex flex-col lg:h-[680px]`}>        <div className="mb-2 font-semibold">Mercado</div>
         <div className="mb-3 space-y-2">
           <input
             className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
@@ -2105,7 +2113,7 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
             </button>
           </div>
         </div>
-        <div>
+        <div className="flex-1">
           <table className="w-full table-fixed text-sm">
           <thead className="text-left text-xs text-muted-foreground">
             <tr>
@@ -2117,7 +2125,7 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
             </tr>
           </thead>
           <tbody>
-            {market.map(({ player, teamId }) => (
+            {pagePlayers.map(({ player, teamId }) => (
               <tr key={player.id} className="border-t border-border">
                 <td className="py-1.5 pr-3 font-mono-num text-xs">{player.position}</td>
                                 <td className="pr-2">
@@ -2146,9 +2154,20 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
           </tbody>
           </table>
         </div>
+        <div className="mt-3 flex items-center justify-between border-t border-border pt-3 text-xs">
+          <span className="text-muted-foreground">
+            {market.length === 0 ? "Nenhum jogador encontrado" : `A mostrar ${currentPage * pageSize + 1}–${Math.min((currentPage + 1) * pageSize, market.length)} de ${market.length}`}
+          </span>
+          <div className="flex items-center gap-1">
+            <button className={btn2} disabled={currentPage === 0} onClick={() => setMarketPage((p) => Math.max(0, p - 1))}>Anterior</button>
+            <span className="px-2 text-muted-foreground">{currentPage + 1}/{totalPages}</span>
+            <button className={btn2} disabled={currentPage >= totalPages - 1} onClick={() => setMarketPage((p) => Math.min(totalPages - 1, p + 1))}>Seguinte</button>
+          </div>
+        </div>
       </div>
-      <div className={card}>
+      <div className={`${card} flex flex-col lg:h-[680px]`}>
         <div className="mb-2 font-semibold">O meu plantel ({mine.length})</div>
+        <div className="min-h-0 flex-1 overflow-y-auto">
         <table className="w-full text-sm">
           <tbody>
             {mine.map((p) => (
@@ -2169,6 +2188,7 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
