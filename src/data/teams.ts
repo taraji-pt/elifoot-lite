@@ -21245,7 +21245,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Polaco",
         "position": "AV",
-        "nationality": "AGO"
+        "nationality": "ANG"
       },
       {
         "name": "Nabih Hablani",
@@ -21334,7 +21334,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Saidou Khan",
         "position": "MED",
-        "nationality": "GMB"
+        "nationality": "GAM"
       },
       {
         "name": "Haykeul Chikhaoui",
@@ -21473,7 +21473,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Marius Glo",
         "position": "AV",
-        "nationality": "TGO"
+        "nationality": "TOG"
       },
       {
         "name": "Wahid Timi",
@@ -21577,7 +21577,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Omar Jobe",
         "position": "AV",
-        "nationality": "GMB"
+        "nationality": "GAM"
       },
       {
         "name": "Rafik Kamergi",
@@ -21701,7 +21701,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Josna Loulendo",
         "position": "AV",
-        "nationality": "COG"
+        "nationality": "CGO"
       },
       {
         "name": "Mohamed Amine Aidi",
@@ -21755,7 +21755,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Adem Alilet",
         "position": "DEF",
-        "nationality": "DZA"
+        "nationality": "ALG"
       },
       {
         "name": "Raed Chikhaoui",
@@ -21800,7 +21800,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Youcef Belaïli",
         "position": "AV",
-        "nationality": "DZA"
+        "nationality": "ALG"
       },
       {
         "name": "Florian Danho",
@@ -21914,7 +21914,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Kebba Sowe",
         "position": "AV",
-        "nationality": "GMB"
+        "nationality": "GAM"
       },
       {
         "name": "Hedi Jertila",
@@ -22122,7 +22122,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Sory",
         "position": "MED",
-        "nationality": "GIN"
+        "nationality": "GUI"
       },
       {
         "name": "Mohamed Ameur Jouini",
@@ -22380,7 +22380,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Aboubacar Sidiki Leno",
         "position": "AV",
-        "nationality": "GIN"
+        "nationality": "GUI"
       },
       {
         "name": "Saber Hammami",
@@ -22424,7 +22424,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Chérif Camara",
         "position": "DEF",
-        "nationality": "GIN"
+        "nationality": "GUI"
       },
       {
         "name": "Firas Fadhli",
@@ -22677,7 +22677,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Youssouf Oumarou",
         "position": "MED",
-        "nationality": "NER"
+        "nationality": "NIG"
       },
       {
         "name": "Yusuf Touré",
@@ -22801,7 +22801,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Abdelouahab Bakhouche",
         "position": "MED",
-        "nationality": "DZA"
+        "nationality": "ALG"
       },
       {
         "name": "Borhene Hakimi",
@@ -22811,12 +22811,12 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Ghislain Mounguidé",
         "position": "MED",
-        "nationality": "CAF"
+        "nationality": "CTA"
       },
       {
         "name": "Mohamed Chérif Camara",
         "position": "MED",
-        "nationality": "GIN"
+        "nationality": "GUI"
       },
       {
         "name": "Idriss Mhirsi",
@@ -22846,7 +22846,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Amadou Diakité",
         "position": "AV",
-        "nationality": "GIN"
+        "nationality": "GUI"
       }
     ]
   },
@@ -22905,7 +22905,7 @@ export const TEAMS: TeamSeed[] = [
       {
         "name": "Ousmane Diané",
         "position": "MED",
-        "nationality": "GIN"
+        "nationality": "GUI"
       },
       {
         "name": "Chaïm El Djebali",
@@ -22972,7 +22972,9 @@ export const TEAMS: TeamSeed[] = [
   "city": "Alcochete",
   "rating": 46,
   "badge": "/assets/badges/alcochetense.webp",
-  "primaryColor": "#00843D",
+    "capacity": 5000,
+    "founded": 1937,
+  "primaryColor": "#188B62",
   "secondaryColor": "#FFFFFF",
   "stadiumImage": "/assets/stadiums/antonio-almeida-correia-foni.jpg",
   "players": [
