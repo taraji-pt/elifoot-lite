@@ -318,7 +318,8 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
   const imageSrc = stadiumImageSrc(team);
   const hasStadium = Boolean(team.stadium?.trim());
   const hasCity = Boolean(team.city?.trim());
-  if (!imageSrc && !hasStadium && !hasCity) return null;
+  const hasCapacity = typeof team.capacity === "number" && team.capacity > 0;
+  if (!imageSrc && !hasStadium && !hasCity && !hasCapacity) return null;
   const mapQuery = encodeURIComponent(
     [team.city?.trim(), COUNTRIES[team.country]?.name ?? team.country].filter(Boolean).join(", "),
   );
@@ -342,6 +343,11 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
               <Flag code={team.country} size={16} />
               <span>{[team.city?.trim(), team.name].filter(Boolean).join(" · ")}</span>
             </div>
+            {hasCapacity && (
+              <div className="mt-1 text-sm font-medium text-muted-foreground">
+                Capacidade: {team.capacity!.toLocaleString("pt-PT")} espectadores
+              </div>
+            )}
           </div>
           <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
@@ -566,6 +572,7 @@ function Game({ state }: { state: GameState }) {
                 {team.name}
               </div>
               <div className="mt-1.5 text-sm font-medium text-white/85">
+                {team.founded ? <>Fundado em {team.founded} · </> : null}
                 Época {seasonLabel(state.seasonYear)} · {divisionLabel(team.division)} · Jornada {state.round}/
                 {totalRounds(state)} · Rating {teamRating(team, state.players)}
               </div>
