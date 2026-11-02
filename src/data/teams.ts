@@ -23111,5 +23111,119 @@ export const TEAMS: TeamSeed[] = [
       "nationality": "STP"
     }
   ]
+},
+  {
+  "id": 317,
+  "name": "Maccabi Haifa",
+  "country": "ISR",
+  "stadium": "Haifa International Stadium",
+  "city": "Haifa",
+  "rating": 63,
+  "badge": "/assets/badges/maccabi-haifa.webp",
+  "primaryColor": "#207B31",
+  "secondaryColor": "#FFFFFF",
+  "stadiumImage": "/assets/stadiums/maccabi-haifa.jpg",
+  "players": [
+    {
+      "name": "Omri Glazer",
+      "position": "GR",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Shareef Kayouf",
+      "position": "GR",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Eli Dasa",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Tsunami",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Pierre Cornud",
+      "position": "DEF",
+      "nationality": "FRA"
+    },
+    {
+      "name": "Jelle Bataille",
+      "position": "DEF",
+      "nationality": "BEL"
+    },
+    {
+      "name": "Pedrão",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Sean Goldberg",
+      "position": "DEF",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Ali Mohamed",
+      "position": "MED",
+      "nationality": "NIG"
+    },
+    {
+      "name": "Ethane Azoulay",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Yarin Levi",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Cédric Don",
+      "position": "MED",
+      "nationality": "CIV"
+    },
+    {
+      "name": "Yair Mordechai",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Nevot Ratner",
+      "position": "MED",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Bruninho",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Pedro Brazão",
+      "position": "AV",
+      "nationality": "POR"
+    },
+    {
+      "name": "Kenji Gorré",
+      "position": "AV",
+      "nationality": "CUW"
+    },
+    {
+      "name": "Guy Melamed",
+      "position": "AV",
+      "nationality": "ISR"
+    },
+    {
+      "name": "Andrija Novaković",
+      "position": "AV",
+      "nationality": "USA"
+    },
+    {
+      "name": "Silva Kani",
+      "position": "AV",
+      "nationality": "ISR"
+    }
+  ]
 }
 ];
