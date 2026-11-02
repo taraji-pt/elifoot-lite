@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
-import { recordMatchDiscipline, prepareTeamForMatch } from "../src/game/engine";
-import { playCupRound } from "../src/game/cup";
-import type { GameState, Player, Team } from "../src/game/types";
+import { recordMatchDiscipline, prepareTeamForMatch } from "./engine";
+import { playCupRound } from "./cup";
+import type { GameState, Player, Team } from "./types";
 
 function makeSquad(teamId: number, firstPlayerId: number): { team: Team; players: Record<number, Player> } {
   const positions: Player["position"][] = [
