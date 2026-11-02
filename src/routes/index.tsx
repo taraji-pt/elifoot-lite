@@ -327,14 +327,14 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-6"
+      className="game-modal-backdrop fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/70 p-4"
       role="dialog"
       aria-modal="true"
       aria-label={`Estádio de ${team.name}`}
       onClick={onClose}
     >
       <div
-        className="max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
+        className="game-modal-panel max-h-[calc(100dvh-2rem)] w-full max-w-3xl overflow-y-auto rounded-xl border border-border bg-card shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-3 border-b border-border p-4">
@@ -1640,7 +1640,7 @@ function TeamSquadModal({
       onClick={onClose}
     >
       <div
-        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5"
+        className="game-modal-panel max-h-[calc(100dvh-2rem)] w-full max-w-2xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
@@ -1730,8 +1730,8 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
   }), { appearances: 0, goals: 0, yellowCards: 0, redCards: 0 });
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-4 py-6" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
-      <div className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5" onClick={(event) => event.stopPropagation()}>
+    <div className="game-modal-backdrop fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-black/70 p-4" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
+      <div className="game-modal-panel max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5" onClick={(event) => event.stopPropagation()}>
         <div
           className="relative -mx-4 -mt-4 mb-4 overflow-hidden rounded-t-xl border-b border-white/15 px-4 py-4 sm:-mx-5 sm:-mt-5 sm:px-5"
           style={{
