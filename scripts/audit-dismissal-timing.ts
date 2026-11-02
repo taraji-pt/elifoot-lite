@@ -107,8 +107,9 @@ function run(minute: number, dismissals: number, seed: number): Result {
     for (let i = 0; i < MATCHES; i++) {
       const before = simulateInterval(home, away, players, h, a, 1, minute - 1);
       const after = simulateInterval(home, away, players, h, reducedAway, minute, 45);
-      const fh = before.homeGoals + after.homeGoals + simulateInterval(home, away, players, h, reducedAway, 46, 90).homeGoals;
-      const fa = before.awayGoals + after.awayGoals + simulateInterval(home, away, players, h, reducedAway, 46, 90).awayGoals;
+      const rest = simulateInterval(home, away, players, h, reducedAway, 46, 90);
+      const fh = before.homeGoals + after.homeGoals + rest.homeGoals;
+      const fa = before.awayGoals + after.awayGoals + rest.awayGoals;
       const wasBehindAtDismissal = before.awayGoals < before.homeGoals;
       goals += fh + fa;
       goalsAfter += after.homeGoals + after.awayGoals + rest.homeGoals + rest.awayGoals;
