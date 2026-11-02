@@ -375,7 +375,7 @@ function StadiumModal({ team, onClose }: { team: Team; onClose: () => void }) {
   );
 }
 
-function StartingLineups({ home, away, state }: { home: Team; away: Team; state: GameState }) {
+function StartingLineups({ home, away, state, onPlayerClick }: { home: Team; away: Team; state: GameState; onPlayerClick: (playerId: number) => void }) {
   const playersFor = (team: Team) =>
     team.lineup
       .map((id) => state.players[id])
@@ -393,7 +393,7 @@ function StartingLineups({ home, away, state }: { home: Team; away: Team; state:
             >
               {reverse ? (
                 <>
-                  <span className="min-w-0 truncate">{player.name}</span>
+                  <button type="button" className="min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                   <Flag code={player.nationality} size={16} />
                   <span className="w-7 shrink-0 text-left font-mono-num text-xs text-muted-foreground">{player.position}</span>
                   <span className="w-5 shrink-0 text-right text-xs text-muted-foreground">{index + 1}</span>
@@ -403,7 +403,7 @@ function StartingLineups({ home, away, state }: { home: Team; away: Team; state:
                   <span className="w-5 shrink-0 text-left text-xs text-muted-foreground">{index + 1}</span>
                   <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
                   <Flag code={player.nationality} size={16} />
-                  <span className="min-w-0 truncate">{player.name}</span>
+                  <button type="button" className="min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                 </>
               )}
             </li>
@@ -1203,7 +1203,7 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
           </div>
         </div>
 
-        <StartingLineups home={home} away={away} state={state} />
+        <StartingLineups home={home} away={away} state={state} onPlayerClick={onPlayerClick} />
 
         {!ok && <p className="mb-3 mt-4 text-sm text-destructive">Precisas de 11 jogadores disponíveis no onze. Jogadores expulsos ficam fora do próximo jogo, seja Liga ou Taça.</p>}
         <button className={btn + " mt-4"} disabled={!ok} onClick={startMatch}>
@@ -1536,6 +1536,7 @@ function TeamSquadModal({
 }) {
   const squad = sortSquad(getPlayers(team.playerIds, state.players));
   const rating = teamRating(team, state.players);
+  const [viewPlayerId, setViewPlayerId] = useState<number | null>(null);
 
   return (
     <div
@@ -1581,7 +1582,7 @@ function TeamSquadModal({
                   <span>{label}</span>
                   <span className="text-xs font-normal text-muted-foreground">{players.length}</span>
                 </div>
-                <PlayerTable players={players} />
+                <PlayerTable players={players} onPlayerClick={setViewPlayerId} />
               </div>
             );
           })}
@@ -1593,6 +1594,7 @@ function TeamSquadModal({
           </div>
         )}
       </div>
+      {viewPlayerId !== null && <PlayerProfileModal state={state} playerId={viewPlayerId} onClose={() => setViewPlayerId(null)} />}
     </div>
   );
 }
@@ -1665,6 +1667,7 @@ function TopScorers({
   division: number;
   stats?: Record<number, { league: number; cup: number }>;
 }) {
+  const [viewPlayerId, setViewPlayerId] = useState<number | null>(null);
   const scorerStats = stats ?? state.scorerStats ?? {};
   const rows = Object.entries(scorerStats)
     .map(([id, goals]) => {
@@ -1711,7 +1714,7 @@ function TopScorers({
                   <td>
                     <span className="inline-flex items-center gap-2 font-semibold">
                       <Flag code={row.player.nationality} size={16} />
-                      {row.player.name}
+                      <button type="button" className="hover:underline" onClick={() => setViewPlayerId(row.player.id)}>{row.player.name}</button>
                     </span>
                   </td>
                   <td className="font-mono-num text-xs">{row.player.position}</td>
@@ -1732,6 +1735,7 @@ function TopScorers({
       ) : (
         <div className="py-3 text-sm text-muted-foreground">Ainda não há golos registados nesta divisão.</div>
       )}
+      {viewPlayerId !== null && <PlayerProfileModal state={state} playerId={viewPlayerId} onClose={() => setViewPlayerId(null)} />}
     </div>
   );
 }
