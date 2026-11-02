@@ -1917,6 +1917,18 @@ function Calendar({ state }: { state: GameState }) {
     const cup = cupByScheduledRound.get(index + 1);
     if (cup) entries.push({ type: "cup", round: index + 1, ...cup });
   });
+  const resultIndicator = (result: "V" | "E" | "D" | null) => {
+    if (!result) return <td className="w-9 px-1" />;
+    const color = result === "V" ? "bg-green-600" : result === "E" ? "bg-amber-500" : "bg-red-600";
+    const label = result === "V" ? "Vitória" : result === "E" ? "Empate" : "Derrota";
+    return (
+      <td className="w-9 px-1 text-center">
+        <span title={label} aria-label={label} className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold text-white ${color}`}>
+          {result}
+        </span>
+      </td>
+    );
+  };
   return (
     <div className={`${card} w-full`}>
       <div className="mb-2 font-semibold">Calendário</div>
@@ -1924,22 +1936,30 @@ function Calendar({ state }: { state: GameState }) {
         {entries.map((entry) => {
           if (entry.type === "league") {
             const f = entry.fixture;
+            const played = f.homeGoals !== null && f.awayGoals !== null;
+            const won = played && (f.homeId === team.id ? f.homeGoals! > f.awayGoals! : f.awayGoals! > f.homeGoals!);
+            const drawn = played && f.homeGoals === f.awayGoals;
+            const result = !played ? null : won ? "V" : drawn ? "E" : "D";
             return (
               <tr key={`league-${entry.round}`} className={`border-t border-border ${entry.round === state.round ? "bg-primary/10" : ""}`}>
                 <td className="w-28 py-2 pr-2 text-xs text-muted-foreground whitespace-nowrap">Jornada {entry.round}</td>
+                {resultIndicator(result)}
                 <td><TeamIdentityWithFlag team={state.teams[f.homeId] as Team} size={20} className="w-full justify-start" /></td>
-                <td className="px-2 text-center font-mono-num whitespace-nowrap">{f.homeGoals === null ? "–" : `${f.homeGoals}-${f.awayGoals}`}</td>
+                <td className="px-2 text-center font-mono-num whitespace-nowrap">{!played ? "–" : `${f.homeGoals}-${f.awayGoals}`}</td>
                 <td><TeamIdentityWithFlag team={state.teams[f.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
               </tr>
             );
           }
           const tie = entry.tie;
+          const played = tie.homeGoals !== null && tie.awayGoals !== null;
+          const result = !played ? null : tie.winnerId === null ? "E" : tie.winnerId === team.id ? "V" : "D";
           return (
             <tr key={`cup-${entry.index}`} className={`border-t border-border ${entry.round === state.round && tie.winnerId === null ? "bg-primary/10" : ""}`}>
               <td className="w-28 py-2 pr-2 text-xs text-muted-foreground whitespace-nowrap">🏆 {entry.name}</td>
+              {resultIndicator(result)}
               <td><TeamIdentityWithFlag team={state.teams[tie.homeId] as Team} size={20} className="w-full justify-start" /></td>
               <td className="px-2 text-center font-mono-num whitespace-nowrap">
-                {tie.homeGoals === null || tie.awayGoals === null ? "–" : `${tie.homeGoals}-${tie.awayGoals}`}
+                {!played ? "–" : `${tie.homeGoals}-${tie.awayGoals}`}
                 {tie.penalties ? <span className="ml-1 text-xs text-muted-foreground">(P)</span> : null}
               </td>
               <td><TeamIdentityWithFlag team={state.teams[tie.awayId] as Team} size={20} className="w-full justify-end" reverse /></td>
