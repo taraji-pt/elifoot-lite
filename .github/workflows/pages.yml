@@ -35,6 +35,9 @@ jobs:
       - name: Run simulation balance audit
         run: bun run audit:simulation
 
+      - name: Run dismissal timing audit
+        run: bun run audit:dismissals
+
       - name: Build static site
         run: bun run build
         env:
