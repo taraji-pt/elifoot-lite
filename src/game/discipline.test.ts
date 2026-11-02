@@ -8,7 +8,8 @@ function makeSquad(teamId: number, firstPlayerId: number): { team: Team; players
     "GR",
     "DEF", "DEF", "DEF", "DEF",
     "MED", "MED", "MED", "MED",
-    "AV", "AV", "AV",
+    "AV", "AV",
+    "DEF",
   ];
   const players: Record<number, Player> = {};
   const playerIds = positions.map((position, index) => {
