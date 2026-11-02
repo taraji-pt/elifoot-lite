@@ -31,7 +31,7 @@ function addAppearances(state: GameState, playerIds: number[]) {
     const team = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(id));
     if (!team) continue;
     const byClub = state.playerClubSeasonStats[id] ??= {};
-    const stats = byClub[team.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0 };
+    const stats = byClub[team.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0, yellowCards: 0, redCards: 0 };
     stats.appearances += 1;
   }
 }
@@ -46,7 +46,7 @@ function addScorerGoals(state: GameState, scorerIds: number[], competition: "lea
     const team = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(playerId));
     if (team) {
       const byClub = state.playerClubSeasonStats[playerId] ??= {};
-      const stats = byClub[team.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0 };
+      const stats = byClub[team.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0, yellowCards: 0, redCards: 0 };
       if (competition === "league") stats.goalsLeague += 1;
       else stats.goalsCup += 1;
     }
@@ -58,6 +58,14 @@ export function recordMatchDiscipline(state: GameState, cards: { playerId: numbe
   if (!state.yellowCards) state.yellowCards = {};
 
   for (const card of cards) {
+    const club = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(card.playerId));
+    if (club) {
+      state.playerClubSeasonStats ??= {};
+      const byClub = state.playerClubSeasonStats[card.playerId] ??= {};
+      const stats = byClub[club.id] ??= { appearances: 0, goalsLeague: 0, goalsCup: 0, yellowCards: 0, redCards: 0 };
+      if (card.type === "yellow") stats.yellowCards = (stats.yellowCards ?? 0) + 1;
+      else stats.redCards = (stats.redCards ?? 0) + 1;
+    }
     let suspended = false;
 
     if (card.type === "red") {
@@ -490,6 +498,8 @@ export function continueAfterSeasonReview(state: GameState) {
             appearances: state.appearanceStats?.[player.id] ?? 0,
             goalsLeague: state.scorerStats?.[player.id]?.league ?? 0,
             goalsCup: state.scorerStats?.[player.id]?.cup ?? 0,
+            yellowCards: 0,
+            redCards: 0,
           }]]
         : [];
     for (const [teamId, stats] of entries) {
@@ -502,6 +512,8 @@ export function continueAfterSeasonReview(state: GameState) {
         appearances: stats.appearances,
         goalsLeague: stats.goalsLeague,
         goalsCup: stats.goalsCup,
+        yellowCards: stats.yellowCards ?? 0,
+        redCards: stats.redCards ?? 0,
         rating: player.rating,
       });
       state.playerSeasonHistory[player.id] = records;
