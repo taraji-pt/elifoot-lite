@@ -220,6 +220,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const team = draft.teams[draft.userTeamId];
           const outgoing = draft.players[outId];
           const incoming = draft.players[inId];
+          if ((match.redCardIds ?? []).includes(outId)) return "Um jogador expulso não pode ser substituído: já foi excluído do jogo.";
+          if ((match.redCardIds ?? []).includes(inId)) return "Um jogador expulso não pode voltar a entrar em campo.";
           if (!team?.playerIds.includes(inId) || match.userLineup.includes(inId) || !outgoing || !incoming || outgoing.position !== incoming.position) return "A substituição tem de respeitar a mesma posição.";
           if ((draft.suspensions?.[inId] ?? 0) > 0) return "Esse jogador está suspenso.";
           match.userLineup[index] = inId;
