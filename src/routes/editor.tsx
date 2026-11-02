@@ -216,6 +216,33 @@ function Editor() {
                     <input className={input} value={selected.city ?? ""} placeholder="Ex.: Florença" onChange={(e) => update({ city: e.target.value })} />
                   </label>
                   <label className="text-sm">
+                    Capacidade do estádio
+                    <input
+                      className={input}
+                      type="number"
+                      min={1}
+                      step={1}
+                      value={selected.capacity ?? ""}
+                      placeholder="Ex.: 60000"
+                      onChange={(e) => update({ capacity: e.target.value === "" ? undefined : Math.max(1, Math.floor(Number(e.target.value))) })}
+                    />
+                    <span className="mt-1 block text-xs text-muted-foreground">Número de espectadores. Deixa vazio se desconhecida.</span>
+                  </label>
+                  <label className="text-sm">
+                    Fundado em
+                    <input
+                      className={input}
+                      type="number"
+                      min={1800}
+                      max={new Date().getFullYear()}
+                      step={1}
+                      value={selected.founded ?? ""}
+                      placeholder="Ex.: 1904"
+                      onChange={(e) => update({ founded: e.target.value === "" ? undefined : Math.min(new Date().getFullYear(), Math.max(1800, Math.floor(Number(e.target.value)))) })}
+                    />
+                    <span className="mt-1 block text-xs text-muted-foreground">Ano de fundação. Deixa vazio se desconhecido.</span>
+                  </label>
+                  <label className="text-sm">
                     Foto do estádio
                     <input className={input} value={selected.stadiumImage ?? ""} placeholder="Ex.: san-siro.jpg" onChange={(e) => update({ stadiumImage: e.target.value })} />
                     <span className="mt-1 block text-xs text-muted-foreground">
