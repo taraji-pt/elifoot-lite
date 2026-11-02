@@ -1159,11 +1159,23 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
 
 
 
+  const shouldFollowEventsRef = useRef(false);
+
   useEffect(() => {
-    const el = eventsScrollRef.current;
-    if (!el) return;
-    if (el.scrollHeight > el.clientHeight) el.scrollTop = el.scrollHeight;
-  }, [match?.events.length, elapsedMs]);
+    const updateFollowState = () => {
+      const el = eventsScrollRef.current;
+      if (!el) return;
+      const bottom = el.getBoundingClientRect().bottom;
+      shouldFollowEventsRef.current = bottom <= window.innerHeight + 120 && bottom >= -120;
+    };
+    updateFollowState();
+    window.addEventListener("scroll", updateFollowState, { passive: true });
+    window.addEventListener("resize", updateFollowState);
+    return () => {
+      window.removeEventListener("scroll", updateFollowState);
+      window.removeEventListener("resize", updateFollowState);
+    };
+  }, []);
 
   const flashedEventRef = useRef<string | null>(null);
 
@@ -1191,6 +1203,11 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
       ? secondEvents.filter((e) => Number(e.split("|")[1]) <= simulatedMinute)
       : [];
     const visibleEvents = [...visibleFirst, ...visibleSecond];
+
+  useEffect(() => {
+    if (!shouldFollowEventsRef.current) return;
+    eventsScrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [visibleEvents.length]);
     const event = visibleEvents[visibleEvents.length - 1] ?? null;
 
     if (!event || flashedEventRef.current === event) return;
