@@ -86,6 +86,10 @@ export interface MatchState {
   events: string[];
   scorerIds: number[];
   appearedPlayerIds?: number[];
+  /** onze inicial do utilizador, para comparar a alteração táctica */
+  startingUserLineup?: number[];
+  /** -100 = muito defensiva; +100 = muito ofensiva */
+  tacticalIntent?: number;
   /** jogadores expulsos neste jogo */
   redCardIds?: number[];
   /** jogadores que viram amarelo neste jogo */
@@ -98,6 +102,12 @@ export interface MatchState {
 export interface GoalStats {
   league: number;
   cup: number;
+}
+
+export interface PlayerClubSeasonStats {
+  appearances: number;
+  goalsLeague: number;
+  goalsCup: number;
 }
 
 export interface PlayerSeasonRecord {
@@ -188,6 +198,8 @@ export interface GameState {
   scorerStats: Record<number, GoalStats>;
   /** histórico de épocas, clubes e estatísticas por jogador */
   playerSeasonHistory?: Record<number, PlayerSeasonRecord[]>;
+  /** estatísticas da época corrente discriminadas por clube */
+  playerClubSeasonStats?: Record<number, Record<number, PlayerClubSeasonStats>>;
   /** presenças acumuladas na época em curso */
   appearanceStats?: Record<number, number>;
   /** número de jogos que cada jogador ainda tem de cumprir por suspensão */
