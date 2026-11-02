@@ -1276,11 +1276,13 @@ function Match({ state, onPlayerClick }: { state: GameState; onPlayerClick: (pla
 
   const home = state.teams[match.homeId] as Team;
   const away = state.teams[match.awayId] as Team;
-  const starters = sortSquad(getPlayers(match.userLineup, state.players));
+  const sentOffIds = new Set(match.redCardIds ?? []);
+  const starters = sortSquad(getPlayers(match.userLineup.filter((id) => !sentOffIds.has(id)), state.players));
   const bench = sortSquad(
     getPlayers(team.playerIds.filter((id) => !match.userLineup.includes(id)), state.players),
   );
-  const currentShape = match.userLineup.reduce((counts, id) => {
+  const currentShape = starters.reduce((counts, player) => {
+    const id = player.id;
     const position = state.players[id]?.position;
     if (position === "DEF" || position === "MED" || position === "AV") counts[position] += 1;
     return counts;
