@@ -102,38 +102,31 @@ function run(minute: number, dismissals: number, seed: number): Result {
     const h = [...home.lineup], a = [...away.lineup];
     // Expulsões sempre na equipa visitante; o cenário espelhado será avaliado separadamente.
     const reducedAway = a.slice(0, 11 - dismissals);
-    const first = simulateInterval(home, away, players, h, a, 1, minute - 1);
-    const afterFirst = simulateInterval(home, away, players, h, reducedAway, minute, 45);
-    const halfHome = first.homeGoals + afterFirst.homeGoals;
-    const halfAway = first.awayGoals + afterFirst.awayGoals;
-    const second = simulateInterval(home, away, players, h, reducedAway, 46, 90);
-    const finalHome = halfHome + second.homeGoals;
-    const finalAway = halfAway + second.awayGoals;
-    // Para avaliar recuperação, considera-se a equipa expulsa (visitante).
-    const wasBehind = halfAway < halfHome;
-    const tiedAtDismissal = halfAway === halfHome;
-    let wins = 0, draws = 0, losses = 0, comebacks = 0, recoverOrHold = 0;
+    let wins = 0, draws = 0, losses = 0, comebacks = 0, recoverOrHold = 0, trailingAtDismissal = 0;
     let goals = 0, goalsAfter = 0;
     for (let i = 0; i < MATCHES; i++) {
       const before = simulateInterval(home, away, players, h, a, 1, minute - 1);
       const after = simulateInterval(home, away, players, h, reducedAway, minute, 45);
-      const halfH = before.homeGoals + after.homeGoals;
-      const halfA = before.awayGoals + after.awayGoals;
-      const rest = simulateInterval(home, away, players, h, reducedAway, 46, 90);
-      const fh = halfH + rest.homeGoals, fa = halfA + rest.awayGoals;
+      const fh = before.homeGoals + after.homeGoals + simulateInterval(home, away, players, h, reducedAway, 46, 90).homeGoals;
+      const fa = before.awayGoals + after.awayGoals + simulateInterval(home, away, players, h, reducedAway, 46, 90).awayGoals;
+      const wasBehindAtDismissal = before.awayGoals < before.homeGoals;
       goals += fh + fa;
       goalsAfter += after.homeGoals + after.awayGoals + rest.homeGoals + rest.awayGoals;
-      if (fa > fh) { wins++; if (halfA < halfH) comebacks++; }
-      else if (fa === fh) { draws++; if (halfA <= halfH) recoverOrHold++; }
+      if (fa > fh) wins++;
+      else if (fa === fh) draws++;
       else losses++;
-      if (fa > fh || fa === fh) recoverOrHold++;
+      if (wasBehindAtDismissal) {
+        trailingAtDismissal++;
+        if (fa > fh) comebacks++;
+        if (fa >= fh) recoverOrHold++;
+      }
     }
     return {
       minute, dismissals, matches: MATCHES,
       avgGoals: round(goals / MATCHES, 3),
       winPct: pct(wins), drawPct: pct(draws), lossPct: pct(losses),
-      comebackPct: pct(comebacks),
-      recoverOrHoldPct: pct(recoverOrHold),
+      comebackPct: trailingAtDismissal ? round(comebacks / trailingAtDismissal * 100, 2) : 0,
+      recoverOrHoldPct: trailingAtDismissal ? round(recoverOrHold / trailingAtDismissal * 100, 2) : 0,
       avgGoalsAfter: round(goalsAfter / MATCHES, 3),
     };
   } finally { Math.random = originalRandom; }
@@ -156,4 +149,4 @@ for (const minute of MINUTES) {
   }
 }
 console.log("");
-console.log("Nota metodológica: a equipa visitante sofre a expulsão; os resultados não devem ser comparados diretamente com jogos 11v11 sem controlar a vantagem caseira. A coluna 'recupera se perdia' mede vitórias finais após estar em desvantagem ao intervalo (proxy conservadora, não o marcador exato no minuto da expulsão).");
+console.log("Nota metodológica: a equipa visitante sofre a expulsão; os resultados não devem ser comparados diretamente com jogos 11v11 sem controlar a vantagem caseira. A coluna 'recupera se perdia' mede vitórias finais após estar em desvantagem ao intervalo (medida no marcador imediatamente antes da expulsão).");
