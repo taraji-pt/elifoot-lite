@@ -206,10 +206,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const awayLineup = prepareTeamForMatch(draft, away, away.id === draft.userTeamId);
           const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
           const first = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 1, 45);
-          const second = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, first.cards.filter((c) => c.type === "red").map((c) => c.playerId));
+          const firstRedIds = first.cards.filter((c) => c.type === "red").map((c) => c.playerId);
+          const second = simulateHalf(home, away, draft.players, homeLineup.filter((id) => !firstRedIds.includes(id)), awayLineup.filter((id) => !firstRedIds.includes(id)), 46, 90, firstRedIds, 0, 0, first.cards.filter((c) => c.type === "yellow").map((c) => c.playerId));
           const events = [
             ...first.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
-            ...first.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+            ...first.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "yellow" ? "Y" : "R"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
             ...second.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
             ...second.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
           ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1]));
@@ -223,8 +224,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
             homeGoals, awayGoals, half: 2, userLineup: [...userLineup], startingUserLineup: [...userLineup],
             unavailablePlayerIds, tacticalIntent: 0, appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
             subsUsed: 0, events, scorerIds: [...first.scorers, ...second.scorers].map((s) => s.playerId),
-            redCardIds: allCards.filter((c) => c.type === "red").map((c) => c.playerId),
+            redCardIds: allCards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId),
             yellowCardIds: allCards.filter((c) => c.type === "yellow").map((c) => c.playerId),
+            secondYellowCardIds: allCards.filter((c) => c.type === "second-yellow").map((c) => c.playerId),
             finished: true,
             instantSimulation: true,
             ...(penaltyWinner !== undefined ? { cupPenaltyWinnerId: penaltyWinner } : {}),
@@ -282,8 +284,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
               ...half.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
             ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
             scorerIds: half.scorers.map((s) => s.playerId),
-            redCardIds: half.cards.filter((c) => c.type === "red").map((c) => c.playerId),
+            redCardIds: half.cards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId),
             yellowCardIds: half.cards.filter((c) => c.type === "yellow").map((c) => c.playerId),
+            secondYellowCardIds: half.cards.filter((c) => c.type === "second-yellow").map((c) => c.playerId),
             finished: false,
           };
           return undefined;
@@ -333,7 +336,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userTeam = draft.teams[draft.userTeamId];
           if (userTeam) userTeam.lineup = [...match.userLineup];
           const userIntent = match.tacticalIntent ?? 0;
-          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent);
+          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent, (match.yellowCardIds ?? []));
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
           match.half = 2;
@@ -345,8 +348,9 @@ export function GameProvider({ children }: { children: ReactNode }) {
             ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1])),
           );
           (match.scorerIds ??= []).push(...half.scorers.map((s) => s.playerId));
-          match.redCardIds = [...(match.redCardIds ?? []), ...half.cards.filter((c) => c.type === "red").map((c) => c.playerId)];
+          match.redCardIds = [...(match.redCardIds ?? []), ...half.cards.filter((c) => c.type === "red" || c.type === "second-yellow").map((c) => c.playerId)];
           match.yellowCardIds = [...(match.yellowCardIds ?? []), ...half.cards.filter((c) => c.type === "yellow").map((c) => c.playerId)];
+          match.secondYellowCardIds = [...(match.secondYellowCardIds ?? []), ...half.cards.filter((c) => c.type === "second-yellow").map((c) => c.playerId)];
 
           if (match.competition === "cup" && match.homeGoals === match.awayGoals) {
             match.cupPenaltyWinnerId = penaltyShootout(match.homeId, match.awayId);
@@ -362,17 +366,15 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (!match || !match.finished) return;
 
           const disciplineCards = [
-            ...(match.redCardIds ?? []).map((playerId) => ({ playerId, type: "red" as const })),
+            ...(match.redCardIds ?? []).filter((playerId) => !(match.secondYellowCardIds ?? []).includes(playerId)).map((playerId) => ({ playerId, type: "red" as const })),
             ...(match.yellowCardIds ?? []).map((playerId) => ({ playerId, type: "yellow" as const })),
+            ...(match.secondYellowCardIds ?? []).map((playerId) => ({ playerId, type: "second-yellow" as const })),
           ];
 
           const userTeam = draft.teams[draft.userTeamId];
           const suspensionMessages = disciplineCards
-            .filter((card) => {
-              if (!userTeam?.playerIds.includes(card.playerId)) return false;
-              if (card.type === "red") return true;
-              return (draft.yellowCards?.[card.playerId] ?? 0) >= 4;
-            })
+            .filter((card) => userTeam?.playerIds.includes(card.playerId))
+            .filter((card) => card.type === "red" || card.type === "second-yellow" || (card.type === "yellow" && (draft.yellowCards?.[card.playerId] ?? 0) >= 4))
             .map((card) => {
               const player = draft.players[card.playerId];
               const games = card.type === "red" ? 2 : 1;
