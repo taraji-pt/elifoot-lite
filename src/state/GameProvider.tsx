@@ -53,6 +53,7 @@ interface GameContextValue {
   sell: (playerId: number) => void;
   startMatch: () => void;
   substitute: (outId: number, inId: number) => void;
+  setTacticalIntent: (value: number) => void;
   playSecondHalf: () => void;
   finishMatch: () => void;
   dismissCelebration: () => void;
@@ -63,6 +64,21 @@ const g = globalThis as { __gameCtx?: React.Context<GameContextValue | null> };
 const GameContext = (g.__gameCtx ??= createContext<GameContextValue | null>(null));
 
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
+
+function deriveTacticalIntent(startingIds: number[], currentIds: number[], players: GameState["players"]): number {
+  const count = (ids: number[]) => {
+    const result = { DEF: 0, MED: 0, AV: 0 };
+    for (const id of ids) {
+      const position = players[id]?.position;
+      if (position === "DEF" || position === "MED" || position === "AV") result[position] += 1;
+    }
+    return result;
+  };
+  const start = count(startingIds);
+  const current = count(currentIds);
+  const change = (current.AV - start.AV) * 2 + (current.MED - start.MED) - (current.DEF - start.DEF) * 2;
+  return Math.max(-100, Math.min(100, change * 25));
+}
 
 export function GameProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<GameState | null>(null);
@@ -145,6 +161,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
           if (!team) return;
           const unique = [...new Set(lineup)];
           if (unique.length !== lineup.length || unique.some((id) => !team.playerIds.includes(id))) return "Escolhe apenas jogadores do teu plantel.";
+          if (unique.some((id) => (draft.suspensions?.[id] ?? 0) > 0)) return "Não podes incluir jogadores suspensos no onze.";
           const counts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
           for (const id of unique) {
             const position = draft.players[id]?.position;
@@ -197,6 +214,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
             awayGoals: half.awayGoals,
             half: 1,
             userLineup: [...userLineup],
+            startingUserLineup: [...userLineup],
+            tacticalIntent: 0,
             appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
             subsUsed: 0,
             events: [
@@ -222,15 +241,22 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const incoming = draft.players[inId];
           if ((match.redCardIds ?? []).includes(outId)) return "Um jogador expulso não pode ser substituído: já foi excluído do jogo.";
           if ((match.redCardIds ?? []).includes(inId)) return "Um jogador expulso não pode voltar a entrar em campo.";
-          if (!team?.playerIds.includes(inId) || match.userLineup.includes(inId) || !outgoing || !incoming || outgoing.position !== incoming.position) return "A substituição tem de respeitar a mesma posição.";
+          if (!team?.playerIds.includes(inId) || match.userLineup.includes(inId) || !outgoing || !incoming) return "Escolhe um suplente válido.";
+          if ((outgoing.position === "GR" || incoming.position === "GR") && outgoing.position !== incoming.position) return "Um guarda-redes só pode ser substituído por outro guarda-redes.";
           if ((draft.suspensions?.[inId] ?? 0) > 0) return "Esse jogador está suspenso.";
           match.userLineup[index] = inId;
+          match.tacticalIntent = deriveTacticalIntent(match.startingUserLineup ?? match.userLineup, match.userLineup, draft.players);
           match.appearedPlayerIds = [...new Set([...(match.appearedPlayerIds ?? match.userLineup), inId])];
           match.subsUsed += 1;
           if (team) team.lineup = [...match.userLineup];
           const out = draft.players[outId];
           const inn = draft.players[inId];
           return `${out?.name} → ${inn?.name}`;
+        }),
+      setTacticalIntent: (value: number) =>
+        mutate((draft) => {
+          if (!draft.match || draft.match.half !== 1) return;
+          draft.match.tacticalIntent = Math.max(-100, Math.min(100, Math.round(value)));
         }),
       playSecondHalf: () =>
         mutate((draft) => {
@@ -241,7 +267,8 @@ export function GameProvider({ children }: { children: ReactNode }) {
           const userIsHome = draft.userTeamId === match.homeId;
           const homeLineup = userIsHome ? match.userLineup : home.lineup;
           const awayLineup = userIsHome ? away.lineup : match.userLineup;
-          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, match.redCardIds ?? []);
+          const userIntent = match.tacticalIntent ?? 0;
+          const half = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, match.redCardIds ?? [], userIsHome ? userIntent : 0, userIsHome ? 0 : userIntent);
           match.homeGoals += half.homeGoals;
           match.awayGoals += half.awayGoals;
           match.half = 2;
