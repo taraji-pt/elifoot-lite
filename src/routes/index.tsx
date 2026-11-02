@@ -393,7 +393,7 @@ function StartingLineups({ home, away, state, onPlayerClick }: { home: Team; awa
             >
               {reverse ? (
                 <>
-                  <button type="button" className="min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
+                  <button type="button" className="font-club-name min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                   <Flag code={player.nationality} size={16} />
                   <span className="w-7 shrink-0 text-left font-mono-num text-xs text-muted-foreground">{player.position}</span>
                   <span className="w-5 shrink-0 text-right text-xs text-muted-foreground">{index + 1}</span>
@@ -403,7 +403,7 @@ function StartingLineups({ home, away, state, onPlayerClick }: { home: Team; awa
                   <span className="w-5 shrink-0 text-left text-xs text-muted-foreground">{index + 1}</span>
                   <span className="w-7 shrink-0 font-mono-num text-xs text-muted-foreground">{player.position}</span>
                   <Flag code={player.nationality} size={16} />
-                  <button type="button" className="min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
+                  <button type="button" className="font-club-name min-w-0 truncate text-left hover:underline" onClick={() => onPlayerClick(player.id)}>{player.name}</button>
                 </>
               )}
             </li>
@@ -1710,16 +1710,33 @@ function PlayerProfileModal({ state, playerId, onClose }: { state: GameState; pl
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-4 py-6" role="dialog" aria-modal="true" aria-label={`Ficha de ${player.name}`} onClick={onClose}>
       <div className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl sm:p-5" onClick={(event) => event.stopPropagation()}>
-        <div className="flex items-start justify-between gap-3 border-b border-border pb-3">
-          <div className="flex min-w-0 items-center gap-3">
-            <Flag code={player.nationality} size={28} />
-            <div className="min-w-0">
-              <div className="text-xl font-bold">{player.name}</div>
-              <div className="text-sm text-muted-foreground">{player.position} · Rating {player.rating} · Valor {formatMoney(player.transferValue)}</div>
-              <div className="mt-1 text-xs text-muted-foreground">{currentTeam ? `Actualmente: ${currentTeam.name}` : "Sem clube"}</div>
+        <div
+          className="relative -mx-4 -mt-4 mb-4 overflow-hidden rounded-t-xl border-b border-white/15 px-4 py-4 sm:-mx-5 sm:-mt-5 sm:px-5"
+          style={{
+            background: currentTeam
+              ? `linear-gradient(110deg, ${currentTeam.primaryColor} 0%, ${currentTeam.primaryColor} 38%, ${currentTeam.secondaryColor} 100%)`
+              : "linear-gradient(110deg, #26352c 0%, #17251d 100%)",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="relative flex items-start justify-between gap-3 text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.65)]">
+            <div className="flex min-w-0 items-center gap-3">
+              <Flag code={player.nationality} size={28} />
+              <div className="min-w-0">
+                <div className="font-club-name text-2xl font-semibold leading-none tracking-tight sm:text-3xl">{player.name}</div>
+                <div className="mt-1.5 text-sm font-medium text-white/85">{player.position} · Rating {player.rating} · Valor {formatMoney(player.transferValue)}</div>
+              </div>
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              {currentTeam && (
+                <div className="flex flex-col items-center gap-1 text-center">
+                  <TeamBadge team={currentTeam} size={42} />
+                  <span className="max-w-24 truncate text-xs font-semibold text-white/90">{currentTeam.name}</span>
+                </div>
+              )}
+              <button className="rounded-md border border-white/20 bg-black/20 px-3 py-2 text-white hover:bg-black/30" onClick={onClose} aria-label="Fechar">✕</button>
             </div>
           </div>
-          <button className={btn2} onClick={onClose} aria-label="Fechar">✕</button>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <div className="rounded-md border border-border p-3"><div className="text-xs text-muted-foreground">Épocas</div><div className="text-xl font-bold">{new Set(allRecords.map((record) => record.season)).size}</div></div>
