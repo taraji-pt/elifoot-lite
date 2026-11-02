@@ -3,7 +3,10 @@ import { teamRating } from "@/game/ratings";
 import type { Player, Team } from "@/game/types";
 
 const MATCHES = 10_000;
-const MINUTES = [15, 30, 45, 60, 75];
+const MINUTES = [15, 45, 75];
+const RATING_PAIRS: [number, number][] = [[70, 70], [77, 70], [70, 77]];
+const DISMISSALS = [1, 2] as const;
+const SIDES = ["home", "away"] as const;
 const POSITIONS: Player["position"][] = ["GR", "DEF", "DEF", "DEF", "DEF", "MED", "MED", "MED", "MED", "AV", "AV"];
 
 function seededRandom(seed: number) {
@@ -19,12 +22,8 @@ function seededRandom(seed: number) {
 
 function poisson(lambda: number) {
   const limit = Math.exp(-Math.max(0, lambda));
-  let k = 0;
-  let product = 1;
-  do {
-    k++;
-    product *= Math.random();
-  } while (product > limit);
+  let k = 0, product = 1;
+  do { k++; product *= Math.random(); } while (product > limit);
   return k - 1;
 }
 
@@ -57,10 +56,7 @@ function lambda(attack: number, defence: number, home: boolean, duration: number
   return Math.max(0.05, Math.min(4, value)) * duration / 45;
 }
 
-function simulateInterval(
-  home: Team, away: Team, players: Record<number, Player>, homeLineup: number[], awayLineup: number[],
-  start: number, end: number, homeTactical = 0, awayTactical = 0,
-) {
+function simulateInterval(home: Team, away: Team, players: Record<number, Player>, homeLineup: number[], awayLineup: number[], start: number, end: number) {
   if (end < start) return { homeGoals: 0, awayGoals: 0 };
   const shape = (lineup: number[]) => {
     const count = { DEF: 0, MED: 0, AV: 0 };
@@ -78,11 +74,8 @@ function simulateInterval(
   const hRating = teamRating({ ...home, lineup: homeLineup }, players) - hMissing * 4;
   const aRating = teamRating({ ...away, lineup: awayLineup }, players) - aMissing * 4;
   const hs = shape(homeLineup), as = shape(awayLineup);
-  const scale = 0.025;
-  const hAttack = hRating + hs.attack + homeTactical * scale;
-  const hDefence = hRating + hs.defence - homeTactical * scale;
-  const aAttack = aRating + as.attack + awayTactical * scale;
-  const aDefence = aRating + as.defence - awayTactical * scale;
+  const hAttack = hRating + hs.attack, hDefence = hRating + hs.defence;
+  const aAttack = aRating + as.attack, aDefence = aRating + as.defence;
   const duration = end - start + 1;
   return {
     homeGoals: poisson(lambda(hAttack, aDefence, true, duration)),
@@ -90,75 +83,67 @@ function simulateInterval(
   };
 }
 
-type Result = { minute: number; dismissals: number; matches: number; avgGoals: number; winPct: number; drawPct: number; lossPct: number; comebackPct: number; recoverOrHoldPct: number; avgGoalsAfter: number };
+function round(n: number, digits = 2) { return Number(n.toFixed(digits)); }
 
-function run(minute: number, dismissals: number, seed: number): Result {
+function run(minute: number, dismissals: number, dismissedSide: typeof SIDES[number], homeRating: number, awayRating: number, seed: number) {
   const originalRandom = Math.random;
   Math.random = seededRandom(seed);
   try {
     const players: Record<number, Player> = {};
-    const home = makeTeam(1, "Casa", 70, players);
-    const away = makeTeam(2, "Fora", 70, players);
+    const home = makeTeam(1, "Casa", homeRating, players);
+    const away = makeTeam(2, "Fora", awayRating, players);
     const h = [...home.lineup], a = [...away.lineup];
-    // Expulsões sempre na equipa visitante; o cenário espelhado será avaliado separadamente.
-    const reducedAway = a.slice(0, 11 - dismissals);
-    let wins = 0, draws = 0, losses = 0, comebacks = 0, recoverOrHold = 0, trailingAtDismissal = 0;
-    let goals = 0, goalsAfter = 0;
+    const reducedHome = dismissedSide === "home" ? h.slice(0, 11 - dismissals) : h;
+    const reducedAway = dismissedSide === "away" ? a.slice(0, 11 - dismissals) : a;
+    let dismissedWins = 0, draws = 0, dismissedLosses = 0;
+    let totalGoals = 0, goalsAfter = 0;
     for (let i = 0; i < MATCHES; i++) {
-      // Divide o jogo em duas partes reais: 1–45 e 46–90.
-      // A expulsão só reduz a equipa a partir do minuto indicado.
-      const firstHalfBefore = simulateInterval(home, away, players, h, a, 1, Math.min(45, minute - 1));
-      const secondHalfBefore = minute > 45
+      const firstBefore = simulateInterval(home, away, players, h, a, 1, Math.min(45, minute - 1));
+      const secondBefore = minute > 45
         ? simulateInterval(home, away, players, h, a, 46, minute - 1)
         : { homeGoals: 0, awayGoals: 0 };
       const after = minute <= 45
-        ? simulateInterval(home, away, players, h, reducedAway, minute, 45)
-        : simulateInterval(home, away, players, h, reducedAway, minute, 90);
-      const secondHalfAfter = minute <= 45
-        ? simulateInterval(home, away, players, h, reducedAway, 46, 90)
+        ? simulateInterval(home, away, players, reducedHome, reducedAway, minute, 45)
+        : simulateInterval(home, away, players, reducedHome, reducedAway, minute, 90);
+      const secondAfter = minute <= 45
+        ? simulateInterval(home, away, players, reducedHome, reducedAway, 46, 90)
         : { homeGoals: 0, awayGoals: 0 };
-      const beforeHome = firstHalfBefore.homeGoals + secondHalfBefore.homeGoals;
-      const beforeAway = firstHalfBefore.awayGoals + secondHalfBefore.awayGoals;
-      const fh = beforeHome + after.homeGoals + secondHalfAfter.homeGoals;
-      const fa = beforeAway + after.awayGoals + secondHalfAfter.awayGoals;
-      const wasBehindAtDismissal = beforeAway < beforeHome;
-      goals += fh + fa;
-      goalsAfter += after.homeGoals + after.awayGoals + secondHalfAfter.homeGoals + secondHalfAfter.awayGoals;
-      if (fa > fh) wins++;
-      else if (fa === fh) draws++;
-      else losses++;
-      if (wasBehindAtDismissal) {
-        trailingAtDismissal++;
-        if (fa > fh) comebacks++;
-        if (fa >= fh) recoverOrHold++;
-      }
+      const beforeH = firstBefore.homeGoals + secondBefore.homeGoals;
+      const beforeA = firstBefore.awayGoals + secondBefore.awayGoals;
+      const finalH = beforeH + after.homeGoals + secondAfter.homeGoals;
+      const finalA = beforeA + after.awayGoals + secondAfter.awayGoals;
+      const dismissedScore = dismissedSide === "home" ? finalH : finalA;
+      const opponentScore = dismissedSide === "home" ? finalA : finalH;
+      if (dismissedScore > opponentScore) dismissedWins++;
+      else if (dismissedScore === opponentScore) draws++;
+      else dismissedLosses++;
+      totalGoals += finalH + finalA;
+      goalsAfter += after.homeGoals + after.awayGoals + secondAfter.homeGoals + secondAfter.awayGoals;
     }
     return {
-      minute, dismissals, matches: MATCHES,
-      avgGoals: round(goals / MATCHES, 3),
-      winPct: pct(wins), drawPct: pct(draws), lossPct: pct(losses),
-      comebackPct: trailingAtDismissal ? round(comebacks / trailingAtDismissal * 100, 2) : 0,
-      recoverOrHoldPct: trailingAtDismissal ? round(recoverOrHold / trailingAtDismissal * 100, 2) : 0,
-      avgGoalsAfter: round(goalsAfter / MATCHES, 3),
+      minute, dismissals, side: dismissedSide, ratings: `${homeRating}-${awayRating}`,
+      win: round(dismissedWins / MATCHES * 100), draw: round(draws / MATCHES * 100),
+      loss: round(dismissedLosses / MATCHES * 100),
+      goals: round(totalGoals / MATCHES, 3), goalsAfter: round(goalsAfter / MATCHES, 3),
     };
   } finally { Math.random = originalRandom; }
 }
 
-function round(n: number, digits: number) { return Number(n.toFixed(digits)); }
-function pct(n: number) { return round(n / MATCHES * 100, 2); }
-
-console.log("# Fase 3 — Bateria de expulsões a meio do jogo");
-console.log(`Amostra: ${MATCHES.toLocaleString("pt-PT")} jogos por cenário. Expulsões visitantes; ratings 70–70.`);
-console.log("Modelo: reprodução isolada da fórmula de golos atual, respeitando as partes 1–45 e 46–90; não altera nem importa efeitos secundários do jogo.");
+console.log("# Fase 3 — Auditoria espelhada de expulsões");
+console.log(`Amostra: ${MATCHES.toLocaleString("pt-PT")} jogos por cenário; ${MATCHES * MINUTES.length * DISMISSALS.length * SIDES.length * RATING_PAIRS.length} jogos no total.`);
+console.log("Cenários: expulsão da equipa da casa e visitante; ratings 70–70, 77–70 e 70–77; minutos 15, 45 e 75; uma ou duas expulsões.");
+console.log("Modelo isolado da fórmula atual de golos, com intervalos 1–45 e 46–90. Não altera o motor nem representa substituições/táticas da partida.");
 console.log("");
-console.log("| Minuto | Expulsões | Golos/jogo | Vitória expulsa | Empate | Derrota expulsa | Recupera se perdia | Não perde | Golos após expulsão |");
-console.log("|---:|---:|---:|---:|---:|---:|---:|---:|---:|");
+console.log("| Min. | Expulsões | Expulsa | Ratings casa-fora | Vitória expulsa | Empate | Derrota expulsa | Golos/jogo | Golos após expulsão |");
+console.log("|---:|---:|---|---:|---:|---:|---:|---:|---:|");
 let index = 0;
-for (const minute of MINUTES) {
-  for (const dismissals of [1, 2]) {
-    const result = run(minute, dismissals, 20261103 + index++ * 70001);
-    console.log(`|${result.minute}'|${result.dismissals}|${result.avgGoals}|${result.winPct}%|${result.drawPct}%|${result.lossPct}%|${result.comebackPct}%|${result.recoverOrHoldPct}%|${result.avgGoalsAfter}|`);
+for (const [homeRating, awayRating] of RATING_PAIRS) {
+  for (const minute of MINUTES) {
+    for (const dismissals of DISMISSALS) {
+      for (const side of SIDES) {
+        const result = run(minute, dismissals, side, homeRating, awayRating, 20261104 + index++ * 70001);
+        console.log(`|${result.minute}'|${result.dismissals}|${result.side === "home" ? "Casa" : "Fora"}|${result.ratings}|${result.win}%|${result.draw}%|${result.loss}%|${result.goals}|${result.goalsAfter}|`);
+      }
+    }
   }
 }
-console.log("");
-console.log("Nota metodológica: a equipa visitante sofre a expulsão; os resultados não devem ser comparados diretamente com jogos 11v11 sem controlar a vantagem caseira. A coluna 'recupera se perdia' mede vitórias finais após estar em desvantagem ao intervalo (medida no marcador imediatamente antes da expulsão).");
