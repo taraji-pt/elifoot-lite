@@ -22541,7 +22541,7 @@ export const TEAMS: TeamSeed[] = [
     "rating": 50,
      "capacity": 500,
     "founded": 1965,
-    "badge": "/assets/badges/PSS.webp",
+    "badge": "/assets/badges/PSS.png",
     "primaryColor": "#00319C",
     "secondaryColor": "#FFFFFF",
     "stadiumImage": "/assets/stadiums/progres-sportif-sakiet-eddaier.jpg",
@@ -22660,7 +22660,7 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/ST.webp",
     "primaryColor": "#006231",
     "secondaryColor": "#FFFFFF",
-    "stadiumImage": "/assets/stadiums/stade-tunisien.jpg",
+    "stadiumImage": "/assets/stadiums/ST.jpg",
     "players": [
       {
         "name": "Noureddine Farhati",
