@@ -2049,11 +2049,11 @@ function Transfers({ state, onPlayerClick }: { state: GameState; onPlayerClick: 
         const scoreB = ((b.player.id * 9301 + Math.floor(marketSeed * 100000) * 49297) % 233280);
         return scoreA - scoreB;
       })
-      .slice(0, 40);
+      .slice(0, 50);
   }, [state, pos, search, minRating, maxValue, maxPrice, team.budget, marketSeed]);
 
   const mine = sortSquad(getPlayers(team.playerIds, state.players));
-  const pageSize = 8;
+  const pageSize = 10;
   const totalPages = Math.max(1, Math.ceil(market.length / pageSize));
   const currentPage = Math.min(marketPage, totalPages - 1);
   const pagePlayers = market.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
