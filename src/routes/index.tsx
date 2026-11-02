@@ -571,7 +571,7 @@ function Game({ state }: { state: GameState }) {
             <div className="min-w-0 text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.75)]">
               <div className="font-club-name text-2xl font-semibold leading-none tracking-tight sm:text-3xl">
                 {team.name}
-                {team.founded ? <span className="ml-2 text-sm font-medium text-white/85">· Fundado em {team.founded}</span> : null}
+                {team.founded ? <span className="ml-2 text-sm font-medium text-white/85" style={{ fontFamily: '"Barlow Condensed", system-ui, sans-serif' }}>· Fundado em {team.founded}</span> : null}
               </div>
               <div className="mt-1.5 text-sm font-medium text-white/85">
                 Época {seasonLabel(state.seasonYear)} · {divisionLabel(team.division)} · Jornada {state.round}/
