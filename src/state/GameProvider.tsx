@@ -52,6 +52,7 @@ interface GameContextValue {
   buy: (playerId: number) => void;
   sell: (playerId: number) => void;
   startMatch: () => void;
+  simulateMatch: () => void;
   substitute: (outId: number, inId: number) => void;
   setTacticalIntent: (value: number) => void;
   playSecondHalf: () => void;
@@ -176,6 +177,58 @@ export function GameProvider({ children }: { children: ReactNode }) {
         }),
       buy: (playerId: number) => mutate((draft) => buyPlayer(draft, playerId)),
       sell: (playerId: number) => mutate((draft) => sellPlayer(draft, playerId)),
+      simulateMatch: () =>
+        mutate((draft) => {
+          if (draft.seasonReview) return "Consulta primeiro o balanço da época antes de começar a nova época.";
+          const fixture = userFixture(draft);
+          const cupTie = userCupTie(draft);
+          const playCup = Boolean(cupTie && fixture && fixture.homeGoals !== null && fixture.awayGoals !== null);
+          const homeId = playCup ? cupTie!.homeId : fixture?.homeId;
+          const awayId = playCup ? cupTie!.awayId : fixture?.awayId;
+          if (homeId === undefined || awayId === undefined) return "Não há jogo nesta jornada.";
+          const home = draft.teams[homeId] as Team;
+          const away = draft.teams[awayId] as Team;
+          const userTeam = draft.teams[draft.userTeamId] as Team;
+          const previewLineup = availableLineup(draft, userTeam);
+          if (previewLineup.length !== 11) return "Tens jogadores suspensos. Não tens 11 jogadores disponíveis para este jogo.";
+          const counts: Record<string, number> = { GR: 0, DEF: 0, MED: 0, AV: 0 };
+          for (const id of previewLineup) {
+            const position = draft.players[id]?.position;
+            if (position) counts[position] = (counts[position] ?? 0) + 1;
+          }
+          const formation = userTeam.lineupFormation ?? { DEF: GAME_CONFIG.startingLineup.DEF, MED: GAME_CONFIG.startingLineup.MED, AV: GAME_CONFIG.startingLineup.AV };
+          const required = { GR: 1, DEF: formation.DEF, MED: formation.MED, AV: formation.AV };
+          if ((["GR", "DEF", "MED", "AV"] as const).some((position) => counts[position] !== required[position])) {
+            return "O onze tem de respeitar as posições definidas na formação.";
+          }
+          const unavailablePlayerIds = [...userTeam.playerIds].filter((id) => (draft.suspensions?.[id] ?? 0) > 0);
+          const homeLineup = prepareTeamForMatch(draft, home);
+          const awayLineup = prepareTeamForMatch(draft, away);
+          const userLineup = draft.userTeamId === home.id ? homeLineup : awayLineup;
+          const first = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 1, 45);
+          const second = simulateHalf(home, away, draft.players, homeLineup, awayLineup, 46, 90, first.cards.filter((c) => c.type === "red").map((c) => c.playerId));
+          const events = [
+            ...first.scorers.map((s) => `1|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
+            ...first.cards.map((c) => `1|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+            ...second.scorers.map((s) => `2|${s.minute}|${s.teamId}|G|${draft.teams[s.teamId]?.name}: ${s.playerName}`),
+            ...second.cards.map((c) => `2|${c.minute}|${c.teamId}|${c.type === "red" ? "R" : "Y"}|${draft.teams[c.teamId]?.name}: ${c.playerName}`),
+          ].sort((a, b) => Number(a.split("|")[1]) - Number(b.split("|")[1]));
+          const allCards = [...first.cards, ...second.cards];
+          const homeGoals = first.homeGoals + second.homeGoals;
+          const awayGoals = first.awayGoals + second.awayGoals;
+          const penaltyWinner = playCup && homeGoals === awayGoals ? penaltyShootout(home.id, away.id) : undefined;
+          if (penaltyWinner !== undefined) events.push(`P|90|-1|Penáltis — passou o ${draft.teams[penaltyWinner]?.name ?? "equipa vencedora"}.`);
+          draft.match = {
+            competition: playCup ? "cup" : "league", homeId: home.id, awayId: away.id,
+            homeGoals, awayGoals, half: 2, userLineup: [...userLineup], startingUserLineup: [...userLineup],
+            unavailablePlayerIds, tacticalIntent: 0, appearedPlayerIds: [...new Set([...homeLineup, ...awayLineup])],
+            subsUsed: 0, events, scorerIds: [...first.scorers, ...second.scorers].map((s) => s.playerId),
+            redCardIds: allCards.filter((c) => c.type === "red").map((c) => c.playerId),
+            yellowCardIds: allCards.filter((c) => c.type === "yellow").map((c) => c.playerId),
+            finished: true,
+            ...(penaltyWinner !== undefined ? { cupPenaltyWinnerId: penaltyWinner } : {}),
+          };
+        }),
       startMatch: () =>
         mutate((draft) => {
           if (draft.seasonReview) return "Consulta primeiro o balanço da época antes de começar a nova época.";
