@@ -100,6 +100,8 @@ export interface MatchState {
   yellowCardIds?: number[];
   /** acontecimentos do jogo, com minuto e marcador */
   finished: boolean;
+  /** simulação imediata: apresentar diretamente o apito final */
+  instantSimulation?: boolean;
   cupPenaltyWinnerId?: number;
 }
 
