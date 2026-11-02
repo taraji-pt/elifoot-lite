@@ -461,6 +461,26 @@ export function continueAfterSeasonReview(state: GameState) {
     },
   ];
 
+  // Guarda uma fotografia estatística por jogador antes de limpar os dados da época.
+  // O clube é o clube em que o jogador termina a época; golos e presenças acumulam toda a época.
+  state.playerSeasonHistory ??= {};
+  for (const player of Object.values(state.players)) {
+    const team = Object.values(state.teams).find((candidate) => candidate.playerIds.includes(player.id));
+    const goals = state.scorerStats?.[player.id] ?? { league: 0, cup: 0 };
+    const record = {
+      season: review.season,
+      teamId: team?.id ?? null,
+      teamName: team?.name ?? "Sem clube",
+      appearances: state.appearanceStats?.[player.id] ?? 0,
+      goalsLeague: goals.league,
+      goalsCup: goals.cup,
+      rating: player.rating,
+    };
+    const records = state.playerSeasonHistory[player.id] ?? [];
+    records.push(record);
+    state.playerSeasonHistory[player.id] = records;
+  }
+
   state.seasonYear += 1;
   state.round = 1;
   state.scorerStats = {};
