@@ -536,6 +536,7 @@ function Game({ state }: { state: GameState }) {
   const [showCareerImageSettings, setShowCareerImageSettings] = useState(false);
   const [stadiumOpen, setStadiumOpen] = useState(false);
   const team = userTeam(state);
+  const stadiumBackground = stadiumImageSrc(team);
   const activeTab: Tab = state.match ? "jogo" : tab;
 
   return (
@@ -560,7 +561,29 @@ function Game({ state }: { state: GameState }) {
         style={{          background: `linear-gradient(110deg, ${team.primaryColor} 0%, ${team.primaryColor} 38%, ${team.secondaryColor} 100%)`,
         }}
       >
-        <div className="absolute inset-0 bg-black/35" />
+        {stadiumBackground && (
+          <img
+            src={stadiumBackground}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 h-full w-[72%] object-cover object-center opacity-60"
+            style={{
+              maskImage: "linear-gradient(to right, transparent 0%, black 34%, black 100%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 34%, black 100%)",
+            }}
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        )}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: stadiumBackground
+              ? `linear-gradient(90deg, ${team.primaryColor} 0%, ${team.primaryColor}D9 34%, ${team.primaryColor}66 61%, rgba(0,0,0,0.28) 100%)`
+              : "rgba(0,0,0,0.35)",
+          }}
+        />
         <div className="relative flex flex-wrap items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-4">
             <button
