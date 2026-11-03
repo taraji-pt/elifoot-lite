@@ -21766,7 +21766,7 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/USBG.webp",
     "primaryColor": "#FFF600",
     "secondaryColor": "#080808",
-    "stadiumImage": "/assets/stadiums/union-sportive-ben-guerdane.jpg",
+    "stadiumImage": "/assets/stadiums/USBG.webp",
     "players": [
       {
         "name": "Lassaad Hammami",
@@ -21882,7 +21882,7 @@ export const TEAMS: TeamSeed[] = [
     "badge": "/assets/badges/USM.webp",
     "primaryColor": "#FFFFFF",
     "secondaryColor": "#005AC5",
-    "stadiumImage": "/assets/stadiums/union-sportive-monastirienne.jpg",
+    "stadiumImage": "/assets/stadiums/USM.webp",
     "players": [
       {
         "name": "Ahmed Slimane",
