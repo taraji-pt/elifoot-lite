@@ -24317,5 +24317,585 @@ export const TEAMS: TeamSeed[] = [
         "nationality": "POR"
       }
     ]
+  },
+  {
+    "id": 337,
+    "name": "AS PAOK Thessalonikis",
+    "country": "GRE",
+    "stadium": "Toumba",
+    "city": "Thessaloniki",
+    "rating": 70,
+    "capacity": 28703,
+    "founded": 1926,
+    "badge": "/assets/badges/club_982.webp",
+    "primaryColor": "#FFFFFF",
+    "secondaryColor": "#080808",
+    "stadiumImage": "/assets/stadiums/as-paok-thessalonikis.jpg",
+    "players": [
+      {
+        "name": "Jiří Pavlenka",
+        "position": "GR",
+        "nationality": "CZE"
+      },
+      {
+        "name": "Antonis Tsiftsis",
+        "position": "GR",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Diego Costa",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Kristijan Jakić",
+        "position": "DEF",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Dimitris Giannoulis",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Jonjoe Kenny",
+        "position": "DEF",
+        "nationality": "ENG"
+      },
+      {
+        "name": "Aritz Elustondo",
+        "position": "DEF",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Greg Taylor",
+        "position": "DEF",
+        "nationality": "SCO"
+      },
+      {
+        "name": "Christos Zafeiris",
+        "position": "MED",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Andrija Živković",
+        "position": "MED",
+        "nationality": "SRB"
+      },
+      {
+        "name": "Baptiste Santamaria",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Soualiho Meïté",
+        "position": "MED",
+        "nationality": "FRA"
+      },
+      {
+        "name": "Taha Ali",
+        "position": "MED",
+        "nationality": "SWE"
+      },
+      {
+        "name": "Mady Camara",
+        "position": "MED",
+        "nationality": "GUI"
+      },
+      {
+        "name": "Simon Banza",
+        "position": "AV",
+        "nationality": "COD"
+      },
+      {
+        "name": "Kiril Despodov",
+        "position": "AV",
+        "nationality": "BUL"
+      },
+      {
+        "name": "Taison",
+        "position": "AV",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Dimitris Pelkas",
+        "position": "AV",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Chérif N'Diaye",
+        "position": "AV",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Fedor Chalov",
+        "position": "AV",
+        "nationality": "RUS"
+      }
+    ]
+  },
+  {
+    "id": 338,
+    "name": "AS Aris Thessalonikis",
+    "country": "GRE",
+    "stadium": "Kleanthis Vikelidis",
+    "city": "Thessaloniki",
+    "rating": 67,
+    "capacity": 22574,
+    "founded": 1914,
+    "badge": "/assets/badges/club_969.webp",
+    "primaryColor": "#FFF600",
+    "secondaryColor": "#080808",
+    "stadiumImage": "/assets/stadiums/as-aris-thessalonikis.jpg",
+    "players": [
+      {
+        "name": "Ricardo Velho",
+        "position": "GR",
+        "nationality": "POR"
+      },
+      {
+        "name": "Sokratis Dioudis",
+        "position": "GR",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Omar Richards",
+        "position": "DEF",
+        "nationality": "ENG"
+      },
+      {
+        "name": "Martin Hongla",
+        "position": "DEF",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Fabiano",
+        "position": "DEF",
+        "nationality": "BRA"
+      },
+      {
+        "name": "Jérémy Petris",
+        "position": "DEF",
+        "nationality": "MTQ"
+      },
+      {
+        "name": "Boško Šutalo",
+        "position": "DEF",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Noah Fadiga",
+        "position": "DEF",
+        "nationality": "SEN"
+      },
+      {
+        "name": "Manu García",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Uroš Račić",
+        "position": "MED",
+        "nationality": "SRB"
+      },
+      {
+        "name": "Fredrik Jensen",
+        "position": "MED",
+        "nationality": "FIN"
+      },
+      {
+        "name": "Benjamín Garré",
+        "position": "MED",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Kostas Galanopoulos",
+        "position": "MED",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Sebastián Palacios",
+        "position": "MED",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Christian Kouamé",
+        "position": "AV",
+        "nationality": "CIV"
+      },
+      {
+        "name": "Rafa Mir",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Loren Morón",
+        "position": "AV",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Othmane Boussaid",
+        "position": "AV",
+        "nationality": "BEL"
+      },
+      {
+        "name": "Bruma",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Tino Kadewere",
+        "position": "AV",
+        "nationality": "ZIM"
+      }
+    ]
+  },
+  {
+    "id": 339,
+    "name": "Panathinaikos AO",
+    "country": "GRE",
+    "stadium": "OAKA Spyros Louis",
+    "city": "Athens",
+    "rating": 71,
+    "capacity": 39700,
+    "founded": 1908,
+    "badge": "/assets/badges/club_983.webp",
+    "primaryColor": "#185A41",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/panathinaikos-ao.jpg",
+    "players": [
+      {
+        "name": "Iñaki Peña",
+        "position": "GR",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Lucas Chaves",
+        "position": "GR",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Stefan de Vrij",
+        "position": "DEF",
+        "nationality": "NED"
+      },
+      {
+        "name": "Davide Calabria",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Rick van Drongelen",
+        "position": "DEF",
+        "nationality": "NED"
+      },
+      {
+        "name": "Giorgos Kyriakopoulos",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Anass Salah-Eddine",
+        "position": "DEF",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Sverrir Ingi Ingason",
+        "position": "DEF",
+        "nationality": "ISL"
+      },
+      {
+        "name": "Azzedine Ounahi",
+        "position": "MED",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Kings Kangwa",
+        "position": "MED",
+        "nationality": "ZAM"
+      },
+      {
+        "name": "Imrân Louza",
+        "position": "MED",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Facundo Pellistri",
+        "position": "MED",
+        "nationality": "URU"
+      },
+      {
+        "name": "Pedro Chirivella",
+        "position": "MED",
+        "nationality": "ESP"
+      },
+      {
+        "name": "Santino Andino",
+        "position": "MED",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Levi Garcia",
+        "position": "AV",
+        "nationality": "TRI"
+      },
+      {
+        "name": "Cyriel Dessers",
+        "position": "AV",
+        "nationality": "NGA"
+      },
+      {
+        "name": "Vicente Taborda",
+        "position": "AV",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Andrews Tetteh",
+        "position": "AV",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Elmin Rastoder",
+        "position": "AV",
+        "nationality": "MKD"
+      },
+      {
+        "name": "Iason Nempis",
+        "position": "AV",
+        "nationality": "GRE"
+      }
+    ]
+  },
+  {
+    "id": 340,
+    "name": "AEK Athens",
+    "country": "GRE",
+    "stadium": "Agia Sofia",
+    "city": "Athens",
+    "rating": 72,
+    "capacity": 31527,
+    "founded": 1924,
+    "badge": "/assets/badges/club_967.webp",
+    "primaryColor": "#FFDE08",
+    "secondaryColor": "#181818",
+    "stadiumImage": "/assets/stadiums/aek-athens.jpg",
+    "players": [
+      {
+        "name": "Thomas Strakosha",
+        "position": "GR",
+        "nationality": "ALB"
+      },
+      {
+        "name": "Alberto Brignoli",
+        "position": "GR",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Harold Moukoudi",
+        "position": "DEF",
+        "nationality": "CMR"
+      },
+      {
+        "name": "Lazaros Rota",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Filipe Relvas",
+        "position": "DEF",
+        "nationality": "POR"
+      },
+      {
+        "name": "Kervin Arriaga",
+        "position": "DEF",
+        "nationality": "HON"
+      },
+      {
+        "name": "Bampis Lykogiannis",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Domagoj Vida",
+        "position": "DEF",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Lovro Majer",
+        "position": "MED",
+        "nationality": "CRO"
+      },
+      {
+        "name": "Oleksandr Zubkov",
+        "position": "MED",
+        "nationality": "UKR"
+      },
+      {
+        "name": "Răzvan Marin",
+        "position": "MED",
+        "nationality": "ROU"
+      },
+      {
+        "name": "Aboubakary Koita",
+        "position": "MED",
+        "nationality": "MTN"
+      },
+      {
+        "name": "Kaan Kairinen",
+        "position": "MED",
+        "nationality": "FIN"
+      },
+      {
+        "name": "João Mário",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Luka Jović",
+        "position": "AV",
+        "nationality": "SRB"
+      },
+      {
+        "name": "Barnabás Varga",
+        "position": "AV",
+        "nationality": "HUN"
+      },
+      {
+        "name": "Zini",
+        "position": "AV",
+        "nationality": "ANG"
+      },
+      {
+        "name": "Frantzdy Pierrot",
+        "position": "AV",
+        "nationality": "HAI"
+      },
+      {
+        "name": "Dimitris Kaloskamis",
+        "position": "AV",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Zois Karargyris",
+        "position": "AV",
+        "nationality": "GRE"
+      }
+    ]
+  },
+  {
+    "id": 341,
+    "name": "Olympiacos SF Piraeus",
+    "country": "GRE",
+    "stadium": "Georgios Karaiskakis",
+    "city": "Piraeus",
+    "rating": 73,
+    "capacity": 33449,
+    "founded": 1925,
+    "badge": "/assets/badges/club_981.webp",
+    "primaryColor": "#D50810",
+    "secondaryColor": "#FFFFFF",
+    "stadiumImage": "/assets/stadiums/olympiacos-sf-piraeus.jpg",
+    "players": [
+      {
+        "name": "Stefan Ortega",
+        "position": "GR",
+        "nationality": "GER"
+      },
+      {
+        "name": "Balša Popović",
+        "position": "GR",
+        "nationality": "MNE"
+      },
+      {
+        "name": "David Carmo",
+        "position": "DEF",
+        "nationality": "ANG"
+      },
+      {
+        "name": "Panagiotis Retsos",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Lorenzo Pirola",
+        "position": "DEF",
+        "nationality": "ITA"
+      },
+      {
+        "name": "Marcus Holmgren Pedersen",
+        "position": "DEF",
+        "nationality": "NOR"
+      },
+      {
+        "name": "Manolis Saliakas",
+        "position": "DEF",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Nair Tiknizyan",
+        "position": "DEF",
+        "nationality": "ARM"
+      },
+      {
+        "name": "Gustavo Puerta",
+        "position": "MED",
+        "nationality": "COL"
+      },
+      {
+        "name": "Remo Freuler",
+        "position": "MED",
+        "nationality": "SUI"
+      },
+      {
+        "name": "Leon Bailey",
+        "position": "MED",
+        "nationality": "JAM"
+      },
+      {
+        "name": "Gelson Martins",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Chiquinho",
+        "position": "MED",
+        "nationality": "POR"
+      },
+      {
+        "name": "Santiago Hezze",
+        "position": "MED",
+        "nationality": "ARG"
+      },
+      {
+        "name": "Ayoub El Kaabi",
+        "position": "AV",
+        "nationality": "MAR"
+      },
+      {
+        "name": "Jota Silva",
+        "position": "AV",
+        "nationality": "POR"
+      },
+      {
+        "name": "Kostas Fortounis",
+        "position": "AV",
+        "nationality": "GRE"
+      },
+      {
+        "name": "Roman Yaremchuk",
+        "position": "AV",
+        "nationality": "UKR"
+      },
+      {
+        "name": "Yusuf Yazıcı",
+        "position": "AV",
+        "nationality": "TUR"
+      },
+      {
+        "name": "Armando González",
+        "position": "AV",
+        "nationality": "MEX"
+      }
+    ]
   }
 ];
