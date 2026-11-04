@@ -148,6 +148,7 @@ export const COUNTRIES: Record<string, { name: string; iso2: string }> = {
   MNG: { name: "Mongólia", iso2: "mn" },
   MNE: { name: "Montenegro", iso2: "me" },
   MSR: { name: "Monserrate", iso2: "ms" },
+  MTQ: { name: "Martinica", iso2: "mq" },
   MYA: { name: "Mianmar (Birmânia)", iso2: "mm" },
   NAM: { name: "Namíbia", iso2: "na" },
   NEP: { name: "Nepal", iso2: "np" },
