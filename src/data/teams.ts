@@ -5843,110 +5843,122 @@ export const TEAMS: TeamSeed[] = [
       }
     ]
   },
-  {
-    "id": 59,
-    "name": "Shakhtar Donetsk",
-    "country": "UKR",
-    "rating": 71,
-    "badge": "/assets/badges/x.png",
-    "primaryColor": "#333333",
-    "secondaryColor": "#FFFFFF",
-    "stadium": "",
-    "city": "",
-    "stadiumImage": "",
-    "players": [
-      {
-        "name": "Peter Schmeichel",
-        "position": "GR",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Gianluca Pagliuca",
-        "position": "GR",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Franco Baresi",
-        "position": "DEF",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Fernando Hierro",
-        "position": "DEF",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Marcel Desailly",
-        "position": "DEF",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Aldair",
-        "position": "DEF",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Roberto Ayala",
-        "position": "DEF",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Frank de Boer",
-        "position": "DEF",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Zinedine Zidane",
-        "position": "MED",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Lothar Matthäus",
-        "position": "MED",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Clarence Seedorf",
-        "position": "MED",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Luis Figo",
-        "position": "MED",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Rivaldo",
-        "position": "MED",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Fernando Redondo",
-        "position": "MED",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Ronaldo",
-        "position": "AV",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Romário",
-        "position": "AV",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Gabriel Batistuta",
-        "position": "AV",
-        "nationality": "UKR"
-      },
-      {
-        "name": "Zinedine Zidane",
-        "position": "AV",
-        "nationality": "UKR"
-      }
-    ]
-  },
+ {
+  "id": 59,
+  "name": "Shakhtar Donetsk",
+  "country": "UKR",
+  "stadium": "Arena Lviv",
+  "city": "Donetsk",
+  "rating": 72,
+  "capacity": 33400,
+  "founded": 1936,
+  "badge": "/assets/badges/club_1895.webp",
+  "primaryColor": "#FF7300",
+  "secondaryColor": "#080808",
+  "stadiumImage": "/assets/stadiums/oO261Bj2laBLNh9Ktd1WLKT5fCSiKJw5KeWGkY6r.webp",
+  "players": [
+    {
+      "name": "Dmytro Riznyk",
+      "position": "GR",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Kyrylo Fesiun",
+      "position": "GR",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Mykola Matviienko",
+      "position": "DEF",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Pedro Henrique",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Vinicius Tobias",
+      "position": "DEF",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Valerii Bondar",
+      "position": "DEF",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Yehor Nazaryna",
+      "position": "DEF",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Irakli Azarovi",
+      "position": "DEF",
+      "nationality": "GEO"
+    },
+    {
+      "name": "Pedrinho",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Marlon Gomes",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Oleh Ocheretko",
+      "position": "MED",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Alisson",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Isaque",
+      "position": "MED",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Dmytro Kryskiv",
+      "position": "MED",
+      "nationality": "UKR"
+    },
+    {
+      "name": "Eguinaldo",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Gleiker Mendoza",
+      "position": "AV",
+      "nationality": "VEN"
+    },
+    {
+      "name": "Kauã Elias",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Newertton",
+      "position": "AV",
+      "nationality": "BRA"
+    },
+    {
+      "name": "Lassina Traoré",
+      "position": "AV",
+      "nationality": "BFA"
+    },
+    {
+      "name": "Prosper Obah",
+      "position": "AV",
+      "nationality": "NGA"
+    }
+  ]
+},
   {
     "id": 60,
     "name": "Panathinaikos",
